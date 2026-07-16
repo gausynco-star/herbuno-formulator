@@ -271,8 +271,8 @@ function ddCommon(hits,c,ctx){
  var RV=hits.filter(function(x){return tier(c,x.f)==='review';});
  var U=hits.filter(function(x){return tier(c,x.f)==='unknown';});
  var Cc=hits.filter(function(x){return tier(c,x.f)==='no';});
- /* Within a tier, order by the signed-off ladder so the primary best-fit format leads (ADR-006/011). */
- var byLadder=function(a,b){var d=ladderRank(c,a.f)-ladderRank(c,b.f);return d!==0?d:0;};
+ /* Within a tier, order by the signed-off ladder so the primary best-fit format leads (ADR-006/011); tie-break equal-rank products alphabetically. */
+ var byLadder=function(a,b){var d=ladderRank(c,a.f)-ladderRank(c,b.f);return d!==0?d:clean(a.t).localeCompare(clean(b.t));};
  A.sort(byLadder);B.sort(byLadder);Cc.sort(byLadder);
  var pickAttr=ctx==='q'?'data-qpick="1"':'data-pick="'+ctx+'"';
  var h='<div class="bb-dd">';
