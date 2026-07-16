@@ -47,7 +47,22 @@ function whyNote(roleEntry,code){
 }
 function codesForTier(c,want){
  if(!c||c.routing!=='catalogue'||!c.fmt) return [];
- return Object.keys(c.fmt).filter(function(code){return c.fmt[code].tier===want;});
+ /* Order chips by the signed-off ladder arrays (ADR-006/011), not JS object order. */
+ var arr=want==='ok'?c.preferred_formats:want==='warn'?c.conditional_formats:want==='avoid'?c.unsuitable_formats:null;
+ if(arr&&arr.length){
+  var ordered=arr.filter(function(code){return c.fmt[code]&&c.fmt[code].tier===want;});
+  /* include any tier-matching codes not listed in the array, appended after, so nothing is dropped */
+  Object.keys(c.fmt).forEach(function(code){if(c.fmt[code].tier===want&&ordered.indexOf(code)===-1)ordered.push(code);});
+  return ordered;
+ }
+ return Object.keys(c.fmt).filter(function(code){return c.fmt[code].tier===want;}); /* fallback: arrays absent */
+}
+/* Rank a format code by its position in this role's ladder (for sorting catalogue results within a tier). */
+function ladderRank(c,code){
+ if(!c) return 99;
+ var lists=[c.preferred_formats,c.conditional_formats,c.unsuitable_formats];
+ for(var i=0;i<lists.length;i++){var a=lists[i];if(a&&a.length){var ix=a.indexOf(code);if(ix>-1)return i*100+ix;}}
+ return 99;
 }
 function bestFitCode(c){
  /* Best fit = first 'ok' from the ordered preferred_formats array (ADR-006). No fallthrough to conditional/avoid. */
@@ -256,6 +271,9 @@ function ddCommon(hits,c,ctx){
  var RV=hits.filter(function(x){return tier(c,x.f)==='review';});
  var U=hits.filter(function(x){return tier(c,x.f)==='unknown';});
  var Cc=hits.filter(function(x){return tier(c,x.f)==='no';});
+ /* Within a tier, order by the signed-off ladder so the primary best-fit format leads (ADR-006/011). */
+ var byLadder=function(a,b){var d=ladderRank(c,a.f)-ladderRank(c,b.f);return d!==0?d:0;};
+ A.sort(byLadder);B.sort(byLadder);Cc.sort(byLadder);
  var pickAttr=ctx==='q'?'data-qpick="1"':'data-pick="'+ctx+'"';
  var h='<div class="bb-dd">';
  A.forEach(function(x){h+='<div class="bb-o" '+pickAttr+' data-h="'+x.h+'"><span class="ic ok">\u2713</span><span>'+esc(clean(x.t))+'</span><span class="bb-of">'+esc(fmtLabel(x.f,(c.fmt||{})[x.f]))+'</span></div>';});
