@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Node / tooling
+node_modules/
+npm-debug.log*
+*.log
+
+# Sandbox / scratch
+/tmp/
+scratch/
+*.tmp
+
+# Never commit buyer data or secrets
+*secret*
+*.env
+buyer-data/
