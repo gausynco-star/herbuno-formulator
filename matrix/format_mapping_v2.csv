@@ -1,0 +1,219 @@
+Product,Role,Format Code,Format Name,Ingredient Class,Physical Behaviour,Assay Overlay,Tier,Source Field,Source Phrase / Basis,Note
+
+== CONFIDENT PHYSICAL-FORMAT MAPPINGS ==
+Aromatherapy — Room Diffuser,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,avoid,Milled botanical powder,
+Aromatherapy — Topical Roll-on,active,CO,Carrier oil,carrier oil,oil / liquid,n/a,Recommended,rec,carrier oil,
+Aromatherapy — Topical Roll-on,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,avoid,Milled powder,
+Aromatherapy — Topical Roll-on,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Avoid,avoid,water-soluble extract,
+Aromatherapy — Topical Roll-on,base,CO,Carrier oil,carrier oil,oil / liquid,n/a,Recommended,rec,Carrier oil,
+Bakery & Snack Fortification,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical powder,
+Bakery & Snack Fortification,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Bakery & Snack Fortification,active,SE,Standardised extract,extract,dry-solid,standardised,Recommended,rec,standardised dry extract powder,
+Bakery & Snack Fortification,colour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled botanical,
+Bakery & Snack Fortification,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled botanical,
+Balm / Stick / Bar,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled powder,
+Balm / Stick / Bar,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Recommended,rec,Oil-soluble extract,
+Balm / Stick / Bar,active,SE,Standardised extract,extract,oil-soluble,standardised,Acceptable with caveat,acc,standardised oil-soluble extract,
+Chocolate / Fat-based Confectionery Coating,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled powder,
+Chocolate / Fat-based Confectionery Coating,active,SE,Standardised extract,extract,oil-soluble,standardised,Acceptable with caveat,acc,Standardised oil-soluble extract,
+Chocolate / Fat-based Confectionery Coating,flavour,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Recommended,rec,oleoresin,
+Churna — classical powder,FUNCTIONAL (fibre / bulking),MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical powder,
+Churna — classical powder,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical powder,
+Churna — classical powder,base,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled crude botanical,
+Clear Aqueous Serum / Toner,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,avoid,Milled powder,
+Clear Aqueous Serum / Toner,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,oil-soluble extract,
+Clear Aqueous Serum / Toner,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract,
+Clear Aqueous Serum / Toner,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Recommended,rec,Water-soluble liquid extract,
+Cream / Lotion,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Recommended,rec,oil-soluble extract,
+Cream / Lotion,active,SE,Standardised extract,extract,"dual — matched to whichever phase the active targets, not fixed",standardised,Acceptable with caveat,acc,Standardised water-soluble or oil-soluble extract,Physical behaviour corrected: this row explicitly allows either water- or oil-soluble depending on phase match — not defaulted to water-soluble.
+Dairy & Plant Milk,active,SE,Standardised extract,extract,dry-solid,standardised,Recommended,rec,standardised dispersible extract,
+Dispersible Sachet / Drink Powder,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Dispersible Sachet / Drink Powder,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised dispersible or water-soluble extract,
+Dispersible Sachet / Drink Powder,base,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,milled powder,
+Dispersible Sachet / Drink Powder,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Dispersible Sachet / Drink Powder,flavour,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,Spray-dried,
+Drops — Aqueous / Hydroalcoholic,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,avoid,Milled powder,
+Drops — Aqueous / Hydroalcoholic,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,oil-soluble extract,
+Drops — Aqueous / Hydroalcoholic,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract,
+Drops — Aqueous / Hydroalcoholic,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Recommended,rec,Water-soluble liquid extract,
+Drops — Oil-based,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Acceptable with caveat,acc,Oleoresin,
+Drops — Oil-based,active,SE,Standardised extract,extract,oil-soluble,standardised,Recommended,rec,standardised oil-soluble extract,
+Drops — Oil-based,base,CO,Carrier oil,carrier oil,oil / liquid,n/a,Recommended,rec,Carrier oil,
+Effervescent Tablet,FUNCTIONAL (fibre / bulking),RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Effervescent Tablet,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,avoid,Milled botanical powder,
+Effervescent Tablet,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Effervescent Tablet,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract powder,
+Effervescent Tablet,flavour,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,Spray-dried,
+Face & Hair Oil,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Acceptable with caveat,acc,Oleoresin,
+Face & Hair Oil,active,SE,Standardised extract,extract,oil-soluble,standardised,Recommended,rec,standardised oil-soluble extract,
+Face & Hair Oil,base,CO,Carrier oil,carrier oil,oil / liquid,n/a,Recommended,rec,Carrier oil,
+Gummy / Chewable,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,milled botanical,
+Gummy / Chewable,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,Oil-soluble extract,
+Gummy / Chewable,active,SE,Standardised extract,extract,water-soluble,standardised,Acceptable with caveat,acc,Standardised water-soluble or dispersible extract,
+Gummy / Chewable,colour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Gummy / Chewable,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Gummy / Chewable,flavour,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,spray-dried,
+Hard Capsule — conventional dry fill,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical powder,
+Hard Capsule — conventional dry fill,active,SE,Standardised extract,extract,dry-solid,standardised,Recommended,rec,standardised dry extract powder,
+Instant Beverage — Cold / Opaque or Cloudy,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,Oil-soluble extract,
+Instant Beverage — Cold / Opaque or Cloudy,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Instant Beverage — Cold / Opaque or Cloudy,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble or dispersible extract powder,
+Instant Beverage — Cold / Opaque or Cloudy,base,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,milled powder,
+Instant Beverage — Cold / Opaque or Cloudy,base,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,Oil-soluble extract,
+Instant Beverage — Cold / Opaque or Cloudy,base,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,spray-dried,
+Instant Beverage — Cold / Opaque or Cloudy,base,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Avoid,avoid,liquid extract,
+Instant Beverage — Cold / Opaque or Cloudy,colour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Instant Beverage — Cold / Opaque or Cloudy,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Instant Beverage — Cold / Opaque or Cloudy,flavour,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,Spray-dried,
+Instant Beverage — Hot / Opaque or Cloudy,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,Oil-soluble extract,
+Instant Beverage — Hot / Opaque or Cloudy,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Instant Beverage — Hot / Opaque or Cloudy,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble or dispersible extract powder,
+Instant Beverage — Hot / Opaque or Cloudy,base,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,milled powder,
+Instant Beverage — Hot / Opaque or Cloudy,base,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,Oil-soluble extract,
+Instant Beverage — Hot / Opaque or Cloudy,base,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,spray-dried,
+Instant Beverage — Hot / Opaque or Cloudy,base,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Avoid,avoid,liquid extract,
+Instant Beverage — Hot / Opaque or Cloudy,colour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Instant Beverage — Hot / Opaque or Cloudy,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Instant Beverage — Hot / Opaque or Cloudy,flavour,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,Spray-dried,
+Lozenge — Compressed,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled botanical,
+Lozenge — Compressed,active,SE,Standardised extract,extract,dry-solid,standardised,Acceptable with caveat,acc,Standardised dry extract powder,
+Lozenge — Compressed,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,botanical powder,"Also appears in Acceptable (""Milled botanical"") — assay-overlay/alternate of same code, not a genuine conflict."
+Lozenge — Compressed,flavour,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,spray-dried,
+Mask — Dry Powder,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical powder,
+Mask — Dry Powder,active,SE,Standardised extract,extract,dry-solid,standardised,Acceptable with caveat,acc,Standardised dry extract powder,
+Mask — Preserved Wet,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Recommended,rec,oil-soluble extract,
+Mask — Preserved Wet,active,SE,Standardised extract,extract,"dual — matched to whichever phase the active targets, not fixed",standardised,Acceptable with caveat,acc,Standardised water-soluble or oil-soluble extract,Physical behaviour corrected: this row explicitly allows either water- or oil-soluble depending on phase match — not defaulted to water-soluble.
+Oral Spray,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract,
+Oral Spray,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Recommended,rec,Water-soluble liquid extract,
+Pastille — Cooked,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled botanical,
+Pastille — Cooked,active,SE,Standardised extract,extract,dry-solid,standardised,Acceptable with caveat,acc,Standardised dry extract powder,
+Pastille — Cooked,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Pet Supplement,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical powder,
+Pet Supplement,active,SE,Standardised extract,extract,dry-solid,standardised,Recommended,rec,standardised dry extract,
+Pet Supplement,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled botanical powder,
+RTD — Clear,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,oil-soluble extract,
+RTD — Clear,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+RTD — Clear,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract,
+RTD — Clear,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Recommended,rec,Water-soluble liquid extract,
+RTD — Cloudy / Suspension,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,Oil-soluble extract,
+RTD — Cloudy / Suspension,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+RTD — Cloudy / Suspension,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble or dispersible extract,
+RTD — Cloudy / Suspension,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Recommended,rec,Water-soluble liquid extract,
+RTD — Cloudy / Suspension,colour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+"Savoury, Culinary & Seasoning",active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical powder,
+"Savoury, Culinary & Seasoning",active,SE,Standardised extract,extract,oil-soluble,standardised,Recommended,rec,standardised oleoresin,"Also appears in Acceptable (""Standardised oleoresin"") — assay-overlay/alternate of same code, not a genuine conflict."
+"Savoury, Culinary & Seasoning",colour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical,
+"Savoury, Culinary & Seasoning",colour,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Recommended,rec,oleoresin,
+"Savoury, Culinary & Seasoning",flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,Milled botanical,
+"Savoury, Culinary & Seasoning",flavour,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Recommended,rec,oleoresin,"Also appears in Acceptable (""Oleoresin"") — assay-overlay/alternate of same code, not a genuine conflict."
+Scoop / Bulk Blend,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,Oil-soluble extract,
+Scoop / Bulk Blend,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Scoop / Bulk Blend,active,SE,Standardised extract,extract,dry-solid,standardised,Recommended,rec,standardised dispersible extract,
+Scoop / Bulk Blend,flavour,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical,
+Scoop / Bulk Blend,flavour,SD,Spray-dried soluble powder,extract,"dry-solid, water-dispersible",n/a,Recommended,rec,Spray-dried,
+Shampoo / Cleanser,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract,
+Shot / Concentrate,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Shot / Concentrate,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract,
+Softgel — oil-based fill,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled powder,
+Softgel — oil-based fill,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Recommended,rec,Oil-soluble extract,
+Softgel — oil-based fill,active,SE,Standardised extract,extract,oil-soluble,standardised,Acceptable with caveat,acc,Standardised oil-soluble extract,
+Softgel — oil-based fill,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Avoid,avoid,Water-soluble liquid extract,
+Softgel — oil-based fill,base,CO,Carrier oil,carrier oil,oil / liquid,n/a,Recommended,rec,Carrier oil,
+Syrup — uniform solution,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,oil-soluble extract,
+Syrup — uniform solution,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Syrup — uniform solution,active,SE,Standardised extract,extract,water-soluble,standardised,Recommended,rec,standardised water-soluble extract,
+Syrup — uniform solution,active,WL,Water-soluble liquid extract,extract,water-soluble / liquid,n/a,Recommended,rec,Water-soluble liquid extract,
+Tablet — Direct Compression,FUNCTIONAL (fibre / bulking),MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,avoid,botanical powder,
+Tablet — Direct Compression,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,Milled botanical powder if it flows and compresses acceptably,Only if it flows and compresses acceptably — DC is unforgiving of poor flow.
+Tablet — Direct Compression,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Recommended,rec,Dry extract in a directly-compressible grade,Non-assayed dry extract in a DC grade where no label figure is needed.
+Tablet — Direct Compression,active,SE,Standardised extract,extract,dry-solid,standardised,Recommended,rec,standardised dry extract for a claim,"FIX 15 Jul: was wrongly scoped out by an ""excipient"" substring false-positive (row says ""blending with a DC excipient"", i.e. an active that blends WITH an excipient, not an excipient itself)."
+Tablet — Wet Granulation,FUNCTIONAL (fibre / bulking),MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Acceptable with caveat,acc,botanical powder,
+Tablet — Wet Granulation,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Recommended,rec,milled botanical,
+Tablet — Wet Granulation,active,RE,Non-assayed full-spectrum (ratio) extract,extract,dry-solid,non-assayed,Acceptable with caveat,acc,Non-assayed,
+Tablet — Wet Granulation,active,SE,Standardised extract,extract,dry-solid,standardised,Recommended,rec,standardised dry extract,
+Taila — medicated oil,active,OE,Oil-soluble extract,extract,oil-soluble / liquid,n/a,Avoid,avoid,oil-soluble EXTRACT,
+Tea & Infusion — Brewed/Strained,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,avoid,milled powder,
+Tea & Infusion — Brewed/Strained,active,TC,Cut-and-sifted / coarse botanical,cut botanical,coarse-cut,n/a,Recommended,rec,Cut-and-sifted,
+
+== TEA / KASHAYA — EXPLICIT 9-ROW RULING (TC/WD/MP redefined) ==
+Tea & Infusion — Brewed/Strained,base,TC,Cut-and-sifted / coarse botanical,cut botanical,coarse-cut,n/a,Recommended,ruling,Krantik ruling 15 Jul — TC/WD/MP schema fix,Explicit ruling: TC (cut-and-sifted/coarse) is the correct default for a brewed/decocted base.
+Tea & Infusion — Brewed/Strained,base,WD,Whole dried botanical,whole botanical,whole-dried,n/a,Acceptable with caveat,ruling,Krantik ruling 15 Jul,Usable but potentially slower or less uniform extraction than a cut.
+Tea & Infusion — Brewed/Strained,base,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,ruling,Krantik ruling 15 Jul,"Fine powder passes the strainer/bag and clouds the brew — MP is now defined as fine/milled only, removing the old ""whole herb"" conflation that caused this row to misclassify in v1."
+Kashaya — decoction,base,TC,Cut-and-sifted / coarse botanical,cut botanical,coarse-cut,n/a,Recommended,ruling,Krantik ruling 15 Jul — TC/WD/MP schema fix,Explicit ruling: TC (cut-and-sifted/coarse) is the correct default for a brewed/decocted base.
+Kashaya — decoction,base,WD,Whole dried botanical,whole botanical,whole-dried,n/a,Acceptable with caveat,ruling,Krantik ruling 15 Jul,Usable but potentially slower or less uniform extraction than a cut.
+Kashaya — decoction,base,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,ruling,Krantik ruling 15 Jul,"Fine powder passes the strainer/bag and clouds the brew — MP is now defined as fine/milled only, removing the old ""whole herb"" conflation that caused this row to misclassify in v1."
+Kashaya — decoction,active,TC,Cut-and-sifted / coarse botanical,cut botanical,coarse-cut,n/a,Recommended,ruling,Krantik ruling 15 Jul — TC/WD/MP schema fix,Explicit ruling: TC (cut-and-sifted/coarse) is the correct default for a brewed/decocted base.
+Kashaya — decoction,active,WD,Whole dried botanical,whole botanical,whole-dried,n/a,Acceptable with caveat,ruling,Krantik ruling 15 Jul,Usable but potentially slower or less uniform extraction than a cut.
+Kashaya — decoction,active,MP,"Milled powder (fine, milled botanical only)",milled botanical powder,dry-solid (fine),n/a,Avoid,ruling,Krantik ruling 15 Jul,"Fine powder passes the strainer/bag and clouds the brew — MP is now defined as fine/milled only, removing the old ""whole herb"" conflation that caused this row to misclassify in v1."
+
+"== SPECIFIC RESOLUTIONS (Taila base, Tea flavour) =="
+Taila — medicated oil,base,CO,Carrier oil,carrier oil,oil / liquid,n/a,Recommended,rec,Carrier / base oil (e.g. sesame) — the medicated-oil vehicle,"Explicit Krantik resolution — ""Carrier / base oil (e.g. sesame)"" is CO, missed by strict regex in v1."
+Tea & Infusion — Brewed/Strained,flavour,TC,Cut-and-sifted / coarse botanical,cut botanical,coarse-cut,n/a,Recommended,rec,"Cut botanical, dried flower, or dried fruit pieces","Explicit Krantik resolution — ""Cut botanical, dried flower, or dried fruit pieces"" is TC."
+
+== ASK US — EXPLICIT ENQUIRY PATHWAY (F&F B2B supply; not hidden N/A) ==
+Fragrance & Flavour System (B2B),base,—,Ask us / application-dependent,B2B aromatic supply,depends on material (EO/absolute/oleoresin/CO2),n/a,Ask us,rec,Ask us / application-dependent,"FIX 15 Jul: previously folded into N/A (hidden); now explicit ask_us enquiry pathway per ruling. This is a B2B material-supply role, not a not-applicable one."
+Fragrance & Flavour System (B2B),active,—,Ask us / application-dependent,B2B aromatic supply,depends on material (EO/absolute/oleoresin/CO2),n/a,Ask us,rec,Ask us / application-dependent,"FIX 15 Jul: previously folded into N/A (hidden); now explicit ask_us enquiry pathway per ruling. This is a B2B material-supply role, not a not-applicable one."
+Fragrance & Flavour System (B2B),flavour,—,Ask us / application-dependent,B2B aromatic supply,depends on material (EO/absolute/oleoresin/CO2),n/a,Ask us,rec,Ask us / application-dependent,"FIX 15 Jul: previously folded into N/A (hidden); now explicit ask_us enquiry pathway per ruling. This is a B2B material-supply role, not a not-applicable one."
+
+== AROMA-DIFFUSER BASE — NO CODE / APPLICATION-DEPENDENT ==
+Aromatherapy — Room Diffuser,base,—,No existing code — application-dependent,vehicle,depends on diffuser device type,n/a,Guidance only / no catalogue match,rec,A diffuser-compatible homogeneous liquid base appropriate to the selected aromatic ingredient and intended device.,"Explicit Krantik resolution — no format code applies; guidance-only, device-dependent."
+
+"== FIBRE — UNRESOLVED, ROUTE TO ASK US (needs FB-SOL / FB-DISP / FB-DC codes) =="
+Effervescent Tablet,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Water-soluble fibre (e.g. soluble inulin/FOS),"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Instant Beverage — Hot / Opaque or Cloudy,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Dispersible or water-soluble fibre,"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Instant Beverage — Cold / Opaque or Cloudy,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Dispersible or water-soluble fibre,"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Dispersible Sachet / Drink Powder,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Dispersible or soluble fibre,"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Scoop / Bulk Blend,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Dispersible or soluble fibre,"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+RTD — Clear,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Water-soluble fibre (soluble inulin/FOS),"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+RTD — Cloudy / Suspension,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Water-soluble or dispersible fibre,"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Syrup — uniform solution,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Water-soluble fibre (soluble inulin),"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Dairy & Plant Milk,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Dispersible or soluble fibre,"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Hard Capsule — conventional dry fill,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,Dry powdered or granulated fibre/bulking ingredient suitable for capsule filling,"No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+Bakery & Snack Fortification,FUNCTIONAL (fibre / bulking),FB-?,Fibre / bulking ingredient — behaviour subtype not yet coded,fibre,unresolved (soluble / dispersible / directly-compressible not yet distinguished),n/a,Ask us / unresolved,rec,"Food-grade powdered fibre, cereal/fruit fibre, resistant starch or other declared bulking ingredient appropriate to the recipe","No FB-SOL/FB-DISP/FB-DC codes exist yet. Per Krantik ruling, route to Ask us rather than force into MP."
+
+"== FLAVOUR — GUIDANCE ONLY, NO CATALOGUE MATCH =="
+Effervescent Tablet,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Spray-dried water-soluble flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+RTD — Clear,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Water-soluble liquid flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+Drops — Aqueous / Hydroalcoholic,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Water-soluble liquid flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+Syrup — uniform solution,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Water-soluble liquid flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+Oral Spray,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Water-soluble liquid flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+Shot / Concentrate,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Water-soluble or emulsified liquid flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+RTD — Cloudy / Suspension,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Water-soluble or emulsified liquid flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+Dairy & Plant Milk,flavour,FL-?,Flavour ingredient — liquid/dry subtype not yet coded,flavour,liquid (per row text),n/a,Guidance only / no catalogue match,rec,Water-soluble or emulsified liquid flavour,"""Water-soluble liquid flavour"" is not necessarily WL (which means water-soluble liquid BOTANICAL EXTRACT). No FL-LQ/FL-DRY codes exist yet and it is unconfirmed whether Herbuno sells dedicated flavour SKUs. Do not fabricate a matching SKU."
+
+"== COLOUR — GUIDANCE ONLY, NO CATALOGUE MATCH =="
+Instant Beverage — Hot / Opaque or Cloudy,colour,CL-?,Colourant — water-soluble or oil-dispersible subtype not yet coded,colour,water-soluble or oil-dispersible per row text,n/a,Guidance only / no catalogue match,rec,Dispersible or water-soluble permitted colour,"Generic ""permitted colour"" reference, not a named botanical. No CL-WS/CL-OD codes exist yet and it is unconfirmed whether Herbuno sells dedicated colourant SKUs. Do not fabricate a matching SKU."
+Instant Beverage — Cold / Opaque or Cloudy,colour,CL-?,Colourant — water-soluble or oil-dispersible subtype not yet coded,colour,water-soluble or oil-dispersible per row text,n/a,Guidance only / no catalogue match,rec,Dispersible or water-soluble permitted colour,"Generic ""permitted colour"" reference, not a named botanical. No CL-WS/CL-OD codes exist yet and it is unconfirmed whether Herbuno sells dedicated colourant SKUs. Do not fabricate a matching SKU."
+RTD — Clear,colour,CL-?,Colourant — water-soluble or oil-dispersible subtype not yet coded,colour,water-soluble or oil-dispersible per row text,n/a,Guidance only / no catalogue match,rec,Water-soluble permitted colour,"Generic ""permitted colour"" reference, not a named botanical. No CL-WS/CL-OD codes exist yet and it is unconfirmed whether Herbuno sells dedicated colourant SKUs. Do not fabricate a matching SKU."
+Chocolate / Fat-based Confectionery Coating,colour,CL-?,Colourant — water-soluble or oil-dispersible subtype not yet coded,colour,water-soluble or oil-dispersible per row text,n/a,Guidance only / no catalogue match,rec,Oil-dispersible permitted colour,"Generic ""permitted colour"" reference, not a named botanical. No CL-WS/CL-OD codes exist yet and it is unconfirmed whether Herbuno sells dedicated colourant SKUs. Do not fabricate a matching SKU."
+
+== OUT OF SCOPE — NO SOURCED BOTANICAL APPLIES (body / excipient / vehicle) ==
+Hard Capsule — conventional dry fill,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,No sourced base — the two-piece shell (HPMC/gelatin) is the body,
+Tablet — Direct Compression,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Directly-compressible diluent (MCC, dicalcium phosphate) — an excipient, not a botanical",
+Tablet — Wet Granulation,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Granulation diluent/binder system — an excipient,
+Effervescent Tablet,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Acid–carbonate couple with a soluble bulking agent — an excipient system,
+Gummy / Chewable,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,No sourced base — the gel or compressed-chew matrix is the body,
+Lozenge — Compressed,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,No sourced base — the compressed sugar/isomalt matrix is the body,
+Pastille — Cooked,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,No sourced base — the cooked sugar/gum mass is the body,
+Scoop / Bulk Blend,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Protein, greens or soluble-carbohydrate bulk — usually a food base, often outside Herbuno botanical supply",
+Bakery & Snack Fortification,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Flour / dough / batter matrix — a food base, not a sourced botanical",
+Chocolate / Fat-based Confectionery Coating,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Couverture / fat coating system — a food base, not a sourced botanical",
+Dairy & Plant Milk,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Milk or plant-milk system — a food base, not a sourced botanical",
+"Savoury, Culinary & Seasoning",base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Salt / carrier seasoning blend — a food base, not a sourced botanical",
+Clear Aqueous Serum / Toner,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Water / glycerin / PG aqueous phase — a formulation vehicle, not a sourced botanical",
+Cream / Lotion,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Oil-in-water emulsion system (oil + water + emulsifier) — a formulation system, not one ingredient",
+Cream / Lotion,texture,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Ask us / application-dependent — texture is an emulsifier/fatty-alcohol/wax/gum/polymer system,
+Balm / Stick / Bar,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Wax / butter / oil structural matrix — a formulation system, not one ingredient",
+Balm / Stick / Bar,texture,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Ask us / application-dependent — waxes and crystalline butters build the structure,
+Mask — Preserved Wet,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Preserved wet clay / cream base — a formulation system,
+Pet Supplement,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Dry feed / kibble matrix — a food base, not a sourced botanical",
+R&D Pilot & Sampling,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Sample every candidate form,
+R&D Pilot & Sampling,active,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Sample every candidate form,
+Mask — Dry Powder,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Clay / dry powder base (kaolin, bentonite) — the product body",
+Shampoo / Cleanser,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Surfactant system — a formulation base, not one sourced botanical",
+RTD — Clear,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Water or a clear beverage vehicle — usually not a botanical Herbuno supplies,
+Shot / Concentrate,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Water, juice or glycerin-based shot vehicle — usually not a botanical Herbuno supplies",
+Syrup — uniform solution,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,Sweetened aqueous syrup vehicle — usually not a botanical Herbuno supplies,
+Oral Spray,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Water / glycerin / PG spray vehicle — a solvent system, not a botanical",
+Drops — Aqueous / Hydroalcoholic,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Water / ethanol / glycerin dropper vehicle — a solvent system, not a botanical",
+RTD — Cloudy / Suspension,base,—,N/A — not a sourced ingredient,vehicle/excipient/body,,,N/A,rec,"Water, juice or an emulsion beverage vehicle — usually not a botanical Herbuno supplies",

@@ -1,0 +1,38 @@
+{% comment %}
+  HerbIQ Formulator — page shell.
+  All CSS and JS live in theme assets so this file stays tiny and unlimited layers
+  can be added later without hitting the section/paste size limit.
+  Requires three assets uploaded under Online Store → Themes → Edit code → Assets:
+    • herbuno-matrix.js   (decision data — sets window.HB_MX)
+    • blend-builder.css   (styles)
+    • blend-builder.js    (tool logic — reads window.HB_MX, builds into #bb)
+  Load order below is deliberate: styles, then data, then the container, then the
+  logic last so #bb and window.HB_MX both exist when blend-builder.js runs.
+{% endcomment %}
+{{ 'blend-builder.css' | asset_url | stylesheet_tag }}
+{{ 'herbuno-matrix.js' | asset_url | script_tag }}
+
+<div class="bb va" id="bb">
+<div class="bb-top">
+<div class="bb-modes">
+<button class="bb-mode" data-mode="quick">Check one ingredient</button>
+<button class="bb-mode" data-mode="build">Build a complete blend</button>
+</div>
+<div class="bb-toprow">
+<div class="bb-tl">
+<p class="bb-eb">// HerbIQ Formulator</p>
+<h2 class="bb-h">Find the right ingredient form &mdash; and spot costly mismatches before you buy.</h2>
+<p class="bb-subt">Check whether you need a soluble, dispersible, oil-compatible or dry form &mdash; then find matching Herbuno ingredients.</p>
+</div>
+</div>
+</div>
+<div class="bb-body">
+<div id="bb-controls"></div>
+<div id="bb-phys"></div>
+<div id="bb-work"></div>
+<div id="bb-foot"></div>
+<p class="bb-stat" id="bb-stat">Loading live catalogue&hellip;</p>
+</div>
+</div>
+
+{{ 'blend-builder.js' | asset_url | script_tag }}
