@@ -12,31 +12,39 @@ Herbuno **sourcing assistant**. Lives as a set of Shopify theme assets on herbun
 ## Repository layout
 
 ```
-theme-assets/            Shopify theme assets (the deployables)
+javascript/              Deployable JS (uploaded to Shopify theme Assets)
   herbuno-matrix.js      Compatibility data: Product × Role → format ladder (Stage-1 brain)
   blend-builder.js       Tool logic (loads window.HB_MX, renders UI)
-  blend-builder.css      Styles (rarely changes)
+
+liquid/                  Theme shell + styles (change rarely; uploaded alongside the JS)
   blend-builder-shell.liquid   Thin section that loads css + matrix + js in order
+  blend-builder.css      Styles
+
+matrix/                  Signed-off source-of-truth data artifacts (DO NOT silently override):
+  FORMULATOR_decision_table_v5.xlsx    The v5 decision table
+  OptionB_v3_FINAL_approved.xlsx       Approved Option B format-coverage expansion
+  Stage1_Format_Ladder_AUDIT.xlsx      Ordered format ladders (pending sign-off)
+  format_mapping_v2.csv                Format-code mapping
 
 docs/
-  TASKS.md               Live status / task log
   WORKFLOW.md            How we iterate (you + developer + Claude)
-  decision-records/      Signed-off source-of-truth artifacts (DO NOT silently override):
-    FORMULATOR_decision_table_v5.xlsx    The v5 decision table
-    OptionB_v3_FINAL_approved.xlsx       Approved Option B format-coverage expansion
-    Stage1_Format_Ladder_AUDIT.xlsx      Ordered format ladders (pending sign-off)
-    format_mapping_v2.csv                Format-code mapping
-    herbuno-matrix_PARITY_REPORT.md      Parity report for the last matrix apply
+  herbuno-matrix_PARITY_REPORT.md      Parity report for the last matrix apply
+  DECISION_LOG.md        Running decision log (added separately)
+  CHANGELOG.md           Release changelog (added separately)
 
-stage1/                  Stage-1 build (format ladder data + Layer-1 botanical suggestions)
+tests/                   Regression + UI-state test checklists
+releases/                Tagged release snapshots
+
+stage1/                  Stage-1 build notes (format ladder data + Layer-1 botanical suggestions)
 tools/                   Build & validation scripts (matrix apply, dry-run harness)
 ```
 
 ## Deploy (Shopify)
 
-1. Upload the changed file(s) in `theme-assets/` to the store theme's **Assets**.
-   The deploy set is normally just `herbuno-matrix.js` and `blend-builder.js`;
-   `blend-builder.css` and `blend-builder-shell.liquid` change rarely.
+1. Upload the changed file(s) from `javascript/` (and `liquid/` when they change) to the
+   store theme's **Assets**. The deploy set is normally just `javascript/herbuno-matrix.js`
+   and `javascript/blend-builder.js`; `liquid/blend-builder.css` and
+   `liquid/blend-builder-shell.liquid` change rarely.
 2. Hard-refresh to clear the Shopify CDN cache.
 3. Dev-theme test before production (real `/products.json`, IC/LP review render, RFQ delivery,
    cart adds, best-fit labelling) — the local dry-run cannot prove live Shopify behaviour.
@@ -44,8 +52,8 @@ tools/                   Build & validation scripts (matrix apply, dry-run harne
 ## Validate before every deploy
 
 ```bash
-node --check theme-assets/herbuno-matrix.js
-node --check theme-assets/blend-builder.js
+node --check javascript/herbuno-matrix.js
+node --check javascript/blend-builder.js
 # then the dry-run harness in tools/ (both modes, all products, 0 errors)
 ```
 

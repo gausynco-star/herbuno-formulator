@@ -19,3 +19,5 @@ scratch/
 *secret*
 *.env
 buyer-data/
+# Live strategy/buyer PII tracker — kept local only, purged from history 2026-07-16
+TASKS.md

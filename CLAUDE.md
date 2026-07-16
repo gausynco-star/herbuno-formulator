@@ -38,8 +38,9 @@ a rule, format tier, or ordering, stop and ask — do not infer.
 
 ## Deploy model
 
-- Deployables are in `theme-assets/`. Normal deploy set: `herbuno-matrix.js` + `blend-builder.js`.
-  `blend-builder.css` and `blend-builder-shell.liquid` change rarely. Shell load order is
+- Deployables are `javascript/` (JS) + `liquid/` (shell + css). Normal deploy set:
+  `javascript/herbuno-matrix.js` + `javascript/blend-builder.js`. `liquid/blend-builder.css` and
+  `liquid/blend-builder-shell.liquid` change rarely. Shell load order is
   css → matrix (`window.HB_MX`) → container → js.
 - After upload, hard-refresh for the Shopify CDN.
 - Assets are not size-capped (matrix is ~100 KB and fine); Shopify **sections** are ~50 KB, which is
@@ -48,8 +49,8 @@ a rule, format tier, or ordering, stop and ask — do not infer.
 ## Validate before handing over or deploying
 
 ```bash
-node --check theme-assets/herbuno-matrix.js
-node --check theme-assets/blend-builder.js
+node --check javascript/herbuno-matrix.js
+node --check javascript/blend-builder.js
 ```
 Then run the dry-run harness (tools/) across both modes and all products — must report 0 errors —
 and confirm applied tiers still render (e.g. capsule RE = ok, gummy RE = warn, face-oil RE = avoid).
@@ -62,5 +63,5 @@ Heredocs double-escape `\uXXXX`. Always `node --check` generated JS before hando
 
 ## Source of truth
 
-`docs/decision-records/` holds the approved artifacts. If code and a decision record disagree, the
-record wins — surface the discrepancy, don't silently "fix" the record.
+`matrix/` holds the approved data artifacts (the signed-off decision records). If code and a
+decision record disagree, the record wins — surface the discrepancy, don't silently "fix" the record.
