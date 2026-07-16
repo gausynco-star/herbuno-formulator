@@ -174,3 +174,35 @@ settling powder → Avoid. Water-based liquid (WL) → Avoid in an anhydrous mat
 **Consequence to protect.** Don't re-import dissolution requirements into suspension-tolerant
 matrices (balm, softgel fill). Softgel suspensions additionally require validated particle size,
 sedimentation, fill viscosity and dose uniformity.
+
+---
+
+## ADR-011 — Stage-1 ladder ordering (WL→SE, aroma-roll active = OE only, savoury scope)
+**Accepted · 2026-07**
+
+**Context.** Introducing `preferred_formats` (ADR-006) required an explicit order for every
+`Product × Role`. 11 rows changed the displayed best-fit vs object order; reviewed and signed off.
+
+**Decision.**
+- **Aqueous actives** (rtd-clear, rtd-cloudy, drops-aq, syrup, spray, serum): `preferred = [WL, SE]`.
+  Water-soluble form leads because phase compatibility is the first gate; standardisation is an
+  **assay overlay**, not a standalone phase. WL note qualified: "best direct phase match, subject to
+  concentration, pH and finished-system clarity validation" — WL is not automatically zero-risk.
+- **Aroma roll-on active**: `preferred = [OE]`. Carrier oil (CO) is a base/vehicle class, not an
+  active-format fallback — it was **removed from the active `fmt` entirely** (role-class leak) and
+  remains only under `aroma-roll · base`.
+- **Dry powder mask active**: `preferred = [RE, SD, MP]`. MP reframed as a legitimate
+  lower-concentration botanical option (needs higher loading), not inferior.
+- **Savoury flavour & colour**: `preferred = [MP, OE]`, **scoped to dry-seasoning systems only**.
+- **Lozenge flavour**: `preferred = [SD, MP]`; SD caveat extended to non-hygroscopicity, compression
+  behaviour and carrier taste.
+
+**Consequence to protect.**
+- The `savoury` MP→OE order is **not universal**. It holds for a dry seasoning / premix / dry matrix
+  with no dedicated fat phase. Fat-containing sauces, emulsions, dressings, fillings and oil-based
+  savoury products may legitimately favour OE. The matrix cannot express this fat-phase split (it
+  keys on `Product × Role`, not finished-food context) — encoded in the notes, flagged here as a
+  known limitation.
+- **Future refinement (open):** SE should be modelled as a "standardised + <behaviour>" overlay
+  rather than a peer code competing with WL. A future matrix should distinguish "standardised +
+  water-soluble" from generic SE instead of ranking WL vs SE as mutually exclusive categories.

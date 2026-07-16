@@ -14,6 +14,25 @@ ADR and a decision record in `/matrix`.
 - Layer-1 (botanical suggestions) curation — not built.
 - Stage-1 / Stage-2 two-screen UX — designed, not built.
 
+## 2026-07 — Stage-1 ladder ordering applied (ADR-011)
+### Added
+- `preferred_formats` / `conditional_formats` / `unsuitable_formats` ordered arrays on all 71
+  catalogue roles (ADR-006). Best-fit is now the first `ok` of `preferred_formats`.
+### Changed
+- Aqueous actives (rtd-clear, rtd-cloudy, drops-aq, syrup, spray, serum): best-fit SE → **WL**;
+  WL note qualified (concentration/pH/clarity validation).
+- aroma-roll active: **CO removed from the active `fmt`** (role-class leak); active best-fit = OE.
+- mask-dry active: best-fit MP → **RE** (RE→SD→MP); MP note reframed as lower-concentration option.
+- savoury flavour & colour: best-fit OE → **MP** (MP→OE), scoped to dry-seasoning systems only.
+- lozenge-c flavour: best-fit MP → **SD**; SD caveat extended.
+- schema_version → v8-ladder-ordered.
+### Guardrails
+- 0 tier changes anywhere; 12 approved note edits + 1 approved cell removal (aroma-roll CO); parity
+  verified (ADR-009). Reviewer: ChatGPT; owner sign-off recorded.
+### Known limitation logged
+- savoury MP→OE is scoped to dry systems; fat-containing savoury products may favour OE (matrix
+  cannot yet express finished-food fat-phase context).
+
 ## 2026-07 — Specification & repository constitution
 ### Added
 - `FORMULATOR_SPECIFICATION.md` (project constitution), `DECISION_LOG.md`, this changelog, and

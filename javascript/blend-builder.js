@@ -50,13 +50,21 @@ function codesForTier(c,want){
  return Object.keys(c.fmt).filter(function(code){return c.fmt[code].tier===want;});
 }
 function bestFitCode(c){
- /* Best fit is ONLY an 'ok' tier for this exact Product x Role. No fallthrough to conditional/avoid. */
+ /* Best fit = first 'ok' from the ordered preferred_formats array (ADR-006). No fallthrough to conditional/avoid. */
  if(!c||c.routing!=='catalogue'||!c.fmt) return null;
- var ok=Object.keys(c.fmt).filter(function(x){return c.fmt[x].tier==='ok';});
+ if(c.preferred_formats&&c.preferred_formats.length){
+  for(var i=0;i<c.preferred_formats.length;i++){var cd=c.preferred_formats[i];if(c.fmt[cd]&&c.fmt[cd].tier==='ok')return cd;}
+  return null;
+ }
+ var ok=Object.keys(c.fmt).filter(function(x){return c.fmt[x].tier==='ok';}); /* fallback: array absent */
  return ok.length?ok[0]:null;
 }
 function possibleCode(c){
  if(!c||c.routing!=='catalogue'||!c.fmt) return null;
+ if(c.conditional_formats&&c.conditional_formats.length){
+  for(var i=0;i<c.conditional_formats.length;i++){var cd=c.conditional_formats[i];if(c.fmt[cd]&&c.fmt[cd].tier==='warn')return cd;}
+  return null;
+ }
  var wn=Object.keys(c.fmt).filter(function(x){return c.fmt[x].tier==='warn';});
  return wn.length?wn[0]:null;
 }
