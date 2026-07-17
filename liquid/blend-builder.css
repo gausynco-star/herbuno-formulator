@@ -182,3 +182,27 @@ position:fixed;inset:0;background:rgba(30,90,90,.55);z-index:9999;display:flex;a
 .bb .bb-chip{color:var(--pos)}
 .bb .bb-chip:hover{border-color:var(--accent);background:#eaf7f7}
 .bb .bb-sw .bb-in{border-color:var(--accent)}
+/* ---- ADR-012 step 1: Path-A input · specification card · Stage-1/Stage-2 separation ---- */
+.bb-path{margin:14px 0 4px}
+.bb-path .bb-lbl{display:block;margin-bottom:6px}
+.bb-path-note{font-size:.82em;color:var(--m);margin-top:6px;line-height:1.5;font-style:italic}
+.bb-spec{border:1px solid var(--bdm);border-radius:8px;margin:14px 0;overflow:hidden}
+.bb-spec-h{background:var(--tp);padding:11px 15px;font-family:var(--fm);font-size:.66em;letter-spacing:.1em;text-transform:uppercase;color:var(--tk);font-weight:600;border-bottom:1px solid var(--bdm)}
+.bb-spec-forms{padding:12px 15px;border-bottom:1px solid var(--bd);background:var(--ow)}
+.bb-spec-forms .bb-lbl{display:block;margin-bottom:8px}
+.bb-spec-forms .bb-chip-f{cursor:pointer}
+.bb-chip-f.on{background:var(--tk);color:#fff;border-color:var(--tk)}
+.bb-spec-b{padding:6px 15px 12px}
+.bb-spec-r{display:grid;grid-template-columns:150px 1fr;gap:10px;padding:7px 0;border-bottom:1px solid #f2f2f2;font-size:.92em;line-height:1.45}
+.bb-spec-r:last-child{border-bottom:0}
+.bb-spec-k{font-family:var(--fm);font-size:.82em;letter-spacing:.03em;text-transform:uppercase;color:var(--m)}
+.bb-spec-v{color:var(--d)}
+.bb-spec-v i{color:var(--m)}
+@media(max-width:560px){.bb-spec-r{grid-template-columns:1fr;gap:2px}}
+.bb-stage2{border:1px solid var(--td);border-radius:8px;margin:16px 0 4px;background:var(--ow)}
+.bb-stage2-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--td);padding:10px 15px;border-radius:7px 7px 0 0}
+.bb-stage2-h .bb-lbl{color:#fff;margin:0}
+.bb-stage2-h .bb-btn.o{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.bb-stage2-h .bb-btn.o:hover{background:rgba(255,255,255,.24)}
+.bb-stage2-b{padding:14px 15px}
+.bb-stage2-b>.bb-note:first-child{margin-top:0}

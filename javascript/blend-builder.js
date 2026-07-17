@@ -94,9 +94,9 @@ function needHint(c){
  return '<i style="color:var(--l)">no catalogue best fit \u2014 see options</i>';
 }
 
-var S={mode:'quick',p:null,batch:'',rows:[],q:{role:'',sku:'',q:'',pct:''}};
+var S={mode:'quick',p:null,batch:'',rows:[],q:{role:'',sku:'',q:'',pct:'',botanical:'',botanical_latin:'',form:'',spec:null,stage:'spec'}};
 try{var lm=sessionStorage.getItem('hb_mode'); if(lm==='build'||lm==='quick') S.mode=lm;}catch(e){}
-var CAT=[];
+var CAT=[],CAT_LOADED=false;
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
 function clean(t){return String(t).split('|')[0].replace(/\s*[-\u2013]\s*(Natural|Pure|Premium|Bulk|Wholesale).*$/i,'').trim();}
 function packGrams(o){var m=String(o).match(/^\s*([\d.]+)\s*(kg|g)\b/i);if(!m)return 0;var n=parseFloat(m[1]);return /kg/i.test(m[2])?n*1000:n;}
@@ -113,6 +113,34 @@ function pickVar(sku,needG,role){
 }
 function find(q){q=(q||'').toLowerCase().trim();if(q.length<2)return[];
  return CAT.filter(function(s){return s.t.toLowerCase().indexOf(q)>-1;}).slice(0,30);}
+
+/* Path A (ADR-012 step 1): catalogue-INDEPENDENT botanical identity list for autocomplete /
+   typo-correction. Never sourced from CAT/Shopify — a botanical Herbuno does not stock still
+   resolves here. Starter set; promote to a separate asset later. {c: common, l: Latin binomial}. */
+var BOTANICALS=[
+ {c:'Ashwagandha',l:'Withania somnifera'},{c:'Turmeric',l:'Curcuma longa'},{c:'Ginger',l:'Zingiber officinale'},
+ {c:'Brahmi / Bacopa',l:'Bacopa monnieri'},{c:'Gotu Kola',l:'Centella asiatica'},{c:'Holy Basil / Tulsi',l:'Ocimum tenuiflorum'},
+ {c:'Amla / Indian Gooseberry',l:'Phyllanthus emblica'},{c:'Shatavari',l:'Asparagus racemosus'},{c:'Guduchi / Giloy',l:'Tinospora cordifolia'},
+ {c:'Moringa',l:'Moringa oleifera'},{c:'Neem',l:'Azadirachta indica'},{c:'Triphala (Haritaki)',l:'Terminalia chebula'},
+ {c:'Fenugreek',l:'Trigonella foenum-graecum'},{c:'Liquorice / Mulethi',l:'Glycyrrhiza glabra'},{c:'Guggul',l:'Commiphora wightii'},
+ {c:'Cinnamon',l:'Cinnamomum verum'},{c:'Cardamom',l:'Elettaria cardamomum'},{c:'Black Pepper',l:'Piper nigrum'},
+ {c:'Rhodiola',l:'Rhodiola rosea'},{c:'Ginseng (Asian)',l:'Panax ginseng'},{c:'Milk Thistle',l:'Silybum marianum'},
+ {c:'Green Tea',l:'Camellia sinensis'},{c:'Rosemary',l:'Salvia rosmarinus'},{c:'Chamomile',l:'Matricaria chamomilla'},
+ {c:'Calendula',l:'Calendula officinalis'},{c:'Aloe Vera',l:'Aloe barbadensis'},{c:'Hibiscus',l:'Hibiscus sabdariffa'},
+ {c:'Beetroot',l:'Beta vulgaris'},{c:'Acai',l:'Euterpe oleracea'},{c:'Spirulina',l:'Arthrospira platensis'},
+ {c:'Lion’s Mane',l:'Hericium erinaceus'},{c:'Reishi',l:'Ganoderma lucidum'},{c:'Cordyceps',l:'Cordyceps militaris'},
+ {c:'Boswellia / Shallaki',l:'Boswellia serrata'},{c:'Saffron',l:'Crocus sativus'},{c:'Valerian',l:'Valeriana officinalis'},
+ {c:'Peppermint',l:'Mentha piperita'},{c:'Lavender',l:'Lavandula angustifolia'},{c:'Echinacea',l:'Echinacea purpurea'},
+ {c:'Fennel',l:'Foeniculum vulgare'}
+];
+function botNorm(s){return String(s||'').toLowerCase().replace(/[^a-z]+/g,' ').trim();}
+function botSuggest(q){var n=botNorm(q);if(n.length<2)return[];
+ return BOTANICALS.filter(function(b){return botNorm(b.c).indexOf(n)>-1||botNorm(b.l).indexOf(n)>-1;}).slice(0,8);}
+/* Capture the Latin binomial only on a confident match: exact common/Latin, or a single remaining
+   suggestion. No match is fine — free text still flows through (identity ≠ specification). */
+function botLatin(q){var n=botNorm(q),sug=botSuggest(q);
+ for(var i=0;i<sug.length;i++){if(botNorm(sug[i].c)===n||botNorm(sug[i].l)===n)return sug[i].l;}
+ return sug.length===1?sug[0].l:'';}
 
 function renderControls(){
  var C=document.getElementById('bb-controls');
@@ -186,6 +214,105 @@ function supplierText(c){
    ' suitable for use in '+P.n+', with solubility data, carrier declaration and a representative COA.'+qual;
 }
 
+/* ---- ADR-012 step 1: specification object (Stage 1's structured output) ---- */
+/* System phase, derived from the chosen form's physical behaviour, product archetype as fallback. */
+function phaseFor(c,code){
+ var e=code&&(c.fmt||{})[code],beh=((e&&e.behaviour)||'').toLowerCase();
+ if(beh.indexOf('water-soluble')>-1||beh.indexOf('water-dispersible')>-1) return 'aqueous';
+ if(beh.indexOf('oil')>-1) return 'oil-based';
+ if(beh.indexOf('dual')>-1) return 'matched to active';
+ if(beh.indexOf('dry-solid')>-1||beh.indexOf('whole')>-1||beh.indexOf('coarse')>-1) return 'dry';
+ var t=(PROD[S.p]||{}).tag;
+ return t==='MD'?'aqueous':t==='NND'?'dry':t==='DISP'?'aqueous (dispersion)':'n/a';
+}
+/* Status label vocabulary — §6. NEVER "Compliant"/"Approved"/"Safe"/"Validated". */
+function statusFor(c,code){
+ if(code==='IC'||code==='LP'||!code) return 'Application review needed';
+ var e=(c.fmt||{})[code]; if(!e) return 'Application review needed';
+ return e.tier==='ok'?'Best physical fit':e.tier==='warn'?'Conditional fit':'Not suitable for this role';
+}
+/* Build the spec object: identity (constant) + specification (form/behaviour/assay/phase/status).
+   Sole interface to Stage 2. form_code defaults to bestFitCode; a selected conditional chip overrides. */
+function buildSpec(c){
+ var code=S.q.form||bestFitCode(c),e=code?(c.fmt||{})[code]:null;
+ var spec={
+  botanical:S.q.botanical||'',
+  botanical_latin:S.q.botanical_latin||'',
+  product_id:S.p,
+  product_name:(PROD[S.p]||{}).n||'',
+  role_id:S.q.role,
+  role_label:c.label||S.q.role,
+  form_code:code||null,
+  form_label:code?fmtLabel(code,e):'',
+  required_behaviour:(e&&e.behaviour)||'n/a',
+  assay:(e&&e.overlay==='standardised')?'standardised':'n/a',
+  phase:phaseFor(c,code),
+  technical_status:statusFor(c,code)
+ };
+ S.q.spec=spec; return spec;
+}
+/* Reset the Path-A / specification / stage state when the product or role changes. */
+function clearSpec(){S.q.botanical='';S.q.botanical_latin='';S.q.form='';S.q.spec=null;S.q.stage='spec';}
+
+/* Path A input — catalogue-free botanical identity. Does NOT query CAT and never gates the ladder. */
+function botInput(){
+ return '<div class="bb-path"><span class="bb-lbl">3 · Which botanical is this?</span>'+
+  '<div class="bb-sw"><input class="bb-in" id="bb-bot" value="'+esc(S.q.botanical||'')+'" placeholder="Type any botanical — e.g. Ashwagandha…" autocomplete="off">'+botDD()+'</div>'+
+  '<p class="bb-path-note">Any botanical works — this Stage-1 result is the same whether or not Herbuno stocks it.</p></div>';
+}
+function botDD(){
+ if(botNorm(S.q.botanical).length<2) return '';
+ if(S.q.botanical_latin&&botLatin(S.q.botanical)===S.q.botanical_latin){ /* confident identity captured */
+  var e=botSuggest(S.q.botanical);if(e.length===1&&botNorm(e[0].c)===botNorm(S.q.botanical))return '';}
+ var sug=botSuggest(S.q.botanical); if(!sug.length) return '';
+ return '<div class="bb-dd">'+sug.map(function(b){
+  return '<div class="bb-o" data-botpick="'+esc(b.c)+'" data-lat="'+esc(b.l)+'"><span>'+esc(b.c)+'</span><span class="bb-of">'+esc(b.l)+'</span></div>';}).join('')+'</div>';
+}
+/* The "Selected specification" card + a form selector (ok + conditional). Selecting a conditional
+   form flips technical_status to "Conditional fit". renderResult() (shared tier rendering) is untouched. */
+function renderSpecCard(c){
+ var spec=buildSpec(c),oks=codesForTier(c,'ok'),warns=codesForTier(c,'warn'),active=spec.form_code;
+ var chip=function(cd){var tr=(c.fmt||{})[cd]?(c.fmt||{})[cd].tier:'';
+  return '<button class="bb-chip-f'+(cd===active?' on':'')+'" data-selform="'+cd+'">'+esc(fmtLabel(cd,(c.fmt||{})[cd]))+(tr==='warn'?' · conditional':'')+'</button>';};
+ var sel=(oks.length||warns.length)?'<div class="bb-spec-forms"><span class="bb-lbl">Choose the commercial form</span><div class="bb-chips">'+oks.map(chip).join('')+warns.map(chip).join('')+'</div></div>':'';
+ var rows=[
+  ['Botanical', spec.botanical?esc(spec.botanical)+(spec.botanical_latin?' <i>('+esc(spec.botanical_latin)+')</i>':''):'<i>type a botanical above</i>'],
+  ['Role', esc(spec.role_label)],
+  ['Commercial form', spec.form_label?esc(spec.form_label):'<i>application review needed</i>'],
+  ['Required behaviour', esc(spec.required_behaviour)],
+  ['Assay', esc(spec.assay)],
+  ['Phase', esc(spec.phase)],
+  ['Technical status', '<b>'+esc(spec.technical_status)+'</b>']
+ ];
+ var body=rows.map(function(r){return '<div class="bb-spec-r"><span class="bb-spec-k">'+r[0]+'</span><span class="bb-spec-v">'+r[1]+'</span></div>';}).join('');
+ return '<div class="bb-spec"><div class="bb-spec-h">Selected specification</div>'+sel+'<div class="bb-spec-b">'+body+'</div></div>';
+}
+/* Stage 2 — procurement. Revealed only after the explicit forward action. Distinct sourcing styling
+   so it can never read as a scientific verdict (§3.1). Minimal for step 1: match / no-match + honest routing. */
+function renderStage2(c){
+ var spec=S.q.spec||buildSpec(c),bot=spec.botanical||'';
+ var hits=bot?find(bot):[];
+ var exact=hits.filter(function(x){return x.f===spec.form_code;});
+ var altOk=hits.filter(function(x){return tier(c,x.f)==='ok'&&x.f!==spec.form_code;});
+ var h='<div class="bb-stage2"><div class="bb-stage2-h"><span class="bb-lbl">Stage 2 · Herbuno catalogue &amp; sourcing</span>'+
+  '<button class="bb-btn sm o" data-backspec="1">← Back to specification</button></div><div class="bb-stage2-b">';
+ if(!CAT_LOADED){
+  h+='<div class="bb-note info">Checking the Herbuno catalogue…</div>';
+ } else if(exact.length){var sk=exact[0];S.q.sku=sk.h;
+  h+='<div class="bb-note info"><b>Catalogue match found.</b> '+esc(clean(sk.t))+' — '+esc(fmtLabel(sk.f,(c.fmt||{})[sk.f]))+', matching your specification.</div>';
+ } else if(altOk.length){var sa=altOk[0];
+  h+='<div class="bb-note wn"><b>Compatible best-fit alternative.</b> Herbuno stocks '+esc(clean(sa.t))+' as '+esc(fmtLabel(sa.f,(c.fmt||{})[sa.f]))+' — also a best-fit form for this role, though not the '+esc(spec.form_label||'form')+' you selected.</div>';
+ } else {
+  h+='<div class="bb-note no"><b>No catalogue match for this specification yet.</b> '+(bot?'Herbuno does not currently stock '+esc(bot)+' as '+esc(spec.form_label||'this form')+'.':'Add a botanical to the specification and we’ll check.')+'</div>';
+ }
+ h+='<div class="bb-supp"><div class="bb-supp-h">Supplier-ready wording</div><div class="bb-supp-b" id="bb-suppt">'+esc(supplierText(c))+'</div>'+
+    '<div class="bb-supp-a"><button class="bb-btn sm" data-copysupp="1">Copy request</button>'+
+     '<button class="bb-btn sm o" data-askherbuno="1">Send this specification to Herbuno</button>'+
+     '<button class="bb-btn sm o" data-reqsample="1">Request sample</button></div></div>';
+ h+='<div class="bb-actions"><button class="bb-btn o" data-toblend="1">Add this ingredient to a full blend →</button></div>';
+ return h+'</div></div>';
+}
+
 function drawQuick(){
  var W=document.getElementById('bb-work'),F=document.getElementById('bb-foot');
  F.innerHTML='';
@@ -196,29 +323,19 @@ function drawQuick(){
  var c=P.roles[S.q.role];
  var h=renderResult(c);
  if(c.routing==='catalogue'){
-  h+='<div class="bb-match"><div class="bb-match-h">3 \u00B7 Find matching Herbuno products</div>'+
-     '<div class="bb-sw"><input class="bb-in" id="bb-qq" value="'+esc(S.q.q||'')+'" placeholder="Search a botanical\u2026" autocomplete="off">'+ddQuick()+'</div></div>';
-  if(S.q.sku){var sk=CAT.filter(function(x){return x.h===S.q.sku;})[0];
-   if(sk){var tr=tier(c,sk.f);
-    h+='<div class="bb-note '+(tr==='ok'?'info':tr==='wn'?'wn':tr==='unknown'?'no':'wn')+'"><span class="ic '+tierClass(tr)+'">'+tierIcon(tr)+'</span> <b>'+esc(clean(sk.t))+'</b> \u2014 '+esc(fmtLabel(sk.f,(c.fmt||{})[sk.f]))+'.<br>'+esc(whyNote(c,sk.f))+'</div>';}}
-  h+='<div class="bb-supp"><div class="bb-supp-h">Supplier-ready wording</div><div class="bb-supp-b" id="bb-suppt">'+esc(supplierText(c))+'</div>'+
-     '<div class="bb-supp-a"><button class="bb-btn sm" data-copysupp="1">Copy request</button>'+
-      '<button class="bb-btn sm o" data-askherbuno="1">Ask Herbuno</button>'+
-      '<button class="bb-btn sm o" data-reqsample="1">Request sample</button></div></div>';
-  h+='<div class="bb-actions"><button class="bb-btn o" data-toblend="1">Add this ingredient to a full blend \u2192</button></div>';
+  /* Stage 1 (spec) always renders first; Stage 2 (procurement) only after the explicit forward action. */
+  if(S.q.stage==='procurement'){
+   h+=renderStage2(c);
+  } else {
+   h+=botInput();
+   h+=renderSpecCard(c);
+   h+='<div class="bb-actions"><button class="bb-btn" data-checkavail="1">Check Herbuno availability \u2192</button></div>';
+  }
  } else {
   h+='<div class="bb-actions"><button class="bb-btn" data-askrole="1">Ask a sourcing specialist \u2192</button>'+
      '<button class="bb-btn o" data-toblend="1">Continue in the full blend builder \u2192</button></div>';
  }
  W.innerHTML=h;
-}
-function ddQuick(){
- if(S.q.sku) return ''; /* a selection is active; typing clears it (input handler) and reopens search */
- var P=PROD[S.p],c=P.roles[S.q.role],hits=find(S.q.q);
- if(!S.q.q||S.q.q.length<2||!hits.length){
-  return (S.q.q&&S.q.q.length>=2)?'<div class="bb-dd"><div class="bb-ox">Nothing matching \u201C'+esc(S.q.q)+'\u201D in the catalogue.</div></div>':'';
- }
- return ddCommon(hits,c,'q');
 }
 
 function drawBuild(){
@@ -348,7 +465,7 @@ function draw(){renderControls();if(S.mode==='quick')drawQuick();else drawBuild(
 
 function loadCat(){
  var c=null;try{c=JSON.parse(sessionStorage.getItem('hb_cat_v4')||'null');}catch(e){}
- if(c&&c.t>Date.now()-1800000){CAT=c.s;stat();draw();return;}
+ if(c&&c.t>Date.now()-1800000){CAT=c.s;CAT_LOADED=true;stat();draw();return;}
  var all=[],pg=1;
  (function nx(){fetch('/products.json?limit=250&page='+pg).then(function(r){return r.json();}).then(function(d){
   (d.products||[]).forEach(function(p){var ri=-1;(p.options||[]).forEach(function(o,k){if(/Extraction Ratio/i.test(o.name))ri=k;});
@@ -356,8 +473,8 @@ function loadCat(){
     return {id:v.id,pack:o1,g:g,price:parseFloat(v.price)||0,rat:rat,av:v.available!==false};}).filter(function(v){return v.g>0;});
    all.push({h:p.handle,t:p.title,f:fmtOf(p.product_type,p.title),r:ri>-1?1:0,v:vs});});
   if((d.products||[]).length===250&&pg<10){pg++;nx();}
-  else{CAT=all;try{sessionStorage.setItem('hb_cat_v4',JSON.stringify({t:Date.now(),s:all}));}catch(e){}stat();draw();}
- }).catch(function(){stat(1);draw();});})();
+  else{CAT=all;CAT_LOADED=true;try{sessionStorage.setItem('hb_cat_v4',JSON.stringify({t:Date.now(),s:all}));}catch(e){}stat();draw();}
+ }).catch(function(){CAT_LOADED=true;stat(1);draw();});})();
 }
 function stat(e){document.getElementById('bb-stat').textContent=e?'Catalogue unavailable \u2014 showing formats only.':CAT.length+' live products \u00B7 straight from the Herbuno catalogue';}
 
@@ -365,7 +482,7 @@ var root=document.getElementById('bb');
 root.addEventListener('click',function(e){
  var md=e.target.closest('[data-mode]');
  if(md){switchMode(md.dataset.mode);return;}
- var t=e.target.closest('[data-add],[data-del],[data-tw],[data-pick],[data-qpick],[data-rfq],[data-rfq-role],[data-share],[data-copysupp],[data-askherbuno],[data-reqsample],[data-toblend],[data-askrole],#bb-send,#bb-dl,#bb-bench,#bb-full');
+ var t=e.target.closest('[data-add],[data-del],[data-tw],[data-pick],[data-botpick],[data-selform],[data-checkavail],[data-backspec],[data-rfq],[data-rfq-role],[data-share],[data-copysupp],[data-askherbuno],[data-reqsample],[data-toblend],[data-askrole],#bb-send,#bb-dl,#bb-bench,#bb-full');
  if(!t)return;
  if(t.dataset.add!==undefined){S.rows.push({role:t.dataset.add,q:'',sku:'',pct:'',open:false});
    S.rows=ROLES.map(function(rr){return S.rows.filter(function(x){return x.role===rr;});}).reduce(function(a,b){return a.concat(b);},[]);draw();}
@@ -374,7 +491,10 @@ root.addEventListener('click',function(e){
  else if(t.dataset.pick!==undefined){var r=S.rows[+t.dataset.pick];r.sku=t.dataset.h;
    var s=CAT.filter(function(x){return x.h===r.sku;})[0],c=PROD[S.p].roles[r.role];
    if(s&&tier(c,s.f)!=='ok')r.open=true;draw();}
- else if(t.dataset.qpick!==undefined){S.q.sku=t.dataset.h;var _s=CAT.filter(function(x){return x.h===S.q.sku;})[0];if(_s)S.q.q=clean(_s.t);draw();}
+ else if(t.dataset.botpick!==undefined){S.q.botanical=t.dataset.botpick;S.q.botanical_latin=t.dataset.lat||'';S.q.stage='spec';S.q.spec=null;draw();}
+ else if(t.dataset.selform!==undefined){S.q.form=t.dataset.selform;S.q.spec=null;draw();}
+ else if(t.dataset.checkavail!==undefined){S.q.stage='procurement';draw();if(!CAT_LOADED)loadCat();}
+ else if(t.dataset.backspec!==undefined){S.q.stage='spec';draw();}
  else if(t.dataset.rfq!==undefined){var q=t.dataset.rfq.split('|');rfq(q[0],q[1]);}
  else if(t.dataset.rfqRole!==undefined){rfqRole(S.rows[+t.dataset.rfqRole]);}
  else if(t.dataset.askrole!==undefined){rfqRoleQuick();}
@@ -389,20 +509,20 @@ root.addEventListener('click',function(e){
  else if(t.id==='bb-dl'){dl();}
 });
 root.addEventListener('input',function(e){var t=e.target;
- if(t.id==='bb-qq'){S.q.q=t.value;S.q.sku='';draw();var el=root.querySelector('#bb-qq');if(el){el.focus();el.setSelectionRange(el.value.length,el.value.length);}}
+ if(t.id==='bb-bot'){S.q.botanical=t.value;S.q.botanical_latin=botLatin(t.value);S.q.stage='spec';S.q.spec=null;draw();var el=root.querySelector('#bb-bot');if(el){el.focus();el.setSelectionRange(el.value.length,el.value.length);}}
  else if(t.dataset.q!==undefined){var i=+t.dataset.q;S.rows[i].q=t.value;S.rows[i].sku='';draw();var el2=root.querySelector('[data-q="'+i+'"]');if(el2){el2.focus();el2.setSelectionRange(el2.value.length,el2.value.length);}}
  else if(t.dataset.pct!==undefined){S.rows[+t.dataset.pct].pct=t.value;buildFoot();}
 });
 root.addEventListener('change',function(e){var t=e.target;
- if(t.id==='bb-prod'){S.p=t.value;S.q.role='';S.q.sku='';S.q.q='';if(S.mode==='build')S.rows=[];draw();}
- else if(t.id==='bb-role'){S.q.role=t.value;S.q.sku='';S.q.q='';draw();}
+ if(t.id==='bb-prod'){S.p=t.value;S.q.role='';S.q.sku='';S.q.q='';clearSpec();if(S.mode==='build')S.rows=[];draw();}
+ else if(t.id==='bb-role'){S.q.role=t.value;S.q.sku='';S.q.q='';clearSpec();draw();}
  else if(t.id==='bb-batch'){S.batch=t.value;buildFoot();}
 });
 function switchMode(m){if(m===S.mode)return;S.mode=m;try{sessionStorage.setItem('hb_mode',m);}catch(e){}draw();}
 function toBlend(){
  S.mode='build';try{sessionStorage.setItem('hb_mode','build');}catch(e){}
  if(S.q.role){var exists=S.rows.some(function(r){return r.role===S.q.role&&r.sku===S.q.sku;});
-  if(!exists){S.rows.push({role:S.q.role,q:S.q.q||'',sku:S.q.sku||'',pct:S.q.pct||'',open:true});
+  if(!exists){S.rows.push({role:S.q.role,q:S.q.q||S.q.botanical||'',sku:S.q.sku||'',pct:S.q.pct||'',open:true});
    S.rows=ROLES.map(function(rr){return S.rows.filter(function(x){return x.role===rr;});}).reduce(function(a,b){return a.concat(b);},[]);}}
  draw();
 }
@@ -433,7 +553,7 @@ function decodeBlend(){var m=location.hash.match(/#f=(.+)$/);if(!m)return false;
  try{var p=JSON.parse(decodeURIComponent(m[1]));if(!p.p||!PROD[p.p])return false;
   S.p=p.p;S.batch=p.b||'';S.mode=(p.m==='quick'||p.m==='build')?p.m:S.mode;
   S.rows=(p.r||[]).map(function(t){return {role:t[0],sku:t[1]||'',pct:t[2]||'',q:'',open:false};});
-  if(p.q){S.q={role:p.q[0]||'',sku:p.q[1]||'',q:'',pct:p.q[2]||''};}
+  if(p.q){S.q={role:p.q[0]||'',sku:p.q[1]||'',q:'',pct:p.q[2]||'',botanical:'',botanical_latin:'',form:'',spec:null,stage:'spec'};}
   return true;}catch(e){return false;}}
 
 function addCart(bench,btn){
