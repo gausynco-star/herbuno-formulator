@@ -276,7 +276,7 @@ function renderSpecCard(c){
   return '<button class="bb-chip-f'+(cd===active?' on':'')+'" data-selform="'+cd+'">'+esc(fmtLabel(cd,(c.fmt||{})[cd]))+(tr==='warn'?' · conditional':'')+'</button>';};
  var sel=(oks.length||warns.length)?'<div class="bb-spec-forms"><span class="bb-lbl">Choose the commercial form</span><div class="bb-chips">'+oks.map(chip).join('')+warns.map(chip).join('')+'</div></div>':'';
  var rows=[
-  ['Botanical', spec.botanical?esc(spec.botanical)+(spec.botanical_latin?' <i>('+esc(spec.botanical_latin)+')</i>':''):'<i>type a botanical above</i>'],
+  ['Botanical', spec.botanical?esc(spec.botanical)+(spec.botanical_latin?' <i>('+esc(spec.botanical_latin)+')</i>':' <i>— unverified botanical name</i>'):'<i>type a botanical above</i>'],
   ['Role', esc(spec.role_label)],
   ['Commercial form', spec.form_label?esc(spec.form_label):'<i>application review needed</i>'],
   ['Required behaviour', esc(spec.required_behaviour)],
@@ -294,6 +294,9 @@ function renderStage2(c){
  var hits=bot?find(bot):[];
  var exact=hits.filter(function(x){return x.f===spec.form_code;});
  var altOk=hits.filter(function(x){return tier(c,x.f)==='ok'&&x.f!==spec.form_code;});
+ /* Only offer a stocked "Request sample" when something matching is actually in the catalogue;
+    otherwise reframe as a sourcing enquiry so it never implies the spec is in stock. */
+ var hasStock=CAT_LOADED&&(exact.length>0||altOk.length>0);
  var h='<div class="bb-stage2"><div class="bb-stage2-h"><span class="bb-lbl">Stage 2 · Herbuno catalogue &amp; sourcing</span>'+
   '<button class="bb-btn sm o" data-backspec="1">← Back to specification</button></div><div class="bb-stage2-b">';
  if(!CAT_LOADED){
@@ -308,7 +311,7 @@ function renderStage2(c){
  h+='<div class="bb-supp"><div class="bb-supp-h">Supplier-ready wording</div><div class="bb-supp-b" id="bb-suppt">'+esc(supplierText(c))+'</div>'+
     '<div class="bb-supp-a"><button class="bb-btn sm" data-copysupp="1">Copy request</button>'+
      '<button class="bb-btn sm o" data-askherbuno="1">Send this specification to Herbuno</button>'+
-     '<button class="bb-btn sm o" data-reqsample="1">Request sample</button></div></div>';
+     '<button class="bb-btn sm o" data-reqsample="1">'+(hasStock?'Request sample':'Request a sourcing sample')+'</button></div></div>';
  h+='<div class="bb-actions"><button class="bb-btn o" data-toblend="1">Add this ingredient to a full blend →</button></div>';
  return h+'</div></div>';
 }
