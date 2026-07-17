@@ -6,9 +6,13 @@ ADR and a decision record in `/matrix`.
 
 ## [Unreleased]
 ### In progress
-- Stage-1 / Stage-2 rebuild approved under ADR-012.
-- Catalogue-free Path A, structured specification object, guided intake, and separate Stage-2
-  procurement view pending implementation.
+- ADR-012 Step 1 implemented: catalogue-free Path A, structured specification object, and explicit
+  Stage-1 / Stage-2 split in Quick mode.
+- Independence gate validated: Stage 1 returns the same technical result for botanicals regardless
+  of Herbuno catalogue availability.
+- Stage-2 procurement is revealed only through the explicit "Check Herbuno availability" action.
+- Remaining: Shopify dev-theme visual testing, guided intake refinement, full five-class procurement
+  rendering, Layer 1 / Path B, and eventual full-blend-mode migration.
 - Canonical design: `docs/STAGE1_STAGE2_TARGET_DESIGN.md`.
 
 ### Pending sign-off
