@@ -206,3 +206,44 @@ sedimentation, fill viscosity and dose uniformity.
 - **Future refinement (open):** SE should be modelled as a "standardised + <behaviour>" overlay
   rather than a peer code competing with WL. A future matrix should distinguish "standardised +
   water-soluble" from generic SE instead of ranking WL vs SE as mutually exclusive categories.
+  
+---
+
+## ADR-012 — Two-stage rebuild: specification object, catalogue-free Stage 1, honest procurement
+**Accepted · 2026-07**
+
+**Context.** Post-launch review plus July-2026 competitive research (market directory, self-audit,
+Formulaite teardown) showed the deployed tool has correct compatibility logic but is still
+**catalogue-first**: the botanical input only queries Herbuno stock, and Stage 2 sits inside the
+formulation flow, so inventory contaminates Stage-1 guidance. The nearest competitor (Formulaite)
+owns AI formula generation but routes the sourcing step through its own lead-capture flow — leaving the
+honest formulation-to-sourcing bridge unoccupied.
+
+**Decision.** Rebuild to the two-stage design in `STAGE1_STAGE2_TARGET_DESIGN.md`:
+- **North Star:** the primary output is a technically defensible **commercial ingredient
+  specification**, not a Herbuno product recommendation; Herbuno products are one possible
+  fulfilment of that spec.
+- **Stage 1 emits a specification object** (identity + role + form + behaviour + assay + phase +
+  status), not a string — the interface to Stage 2.
+- **Internal model** `Ingredient identity → Commercial specification → Match`, not
+  `Ingredient → Catalogue`.
+- **Catalogue-free Path A:** any botanical typed as free text (with botanical, not catalogue,
+  autocomplete) returns a full Stage-1 spec, including for botanicals Herbuno doesn't stock.
+- **Guided chip intake (1A)** where every question maps to a real matrix gate.
+- **Path B ("show ingredient ideas")** from a curated **Layer 1** (Role-level first), not derivable
+  from catalogue or matrix.
+- **Stage 2 = Procurement** (renamed from Fulfilment) with five explicit match classes and honest,
+  disclosed Herbuno routing.
+- **No "Compliant"/verdict badges;** approved status vocabulary only.
+
+**Consequence to protect.**
+- **Independence test:** Stage 1 must behave identically if Herbuno ceased to exist tomorrow. Any
+  request that fails this test violates the architecture.
+- **Absolute Stage-1/Stage-2 separation** in visuals and language; a procurement CTA must never be
+  styled as a scientific verdict (the Formulaite failure inverted).
+- **Stage 1 is standalone value** — usable with no intent to buy.
+- Multi-supplier Stage-2 matching is a **preserved future option, not a v1 goal** (avoid
+  over-engineering and wedge dilution).
+- This is the settled architecture: resist further architectural change absent genuinely
+  contradicting research; remaining work is implementation and populating knowledge layers.
+
