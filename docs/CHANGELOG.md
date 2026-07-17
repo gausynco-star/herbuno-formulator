@@ -71,3 +71,5 @@ ADR and a decision record in `/matrix`.
 - Monolithic `blend-builder.liquid` split into theme assets
   (`blend-builder.js` + `blend-builder.css` + `blend-builder-shell.liquid`) because Shopify
   sections cap at ~50 KB while assets do not. The old monolith is deprecated.
+
+In Progress - ADR-013 approved (botanical intelligence layer + verification pipeline); 5 new format codes recorded; one-supplier parse proven; zero production-verified records.
