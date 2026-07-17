@@ -1,0 +1,3220 @@
+{
+  "_meta": {
+    "source_supplier": "thewholesaler.eu",
+    "observation_date": "2026-06-13",
+    "total_entries": 382,
+    "by_reason": {
+      "no_latin": 101,
+      "assay_in_latin": 14,
+      "suspicious_latin_rejected": 85,
+      "name_in_latin_paren": 20,
+      "multi_dash_latin_not_final": 53,
+      "case_variant_merge": 106,
+      "near_duplicate_latin": 3
+    },
+    "note": "Every ambiguity. Applied merges (case_variant_merge) are logged here, never silent. no_latin/near_duplicate are NOT merged."
+  },
+  "entries": [
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "[IN] Freeze Dried Banana Powder - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "[IN] Freeze Dried Cheese Powder"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "[IN] Freeze Dried Green Banana Powder - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Brahmi – Water hyssop Extract - Bacopa monnieri(≥20% Bacosides)"
+      ],
+      "candidate_latin": "Bacopa monnieri",
+      "note": "≥20% Bacosides"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Garcinia Extract - Garcinia cambogia (≥60% HCA)"
+      ],
+      "candidate_latin": "Garcinia cambogia",
+      "note": "≥60% HCA"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Grape Seed Extract - Vitis vinifera (≥95% OPC)"
+      ],
+      "candidate_latin": "Vitis vinifera",
+      "note": "≥95% OPC"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Japanese pagoda tree Extract - Sophora japonica (≥95% Rutin)"
+      ],
+      "candidate_latin": "Sophora japonica",
+      "note": "≥95% Rutin"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Kalmegh Extract - Andrographis paniculata (≥10% Andrographolide)"
+      ],
+      "candidate_latin": "Andrographis paniculata",
+      "note": "≥10% Andrographolide"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Mango Extract - Mangifera indica (≥10% Mangiferin)"
+      ],
+      "candidate_latin": "Mangifera indica",
+      "note": "≥10% Mangiferin"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Pomegranate Extract - Punica granatum (≥40% Ellagic Acid)"
+      ],
+      "candidate_latin": "Punica granatum",
+      "note": "≥40% Ellagic Acid"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Pomelo Extract - Citrus maxima (≥20% Hesperidin)"
+      ],
+      "candidate_latin": "Citrus maxima",
+      "note": "≥20% Hesperidin"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Roselle – Hibiscus Extract - Hibiscus sabdariffa (≥10% Anthocyanins)"
+      ],
+      "candidate_latin": "Hibiscus sabdariffa",
+      "note": "≥10% Anthocyanins"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Stevia Extract - Stevia rebaudiana (≥97% Reb-A)"
+      ],
+      "candidate_latin": "Stevia rebaudiana",
+      "note": "≥97% Reb-A"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Tea Extract - Camellia sinensis (≥50% EGCG)"
+      ],
+      "candidate_latin": "Camellia sinensis",
+      "note": "≥50% EGCG"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] Turmeric Extract - Curcuma longa (≥95% Curcuminoids)"
+      ],
+      "candidate_latin": "Curcuma longa",
+      "note": "≥95% Curcuminoids"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "[VN] White mulberry Extract - Morus alba (≥1% DNJ)"
+      ],
+      "candidate_latin": "Morus alba",
+      "note": "≥1% DNJ"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "15 Herbal Infused Oil"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "15 Herbal Powder"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "5 Carrier Oil"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "7 Carrier Oil"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "7 Vegetable Powder"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "9 Natural Fruit Powder"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Abhir Powder - Abeer - Gulal"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Abhir Powder - Abeer - Gulal"
+      ],
+      "candidate_latin": "Abhir Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Activated Charcoal Infused Oil (Bamboo Shell)"
+      ],
+      "candidate_latin": "Activated charcoal",
+      "note": "Bamboo Shell"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Activated Charcoal Infused Oil (Coconut Shell)"
+      ],
+      "candidate_latin": "Activated charcoal",
+      "note": "Coconut Shell"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Activated Charcoal powder (Bamboo Shell)"
+      ],
+      "candidate_latin": "Activated charcoal",
+      "note": "Bamboo Shell"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Activated Charcoal powder (Coconut Shell)"
+      ],
+      "candidate_latin": "Activated charcoal",
+      "note": "Coconut Shell"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Amchur Powder - Kacha Aam - Mangifera indica - Raw Mango"
+      ],
+      "candidate_latin": "Mangifera indica",
+      "note": "Amchur Powder | Kacha Aam | Mangifera indica | Raw Mango"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Amla Powder - Phyllanthus Emblica - Amalaki"
+      ],
+      "candidate_latin": "Phyllanthus emblica",
+      "note": "Amla Powder | Phyllanthus Emblica | Amalaki"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Amlasaar, Granules – Gandhak - Yellow Sulphur"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Amlasaar, Granules – Gandhak - Yellow Sulphur"
+      ],
+      "candidate_latin": "Yellow Sulphur",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Ashoka Bark Water Soluble Extract -Saraca asoca"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Ashoka Bark Water Soluble Extract -Saraca asoca"
+      ],
+      "candidate_latin": "Ashoka Bark",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Ashtvarg Infused Oil - Multi herbs"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Ashtvarg Infused Oil - Multi herbs"
+      ],
+      "candidate_latin": "Multi herbs",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Ashtvarg Infused Oil - Multi herbs"
+      ],
+      "candidate_latin": "Ashtvarg Infused",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Ashtvarg Powder - Multi herbs"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Ashtvarg Powder - Multi herbs"
+      ],
+      "candidate_latin": "Multi herbs",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Ashtvarg Powder - Multi herbs"
+      ],
+      "candidate_latin": "Ashtvarg Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Assam Tea CTC"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Assam Tea CTC"
+      ],
+      "candidate_latin": "Assam Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Assam Tea Dust"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Assam Tea Dust"
+      ],
+      "candidate_latin": "Assam Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Assam Tea Original 100% Leaf"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Assam Tea Original 100% Leaf"
+      ],
+      "candidate_latin": "Assam Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Babul Bark Extract - Acacia Arabica (Vachellia nilotica)"
+      ],
+      "candidate_latin": "Acacia arabica",
+      "note": "Vachellia nilotica"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Babul Bark Glycerin Extract - Acacia Arabica (Vachellia nilotica)"
+      ],
+      "candidate_latin": "Acacia arabica",
+      "note": "Vachellia nilotica"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Babul Bark Infused Oil - Kikar - Acacia Arabica (Vachellia nilotica)"
+      ],
+      "candidate_latin": "Acacia arabica",
+      "note": "Vachellia nilotica"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Babul Bark Oil Soluble Extract - Acacia Arabica (Vachellia nilotica)"
+      ],
+      "candidate_latin": "Acacia arabica",
+      "note": "Vachellia nilotica"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Babul Bark PG Extract - Acacia Arabica (Vachellia nilotica)"
+      ],
+      "candidate_latin": "Acacia arabica",
+      "note": "Vachellia nilotica"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Babul Bark Powder - Kikar - Acacia Arabica (Vachellia nilotica)"
+      ],
+      "candidate_latin": "Acacia arabica",
+      "note": "Vachellia nilotica"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Babul Bark Water Soluble Extract - Acacia Arabica (Vachellia nilotica)"
+      ],
+      "candidate_latin": "Acacia arabica",
+      "note": "Vachellia nilotica"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana - Musa - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana - Musa - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Dehydrated and",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana (Ripe) Powder - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana Fruit Extract - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana Fruit Extract - Musa"
+      ],
+      "candidate_latin": "Banana Fruit",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana Fruit Glycerin Extract - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana Fruit Glycerin Extract - Musa"
+      ],
+      "candidate_latin": "Banana Fruit",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana Fruit Oil Soluble Extract - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana Fruit Oil Soluble Extract - Musa"
+      ],
+      "candidate_latin": "Banana Fruit",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana Fruit PG Extract - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana Fruit PG Extract - Musa"
+      ],
+      "candidate_latin": "Banana Fruit",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana Fruit Water Soluble Extract - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana Fruit Water Soluble Extract - Musa"
+      ],
+      "candidate_latin": "Banana Fruit",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana Peel Infused Oil - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana Peel Infused Oil - Musa"
+      ],
+      "candidate_latin": "Banana Peel",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Banana Peel Powder - Musa"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Banana Peel Powder - Musa"
+      ],
+      "candidate_latin": "Banana Peel",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Barberry Bark CO2 Extract- Berberis Aristata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Barberry Bark CO2 Extract- Berberis Aristata"
+      ],
+      "candidate_latin": "Barberry Bark",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Barberry Bark Extract- Berberis Aristata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Barberry Bark Extract- Berberis Aristata"
+      ],
+      "candidate_latin": "Barberry Bark",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Barberry Bark Glycerin Extract- Berberis Aristata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Barberry Bark Glycerin Extract- Berberis Aristata"
+      ],
+      "candidate_latin": "Barberry Bark",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Barberry Bark PG Extract- Berberis Aristata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Barberry Bark PG Extract- Berberis Aristata"
+      ],
+      "candidate_latin": "Barberry Bark",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Beej Shivlingi - Shivalingi - Bryonopsis laciniosa - Shivlingi seeds"
+      ],
+      "candidate_latin": "Bryonopsis laciniosa",
+      "note": "Beej Shivlingi | Shivalingi | Bryonopsis laciniosa | Shivlingi seeds"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Behman safed Infused Oil - Centaurea Behen Linn - White Behen"
+      ],
+      "candidate_latin": "Centaurea behen",
+      "note": "Behman safed Infused Oil | Centaurea Behen Linn | White Behen"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Behman safed powder - Centaurea Behen Linn - White Behen"
+      ],
+      "candidate_latin": "Centaurea behen",
+      "note": "Behman safed powder | Centaurea Behen Linn | White Behen"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Black Tea 100% Leaf"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Black Tea 100% Leaf"
+      ],
+      "candidate_latin": "Black Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Blue Cornflower (Centaurea Cyanus) + Chamomile (Matricaria chamomilla)"
+      ],
+      "candidate_latin": "Blue cornflower",
+      "note": "Matricaria chamomilla"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Blue cornflower (Centaurea cyanus) + Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": "Blue cornflower",
+      "note": "Hibiscus sabdariffa"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Blue Cornflower (Centaurea Cyanus) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": "Blue cornflower",
+      "note": "Rosa"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Brahmi Infused Oil - Bacopa Monnieri - Water hyssop"
+      ],
+      "candidate_latin": "Bacopa monnieri",
+      "note": "Brahmi Infused Oil | Bacopa Monnieri | Water hyssop"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Brahmi Powder - Bacopa Monnieri - Water hyssop"
+      ],
+      "candidate_latin": "Bacopa monnieri",
+      "note": "Brahmi Powder | Bacopa Monnieri | Water hyssop"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Broccoli Seed Oil- Brassica oleracea"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Broccoli Seed Oil- Brassica oleracea"
+      ],
+      "candidate_latin": "Broccoli Seed",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Butter CO2 Extract"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Butter CO2 Extract"
+      ],
+      "candidate_latin": "Butter CO",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Butterfly Pea ( Clitoria Ternatea) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": "Butterfly pea",
+      "note": "Rosa"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Butterfly Pea (Clitoria Ternatea) + Chamomile (Matricaria chamomilla)"
+      ],
+      "candidate_latin": "Butterfly pea",
+      "note": "Matricaria chamomilla"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Butterfly Pea (Clitoria Ternatea) + Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": "Butterfly pea",
+      "note": "Hibiscus sabdariffa"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Chamomile (Matricaria chamomilla) + Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Chamomile (Matricaria chamomilla) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Chamomile Tea"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Chamomile Tea"
+      ],
+      "candidate_latin": "Chamomile Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Cucumber & Chia seeds - Cucumis sativus & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Cucumis sativus",
+      "note": "Cucumber & Chia seeds | Cucumis sativus & Salvia hispanica | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Cucumber & Pumpkin seeds - Cucumis sativus & Cucurbita - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Cucumis sativus",
+      "note": "Cucumber & Pumpkin seeds | Cucumis sativus & Cucurbita | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Dandasa Infused Oil - Juglans"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Dandasa Infused Oil - Juglans"
+      ],
+      "candidate_latin": "Dandasa Infused",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Dandasa Powder - Juglans"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Dandasa Powder - Juglans"
+      ],
+      "candidate_latin": "Dandasa Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Darjeeling Tea CTC"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Darjeeling Tea CTC"
+      ],
+      "candidate_latin": "Darjeeling Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Darjeeling Tea Dust"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Darjeeling Tea Dust"
+      ],
+      "candidate_latin": "Darjeeling Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Dasamoola Infused Oil - Dashamoola"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Dasamoola Infused Oil - Dashamoola"
+      ],
+      "candidate_latin": "Dasamoola Infused",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Dasamoola Powder - Dashamoola"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Dasamoola Powder - Dashamoola"
+      ],
+      "candidate_latin": "Dasamoola Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Dasamoola, Cut"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Dragon fruit - Selenicereus undatus - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Selenicereus undatus",
+      "note": "Dragon fruit | Selenicereus undatus | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Elderberry Oil Soluble Extract - Sambucus"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Elderberry Oil Soluble Extract - Sambucus"
+      ],
+      "candidate_latin": "Elderberry Oil",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Flax & Chia seeds - Linum usitatissimum & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Linum usitatissimum",
+      "note": "Flax & Chia seeds | Linum usitatissimum & Salvia hispanica | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Flax & Pumpkin seeds - Linum usitatissimum & Cucurbita - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Linum usitatissimum",
+      "note": "Flax & Pumpkin seeds | Linum usitatissimum & Cucurbita | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Ginger Powder - Zingiber officinale - Adarak"
+      ],
+      "candidate_latin": "Zingiber officinale",
+      "note": "Ginger Powder | Zingiber officinale | Adarak"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Godanti, Granules - Gypsum"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Guava - Psidium guajava - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Psidium guajava",
+      "note": "Guava | Psidium guajava | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Gypsum Powder - Godanti"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Gypsum Powder - Godanti"
+      ],
+      "candidate_latin": "Gypsum Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Harad (Small) Infused Oil - Terminalia Chebula - Myrobalan"
+      ],
+      "candidate_latin": "Terminalia chebula",
+      "note": "Harad (Small) Infused Oil | Terminalia Chebula | Myrobalan"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Harad (Small) Powder - Terminalia Chebula - Myrobalan"
+      ],
+      "candidate_latin": "Terminalia chebula",
+      "note": "Harad (Small) Powder | Terminalia Chebula | Myrobalan"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hartaal Yellow, Granules"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hartaal Yellow, Granules"
+      ],
+      "candidate_latin": "Hartaal Yellow",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hawthorn Extract - Crataegus"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hawthorn Extract - Crataegus"
+      ],
+      "candidate_latin": "Hawthorn Extract",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hawthorn Glycerin Extract - Crataegus"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hawthorn Glycerin Extract - Crataegus"
+      ],
+      "candidate_latin": "Hawthorn Glycerin",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hawthorn Infused Oil - Crataegus"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hawthorn Infused Oil - Crataegus"
+      ],
+      "candidate_latin": "Hawthorn Infused",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hawthorn Oil Soluble Extract - Crataegus"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hawthorn Oil Soluble Extract - Crataegus"
+      ],
+      "candidate_latin": "Hawthorn Oil",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hawthorn PG Extract - Crataegus"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hawthorn PG Extract - Crataegus"
+      ],
+      "candidate_latin": "Hawthorn PG",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hawthorn Powder - Crataegus"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hawthorn Powder - Crataegus"
+      ],
+      "candidate_latin": "Hawthorn Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hibiscus (Hibiscus sabdariffa)+ Red rose (Rosa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Hibiscus Tea"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Hibiscus Tea"
+      ],
+      "candidate_latin": "Hibiscus Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Honey Extract"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Honey Extract"
+      ],
+      "candidate_latin": "Honey Extract",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Honey Glycerin Extract"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Honey Glycerin Extract"
+      ],
+      "candidate_latin": "Honey Glycerin",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Honey Oil Soluble Extract"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Honey Oil Soluble Extract"
+      ],
+      "candidate_latin": "Honey Oil",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Honey PG Extract"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Honey PG Extract"
+      ],
+      "candidate_latin": "Honey PG",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Honey Water Soluble Extract"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Honey Water Soluble Extract"
+      ],
+      "candidate_latin": "Honey Water",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Jackfruit - Artocarpus heterophyllus - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Artocarpus heterophyllus",
+      "note": "Jackfruit | Artocarpus heterophyllus | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Jasmine (Jasminum) & Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Jasmine (Jasminum) + Chamomile (Matricaria chamomilla)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Jasmine (Jasminum) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Joshanda, Cut - Dushanda"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Kale Oil Soluble Extract - Seaweed"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Kale Oil Soluble Extract - Seaweed"
+      ],
+      "candidate_latin": "Kale Oil",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Khurasani Ajwain - Hyoscyamus Niger Linn - Black Henbane"
+      ],
+      "candidate_latin": "Hyoscyamus niger",
+      "note": "Khurasani Ajwain | Hyoscyamus Niger Linn | Black Henbane"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Kiwi - Actinidia deliciosa - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Actinidia deliciosa",
+      "note": "Kiwi | Actinidia deliciosa | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lavender Bud (Lavandula) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lavender Bud (Lavandula) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": "Lavender Bud",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lavender Buds (Lavandula) + Chamomile (Matricaria chamomilla)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lavender Buds (Lavandula) + Chamomile (Matricaria chamomilla)"
+      ],
+      "candidate_latin": "Lavender Buds",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lavender Buds (Lavandula) + Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lavender Buds (Lavandula) + Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": "Lavender Buds",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lavender Tea"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lavender Tea"
+      ],
+      "candidate_latin": "Lavender Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Lemon - Citrus limon - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Citrus limon",
+      "note": "Lemon | Citrus limon | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Lemon peel - Citrus limon - Sliced - Dehydrated and Dried Fruit"
+      ],
+      "candidate_latin": "Citrus limon",
+      "note": "Lemon peel | Citrus limon | Sliced | Dehydrated and Dried Fruit"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lemongrass Hydrosol - Cymbopogon"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lemongrass Hydrosol - Cymbopogon"
+      ],
+      "candidate_latin": "Lemongrass Hydrosol",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lemongrass Infused Oil - Cymbopogon"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lemongrass Infused Oil - Cymbopogon"
+      ],
+      "candidate_latin": "Lemongrass Infused",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lemongrass leaf, Cut - Cymbopogon"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lemongrass leaf, Cut - Cymbopogon"
+      ],
+      "candidate_latin": "Lemongrass leaf",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lemongrass Powder - Cymbopogon"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lemongrass Powder - Cymbopogon"
+      ],
+      "candidate_latin": "Lemongrass Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Lemongrass Water Soluble Extract - Cymbopogon"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Lemongrass Water Soluble Extract - Cymbopogon"
+      ],
+      "candidate_latin": "Lemongrass Water",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Licorice Powder - Glycyrrhiza Glabra - Mulethi"
+      ],
+      "candidate_latin": "Glycyrrhiza glabra",
+      "note": "Licorice Powder | Glycyrrhiza Glabra | Mulethi"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Lotus Saffron (Nelumbo Nucifera) + Chamomile (Matricaria chamomilla)"
+      ],
+      "candidate_latin": "Lotus saffron",
+      "note": "Matricaria chamomilla"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Lotus Saffron (Nelumbo Nucifera) + Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": "Lotus saffron",
+      "note": "Hibiscus sabdariffa"
+    },
+    {
+      "reason": "name_in_latin_paren",
+      "raw_titles": [
+        "Lotus Saffron (Nelumbo Nucifera) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": "Lotus saffron",
+      "note": "Rosa"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Mamejava Water Soluble Extract- Enicostemma Littorale"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Mamejava Water Soluble Extract- Enicostemma Littorale"
+      ],
+      "candidate_latin": "Mamejava Water",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Mango - Mangifera indica - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Mangifera indica",
+      "note": "Mango | Mangifera indica | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Marigold (Tagetes) + Hibiscus (Hibiscus sabdariffa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Marigold (Tagetes) + Red Rose Petal (Rosa)"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Marigold Flower Petals, Whole - Genda Phool - Tagetes"
+      ],
+      "candidate_latin": "Genda phool",
+      "note": "Marigold Flower Petals, Whole | Genda Phool | Tagetes"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Marigold Flower, Cut -  Tagetes"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Marigold Flower, Cut -  Tagetes"
+      ],
+      "candidate_latin": "Marigold Flower",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Mehndi Infused Oil - Henna Infused Oil - Lawsonia inermis - Hina"
+      ],
+      "candidate_latin": "Lawsonia inermis",
+      "note": "Mehndi Infused Oil | Henna Infused Oil | Lawsonia inermis | Hina"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Mehndi Powder - Henna Powder - Lawsonia inermis - Hina"
+      ],
+      "candidate_latin": "Lawsonia inermis",
+      "note": "Mehndi Powder | Henna Powder | Lawsonia inermis | Hina"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Mint Powder - Mentha spicata - Pudina Powder"
+      ],
+      "candidate_latin": "Mentha spicata",
+      "note": "Mint Powder | Mentha spicata | Pudina Powder"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Miswak sticks, Cut -Salvadora Persica-Meswak"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Miswak sticks, Cut -Salvadora Persica-Meswak"
+      ],
+      "candidate_latin": "Miswak sticks",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Murdasingi, Cut - Litharge"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Muskmelon & Chia seeds - Cucumis melo & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Cucumis melo",
+      "note": "Muskmelon & Chia seeds | Cucumis melo & Salvia hispanica | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Muskmelon & Pumpkin seeds - Cucumis melo & Cucurbita - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Cucumis melo",
+      "note": "Muskmelon & Pumpkin seeds | Cucumis melo & Cucurbita | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Musli Kali Infused Oil - Curculigo Orchiodes - Black Musli"
+      ],
+      "candidate_latin": "Curculigo orchiodes",
+      "note": "Musli Kali Infused Oil | Curculigo Orchiodes | Black Musli"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Musli Kali Powder - Curculigo Orchiodes - Black Musli"
+      ],
+      "candidate_latin": "Curculigo orchiodes",
+      "note": "Musli Kali Powder | Curculigo Orchiodes | Black Musli"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Nilgiri Tea Original 100% Leaf"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Nilgiri Tea Original 100% Leaf"
+      ],
+      "candidate_latin": "Nilgiri Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Nirgundi Infused Oil - Vitex Negundo - Sambhalu"
+      ],
+      "candidate_latin": "Vitex negundo",
+      "note": "Nirgundi Infused Oil | Vitex Negundo | Sambhalu"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Nirgundi Powder - Vitex Negundo - Sambhalu"
+      ],
+      "candidate_latin": "Vitex negundo",
+      "note": "Nirgundi Powder | Vitex Negundo | Sambhalu"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Oolong Tea 100% Leaf"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Oolong Tea 100% Leaf"
+      ],
+      "candidate_latin": "Oolong Tea",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Orange - Citrus sinensis - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Citrus sinensis",
+      "note": "Orange | Citrus sinensis | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Orange Peel Infused Oil - Citrus X sinensis"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Orange Peel Infused Oil - Citrus X sinensis"
+      ],
+      "candidate_latin": "Citrus X",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Orange Peel Infused Oil - Citrus X sinensis"
+      ],
+      "candidate_latin": "Orange Peel",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Orange Peel Powder - Citrus X sinensis"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Orange Peel Powder - Citrus X sinensis"
+      ],
+      "candidate_latin": "Citrus X",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Orange Peel Powder - Citrus X sinensis"
+      ],
+      "candidate_latin": "Orange Peel",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Papaya - Carica papaya - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Carica papaya",
+      "note": "Papaya | Carica papaya | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Papaya Powder - Carica papaya - Papita"
+      ],
+      "candidate_latin": "Carica papaya",
+      "note": "Papaya Powder | Carica papaya | Papita"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Phitkari Red, Granules-  Potash Alum"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Phitkari Red, Granules-  Potash Alum"
+      ],
+      "candidate_latin": "Phitkari Red",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Phitkari White, Granules- Potash Alum"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Phitkari White, Granules- Potash Alum"
+      ],
+      "candidate_latin": "Phitkari White",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Pineapple - Ananas comosus - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Ananas comosus",
+      "note": "Pineapple | Ananas comosus | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Priyangu Seeds - Priyangu Beej - Callicarpa Macrophylla - Velvety beauty berry - Dahiya"
+      ],
+      "candidate_latin": "Velvety beauty",
+      "note": "Priyangu Seeds | Priyangu Beej | Callicarpa Macrophylla | Velvety beauty berry | Dahiya"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Pumpkin & Chia seeds - Cucurbita & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Pumpkin & Chia seeds - Cucurbita & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Dried Seed",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Pure Honey Powder - Shahad"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Pure Honey Powder - Shahad"
+      ],
+      "candidate_latin": "Pure Honey",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Rose Flower Tea"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Rose Flower Tea"
+      ],
+      "candidate_latin": "Rose Flower",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Saptarangi Root Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Saptarangi Root Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": "Saptarangi Root",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Saptarangi Root Glycerin Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Saptarangi Root Glycerin Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": "Saptarangi Root",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Saptarangi Root Infused Oil -Salacia Reticulata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Saptarangi Root Infused Oil -Salacia Reticulata"
+      ],
+      "candidate_latin": "Saptarangi Root",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Saptarangi Root Oil Soluble Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Saptarangi Root Oil Soluble Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": "Saptarangi Root",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Saptarangi Root PG Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Saptarangi Root PG Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": "Saptarangi Root",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Saptarangi Root Powder -Salacia Reticulata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Saptarangi Root Powder -Salacia Reticulata"
+      ],
+      "candidate_latin": "Saptarangi Root",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Saptarangi Root Water Soluble Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Saptarangi Root Water Soluble Extract -Salacia Reticulata"
+      ],
+      "candidate_latin": "Saptarangi Root",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Seasame (Black) & Chia seeds - Sesamum indicum & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Sesamum indicum",
+      "note": "Seasame (Black) & Chia seeds | Sesamum indicum & Salvia hispanica | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Seasame (White) & Chia seeds - Sesamum indicum & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Sesamum indicum",
+      "note": "Seasame (White) & Chia seeds | Sesamum indicum & Salvia hispanica | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Shilajit Extract Powder (40% Fulvic Acid)- Asphaltum punjabianum - Shilajeet extract"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Shilajit Extract Powder (40% Fulvic Acid)- Asphaltum punjabianum - Shilajeet extract"
+      ],
+      "candidate_latin": "Shilajeet extract",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Shilajit Extract Powder (40% Fulvic Acid)- Asphaltum punjabianum - Shilajeet extract"
+      ],
+      "candidate_latin": "Shilajit Extract",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Shilajit Oil Soluble Extract Powder - Asphaltum punjabianum - Shilajeet extract"
+      ],
+      "candidate_latin": "Asphaltum punjabianum",
+      "note": "Shilajit Oil Soluble Extract Powder | Asphaltum punjabianum | Shilajeet extract"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Stevia leaves, Cut - Sweet leaf"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Stevia leaves, Cut - Sweet leaf"
+      ],
+      "candidate_latin": "Sweet leaf",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Stevia leaves, Cut - Sweet leaf"
+      ],
+      "candidate_latin": "Stevia leaves",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Strawberry - Fragaria ananassa - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Fragaria ananassa",
+      "note": "Strawberry | Fragaria ananassa | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Subabul Seeds - Safed Babool Beej - Leucaena leucocephala - Babul Seed"
+      ],
+      "candidate_latin": "Leucaena leucocephala",
+      "note": "Subabul Seeds | Safed Babool Beej | Leucaena leucocephala | Babul Seed"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Sunflower & Chia seeds - Helianthus annuus & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Helianthus annuus",
+      "note": "Sunflower & Chia seeds | Helianthus annuus & Salvia hispanica | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Sunflower & Pumpkin seeds - Helianthus annuus & Cucurbita - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Helianthus annuus",
+      "note": "Sunflower & Pumpkin seeds | Helianthus annuus & Cucurbita | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Tamarind Powder - Tamarindus indica - Imli"
+      ],
+      "candidate_latin": "Tamarindus indica",
+      "note": "Tamarind Powder | Tamarindus indica | Imli"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Tea Powder"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Tea Powder"
+      ],
+      "candidate_latin": "Tea Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Tongkat Ali Infused Oil - Eurycoma longifolia - Longjack Root"
+      ],
+      "candidate_latin": "Eurycoma longifolia",
+      "note": "Tongkat Ali Infused Oil | Eurycoma longifolia | Longjack Root"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Tongkat Ali Powder - Eurycoma longifolia - Longjack Root"
+      ],
+      "candidate_latin": "Eurycoma longifolia",
+      "note": "Tongkat Ali Powder | Eurycoma longifolia | Longjack Root"
+    },
+    {
+      "reason": "assay_in_latin",
+      "raw_titles": [
+        "Turmeric Oil Soluble Extract - Curcuma longa (curcumin 95%)"
+      ],
+      "candidate_latin": "Curcuma longa",
+      "note": "curcumin 95%"
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Vinegar Powder"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Vinegar Powder"
+      ],
+      "candidate_latin": "Vinegar Powder",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "no_latin",
+      "raw_titles": [
+        "Walnut Oil - Juglans"
+      ],
+      "candidate_latin": null,
+      "note": "No parseable binomial; routed to no-Latin queue, NOT common-name merged."
+    },
+    {
+      "reason": "suspicious_latin_rejected",
+      "raw_titles": [
+        "Walnut Oil - Juglans"
+      ],
+      "candidate_latin": "Walnut Oil",
+      "note": "Last dash-segment looked like a binomial but is a plant-part/form word; rejected."
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Watermelon - Citrullus lanatus - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo"
+      ],
+      "candidate_latin": "Citrullus lanatus",
+      "note": "Watermelon | Citrullus lanatus | Sliced | Dehydrated and Dried Fruit | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Watermelon & Chia seeds - Citrullus lanatus & Salvia hispanica - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Citrullus lanatus",
+      "note": "Watermelon & Chia seeds | Citrullus lanatus & Salvia hispanica | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Watermelon & Pumpkin seeds - Citrullus lanatus & Cucurbita - Dried Seed Combo | TheWholesalerCo"
+      ],
+      "candidate_latin": "Citrullus lanatus",
+      "note": "Watermelon & Pumpkin seeds | Citrullus lanatus & Cucurbita | Dried Seed Combo | TheWholesalerCo"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Watermelon Powder - Citrullus lanatus - Tarbooz"
+      ],
+      "candidate_latin": "Citrullus lanatus",
+      "note": "Watermelon Powder | Citrullus lanatus | Tarbooz"
+    },
+    {
+      "reason": "multi_dash_latin_not_final",
+      "raw_titles": [
+        "Yellow Mustard Seeds - Peeli Sarson Beej - Sinapis alba - White Mustard"
+      ],
+      "candidate_latin": "Sinapis alba",
+      "note": "Yellow Mustard Seeds | Peeli Sarson Beej | Sinapis alba | White Mustard"
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Aloe Vera Gel Powder",
+        "Aloe Vera Leaf Extract",
+        "Aloe Vera Leaf Oil Soluble Extract",
+        "Aloe Vera Leaf PG Extract",
+        "Aloe Vera Leaf Water Soluble Extract",
+        "Aloe vera",
+        "Aloe vera Leaf Powder"
+      ],
+      "candidate_latin": "Aloe vera",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Bacopa Monnieri",
+        "Bacopa Monnieri Linn",
+        "Bacopa monnieri"
+      ],
+      "candidate_latin": "Bacopa monnieri",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Piper nigrum",
+        "Piper nigrum+Zingiber officinale+Piper longum"
+      ],
+      "candidate_latin": "Piper nigrum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Elettaria Cardamomum",
+        "Elettaria cardamomum"
+      ],
+      "candidate_latin": "Elettaria cardamomum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cocos nucifera",
+        "Cocos nucifera L"
+      ],
+      "candidate_latin": "Cocos nucifera",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Alpinia Galanga Wild",
+        "Alpinia galanga"
+      ],
+      "candidate_latin": "Alpinia galanga",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Vitis Vinifera",
+        "Vitis vinifera"
+      ],
+      "candidate_latin": "Vitis vinifera",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Gymnema Sylvestre",
+        "Gymnema sylvestre"
+      ],
+      "candidate_latin": "Gymnema sylvestre",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Glycyrrhiza Glabra",
+        "Glycyrrhiza glabra"
+      ],
+      "candidate_latin": "Glycyrrhiza glabra",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Mangifera Indica",
+        "Mangifera indica"
+      ],
+      "candidate_latin": "Mangifera indica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Moringa Oleifera",
+        "Moringa oleifera"
+      ],
+      "candidate_latin": "Moringa oleifera",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Myristica Fragrans",
+        "Myristica fragrans"
+      ],
+      "candidate_latin": "Myristica fragrans",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Punica Granatum",
+        "Punica granatum"
+      ],
+      "candidate_latin": "Punica granatum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Oryza Sativa",
+        "Oryza sativa"
+      ],
+      "candidate_latin": "Oryza sativa",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Andrographis Paniculata",
+        "Andrographis paniculata"
+      ],
+      "candidate_latin": "Andrographis paniculata",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Tamarindus Indica",
+        "Tamarindus indica"
+      ],
+      "candidate_latin": "Tamarindus indica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Phyllanthus Emblica",
+        "Phyllanthus emblica"
+      ],
+      "candidate_latin": "Phyllanthus emblica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Syzygium Cumini",
+        "Syzygium cumini"
+      ],
+      "candidate_latin": "Syzygium cumini",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Spinacia Oleracea",
+        "Spinacia oleracea"
+      ],
+      "candidate_latin": "Spinacia oleracea",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Momordica Charantia",
+        "Momordica charantia"
+      ],
+      "candidate_latin": "Momordica charantia",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Clitoria Ternatea",
+        "Clitoria ternatea"
+      ],
+      "candidate_latin": "Clitoria ternatea",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Capsicum Annuum",
+        "Capsicum annuum",
+        "Capsicum annuum 'Jalapeño'"
+      ],
+      "candidate_latin": "Capsicum annuum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Azadirachta Indica",
+        "Azadirachta indica"
+      ],
+      "candidate_latin": "Azadirachta indica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Curcuma Aromatica",
+        "Curcuma aromatica"
+      ],
+      "candidate_latin": "Curcuma aromatica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Curcuma Zedoaria",
+        "Curcuma zedoaria"
+      ],
+      "candidate_latin": "Curcuma zedoaria",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Smilax Glabra",
+        "Smilax glabra"
+      ],
+      "candidate_latin": "Smilax glabra",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cucumis sativus",
+        "Cucumis sativus & Cucurbita",
+        "Cucumis sativus & Salvia hispanica"
+      ],
+      "candidate_latin": "Cucumis sativus",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Anethum Graveolens",
+        "Anethum graveolens"
+      ],
+      "candidate_latin": "Anethum graveolens",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Garcinia Cambogia Extract",
+        "Garcinia Cambogia Water Soluble Extract",
+        "Garcinia cambogia"
+      ],
+      "candidate_latin": "Garcinia cambogia",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Panax Ginseng",
+        "Panax ginseng"
+      ],
+      "candidate_latin": "Panax ginseng",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Piper Longum",
+        "Piper longum"
+      ],
+      "candidate_latin": "Piper longum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Sesamum indicum",
+        "Sesamum indicum & Salvia hispanica"
+      ],
+      "candidate_latin": "Sesamum indicum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cassia Tora Seeds",
+        "Cassia tora"
+      ],
+      "candidate_latin": "Cassia tora",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Morus Alba",
+        "Morus alba"
+      ],
+      "candidate_latin": "Morus alba",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Activated Charcoal Infused Oil",
+        "Activated Charcoal powder"
+      ],
+      "candidate_latin": "Activated charcoal",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Adhatoda Vasica",
+        "Adhatoda vasica",
+        "Adhatoda vasica Nees"
+      ],
+      "candidate_latin": "Adhatoda vasica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Artemisia Absinthium",
+        "Artemisia absinthium"
+      ],
+      "candidate_latin": "Artemisia absinthium",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Aloe Barbadensis",
+        "Aloe barbadensis"
+      ],
+      "candidate_latin": "Aloe barbadensis",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cassia Fistula",
+        "Cassia fistula"
+      ],
+      "candidate_latin": "Cassia fistula",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Polygonum Viviparum",
+        "Polygonum viviparum"
+      ],
+      "candidate_latin": "Polygonum viviparum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Achyranthes Aspera",
+        "Achyranthes aspera"
+      ],
+      "candidate_latin": "Achyranthes aspera",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Ailanthus Excelsa",
+        "Ailanthus excelsa"
+      ],
+      "candidate_latin": "Ailanthus excelsa",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Arnica Montana",
+        "Arnica montana"
+      ],
+      "candidate_latin": "Arnica montana",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Abutilon Indicum",
+        "Abutilon indicum"
+      ],
+      "candidate_latin": "Abutilon indicum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Senna Auriculata",
+        "Senna auriculata"
+      ],
+      "candidate_latin": "Senna auriculata",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Acacia Nilotica",
+        "Acacia nilotica"
+      ],
+      "candidate_latin": "Acacia nilotica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Aegle Marmelos",
+        "Aegle marmelos"
+      ],
+      "candidate_latin": "Aegle marmelos",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Embelia Ribes",
+        "Embelia ribes"
+      ],
+      "candidate_latin": "Embelia ribes",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Sida Cordifolia",
+        "Sida cordifolia"
+      ],
+      "candidate_latin": "Sida cordifolia",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Psoralea Corylifolia",
+        "Psoralea corylifolia"
+      ],
+      "candidate_latin": "Psoralea corylifolia",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Berberis Aristata",
+        "Berberis Aristata Roo",
+        "Berberis aristata"
+      ],
+      "candidate_latin": "Berberis aristata",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Plantago Major",
+        "Plantago major"
+      ],
+      "candidate_latin": "Plantago major",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cinnamomum Tamala",
+        "Cinnamomum tamala"
+      ],
+      "candidate_latin": "Cinnamomum tamala",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Phyllanthus Niruri",
+        "Phyllanthus niruri"
+      ],
+      "candidate_latin": "Phyllanthus niruri",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Martynia Annua",
+        "Martynia annua"
+      ],
+      "candidate_latin": "Martynia annua",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Luffa Echinata",
+        "Luffa echinata"
+      ],
+      "candidate_latin": "Luffa echinata",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Nigella Sativa",
+        "Nigella sativa"
+      ],
+      "candidate_latin": "Nigella sativa",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Mucuna Pruriens",
+        "Mucuna pruriens"
+      ],
+      "candidate_latin": "Mucuna pruriens",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Helianthus annuus",
+        "Helianthus annuus & Cucurbita",
+        "Helianthus annuus & Salvia hispanica"
+      ],
+      "candidate_latin": "Helianthus annuus",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Blue Cornflower (Centaurea Cyanus) + Chamomile",
+        "Blue Cornflower (Centaurea Cyanus) + Red Rose Petal",
+        "Blue Cornflower Tea",
+        "Blue cornflower (Centaurea cyanus) + Hibiscus"
+      ],
+      "candidate_latin": "Blue cornflower",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Butterfly Pea ( Clitoria Ternatea) + Red Rose Petal",
+        "Butterfly Pea (Clitoria Ternatea) + Chamomile",
+        "Butterfly Pea (Clitoria Ternatea) + Hibiscus"
+      ],
+      "candidate_latin": "Butterfly pea",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Acorus Calamus",
+        "Acorus calamus"
+      ],
+      "candidate_latin": "Acorus calamus",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Calendula Officinalis",
+        "Calendula officinalis"
+      ],
+      "candidate_latin": "Calendula officinalis",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cinnamomum Camphora",
+        "Cinnamomum camphora"
+      ],
+      "candidate_latin": "Cinnamomum camphora",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Ricinus Communis Linn",
+        "Ricinus communis"
+      ],
+      "candidate_latin": "Ricinus communis",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cassia Absus",
+        "Cassia absus"
+      ],
+      "candidate_latin": "Cassia absus",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Plumbago Indica",
+        "Plumbago indica"
+      ],
+      "candidate_latin": "Plumbago indica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Holarrhena Antidysenterica",
+        "Holarrhena Antidysenterica -"
+      ],
+      "candidate_latin": "Holarrhena antidysenterica",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Taraxacum Officinale",
+        "Taraxacum officinale"
+      ],
+      "candidate_latin": "Taraxacum officinale",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Baliospermum Montanum",
+        "Baliospermum montanum"
+      ],
+      "candidate_latin": "Baliospermum montanum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Desert Fagonia",
+        "Desert fagonia"
+      ],
+      "candidate_latin": "Desert fagonia",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Woodfordia Fruticosa",
+        "Woodfordia fruticosa"
+      ],
+      "candidate_latin": "Woodfordia fruticosa",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Anthem Graveolens",
+        "Anthem graveolens"
+      ],
+      "candidate_latin": "Anthem graveolens",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Caesalpinia Bonducella",
+        "Caesalpinia bonducella"
+      ],
+      "candidate_latin": "Caesalpinia bonducella",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Linum usitatissimum",
+        "Linum usitatissimum & Cucurbita",
+        "Linum usitatissimum & Salvia hispanica"
+      ],
+      "candidate_latin": "Linum usitatissimum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Onosma Bracteatum",
+        "Onosma bracteatum"
+      ],
+      "candidate_latin": "Onosma bracteatum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Ginkgo Biloba Leaf Extract",
+        "Ginkgo Biloba Leaf Glycerin Extract",
+        "Ginkgo Biloba Leaf Infused Oil",
+        "Ginkgo Biloba Leaf Oil Soluble Extract",
+        "Ginkgo Biloba Leaf PG Extract",
+        "Ginkgo Biloba Leaf Powder",
+        "Ginkgo Biloba Leaf Water Soluble Extract"
+      ],
+      "candidate_latin": "Ginkgo biloba",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Terminalia Chebula",
+        "Terminalia chebula"
+      ],
+      "candidate_latin": "Terminalia chebula",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Peganum Harmala",
+        "Peganum harmala"
+      ],
+      "candidate_latin": "Peganum harmala",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Juniperus Communis",
+        "Juniperus communis Linn"
+      ],
+      "candidate_latin": "Juniperus communis",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Rheum Emodi",
+        "Rheum emodi"
+      ],
+      "candidate_latin": "Rheum emodi",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Indian Barberry Bark Oil Soluble Extract- Berberis Aristata",
+        "Indian Barberry Bark Water Soluble Extract- Berberis Aristata"
+      ],
+      "candidate_latin": "Indian barberry",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Pterocarpus Marsupium",
+        "Pterocarpus marsupium"
+      ],
+      "candidate_latin": "Pterocarpus marsupium",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Nardostachys Jatamansi",
+        "Nardostachys jatamansi"
+      ],
+      "candidate_latin": "Nardostachys jatamansi",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Leptadenia Reticulata",
+        "Leptadenia reticulata"
+      ],
+      "candidate_latin": "Leptadenia reticulata",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Pongamia Pinnata",
+        "Pongamia pinnata"
+      ],
+      "candidate_latin": "Pongamia pinnata",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Acacia Catechu",
+        "Acacia catechu"
+      ],
+      "candidate_latin": "Acacia catechu",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Hyoscyamus Niger",
+        "Hyoscyamus Niger Linn"
+      ],
+      "candidate_latin": "Hyoscyamus niger",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Rubia Tinctoria",
+        "Rubia tinctoria"
+      ],
+      "candidate_latin": "Rubia tinctoria",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Lotus Saffron (Nelumbo Nucifera) + Chamomile",
+        "Lotus Saffron (Nelumbo Nucifera) + Hibiscus",
+        "Lotus Saffron (Nelumbo Nucifera) + Red Rose Petal"
+      ],
+      "candidate_latin": "Lotus saffron",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Litsea Glutinosa",
+        "Litsea glutinosa"
+      ],
+      "candidate_latin": "Litsea glutinosa",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Solanum Nigrum",
+        "Solanum nigrum"
+      ],
+      "candidate_latin": "Solanum nigrum",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Celastrus Paniculatus",
+        "Celastrus paniculatus"
+      ],
+      "candidate_latin": "Celastrus paniculatus",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Coptis Teeta Wall",
+        "Coptis teeta Wall"
+      ],
+      "candidate_latin": "Coptis teeta",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Tagetes Spp",
+        "Tagetes spp"
+      ],
+      "candidate_latin": "Tagetes spp",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Helicteres Isora",
+        "Helicteres isora"
+      ],
+      "candidate_latin": "Helicteres isora",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Cucumis melo",
+        "Cucumis melo & Cucurbita",
+        "Cucumis melo & Salvia hispanica"
+      ],
+      "candidate_latin": "Cucumis melo",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Nyctanthes Arbor-Tristis",
+        "Nyctanthes arbor-tristis"
+      ],
+      "candidate_latin": "Nyctanthes arbor-tristis",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Ficus Religiosa",
+        "Ficus religiosa"
+      ],
+      "candidate_latin": "Ficus religiosa",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Akarkara Irani Infused Oil",
+        "Akarkara Irani Powder"
+      ],
+      "candidate_latin": "Akarkara irani",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Porphyra yezoensis Extract",
+        "Porphyra yezoensis Glycerin Extract",
+        "Porphyra yezoensis Oil Soluble Extract",
+        "Porphyra yezoensis PG Extract",
+        "Porphyra yezoensis Water Soluble Extract"
+      ],
+      "candidate_latin": "Porphyra yezoensis",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Tecomella Undulata",
+        "Tecomella undulata"
+      ],
+      "candidate_latin": "Tecomella undulata",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Gulab Patti Infused Oil",
+        "Gulab Patti Powder"
+      ],
+      "candidate_latin": "Gulab patti",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Asparagus Racemosus",
+        "Asparagus racemosus"
+      ],
+      "candidate_latin": "Asparagus racemosus",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Vetiveria Zizanioides",
+        "Vetiveria zizanioides"
+      ],
+      "candidate_latin": "Vetiveria zizanioides",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "case_variant_merge",
+      "raw_titles": [
+        "Citrullus lanatus",
+        "Citrullus lanatus & Cucurbita",
+        "Citrullus lanatus & Salvia hispanica"
+      ],
+      "candidate_latin": "Citrullus lanatus",
+      "note": "Case/spacing variants normalised to one key (Genus species). Merge applied AND logged."
+    },
+    {
+      "reason": "near_duplicate_latin",
+      "raw_titles": [
+        "Curculigo orchiodes",
+        "Curculigo orchioides"
+      ],
+      "candidate_latin": [
+        "Curculigo orchiodes",
+        "Curculigo orchioides"
+      ],
+      "note": "Same genus, species differs by <=1 char; possible typo/synonym. NOT merged."
+    },
+    {
+      "reason": "near_duplicate_latin",
+      "raw_titles": [
+        "Ricinus communes",
+        "Ricinus communis"
+      ],
+      "candidate_latin": [
+        "Ricinus communes",
+        "Ricinus communis"
+      ],
+      "note": "Same genus, species differs by <=1 char; possible typo/synonym. NOT merged."
+    },
+    {
+      "reason": "near_duplicate_latin",
+      "raw_titles": [
+        "Cedrus deodara",
+        "Cedrus deodora"
+      ],
+      "candidate_latin": [
+        "Cedrus deodara",
+        "Cedrus deodora"
+      ],
+      "note": "Same genus, species differs by <=1 char; possible typo/synonym. NOT merged."
+    }
+  ]
+}
