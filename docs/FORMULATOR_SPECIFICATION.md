@@ -96,6 +96,28 @@ codes are the tool's internal handles.
 Naming rule: the SD label is **"Spray-dried powder"** — never "spray-dried *soluble* powder"
 unless a SKU-level grade proves tested solubility.
 
+### §3 addition — new commercial-form codes introduced under ADR-013
+
+*(Paste this immediately after the existing format-code table in §3 of `FORMULATOR_SPECIFICATION.md`.)*
+
+**New commercial-form codes introduced under ADR-013** (from cross-supplier catalogue normalisation):
+
+| Code | Form | Notes |
+|------|------|-------|
+| **WL-glycol** | Propylene-glycol extract | Supplier-declared liquid extract carried in propylene glycol. Distinct from generic WL because regulatory and clean-label suitability vary by application and market. |
+| **WL-glycerin** | Glycerin extract | Supplier-declared liquid extract carried in glycerin. Distinct from generic WL because carrier identity materially affects formulation, labelling and market suitability. |
+| **RE-paste** | Concentrated extract paste | Semi-solid extract state; behaviour depends on carrier, solids content, phase compatibility and processing conditions. |
+| **OLR** | Oleoresin | Concentrated resinous extract, generally associated with flavour, colour and oil-phase applications. Actual phase behaviour and standardisation remain SKU-specific. |
+| **HYD** | Hydrosol | Aqueous distillate containing volatile botanical constituents. Not equivalent to an essential oil, water-soluble extract or ordinary liquid extract. |
+
+> These codes describe **commercial format classes, not proven application behaviour.** Supplier
+> labels remain *claims* requiring SKU-level confirmation where solubility, dispersibility, clarity,
+> carrier suitability, stability or regulatory acceptability matters.
+
+**Also update `herbuno-matrix.js` `code_names`** to include the five new codes when the botanical
+layer (ADR-013) is wired in. Until then they exist in the normalisation taxonomy only and are not yet
+tiered in the Product × Role matrix.
+
 ---
 
 ## 4. Five-gate logic (the `classify()` architecture)
