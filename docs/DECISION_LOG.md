@@ -247,3 +247,169 @@ honest formulation-to-sourcing bridge unoccupied.
 - This is the settled architecture: resist further architectural change absent genuinely
   contradicting research; remaining work is implementation and populating knowledge layers.
 
+  # ADR-013 (APPROVED — reviewer: ChatGPT) — Botanical Intelligence Layer + Verification Pipeline
+
+**Status:** APPROVED architecture (reviewer: ChatGPT; owner sign-off recorded). Proven on real data.
+Child of `STAGE1_STAGE2_TARGET_DESIGN.md` (ADR-012) and `FORMULATOR_SPECIFICATION.md`. The
+verification pipeline (§8) is the defined build task; the raw session data remains UNVERIFIED until
+it clears the pipeline.
+
+---
+
+## 1. The problem this solves
+
+The deployed tool (ADR-012 step 1) gives the **same** format ladder for "Gummy · Active" regardless
+of botanical — it keys on Product × Role only. Typing "Shatavari" produced a generic result and
+"application review needed", which is indistinguishable from a worse version of the site's search.
+The tool has no per-botanical knowledge, so it cannot answer its own core question: *which commercial
+FORM of this specific botanical fits this product role?*
+
+## 2. The factorised model (the key insight)
+
+Do **not** author a recommendation per (botanical × product × role) — that's combinatorially
+impossible. Instead:
+
+```
+BOTANICAL INTRINSIC PROFILE   ×   PRODUCT × ROLE REQUIREMENTS   =   botanical-specific recommendation
+   (new layer — per botanical)       (existing matrix, unchanged)      (engine intersects them)
+```
+
+Profile a botanical **once** (what forms exist, how they behave) → it becomes botanical-specific
+across *every* product and role automatically, by intersecting with the existing matrix. This reuses
+everything already built.
+
+## 3. What a botanical profile contains (two tiers)
+
+- **Tier 1 — Commercial form availability (CATALOGUE-DERIVED).** Which commercial forms are actually
+  offered in the market for this botanical, and how common. Sourced by aggregating real supplier
+  catalogues. This is most of the value and is **observable data, not expert opinion.**
+- **Tier 2 — Intrinsic behaviour (INFERRED + HONESTLY DEFERRED).** Physics-implied behaviour already
+  in the matrix (milled root = insoluble particulate; a "water-soluble" grade = a supplier *claim*,
+  not proven fact). SKU-specific solubility/grit/sensory is **not researched per botanical** — it is
+  routed to "confirm with supplier COA," consistent with ADR-003 (type ≠ proven behaviour).
+
+## 4. Honesty guardrails (non-negotiable)
+
+- **Supplier label ≠ physical fact.** "Water-soluble extract" on a supplier page is a *declared
+  claim*; output must say "best phase match, subject to supplier solubility data and finished-system
+  validation."
+- **Absence ≠ nonexistence.** If no supplier in the sampled basket offers a form, say "not observed
+  in reviewed sources," never "unavailable."
+- **Milled ≠ guaranteed gritty.** State "insoluble particulate; grit risk depends on particle size
+  and finished-system tolerance."
+- **Market-status vocabulary** computed from supplier counts, never guessed: widely / commonly /
+  occasionally / specialist / not observed in reviewed sources / unresolved.
+- **Identity coverage ≠ intelligence coverage.** The tool may recognise a botanical *name* without
+  having a verified *profile*. Four states: verified profile / partial profile / identity-only
+  (generic guidance) / unverified free text (generic guidance only).
+
+## 5. Proof achieved this session (on REAL data — thewholesaler.eu, 29k rows)
+
+- Parsed the catalogue into a botanical → commercial-forms map.
+- **Shatavari (Asparagus racemosus)** resolves to real market forms: WL, WL-glycerin, WL-glycol, OE,
+  RE, RE-paste, MP, CO, TC, WD. The exact query that failed in the live tool now has botanical-
+  specific market data behind it.
+- **Distinct-botanical universe ≈ 673–800** (492 cleanly Latin-anchored species + ~181 real
+  un-Latin'd names + noise). This confirms the owner's independent estimate of 700–800 and means the
+  scope is tractable — NOT 4,000.
+- **Normalization taxonomy validated** against real supplier `Type` labels (see §6).
+
+## 6. Normalization taxonomy (supplier Type → Herbuno format code) — validated on real labels
+
+| Supplier `Type` label (thewholesaler.eu) | Herbuno code | Notes |
+|---|---|---|
+| Extract Powder | RE | full-spectrum extract powder |
+| Herbal/Fruit/Vegetable/Spice Powder | MP | milled |
+| Water Soluble Extract | WL | water-soluble liquid |
+| Oil Soluble Extract | OE | |
+| Propylene Glycol Extract | **WL-glycol** | NEW — ~256 products; glycol carrier |
+| Glycerin Extract | **WL-glycerin** | NEW — ~273 products; glycerin carrier (cleaner-label) |
+| Extract Paste | **RE-paste** | NEW — concentrated paste state |
+| Oleoresin | **OLR** | NEW — concentrated oleoresin |
+| Hydrosol | **HYD** | NEW — distillate water |
+| Infused Oil / Carrier Oil | CO | |
+| Herb,Cut / Tea & Infusions / Dried Flowers Cut | TC | |
+| Whole Herb/Spice, Seeds, Root, Dried Fruits/Flowers Whole | WD | |
+
+**Owner decision (made):** glycol and glycerin extracts are kept as **distinct** codes (they differ
+in food/cosmetic regulatory acceptability). The 5 NEW codes extend the existing set
+(SE/WL/OE/RE/SD/MP/CO/TC/WD) and must be added to the matrix's `code_names`.
+
+## 7. KNOWN PARSER DEFECTS (must be fixed in Pass 1 — documented, not mysterious)
+
+Found via spot-check; these are why the raw parse is NOT yet trustworthy:
+1. **Case inconsistency in Latin names** — "Withania Somnifera" vs "Withania somnifera" created
+   separate keys; Ashwagandha was dropped from one spot-check as a result. Normalise Latin to
+   `Genus species` (capital genus, lowercase species) everywhere.
+2. **Assay stuck to Latin** — "Bacopa monnieri(≥20% Bacosides)" (no space) mis-keyed. Strip trailing
+   assay parens from the Latin token.
+3. **Multi-dash titles** — "Brahmi – Water hyssop Extract - Bacopa monnieri" has two dashes; naive
+   split grabbed the wrong segment, scattering Bacopa across keys. Take the Latin from the LAST
+   binomial-matching segment.
+4. **Common-name fuzzy merge is risky** — substring matching can mis-join distinct species. Key
+   strictly off the (normalised) Latin binomial; treat common names as labels only.
+
+## 8. The verification pipeline (hardened — reviewer additions folded in)
+
+The botanical list is the foundation; an error propagates into every recommendation. Multi-pass,
+multi-reviewer, built **in the repo** (persistent, auditable) — NOT a one-shot chat output. **The raw
+session data (~673 findings) is UNVERIFIED and must not be used for production.**
+
+**Cross-cutting rules (apply to every pass):**
+- **No silent auto-merge.** Any ambiguous merge (case variants like "Withania Somnifera"/"…somnifera",
+  assay-suffixed Latin, multi-dash titles, fuzzy common-name matches) is **logged to a review queue,
+  never silently joined.** *(This is the exact defect that silently dropped Ashwagandha — silent
+  merges are now illegal.)*
+- **Provenance per claim.** Every observed form carries its **source supplier + observation date**, so
+  market-status counts are auditable and staleness is detectable.
+- **Verification is per-field, not per-botanical.** A botanical's *identity* can be verified while a
+  specific *form availability* is still single-source/unverified. Each claim carries its own status.
+
+**Passes:**
+- **Pass 1 — Machine parse (clean).** Fix §7 defects. One species per normalised Latin key; forms
+  aggregate correctly; no near-duplicate Latin keys. Ambiguities → review queue (never silent merge).
+  Output: candidate list + parse-QA report.
+- **Pass 2 — Authority cross-check.** Validate every Latin binomial against an accepted-names authority
+  (GBIF / POWO / Kew). **Distinguish three outcomes, do not collapse them:** *synonym* → map to
+  accepted name (keep the botanical); *typo/misspelling* → flag for correction; *genuinely unknown* →
+  quarantine. Never discard a name as "invalid" without this distinction.
+- **Pass 3 — Multi-supplier consensus.** Layer lotioncrafter + vedaoils (+ later suppliers). Where ≥2
+  suppliers agree on common↔Latin and forms → high confidence. Disagreements → review queue. Produces
+  the real, provenance-backed market-status counts (§4).
+- **Pass 4 — Independent audit (ChatGPT).** Review pipeline logic, flagged ambiguities, and a sample
+  of resolved records.
+- **Pass 5 — Owner sign-off.** Resolve domain-judgement cases a machine cannot (e.g. "Brahmi" =
+  *Bacopa monnieri* vs *Centella asiatica* — regionally ambiguous; both sold as Brahmi). **Sign-off is
+  recorded: who, when, on what evidence.**
+
+No record is "verified" (per field) until it has cleared Pass 2 (authority) and either Pass 3
+consensus or recorded Pass 5 sign-off.
+
+**One-cohort proof gate (build discipline).** Build and run the FULL pipeline on ONE small priority
+cohort (~50 top botanicals) end-to-end *before* scaling. This gate must achieve two things: **(a)**
+prove the pipeline works end-to-end, and **(b) measure the true per-botanical review cost** (owner
+hours per botanical at full rigor). The decision to scale to the full ~700-cohort is made only after
+seeing real cost numbers from the proof cohort — not on estimate. This prevents both a
+break-at-volume pipeline and an unaffordable curation commitment discovered at botanical #40.
+
+## 9. Open items / for reviewer
+
+- Is the two-tier profile (catalogue-derived availability + deferred SKU behaviour) the right scope,
+  or is more intrinsic data needed at launch?
+- Is the 5-pass verification sufficient, over-engineered, or missing a failure mode?
+- Should Pass 1 build a lighter first-cohort profile (availability + confidence) and harden to
+  per-assertion evidence later, to reach a useful cohort faster? (Risk: 50 perfect profiles vs 300
+  useful ones.)
+- Acquisition skew: the obtainable suppliers are Shopify e-commerce; bulk manufacturers (India/China)
+  and EU distributors are mostly NOT Shopify and harder to acquire. First release basket will be
+  e-commerce-skewed — a known limitation to state, not hide.
+
+## 10. Relationship to existing records
+
+- Extends ADR-012 (adds the botanical layer that makes Stage-1 genuinely botanical-specific).
+- Adds 5 format codes to `FORMULATOR_SPECIFICATION.md` §3.
+- Does NOT change the Product × Role matrix or any existing tier (intersection happens at runtime).
+- On acceptance: record as ADR-013 (Accepted), add the 5 codes, and open the verification pipeline as
+  a build task.
+
+
