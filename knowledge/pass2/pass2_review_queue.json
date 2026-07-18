@@ -420,6 +420,17 @@
         "date": "2026-07-18",
         "provenance": "Herbuno catalogue",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Macrotyloma uniflorum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Macrotyloma uniflorum",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -590,6 +601,17 @@
         "date": "2026-07-18",
         "provenance": "Herbuno catalogue",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Dactylorhiza hatagirea",
+        "status": "confirmed",
+        "gbif_accepted_name": "Dactylorhiza hatagirea",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -973,6 +995,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Althaea officinalis",
+        "status": "confirmed",
+        "gbif_accepted_name": "Althaea officinalis",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -988,6 +1021,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Asteracantha longifolia",
+        "status": "synonym",
+        "gbif_accepted_name": "Hygrophila auriculata",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1003,6 +1047,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Cedrus deodara",
+        "status": "confirmed",
+        "gbif_accepted_name": "Cedrus deodara",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1018,6 +1073,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Cinnamomum burmanni",
+        "status": "confirmed",
+        "gbif_accepted_name": "Cinnamomum burmanni",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1033,6 +1099,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Citrus aurantiifolia",
+        "status": "confirmed",
+        "gbif_accepted_name": "Citrus aurantiifolia",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1048,6 +1125,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Clerodendrum serratum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Clerodendrum serratum",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1063,6 +1151,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Crateva nurvala",
+        "status": "synonym",
+        "gbif_accepted_name": "Crateva magna",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1078,6 +1177,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Emblica officinalis",
+        "status": "synonym",
+        "gbif_accepted_name": "Phyllanthus emblica",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1093,6 +1203,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Enicostema littorale",
+        "status": "synonym",
+        "gbif_accepted_name": "Enicostema axillare littorale",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1108,6 +1229,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Hydnocarpus wightianus",
+        "status": "synonym",
+        "gbif_accepted_name": "Hydnocarpus pentandrus",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1123,6 +1255,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Lavandula stoechas",
+        "status": "confirmed",
+        "gbif_accepted_name": "Lavandula stoechas",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1138,6 +1281,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Malva sylvestris",
+        "status": "confirmed",
+        "gbif_accepted_name": "Malva sylvestris",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1153,6 +1307,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Myrtus communis",
+        "status": "confirmed",
+        "gbif_accepted_name": "Myrtus communis",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1168,6 +1333,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Ocimum basilicum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Ocimum basilicum",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1183,6 +1359,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Onosma bracteata",
+        "status": "synonym",
+        "gbif_accepted_name": "Maharanga bracteata",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1198,6 +1385,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Pelargonium roseum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Pelargonium roseum",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1213,6 +1411,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Piper cubeba",
+        "status": "confirmed",
+        "gbif_accepted_name": "Piper cubeba",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1228,6 +1437,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Ricinus communis",
+        "status": "confirmed",
+        "gbif_accepted_name": "Ricinus communis",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1243,6 +1463,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Roscoea procera",
+        "status": "synonym",
+        "gbif_accepted_name": "Roscoea purpurea purpurea",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1258,6 +1489,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Strychnos potatorum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Strychnos potatorum",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1273,6 +1515,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Valeriana wallichii",
+        "status": "synonym",
+        "gbif_accepted_name": "Valeriana jatamansi",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1288,6 +1541,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Zingiber officinale",
+        "status": "confirmed",
+        "gbif_accepted_name": "Zingiber officinale",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1303,6 +1567,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "GBIF fuzzy match + owner approval"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Ziziphus sativa",
+        "status": "synonym",
+        "gbif_accepted_name": "Ziziphus jujuba",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     }
   ],
@@ -1334,6 +1609,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Anacyclus pyrethrum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Anacyclus pyrethrum",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1351,6 +1637,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Decalepis hamiltonii",
+        "status": "confirmed",
+        "gbif_accepted_name": "Decalepis hamiltonii",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1368,6 +1665,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Anethum graveolens",
+        "status": "confirmed",
+        "gbif_accepted_name": "Anethum graveolens",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1385,6 +1693,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Terminalia arjuna",
+        "status": "confirmed",
+        "gbif_accepted_name": "Terminalia arjuna",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1420,6 +1739,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Momordica charantia",
+        "status": "confirmed",
+        "gbif_accepted_name": "Momordica charantia",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1437,6 +1767,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Centaurea cyanus",
+        "status": "confirmed",
+        "gbif_accepted_name": "Centaurea cyanus",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1460,6 +1801,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Clitoria ternatea",
+        "status": "confirmed",
+        "gbif_accepted_name": "Clitoria ternatea",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1477,6 +1829,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Illicium verum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Illicium verum",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1506,6 +1869,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Fagonia cretica",
+        "status": "confirmed",
+        "gbif_accepted_name": "Fagonia cretica",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1549,6 +1923,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Eclipta prostrata",
+        "status": "confirmed",
+        "gbif_accepted_name": "Eclipta prostrata",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1572,6 +1957,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Tagetes erecta",
+        "status": "confirmed",
+        "gbif_accepted_name": "Tagetes erecta",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1609,6 +2005,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Rosa damascena",
+        "status": "confirmed",
+        "gbif_accepted_name": "Rosa damascena",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1632,6 +2039,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Sisymbrium officinale",
+        "status": "confirmed",
+        "gbif_accepted_name": "Sisymbrium officinale",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1649,6 +2067,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Ocimum tenuiflorum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Ocimum tenuiflorum",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1666,6 +2095,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Berberis aristata",
+        "status": "confirmed",
+        "gbif_accepted_name": "Berberis aristata",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1683,6 +2123,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Pterocarpus marsupium",
+        "status": "confirmed",
+        "gbif_accepted_name": "Pterocarpus marsupium",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1700,6 +2151,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Pueraria tuberosa",
+        "status": "confirmed",
+        "gbif_accepted_name": "Pueraria tuberosa",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1717,6 +2179,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Operculina turpethum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Operculina turpethum",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1734,6 +2207,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Camellia sinensis",
+        "status": "confirmed",
+        "gbif_accepted_name": "Camellia sinensis",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1789,6 +2273,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Vitis vinifera",
+        "status": "confirmed",
+        "gbif_accepted_name": "Vitis vinifera",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1806,6 +2301,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Celosia cristata",
+        "status": "synonym",
+        "gbif_accepted_name": "Celosia argentea cristata",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1829,6 +2335,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Trigonella foenum-graecum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Trigonella foenum-graecum",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1860,6 +2377,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Mammea longifolia",
+        "status": "synonym",
+        "gbif_accepted_name": "Mammea suriga",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1877,6 +2405,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Portulaca oleracea",
+        "status": "confirmed",
+        "gbif_accepted_name": "Portulaca oleracea",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1906,6 +2445,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Plantago ovata",
+        "status": "confirmed",
+        "gbif_accepted_name": "Plantago ovata",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1923,6 +2473,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Putranjiva roxburghii",
+        "status": "confirmed",
+        "gbif_accepted_name": "Putranjiva roxburghii",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1944,6 +2505,17 @@
         "resolved_by": "owner",
         "date": "2026-07-18",
         "provenance": "pharmacopoeial name (owner)"
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Iris germanica var. florentina",
+        "status": "synonym",
+        "gbif_accepted_name": "Iris florentina",
+        "match_type": "EXACT",
+        "match_confidence": 98,
+        "gbif_suggests": null,
+        "note": "GBIF treats the owner name as a synonym of a different accepted name."
       }
     },
     {
@@ -1973,6 +2545,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Rosa damascena",
+        "status": "confirmed",
+        "gbif_accepted_name": "Rosa damascena",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -1996,6 +2579,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Piper nigrum",
+        "status": "confirmed",
+        "gbif_accepted_name": "Piper nigrum",
+        "match_type": "EXACT",
+        "match_confidence": 97,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     },
     {
@@ -2072,6 +2666,17 @@
         "date": "2026-07-18",
         "provenance": "owner botanical knowledge",
         "accepted_outside_gbif_candidates": true
+      },
+      "gbif_recheck": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "queried_name": "Juglans regia",
+        "status": "confirmed",
+        "gbif_accepted_name": "Juglans regia",
+        "match_type": "EXACT",
+        "match_confidence": 99,
+        "gbif_suggests": null,
+        "note": "GBIF accepts as-is."
       }
     }
   ]
