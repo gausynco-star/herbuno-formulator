@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "query_date": "2026-07-18",
+    "ambiguous_synonyms": 0,
+    "typo_flags": 6,
+    "note": "No silent correction. Ambiguous synonyms + typos await owner review."
+  },
+  "ambiguous_synonyms": [],
+  "typo_flags": [
+    {
+      "candidate": "Acacia bark",
+      "suggested_correction": "Acacia burkei",
+      "suppliers": [
+        "medikonda.com"
+      ],
+      "note": "GBIF fuzzy near-match; NOT auto-applied."
+    },
+    {
+      "candidate": "Capparis root",
+      "suggested_correction": "Capparis rothii",
+      "suppliers": [
+        "medikonda.com"
+      ],
+      "note": "GBIF fuzzy near-match; NOT auto-applied."
+    },
+    {
+      "candidate": "Citrus bergamot",
+      "suggested_correction": "Citrus bergamota",
+      "suppliers": [
+        "medikonda.com"
+      ],
+      "note": "GBIF fuzzy near-match; NOT auto-applied."
+    },
+    {
+      "candidate": "Croton lecheri",
+      "suggested_correction": "Croton lechleri",
+      "suppliers": [
+        "bulknaturalswholesale.com"
+      ],
+      "note": "GBIF fuzzy near-match; NOT auto-applied."
+    },
+    {
+      "candidate": "Papaya papain",
+      "suggested_correction": "Papaya papaya",
+      "suppliers": [
+        "bulknaturalswholesale.com"
+      ],
+      "note": "GBIF fuzzy near-match; NOT auto-applied."
+    },
+    {
+      "candidate": "Saphora japonica",
+      "suggested_correction": "Sophora japonica",
+      "suppliers": [
+        "medikonda.com"
+      ],
+      "note": "GBIF fuzzy near-match; NOT auto-applied."
+    }
+  ]
+}

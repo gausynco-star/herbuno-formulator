@@ -1,20 +1,27 @@
 {
   "_meta": {
     "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
-    "identity_version": "2026-07-18",
+    "identity_version": "2026-07-18.1",
     "identity_schema_version": 1,
     "frozen": true,
     "built": "2026-07-18",
     "authority": "GBIF backbone (species/match v1)",
-    "identity_records": 564,
+    "identity_records": 583,
     "excluded": 28,
     "pass1_keys_accounted": 641,
+    "pass2c_enrichment": {
+      "new_identities": 19,
+      "merged_into_existing": 0,
+      "source": "knowledge/pass2c/delta_authority_results.json (independent suppliers)"
+    },
     "resolution_status_counts": {
       "accepted": 464,
       "synonym-resolved": 67,
+      "delta-accepted": 18,
       "owner-resolved": 11,
       "typo-corrected": 13,
       "genus_level": 5,
+      "delta-synonym-resolved": 1,
       "trade_ambiguous": 3,
       "species_ambiguous": 1
     },
@@ -178,6 +185,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "abuta-grandifolia",
+      "accepted_name": "Abuta grandifolia",
+      "accepted_rank": "SPECIES",
+      "genus": "Abuta",
+      "species": "grandifolia",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3830518,
+      "original_parsed_names": [
+        "Abuta grandifolia"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -540,6 +570,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "ajuga-turkestanica",
+      "accepted_name": "Ajuga turkestanica",
+      "accepted_rank": "SPECIES",
+      "genus": "Ajuga",
+      "species": "turkestanica",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 4931002,
+      "original_parsed_names": [
+        "Ajuga turkestanica"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -2843,6 +2896,29 @@
       }
     },
     {
+      "canonical_id": "cassia-nodosa",
+      "accepted_name": "Cassia nodosa",
+      "accepted_rank": "SPECIES",
+      "genus": "Cassia",
+      "species": "nodosa",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 7967590,
+      "original_parsed_names": [
+        "Cassia nodosa"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
       "canonical_id": "catharanthus-roseus",
       "accepted_name": "Catharanthus roseus",
       "accepted_rank": "SPECIES",
@@ -2894,6 +2970,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "caulerpa-lentillifera",
+      "accepted_name": "Caulerpa lentillifera",
+      "accepted_rank": "SPECIES",
+      "genus": "Caulerpa",
+      "species": "lentillifera",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2642878,
+      "original_parsed_names": [
+        "Caulerpa lentillifera"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -3855,6 +3954,29 @@
       }
     },
     {
+      "canonical_id": "codonopsis-pilosula",
+      "accepted_name": "Codonopsis pilosula",
+      "accepted_rank": "SPECIES",
+      "genus": "Codonopsis",
+      "species": "pilosula",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5412957,
+      "original_parsed_names": [
+        "Codonopsis pilosula"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
       "canonical_id": "coffea-arabica",
       "accepted_name": "Coffea arabica",
       "accepted_rank": "SPECIES",
@@ -4187,6 +4309,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "costus-igneus",
+      "accepted_name": "Costus igneus",
+      "accepted_rank": "SPECIES",
+      "genus": "Costus",
+      "species": "igneus",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 11210380,
+      "original_parsed_names": [
+        "Costus igneus"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -5122,6 +5267,52 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "dunaliella-salina",
+      "accepted_name": "Dunaliella salina",
+      "accepted_rank": "SPECIES",
+      "genus": "Dunaliella",
+      "species": "salina",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2687984,
+      "original_parsed_names": [
+        "Dunaliella salina"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
+      "canonical_id": "echinacea-angustifolia",
+      "accepted_name": "Echinacea angustifolia",
+      "accepted_rank": "SPECIES",
+      "genus": "Echinacea",
+      "species": "angustifolia",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3150933,
+      "original_parsed_names": [
+        "Echinacea angustifolia"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -6390,6 +6581,29 @@
       }
     },
     {
+      "canonical_id": "gynura-procumbens",
+      "accepted_name": "Gynura procumbens",
+      "accepted_rank": "SPECIES",
+      "genus": "Gynura",
+      "species": "procumbens",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3139818,
+      "original_parsed_names": [
+        "Gynura procumbens"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
       "canonical_id": "habenaria-intermedia",
       "accepted_name": "Habenaria intermedia",
       "accepted_rank": "SPECIES",
@@ -6512,6 +6726,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "helichrysum-italicum",
+      "accepted_name": "Helichrysum italicum",
+      "accepted_rank": "SPECIES",
+      "genus": "Helichrysum",
+      "species": "italicum",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3131614,
+      "original_parsed_names": [
+        "Helichrysum italicum"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -6774,6 +7011,52 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "hovenia-dulcis",
+      "accepted_name": "Hovenia dulcis",
+      "accepted_rank": "SPECIES",
+      "genus": "Hovenia",
+      "species": "dulcis",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3039410,
+      "original_parsed_names": [
+        "Hovenia dulcis"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
+      "canonical_id": "huperzia-serrata",
+      "accepted_name": "Huperzia serrata",
+      "accepted_rank": "SPECIES",
+      "genus": "Huperzia",
+      "species": "serrata",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2688470,
+      "original_parsed_names": [
+        "Huperzia serrata"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -7085,6 +7368,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "owner",
         "review_date": "2026-07-18"
+      }
+    },
+    {
+      "canonical_id": "irvingia-gabonensis",
+      "accepted_name": "Irvingia gabonensis",
+      "accepted_rank": "SPECIES",
+      "genus": "Irvingia",
+      "species": "gabonensis",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5380976,
+      "original_parsed_names": [
+        "Irvingia gabonensis"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -8553,6 +8859,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "mitragyna-speciosa",
+      "accepted_name": "Mitragyna speciosa",
+      "accepted_rank": "SPECIES",
+      "genus": "Mitragyna",
+      "species": "speciosa",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 7461054,
+      "original_parsed_names": [
+        "Mitragyna speciosa"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -10080,6 +10409,29 @@
       }
     },
     {
+      "canonical_id": "pholiota-nameko",
+      "accepted_name": "Pholiota nameko",
+      "accepted_rank": "SPECIES",
+      "genus": "Pholiota",
+      "species": "nameko",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2534290,
+      "original_parsed_names": [
+        "Pholiota nameko"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
       "canonical_id": "phyllanthus-amarus",
       "accepted_name": "Phyllanthus amarus",
       "accepted_rank": "SPECIES",
@@ -11339,6 +11691,31 @@
       }
     },
     {
+      "canonical_id": "reynoutria-multiflora",
+      "accepted_name": "Reynoutria multiflora",
+      "accepted_rank": "SPECIES",
+      "genus": "Reynoutria",
+      "species": "multiflora",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 4038333,
+      "original_parsed_names": [
+        "Polygonum multiflorum"
+      ],
+      "scientific_synonyms": [
+        "Polygonum multiflorum"
+      ],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-synonym-resolved",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
       "canonical_id": "rheum-australe",
       "accepted_name": "Rheum australe",
       "accepted_rank": "SPECIES",
@@ -11839,6 +12216,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "salvia-divinorum",
+      "accepted_name": "Salvia divinorum",
+      "accepted_rank": "SPECIES",
+      "genus": "Salvia",
+      "species": "divinorum",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2927020,
+      "original_parsed_names": [
+        "Salvia divinorum"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {
@@ -12460,6 +12860,29 @@
       }
     },
     {
+      "canonical_id": "sesbania-grandiflora",
+      "accepted_name": "Sesbania grandiflora",
+      "accepted_rank": "SPECIES",
+      "genus": "Sesbania",
+      "species": "grandiflora",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 8281950,
+      "original_parsed_names": [
+        "Sesbania grandiflora"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
+      }
+    },
+    {
       "canonical_id": "setaria-italica",
       "accepted_name": "Setaria italica",
       "accepted_rank": "SPECIES",
@@ -12941,6 +13364,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "stephania-delavayi",
+      "accepted_name": "Stephania delavayi",
+      "accepted_rank": "SPECIES",
+      "genus": "Stephania",
+      "species": "delavayi",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5592626,
+      "original_parsed_names": [
+        "Stephania delavayi"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2c_delta"
       }
     },
     {

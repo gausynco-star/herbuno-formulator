@@ -34,7 +34,7 @@ READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
 QUERY_DATE = "2026-07-18"
 # Immutable freeze stamp. Bump identity_version on any rebuild (Pass 2 correction -> rebuild ->
 # new version). Downstream artifacts (Pass 3+) MUST record which identity_version they built against.
-IDENTITY_VERSION = "2026-07-18"
+IDENTITY_VERSION = "2026-07-18.1"  # bumped for Pass-2c enrichment rebuild (same calendar day as .0; prior version in git history)
 IDENTITY_SCHEMA_VERSION = 1
 AUTHORITY = "GBIF backbone (species/match v1)"
 GBIF_MATCH = "https://api.gbif.org/v1/species/match"
@@ -268,6 +268,44 @@ def main():
             rec["gbif_usage_key"] = key
         records.append(rec)
 
+    # Pass-1 accounting is fixed at 641 BEFORE any Pass-2c enrichment is merged in.
+    pass1_key_total = sum(len(r["original_parsed_names"]) for r in records) + len(excluded)
+
+    # ---- ADR-013 Pass-2c: merge backbone-enrichment delta (accepted + single-accepted synonym) ----
+    DELTA = os.path.join(HERE, "..", "pass2c", "delta_authority_results.json")
+    delta_added = delta_merged = 0
+    if os.path.exists(DELTA):
+        by_acc = {r["accepted_name"].lower(): r for r in records if r["accepted_name"]}
+        for e in json.load(open(DELTA, encoding="utf-8")).get("enrichment", []):
+            acc, pnames = e["accepted_name"], e["parsed_names"]
+            ex = by_acc.get(acc.lower())
+            if ex:
+                cur = set(ex["original_parsed_names"])
+                for p in pnames:
+                    if p not in cur:
+                        ex["original_parsed_names"].append(p)
+                        if is_scientific(p) and p != acc and p not in ex["scientific_synonyms"]:
+                            ex["scientific_synonyms"].append(p)
+                ex["original_parsed_names"].sort(); ex["scientific_synonyms"].sort()
+                ex["provenance"]["enriched_by_pass2c"] = True
+                delta_merged += 1
+                continue
+            g, sp, inf, rank_guess = parse_name(acc)
+            key, gbif_rank = gbif_info(acc)
+            rec = {"canonical_id": slug(acc, used_ids), "accepted_name": acc,
+                   "accepted_rank": gbif_rank or rank_guess, "genus": g, "species": sp,
+                   "infraspecific_epithet": inf, "gbif_usage_key": key,
+                   "original_parsed_names": sorted(set(pnames)),
+                   "scientific_synonyms": sorted({p for p in pnames if is_scientific(p) and p != acc}),
+                   "trade_synonyms": [], "common_names": [],
+                   "resolution_status": "delta-accepted" if e["via"] == "accepted" else "delta-synonym-resolved",
+                   "provenance": {"authority": AUTHORITY, "query_date": QUERY_DATE, "resolved_by": "GBIF",
+                                  "review_date": None, "source": "pass2c_delta"}}
+            by_acc[acc.lower()] = rec
+            records.append(rec)
+            delta_added += 1
+        print("  pass2c enrichment: +%d new identities, %d merged into existing" % (delta_added, delta_merged))
+
     records.sort(key=lambda r: (r["accepted_name"] or "~" + r["canonical_id"]))
     _save(CACHE, _local)
 
@@ -275,7 +313,7 @@ def main():
     from collections import Counter
     status_counts = Counter(r["resolution_status"] for r in records)
     trinomials = sorted(r["accepted_name"] for r in records if r["infraspecific_epithet"])
-    key_total = sum(len(r["original_parsed_names"]) for r in records) + len(excluded)
+    key_total = pass1_key_total  # Pass-1 accounting stays 641; enrichment tracked separately
 
     doc = {"_meta": {
         "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
@@ -285,6 +323,8 @@ def main():
         "built": QUERY_DATE, "authority": AUTHORITY,
         "identity_records": len(records), "excluded": len(excluded),
         "pass1_keys_accounted": key_total,
+        "pass2c_enrichment": {"new_identities": delta_added, "merged_into_existing": delta_merged,
+                              "source": "knowledge/pass2c/delta_authority_results.json (independent suppliers)"},
         "resolution_status_counts": dict(status_counts),
         "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. "
                          "Corrections flow: fix in Pass 2 (review queue / sign-off) -> rebuild this "
