@@ -19,13 +19,23 @@
 ## Global (observed only — NO observed-vs-not tally)
 | metric | value |
 |---|--:|
-| independent entities contributing | 2 |
+| entities contributing | 2 |
+| **independent source families contributing** | **1** |
 | identities observed | 561 |
 | identities observed by ≥2 entities | 391 |
+| **identities observed by ≥2 INDEPENDENT source families** | **0** |
 | botanical × part × form combinations observed | 3636 |
 | duplicates collapsed (entity×id×part×form) | 509 |
 | review-queue entries (ambiguous + disagreements) | 101 |
 | unresolved supplier rows (kept) | 1906 |
+
+## Source-family correlation (independence caveat)
+thewholesaler and Herbuno share source family `sf_thewholesaler`: **Herbuno's product
+listings were substantially catalogue-derived from thewholesaler**, so their form
+observations are **correlated, not independent evidence**. This is **catalogue derivation,
+NOT supply dependency** — Herbuno sources independently from its own suppliers. Judge
+corroboration by `independent_source_family_count`, never by entity count.
+With the current basket, only **1 independent source family** contributes to the graph, so **0 identities are corroborated across ≥2 independent families** — the entity-level figure (391) overstates corroboration.
 
 ## Quality gate
 Threshold: identity resolution >=70% AND taxonomy mapping >=80%. Flagged (excluded from graph, committed as incomplete ingestion): medikonda.com, bulknaturalswholesale.com, hiyaindia.in.

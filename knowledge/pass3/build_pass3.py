@@ -29,6 +29,24 @@ BUILD_DATE = "2026-07-18"
 # Supplier registry + per-supplier Type maps / out-of-scope sets
 # ---------------------------------------------------------------------------
 DL = os.path.join(HOME, "Downloads")
+
+# Source families group entities whose observations are CORRELATED (not independent evidence).
+# Herbuno shares thewholesaler's family: Herbuno's product LISTINGS were substantially built from
+# thewholesaler's catalogue, so their form observations correlate. This is CATALOGUE DERIVATION,
+# NOT supply dependency — Herbuno sources independently from its own suppliers. Corroboration must
+# be counted per independent source family, never per entity, where entities share a family.
+SOURCE_FAMILIES = {
+    "sf_thewholesaler": {"label": "thewholesaler catalogue family",
+        "members": ["ent_thewholesaler", "ent_herbuno"],
+        "note": "Herbuno's listings were substantially catalogue-derived from thewholesaler; their form "
+                "observations are correlated. CATALOGUE DERIVATION, not supply dependency — Herbuno "
+                "sources independently from its own suppliers."},
+    "sf_medikonda": {"label": "medikonda", "members": ["ent_medikonda"], "note": ""},
+    "sf_bulknaturals": {"label": "bulknaturalswholesale", "members": ["ent_bulknaturals"], "note": ""},
+    "sf_hiyaindia": {"label": "hiyaindia", "members": ["ent_hiyaindia"], "note": ""},
+}
+FAMILY_OF = {ent: fid for fid, fam in SOURCE_FAMILIES.items() for ent in fam["members"]}
+
 SUPPLIERS = [
     {"supplier_id": "thewholesaler.eu", "entity_id": "ent_thewholesaler", "domain": "thewholesaler.eu",
      "region": "EU distributor (India-sourced)", "public": True, "snapshot_date": "2026-06-13",
@@ -363,6 +381,7 @@ def main():
                                for t in sorted(unmapped, key=lambda x: -unmapped[x])]}
         registry.append({
             "supplier_id": sup["supplier_id"], "independent_entity_id": sup["entity_id"],
+            "source_family_id": FAMILY_OF.get(sup["entity_id"]),
             "domain": sup["domain"], "region": sup["region"], "public": sup["public"],
             "snapshot_date": sup["snapshot_date"], "file": os.path.basename(f), "sha256": digest,
             "row_count": rows, "rows_with_type": rows_with_type, "rows_processed": mapped,
@@ -376,12 +395,14 @@ def main():
 
     # ---- dedup + build graph ----
     entities_by_identity = defaultdict(set)
+    families_by_identity = defaultdict(set)
     graph = {}
     dup_collapsed = 0
     for key, obs in obs_by_key.items():
         entity, cid, part, base, ov = key
         dup_collapsed += len(obs) - 1
         entities_by_identity[cid].add(entity)
+        families_by_identity[cid].add(FAMILY_OF.get(entity, entity))
         sig = base + ("+" + "+".join(ov) if ov else "")
         node = graph.setdefault(cid, {"accepted_name": accepted_of.get(cid), "plant_parts": {}})
         pp = node["plant_parts"].setdefault(part, {"forms": {}})
@@ -393,6 +414,9 @@ def main():
                 "supplier_observation_count": 0, "observations": []}
         form["observations"].extend(obs)
         form["supplier_observation_count"] = len({o["entity_id"] for o in form["observations"]})
+        # honest independence: distinct source families (entities sharing a family are correlated)
+        form["independent_source_family_count"] = len(
+            {FAMILY_OF.get(o["entity_id"], o["entity_id"]) for o in form["observations"]})
     # mixed plant parts flag
     for cid, node in graph.items():
         node["mixed_plant_parts"] = len([p for p in node["plant_parts"] if p != "unspecified"]) > 1
@@ -406,11 +430,14 @@ def main():
                 "requires_owner_review": True})
 
     # ---- outputs ----
-    supplier_registry_meta = [{k: r.get(k) for k in ("supplier_id", "independent_entity_id", "domain",
-        "region", "public", "snapshot_date", "sha256", "counts_toward_graph")} for r in registry if r.get("sha256")]
+    supplier_registry_meta = [{k: r.get(k) for k in ("supplier_id", "independent_entity_id",
+        "source_family_id", "domain", "region", "public", "snapshot_date", "sha256",
+        "counts_toward_graph")} for r in registry if r.get("sha256")]
     n_entities = len({r["independent_entity_id"] for r in registry if r.get("counts_toward_graph")})
+    n_families = len({FAMILY_OF.get(r["independent_entity_id"]) for r in registry if r.get("counts_toward_graph")})
     identities_observed = len(graph)
     observed_by_2plus = sum(1 for cid in graph if len(entities_by_identity[cid]) >= 2)
+    observed_by_2plus_families = sum(1 for cid in graph if len(families_by_identity[cid]) >= 2)
     combos = sum(len(pp["forms"]) for node in graph.values() for pp in node["plant_parts"].values())
 
     graph_doc = {"_meta": {
@@ -426,6 +453,14 @@ def main():
                                "'observed in reviewed sources' as a boolean — never who, how many, or where.",
         "basket_skew": "e-commerce-heavy basket; light on bulk manufacturers (India/China) and EU "
                        "distributors; private catalogues inaccessible. Observations are a floor, not a census.",
+        "source_families": SOURCE_FAMILIES,
+        "independence_note": "Corroboration is counted per INDEPENDENT SOURCE FAMILY, not per entity. "
+                             "thewholesaler and Herbuno share source family 'sf_thewholesaler' (Herbuno's "
+                             "listings were catalogue-derived from thewholesaler) — their agreement is "
+                             "correlated, NOT independent evidence. Use independent_source_family_count, "
+                             "not supplier_observation_count, to judge corroboration. This is catalogue "
+                             "derivation, not supply dependency.",
+        "independent_source_families_contributing": n_families,
         "supplier_registry": supplier_registry_meta,
         "identities_observed": identities_observed}, "identities": graph}
     json.dump(graph_doc, open(os.path.join(HERE, "observed_form_graph.json"), "w", encoding="utf-8"),
@@ -444,12 +479,14 @@ def main():
                   ensure_ascii=False, indent=2)
 
     _write_registry_md(registry)
-    _write_report_md(per_supplier_metrics, registry, n_entities, identities_observed, observed_by_2plus,
-                     combos, len(review_queue), len(unresolved_rows), dup_collapsed, id_version)
+    _write_report_md(per_supplier_metrics, registry, n_entities, n_families, identities_observed,
+                     observed_by_2plus, observed_by_2plus_families, combos, len(review_queue),
+                     len(unresolved_rows), dup_collapsed, id_version)
 
     print("PASS 3 COMPLETE  (identity_version %s, taxonomy %s)" % (id_version, tax_version))
-    print("  independent entities contributing: %d" % n_entities)
-    print("  identities observed: %d  (by >=2 entities: %d)" % (identities_observed, observed_by_2plus))
+    print("  contributing: %d entities across %d INDEPENDENT source families" % (n_entities, n_families))
+    print("  identities observed: %d  (by >=2 entities: %d ; by >=2 INDEPENDENT families: %d)" %
+          (identities_observed, observed_by_2plus, observed_by_2plus_families))
     print("  botanical x part x form combos observed: %d" % combos)
     print("  duplicates collapsed: %d  | review queue: %d  | unresolved rows: %d" %
           (dup_collapsed, len(review_queue), len(unresolved_rows)))
@@ -463,16 +500,19 @@ def _write_registry_md(registry):
     L = ["# Pass-3 Supplier Registry — INTERNAL ONLY (ADR-013)\n",
          "> **INTERNAL.** Supplier identity, counts and provenance are internal. Storefront assets must",
          "> strip all of this and expose only 'observed in reviewed sources'.\n",
-         "| supplier_id | entity | domain | region | public | snapshot | rows | with_type | processed | tax_rate | id_rate | in_graph | bias |",
-         "|---|---|---|---|---|---|--:|--:|--:|--:|--:|---|---|"]
+         "| supplier_id | entity | source_family | domain | region | public | snapshot | rows | with_type | processed | tax_rate | id_rate | in_graph | bias |",
+         "|---|---|---|---|---|---|---|--:|--:|--:|--:|--:|---|---|"]
     for r in registry:
         if not r.get("sha256"):
             continue
-        L.append("| %s | %s | %s | %s | %s | %s | %d | %d | %d | %.0f%% | %.0f%% | %s | %s |" % (
-            r["supplier_id"], r["independent_entity_id"], r["domain"], r["region"], r["public"],
-            r["snapshot_date"], r["row_count"], r["rows_with_type"], r["rows_processed"],
-            r["taxonomy_coverage_rate"]*100, r["identity_resolution_rate"]*100,
+        L.append("| %s | %s | %s | %s | %s | %s | %s | %d | %d | %d | %.0f%% | %.0f%% | %s | %s |" % (
+            r["supplier_id"], r["independent_entity_id"], r.get("source_family_id"), r["domain"],
+            r["region"], r["public"], r["snapshot_date"], r["row_count"], r["rows_with_type"],
+            r["rows_processed"], r["taxonomy_coverage_rate"]*100, r["identity_resolution_rate"]*100,
             "yes" if r["counts_toward_graph"] else "**no**", r["known_catalogue_bias"]))
+    L.append("\n> **Source families:** `sf_thewholesaler` = {thewholesaler, Herbuno} — Herbuno's listings were")
+    L.append("> catalogue-derived from thewholesaler, so their observations are CORRELATED (not independent")
+    L.append("> evidence). Catalogue derivation, NOT supply dependency — Herbuno sources independently.")
     L.append("\n### sha256")
     for r in registry:
         if r.get("sha256"):
@@ -481,7 +521,8 @@ def _write_registry_md(registry):
     open(os.path.join(HERE, "supplier_registry.md"), "w", encoding="utf-8").write("\n".join(L))
 
 
-def _write_report_md(metrics, registry, n_entities, ids_obs, obs2, combos, nrev, nunres, dups, id_version):
+def _write_report_md(metrics, registry, n_entities, n_families, ids_obs, obs2, obs2fam, combos, nrev,
+                     nunres, dups, id_version):
     L = ["# Pass-3 Report — Observed Commercial-Form Discovery (ADR-013)\n",
          "> Form DISCOVERY, not a market survey. No prevalence/availability language. Built against",
          "> identity_version `%s`. Supplier detail is INTERNAL (see supplier_registry.md).\n" % id_version,
@@ -500,13 +541,25 @@ def _write_report_md(metrics, registry, n_entities, ids_obs, obs2, combos, nrev,
     L.append("\n## Global (observed only — NO observed-vs-not tally)")
     L.append("| metric | value |")
     L.append("|---|--:|")
-    L.append("| independent entities contributing | %d |" % n_entities)
+    L.append("| entities contributing | %d |" % n_entities)
+    L.append("| **independent source families contributing** | **%d** |" % n_families)
     L.append("| identities observed | %d |" % ids_obs)
     L.append("| identities observed by ≥2 entities | %d |" % obs2)
+    L.append("| **identities observed by ≥2 INDEPENDENT source families** | **%d** |" % obs2fam)
     L.append("| botanical × part × form combinations observed | %d |" % combos)
     L.append("| duplicates collapsed (entity×id×part×form) | %d |" % dups)
     L.append("| review-queue entries (ambiguous + disagreements) | %d |" % nrev)
     L.append("| unresolved supplier rows (kept) | %d |" % nunres)
+    L.append("")
+    L.append("## Source-family correlation (independence caveat)")
+    L.append("thewholesaler and Herbuno share source family `sf_thewholesaler`: **Herbuno's product")
+    L.append("listings were substantially catalogue-derived from thewholesaler**, so their form")
+    L.append("observations are **correlated, not independent evidence**. This is **catalogue derivation,")
+    L.append("NOT supply dependency** — Herbuno sources independently from its own suppliers. Judge")
+    L.append("corroboration by `independent_source_family_count`, never by entity count.")
+    L.append("With the current basket, only **%d independent source family** contributes to the graph, so "
+             "**%d identities are corroborated across ≥2 independent families** — the entity-level figure "
+             "(%d) overstates corroboration." % (n_families, obs2fam, obs2))
     L.append("")
     L.append("## Quality gate")
     flagged = [m["supplier_id"] for m in metrics if not m["counts_toward_graph"]]
