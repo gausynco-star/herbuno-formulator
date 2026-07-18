@@ -62,3 +62,40 @@
 | `Valeriana wallichi` | **Valeriana wallichii** |
 | `Zingiber officinalis` | **Zingiber officinale** |
 | `Zizyphus sativa` | **Ziziphus sativa** |
+
+## Unknown-quarantine triage (64)
+resolved 25 · species_ambiguous 1 · genus_level 5 · non_botanical 18 · unresolvable 10 · common_name 5
+
+### Common names resolved to binomials (owner botanical knowledge; outside GBIF candidates)
+| common name | → binomial |
+|---|---|
+| `Blue cornflower` | **Centaurea cyanus** |
+| `Butterfly pea` | **Clitoria ternatea** |
+| `Chakra phul` | **Illicium verum** |
+| `Desert fagonia` | **Fagonia cretica** |
+| `False daisy` | **Eclipta prostrata** |
+| `Genda phool` | **Tagetes erecta** |
+| `Gulab patti` | **Rosa damascena** |
+| `Hedge mustard` | **Sisymbrium officinale** |
+| `Holy basil` | **Ocimum tenuiflorum** |
+| `Indian barberry` | **Berberis aristata** |
+| `Indian kino` | **Pterocarpus marsupium** |
+| `Indian kudzu` | **Pueraria tuberosa** |
+| `Ipomea trurpethum` | **Operculina turpethum** |
+| `Japanese matcha` | **Camellia sinensis** |
+| `Kishmish badi` | **Vitis vinifera** |
+| `Lal murga` | **Celosia cristata** |
+| `Methi dana` | **Trigonella foenum-graecum** |
+| `Ochrocarpus longifolius` | **Mammea longifolia** |
+| `Portulaca oleracea-purslane` | **Portulaca oleracea** |
+| `Psyllium husk` | **Plantago ovata** |
+| `Putra jivak` | **Putranjiva roxburghii** |
+| `Rose petal` | **Rosa damascena** |
+| `Safed mirch` | **Piper nigrum** |
+| `Walnut tree` | **Juglans regia** |
+| `Rhizoma iridis` | **Iris germanica var. florentina** (pharmacopoeial) |
+
+- **Species-ambiguous (held):** `Thorn apple` → Datura metel vs Datura stramonium (require source).
+- **Genus-level identities kept:** `Epimedium spp`→Epimedium, `Gossypium spp`→Gossypium, `Jasminum spp`→Jasminum, `Morus spp`→Morus, `Tagetes spp`→Tagetes.
+- **Non-botanical** (18, incl. `Sat nimbu`=citric acid) and **unresolvable** (10) dropped from the botanical set.
+- **Common names still unresolved** (5): held for a later pass.

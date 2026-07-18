@@ -14,7 +14,15 @@
       "resolved_from_catalogue": 2,
       "trade_ambiguous_remaining": 3,
       "typos_corrected": 23,
-      "note": "Decisions applied to synonym_remaps and typo_flags. authority_results.json (raw GBIF output) left unchanged — this is the human sign-off layer."
+      "unknown_triage": {
+        "common_name": 5,
+        "non_botanical": 18,
+        "genus_level": 5,
+        "unresolvable": 10,
+        "resolved": 25,
+        "species_ambiguous": 1
+      },
+      "note": "Decisions applied to synonym_remaps, typo_flags and unknown_quarantine. authority_results.json (raw GBIF output) left unchanged — human sign-off layer."
     }
   },
   "synonym_remaps": [
@@ -1302,322 +1310,714 @@
     {
       "latin": "Abhrak bhasm",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Activated charcoal",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Akarkara irani",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
+      "triage_bucket": "common_name"
     },
     {
       "latin": "Anantmool madrasi",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
+      "triage_bucket": "common_name"
     },
     {
       "latin": "Anthem graveolens",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
+      "triage_bucket": "common_name"
     },
     {
       "latin": "Arjuna chaal",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
+      "triage_bucket": "common_name"
     },
     {
       "latin": "Asphaltum punjabianum",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Bentonite clay",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Ber patthar",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Bitter gourd",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
+      "triage_bucket": "common_name"
     },
     {
       "latin": "Blue cornflower",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Centaurea cyanus",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Centaurea cyanus",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Bura armani",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Butterfly pea",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Clitoria ternatea",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Clitoria ternatea",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Chakra phul",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Illicium verum",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Illicium verum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Chokh wood",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Cuttle fish",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Desert fagonia",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Fagonia cretica",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Fagonia cretica",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Dhoop wood",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Dooku patti",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Epimedium spp",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Real traded material at genus level; genus kept as identity.",
+      "triage_bucket": "genus_level",
+      "genus_level": true,
+      "identity": "Epimedium",
+      "signoff": {
+        "status": "genus_level",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner triage"
+      }
     },
     {
       "latin": "False daisy",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Eclipta prostrata",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Eclipta prostrata",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Ferrous sulphate",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Genda phool",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Tagetes erecta",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Tagetes erecta",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Geru mitti",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Gossypium spp",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Real traded material at genus level; genus kept as identity.",
+      "triage_bucket": "genus_level",
+      "genus_level": true,
+      "identity": "Gossypium",
+      "signoff": {
+        "status": "genus_level",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner triage"
+      }
     },
     {
       "latin": "Gulab patti",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Rosa damascena",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Rosa damascena",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Hartaal varki",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Hedge mustard",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Sisymbrium officinale",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Sisymbrium officinale",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Holy basil",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Ocimum tenuiflorum",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Ocimum tenuiflorum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Indian barberry",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Berberis aristata",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Berberis aristata",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Indian kino",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Pterocarpus marsupium",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Pterocarpus marsupium",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Indian kudzu",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Pueraria tuberosa",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Pueraria tuberosa",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Ipomea trurpethum",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Operculina turpethum",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Operculina turpethum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Japanese matcha",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Camellia sinensis",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Camellia sinensis",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Jasminum spp",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Real traded material at genus level; genus kept as identity.",
+      "triage_bucket": "genus_level",
+      "genus_level": true,
+      "identity": "Jasminum",
+      "signoff": {
+        "status": "genus_level",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner triage"
+      }
     },
     {
       "latin": "Kasheesh hara",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Kashmiri kahwa",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Kashmiri patta",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Keherwa dana",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Kishmish badi",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Vitis vinifera",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Vitis vinifera",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Lal murga",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Celosia cristata",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Celosia cristata",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Lotus saffron",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Methi dana",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Trigonella foenum-graecum",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Trigonella foenum-graecum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Morus spp",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Real traded material at genus level; genus kept as identity.",
+      "triage_bucket": "genus_level",
+      "genus_level": true,
+      "identity": "Morus",
+      "signoff": {
+        "status": "genus_level",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner triage"
+      }
     },
     {
       "latin": "Ochrocarpus longifolius",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Mammea longifolia",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Mammea longifolia",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Portulaca oleracea-purslane",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Portulaca oleracea",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Portulaca oleracea",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Potassium carbonate",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Potassium nitrate",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Psyllium husk",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Plantago ovata",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Plantago ovata",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Putra jivak",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Putranjiva roxburghii",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Putranjiva roxburghii",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Rajat makshik",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Rhizoma iridis",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved from quarantine. Orris root; pharmacopoeial Latin 'Rhizoma Iridis'.",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Iris germanica var. florentina",
+      "signoff": {
+        "status": "resolved",
+        "decision": "Iris germanica var. florentina",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "pharmacopoeial name (owner)"
+      }
     },
     {
       "latin": "Rock sugar",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Rosa hybrid",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Rose petal",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Rosa damascena",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Rosa damascena",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Sabut garam",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Safed mirch",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Piper nigrum",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Piper nigrum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Sangesar mahi",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Sat nimbu",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical",
+      "identity": "citric acid"
     },
     {
       "latin": "Sendha namak",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Non-botanical (mineral/salt/chemical/animal); not a plant identity.",
+      "triage_bucket": "non_botanical"
     },
     {
       "latin": "Tagetes spp",
       "match_type": "HIGHERRANK",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Real traded material at genus level; genus kept as identity.",
+      "triage_bucket": "genus_level",
+      "genus_level": true,
+      "identity": "Tagetes",
+      "signoff": {
+        "status": "genus_level",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner triage"
+      }
     },
     {
       "latin": "Thorn apple",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Species-ambiguous — requires source/provenance.",
+      "triage_bucket": "species_ambiguous",
+      "status": "species_ambiguous",
+      "accepted_name": null,
+      "candidate_accepted_names": [
+        "Datura metel",
+        "Datura stramonium"
+      ],
+      "signoff": {
+        "status": "species_ambiguous",
+        "requires": "source/provenance before resolving",
+        "guidance": "Datura metel vs Datura stramonium; requires source/provenance.",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge"
+      }
     },
     {
       "latin": "Velvety beauty",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Unresolvable: fragment / blend / too vague to identify one species.",
+      "triage_bucket": "unresolvable"
     },
     {
       "latin": "Walnut tree",
       "match_type": "NONE",
-      "note": "no exact backbone name-usage; genuinely unresolved"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Juglans regia",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Juglans regia",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     }
   ]
 }
