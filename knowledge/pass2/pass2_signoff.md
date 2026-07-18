@@ -64,11 +64,16 @@
 | `Zizyphus sativa` | **Ziziphus sativa** |
 
 ## Unknown-quarantine triage (64)
-resolved 25 · species_ambiguous 1 · genus_level 5 · non_botanical 18 · unresolvable 10 · common_name 5
+resolved 30 · species_ambiguous 1 · genus_level 5 · non_botanical 18 · unresolvable 10 · common_name 0
 
 ### Common names resolved to binomials (owner botanical knowledge; outside GBIF candidates)
 | common name | → binomial |
 |---|---|
+| `Akarkara irani` | **Anacyclus pyrethrum** |
+| `Anantmool madrasi` | **Decalepis hamiltonii** |
+| `Anthem graveolens` | **Anethum graveolens** |
+| `Arjuna chaal` | **Terminalia arjuna** |
+| `Bitter gourd` | **Momordica charantia** |
 | `Blue cornflower` | **Centaurea cyanus** |
 | `Butterfly pea` | **Clitoria ternatea** |
 | `Chakra phul` | **Illicium verum** |
@@ -98,4 +103,4 @@ resolved 25 · species_ambiguous 1 · genus_level 5 · non_botanical 18 · unres
 - **Species-ambiguous (held):** `Thorn apple` → Datura metel vs Datura stramonium (require source).
 - **Genus-level identities kept:** `Epimedium spp`→Epimedium, `Gossypium spp`→Gossypium, `Jasminum spp`→Jasminum, `Morus spp`→Morus, `Tagetes spp`→Tagetes.
 - **Non-botanical** (18, incl. `Sat nimbu`=citric acid) and **unresolvable** (10) dropped from the botanical set.
-- **Common names still unresolved** (5): held for a later pass.
+- **Common names still unresolved** (0): held for a later pass.

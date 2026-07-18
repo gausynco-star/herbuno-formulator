@@ -102,6 +102,9 @@ UNK_COMMON_RESOLVED = {
     "Portulaca oleracea-purslane": "Portulaca oleracea", "Psyllium husk": "Plantago ovata",
     "Putra jivak": "Putranjiva roxburghii", "Rose petal": "Rosa damascena",
     "Safed mirch": "Piper nigrum", "Walnut tree": "Juglans regia",
+    "Akarkara irani": "Anacyclus pyrethrum", "Anantmool madrasi": "Decalepis hamiltonii",
+    "Anthem graveolens": "Anethum graveolens", "Arjuna chaal": "Terminalia arjuna",
+    "Bitter gourd": "Momordica charantia",
 }
 # SPECIES-AMBIGUOUS common name — do not resolve without source/provenance
 UNK_SPECIES_AMBIGUOUS = {

@@ -15,11 +15,11 @@
       "trade_ambiguous_remaining": 3,
       "typos_corrected": 23,
       "unknown_triage": {
-        "common_name": 5,
+        "common_name": 0,
         "non_botanical": 18,
         "genus_level": 5,
         "unresolvable": 10,
-        "resolved": 25,
+        "resolved": 30,
         "species_ambiguous": 1
       },
       "note": "Decisions applied to synonym_remaps, typo_flags and unknown_quarantine. authority_results.json (raw GBIF output) left unchanged — human sign-off layer."
@@ -1322,26 +1322,70 @@
     {
       "latin": "Akarkara irani",
       "match_type": "NONE",
-      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
-      "triage_bucket": "common_name"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Anacyclus pyrethrum",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Anacyclus pyrethrum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Anantmool madrasi",
       "match_type": "NONE",
-      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
-      "triage_bucket": "common_name"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Decalepis hamiltonii",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Decalepis hamiltonii",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Anthem graveolens",
       "match_type": "NONE",
-      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
-      "triage_bucket": "common_name"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Anethum graveolens",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Anethum graveolens",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Arjuna chaal",
       "match_type": "HIGHERRANK",
-      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
-      "triage_bucket": "common_name"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Terminalia arjuna",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Terminalia arjuna",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Asphaltum punjabianum",
@@ -1364,8 +1408,19 @@
     {
       "latin": "Bitter gourd",
       "match_type": "NONE",
-      "note": "Recognisable common/vernacular name; likely maps to a Latin binomial (Pass-2b).",
-      "triage_bucket": "common_name"
+      "note": "Owner-resolved common name to binomial (owner botanical knowledge).",
+      "triage_bucket": "resolved",
+      "status": "resolved",
+      "accepted_name": "Momordica charantia",
+      "accepted_outside_gbif_candidates": true,
+      "signoff": {
+        "status": "resolved",
+        "decision": "Momordica charantia",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "owner botanical knowledge",
+        "accepted_outside_gbif_candidates": true
+      }
     },
     {
       "latin": "Blue cornflower",
