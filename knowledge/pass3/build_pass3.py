@@ -140,6 +140,22 @@ PART_WORDS = {"root": "root", "roots": "root", "leaf": "leaf", "leaves": "leaf",
     "pod": "pod", "pods": "pod", "shell": "shell", "resin": "resin", "gum": "gum", "nut": "seed"}
 
 
+# FIX 2 — plant-part words (English + Hindi/vernacular) stripped from backbone common_names at
+# index time so a bare vernacular ("Neem" ) matches a part-suffixed record key ("Neem Bark").
+# Frozen backbone is untouched; this is index-time only.
+STRIP_WORDS = set(PART_WORDS) | FORM_WORDS | {
+    "chaal", "chhal", "patta", "patti", "phool", "phul", "beej", "mool", "chilka", "dana", "sabut",
+    "gutli", "booti", "buti", "whole", "cut", "big", "small", "kg", "gm"}
+DERIVED_COMMON_KEYS = set()   # norm keys added by part-stripping (provenance: derived, second-class)
+COMMON_INDEX_QUARANTINE = []  # part-stripped keys that collide across identities (NOT indexed)
+
+
+def _part_strip(name):
+    s = re.sub(r"\([^)]*\)", " ", name)                       # drop parenthetical assay/marker
+    toks = [t for t in re.split(r"[^A-Za-z]+", s) if t and t.lower() not in STRIP_WORDS]
+    return " ".join(toks)
+
+
 def build_indices(backbone):
     exact = {}   # normname -> (rank, method, canonical_id)
     common = defaultdict(set)  # normname -> {canonical_id}
@@ -160,6 +176,24 @@ def build_indices(backbone):
             n = norm(c)
             if n:
                 common[n].add(cid)
+
+    # ---- FIX 2: derived part-stripped common keys (collision-guarded, provenance-tagged) ----
+    DERIVED_COMMON_KEYS.clear(); COMMON_INDEX_QUARANTINE.clear()
+    derived_map = defaultdict(set)
+    for r in backbone["identities"]:
+        for c in r.get("common_names", []):
+            k = norm(_part_strip(c))
+            if k and k != norm(c) and len(k) >= 3:
+                derived_map[k].add(r["canonical_id"])
+    for k, cids in sorted(derived_map.items()):
+        allc = set(cids) | set(common.get(k, set()))
+        if len(allc) == 1:
+            if k not in common:                                # add only if not already a real key
+                common[k].add(next(iter(allc)))
+                DERIVED_COMMON_KEYS.add(k)
+        else:                                                  # collision -> quarantine, never merge
+            COMMON_INDEX_QUARANTINE.append({"stripped_key": k, "canonical_ids": sorted(allc),
+                "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"})
     return exact, common
 
 
