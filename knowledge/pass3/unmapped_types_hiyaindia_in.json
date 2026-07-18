@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "supplier_id": "hiyaindia.in",
+    "snapshot_date": "2026-07-15"
+  },
+  "unmapped_types": [
+    {
+      "type": "Fragrance Oil",
+      "count": 313,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Aroma Diffuser Oil",
+      "count": 177,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Essential Oil",
+      "count": 117,
+      "scope": "out_of_scope"
+    }
+  ]
+}

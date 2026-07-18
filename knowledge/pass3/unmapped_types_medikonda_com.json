@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "supplier_id": "medikonda.com",
+    "snapshot_date": "2026-07-17"
+  },
+  "unmapped_types": [
+    {
+      "type": "Capsules-Tablets",
+      "count": 307,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cosmetics",
+      "count": 126,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Essentials",
+      "count": 126,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Probiotics",
+      "count": 99,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Baking",
+      "count": 55,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Bio-actives",
+      "count": 50,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Enzymes",
+      "count": 40,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Juices",
+      "count": 34,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "B2B",
+      "count": 30,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Vet",
+      "count": 22,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Omega",
+      "count": 14,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Fermented-Flours",
+      "count": 12,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "B2C",
+      "count": 9,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "honey",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "powder",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "cosmetic powder",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "herbs",
+      "count": 1,
+      "scope": "in_scope_gap"
+    }
+  ]
+}

@@ -1,0 +1,823 @@
+{
+  "_meta": {
+    "supplier_id": "thewholesaler.eu",
+    "snapshot_date": "2026-06-13"
+  },
+  "unmapped_types": [
+    {
+      "type": "Herbs & Spices",
+      "count": 217,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Essential Oil",
+      "count": 195,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Fruit Active / Polyphenol",
+      "count": 30,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Incense Sticks",
+      "count": 26,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Polyphenol",
+      "count": 21,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Carotenoid / Carotenoid",
+      "count": 16,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Flavonoid / Flavonoid",
+      "count": 15,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "CO2 Extract",
+      "count": 14,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ayurvedic / Saponin",
+      "count": 14,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Dried Vegetables",
+      "count": 14,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Flakes",
+      "count": 14,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Natural Gum and Resin",
+      "count": 13,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Shilajit",
+      "count": 12,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Dates",
+      "count": 12,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Saponin",
+      "count": 11,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Mushroom / Polysaccharide",
+      "count": 11,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Polyphenol",
+      "count": 10,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Coffee",
+      "count": 9,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Nuts & Seeds",
+      "count": 9,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Triterpene",
+      "count": 9,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Flavonoid",
+      "count": 9,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cosmetic Active / Triterpene",
+      "count": 9,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Polysaccharide",
+      "count": 9,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Resin",
+      "count": 8,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Polysaccharide / Polysaccharide",
+      "count": 8,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Alkaloid",
+      "count": 8,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Phenylpropanoid",
+      "count": 8,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Phytoestrogen / Isoflavone",
+      "count": 7,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Flavonoid",
+      "count": 7,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Diterpene",
+      "count": 6,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cereal",
+      "count": 6,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Alkaloid / Alkaloid",
+      "count": 6,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Dairy Powder",
+      "count": 6,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Fruit Active / Vitamin",
+      "count": 6,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Tea",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Phenylpropanoid",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Pigment / Carotenoid",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Stimulant / Alkaloid",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Powder",
+      "count": 5,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Essential Oil Isolate / Terpene",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Butter",
+      "count": 5,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Chinese / TCM / Triterpene",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Religious Items",
+      "count": 5,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Chinese / TCM / Lignan",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Organic acid",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Neolignan",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Grapes",
+      "count": 5,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Seasoning and Spices",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Western Herb / Polysaccharide",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Nucleoside",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Limonoid",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Triterpene",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Fruit",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Enzyme / Protease",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Asian Herb / Quassinoid",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Western Herb / Fatty acid",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Diterpene",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Spice Pack",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Leaf",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Pigment / Phycobiliprotein",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Cosmetic Active / Stilbene",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Sweetener / Glycoside",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ayurvedic / Steroidal lactone",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Allium / Organosulfur",
+      "count": 3,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Almond",
+      "count": 3,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Pigment / Polyphenol",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Bark",
+      "count": 3,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Wax",
+      "count": 3,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Pigment / Betalain",
+      "count": 3,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Puja",
+      "count": 3,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Pungent principle / Alkaloid",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Diterpene",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Essential Oil Isolate / Phenol",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Phytoestrogen / Steroidal saponin",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Alkaloid",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Saponin",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Isoflavone",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Amino acid",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Triterpene / Triterpene",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chinese / TCM / Monoterpene glycoside",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Stimulant / Polyphenol",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Glycoside",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Saponin / Saponin",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Quinone",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Walnut",
+      "count": 3,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ayurvedic / Amino acid",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Anthraquinone",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Plums",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Figs",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Whole",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Cosmetic Active / Meroterpene",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Mushroom / Triterpene",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Herb,Cuts",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Hot Chocolate",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Cashew",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Wood",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Indole / Indole",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Leaves",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Apricots",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Cosmetic Active / Flavonoid",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cosmetic Active / Isoflavone",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cosmetic Active / Saponin",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Steroid",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Grains, Rice & Cereal",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Ayurvedic / Iridoid glycoside",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Secoiridoid",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Sesquiterpene lactone",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Food Gift Baskets",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Western Herb / Flavonolignan",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Isothiocyanate / Isothiocyanate",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Polyphenol / Polyphenol",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Berries",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Western Herb / Terpene",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Confectionery Flavours",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Fruit Flavour",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Hair",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Alkaloid / Amino acid derivative",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Face Pack",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Western Herb / Iridoid glycoside",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Amla",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Vinegar",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ashwagandha",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Quince",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Whole Stone",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Flower",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Chocolate",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Herbs",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Polyphenol / Flavonoid",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cheese",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Seasonings & Spices",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Chinese / TCM / Polyphenol",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cucumbers",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ayurvedic / Benzoquinone",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Fruit Active / Flavonoid",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Pigment / Iridoid glycoside",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Isothiocyanate / Glucosinolate",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ayurvedic / Glucosinolate",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Chemical",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Western Herb / Phloroglucinol",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Naphthodianthrone",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Garlic",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ginger Root",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Chinese / TCM / Phthalide",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Western Herb / Amide",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Twig",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Melons",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Nut",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Pistachios",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ayurvedic / Polysaccharide",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Dalia Pack",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Atta Pack",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Hair Pack",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Herb Mix",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Western Herb / Mineral",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Flour",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Herbs & Spice",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Soy Sauce",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Spray Bottles",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Chinese / TCM / Stilbene",
+      "count": 1,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cosmetics",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Mascara",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Roots",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Ayurvedic / Vitamin",
+      "count": 1,
+      "scope": "out_of_scope"
+    }
+  ]
+}

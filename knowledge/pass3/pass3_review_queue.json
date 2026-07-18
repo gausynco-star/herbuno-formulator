@@ -1,0 +1,1181 @@
+{
+  "_meta": {
+    "build_date": "2026-07-18",
+    "count": 101,
+    "by_type": {
+      "ambiguous_common_name": 58,
+      "form_normalization_disagreement": 43
+    }
+  },
+  "entries": [
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "thewholesaler.eu",
+      "raw_title": "Lemongrass Hydrosol - Cymbopogon",
+      "raw_type": "Hydrosol",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "ambiguous_name": "Lemongrass",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "thewholesaler.eu",
+      "raw_title": "Lemongrass Infused Oil - Cymbopogon",
+      "raw_type": "Infused Oil",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "ambiguous_name": "Lemongrass",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "thewholesaler.eu",
+      "raw_title": "Lemongrass leaf, Cut - Cymbopogon",
+      "raw_type": "Herb,Cut",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "ambiguous_name": "Lemongrass",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "thewholesaler.eu",
+      "raw_title": "Lemongrass Powder - Cymbopogon",
+      "raw_type": "Herbal Powder",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "ambiguous_name": "Lemongrass",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "thewholesaler.eu",
+      "raw_title": "Lemongrass Water Soluble Extract - Cymbopogon",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "ambiguous_name": "Lemongrass",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Ajwain Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "ambiguous_name": "Ajwain",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Ajwain Seeds",
+      "raw_type": "Seeds",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "ambiguous_name": "Ajwain",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Bay Leaf Oil",
+      "raw_type": "Oils",
+      "candidates": [
+        "cinnamomum-tamala",
+        "laurus-nobilis"
+      ],
+      "ambiguous_name": "Bay leaf",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Bay Leaf Oleoresins",
+      "raw_type": "Oils",
+      "candidates": [
+        "cinnamomum-tamala",
+        "laurus-nobilis"
+      ],
+      "ambiguous_name": "Bay leaf",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Bay Leaf Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "cinnamomum-tamala",
+        "laurus-nobilis"
+      ],
+      "ambiguous_name": "Bay leaf",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Bhringraj Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Chitrak Root Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "plumbago-indica",
+        "plumbago-zeylanica"
+      ],
+      "ambiguous_name": "Chitrak root",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Cinnamon Extract Powder",
+      "raw_type": "Extracts",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Cinnamon Oleoresins",
+      "raw_type": "Oils",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Hibiscus Flower Oil",
+      "raw_type": "Oils",
+      "candidates": [
+        "hibiscus-mutabilis",
+        "hibiscus-sabdariffa"
+      ],
+      "ambiguous_name": "Hibiscus flower",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Jasmine Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "jasminum",
+        "jasminum-sambac"
+      ],
+      "ambiguous_name": "Jasmine",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Lemon Balm Leaf Extract Powder",
+      "raw_type": "Extracts",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Lemon Balm Leaf Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Mulberry Fruit Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "morus",
+        "morus-alba"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Mulberry Leaf Extract Powder",
+      "raw_type": "Extracts",
+      "candidates": [
+        "morus",
+        "morus-alba"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Rice Protein Isolate",
+      "raw_type": "Powders",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Senna Leaf Extract Powder",
+      "raw_type": "Extracts",
+      "candidates": [
+        "senna-alexandrina",
+        "senna-alexandrina-alexandrina"
+      ],
+      "ambiguous_name": "Senna leaf",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "raw_title": "Senna Leaf Powder",
+      "raw_type": "Powders",
+      "candidates": [
+        "senna-alexandrina",
+        "senna-alexandrina-alexandrina"
+      ],
+      "ambiguous_name": "Senna leaf",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "bulknaturalswholesale.com",
+      "raw_title": "Dragon Fruit Freeze Dried Pink Pitaya Fruit Powder",
+      "raw_type": "Botanical extracts",
+      "flags": [
+        "freeze_dried_extract"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "bulknaturalswholesale.com",
+      "raw_title": "Hibiscus Flower Infusion",
+      "raw_type": "Botanical extracts",
+      "candidates": [
+        "hibiscus-mutabilis",
+        "hibiscus-sabdariffa"
+      ],
+      "ambiguous_name": "Hibiscus flower",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "bulknaturalswholesale.com",
+      "raw_title": "Jasmine Hydrosol- Small Batch",
+      "raw_type": "Floral water/ Hydrosol",
+      "candidates": [
+        "jasminum",
+        "jasminum-sambac"
+      ],
+      "ambiguous_name": "Jasmine",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "bulknaturalswholesale.com",
+      "raw_title": "Lemongrass Floral Water-Clearance 30%",
+      "raw_type": "Floral water/ Hydrosol",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "ambiguous_name": "Lemongrass",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Ajwain oil",
+      "raw_type": "Carrier Oil",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "ambiguous_name": "Ajwain",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Ajwain oil - 50ML",
+      "raw_type": "Carrier Oil",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "ambiguous_name": "Ajwain",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract - Oil Soluble",
+      "raw_type": "Oil Soluble Extract",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract - Water Soluble",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract - Water Soluble (Butylene Glycol)",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract - Water Soluble (Propanediol)",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract - WS (Butylene Glycol) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract - WS (Propanediol) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract (OS) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Bhringraj Liquid Extract (WS) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "ambiguous_name": "Bhringraj",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract - Oil Soluble",
+      "raw_type": "Oil Soluble Extract",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract - Water Soluble",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract - Water Soluble (Butylene Glycol)",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract - Water Soluble (Propanediol)",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract - WS (Butylene Glycol) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract - WS (Propanediol) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract (OS) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Cinnamon Extract (WS) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract - Oil Soluble",
+      "raw_type": "Oil Soluble Extract",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract - Water Soluble",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract - Water Soluble (Butylene Glycol)",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract - Water Soluble (Propanediol)",
+      "raw_type": "Water Soluble Extract",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract - WS (Butylene Glycol) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract - WS (Propanediol) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract (OS) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "raw_title": "Lemon Balm Extract (WS) - 50ML",
+      "raw_type": "Extract Oil",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Curcuminoids 98% Powder (Turmeric)| High-Purity Isolate | Curcuma Longa",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Tetrahydrocurcumin 95% Powder (Turmeric)| High-Purity Isolate | Curcuma Longa",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Piperine 98% Powder (Black Pepper)| High-Purity Isolate | Piper Nigrum",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Piperlongumine 98% Powder (Long Pepper)| High-Purity Isolate | Piper Longum",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Boswellic Acids 85% Powder (Indian Frankincense) | High-Purity Extract | Boswellia serrata",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Asiaticoside 90% Powder (Gotu Kola) | High-Purity Extract | Centella asiatica",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Asiaticoside 95% Powder (Gotu Kola) | High-Purity Isolate | Centella asiatica",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Madecassoside 90% Powder (Gotu Kola) | High-Purity Extract | Centella asiatica",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Gymnemic Acids 75% Powder (Gymnema)| High-Purity Extract | Gymnema Sylvestre",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Saponins 90% Powder (Tribulus)| High-Purity Extract | Tribulus Terrestris",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "L-DOPA 98% Powder (Velvet Bean)| High-Purity Isolate | Mucuna Pruriens",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Ursolic Acid 90% Powder (Tulsi)| High-Purity Extract | Ocimum Sanctum",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Embelin 98% Powder (Vidanga) | High-Purity Isolate | Embelia ribes",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Ginsenosides 80% Powder (Korean Ginseng) | High-Purity Extract | Panax ginseng",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Betulinic Acid 98% Powder (Birch Bark) | High-Purity Isolate | Betula alba",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Andrographolides 98% Powder (Andrographis)| High-Purity Isolate | Andrographis Paniculata",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Gypenosides 90% Powder (Jiaogulan) | High-Purity Extract | Gynostemma pentaphyllum",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Gypenosides 98% Powder (Jiaogulan) | High-Purity Isolate | Gynostemma pentaphyllum (Thunb.) Makino",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Polyphenols 95% Powder (Green Tea) | High-Purity Extract | Camellia sinensis",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "L-Theanine 98% Powder (Green Tea) | High-Purity Isolate | Camellia sinensis",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Ursolic Acid 90% Powder (Rosemary) | High-Purity Extract | Rosmarinus officinalis",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Ursolic Acid 98% Powder (Apple) | High-Purity Isolate | Malus domestica",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Polyphenols 95% Powder (Grape Seed) | High-Purity Extract | Vitis vinifera",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Salicin 98% Powder (White Willow Bark) | High-Purity Isolate | Salix alba",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Ellagic Acid 90% Powder (Pomegranate)| High-Purity Isolate | Punica Granatum",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Alpha-Mangostin 90% Powder (Mangosteen) | High-Purity Isolate | Garcinia mangostana",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Bakuchiol 98% Powder (Babchi) | High-Purity Isolate | Psoralea corylifolia",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Bakuchiol 99% Powder (Babchi) | High-Purity Isolate | Psoralea corylifolia",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Glabridin 40% Powder (Licorice Root)| High-Purity Isolate | Glycyrrhiza Glabra",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Glycyrrhizin 98% Powder (Licorice Root)| High-Purity Isolate | Glycyrrhiza Glabra",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Resveratrol 98% Powder (Japanese Knotweed) | High-Purity Isolate | Polygonum cuspidatum",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Pterostilbene 99% Powder (Indian Kino) | High-Purity Isolate | Pterocarpus marsupium",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Quercetin 98% Powder (Japanese Pagoda Tree) | High-Purity Isolate | Sophora japonica",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Rutin 98% Powder (Japanese Pagoda Tree) | High-Purity Isolate | Sophora japonica",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Diosmin 95% Powder (Citrus-Derived) | High-Purity Flavone Glycoside | Citrus aurantium",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Naringin 98% Powder (Pomelo) | High-Purity Isolate | Citrus grandis",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Neohesperidin 98% Powder (Bitter Orange) | High-Purity Isolate | Citrus aurantium",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Luteolin 98% Powder (Japanese Pagoda Tree) | High-Purity Isolate | Sophora japonica",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Baicalein 98% Powder (Chinese Skullcap) | High-Purity Isolate | Scutellaria baicalensis",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Wogonin 98% Powder (Chinese Skullcap) | High-Purity Isolate | Scutellaria baicalensis",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Cinnamon Polyphenols 10% Powder (Cinnamon Extract)| Standardized Cinnamomum Cassia",
+      "raw_type": "Standardised Extract",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Cinnamon Polyphenols 20% Powder (Cinnamon Extract)| Standardized Cinnamomum Cassia",
+      "raw_type": "Standardised Extract",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "ambiguous_name": "Cinnamon",
+      "requires_owner_review": true
+    },
+    {
+      "type": "form_normalization_disagreement",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Indole-3-Carbinol 98% Powder (I3C) | High-Purity | Brassica oleracea",
+      "raw_type": "Standardised Extract",
+      "flags": [
+        "possible_isolate_IC"
+      ],
+      "why_flagged": "Title indicates a form/assay state that conflicts with the mapped Type base.",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Lemongrass Liquid Extract (Water Soluble) - Cymbopogon| Hari Chai Ras",
+      "raw_type": "Ingredients > Botanical Extracts > liquid",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "ambiguous_name": "Lemongrass",
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Mulberry Leaf Extract Powder | Shahtoot Patta Powder",
+      "raw_type": "Ingredients > Botanical Extracts > Powder",
+      "candidates": [
+        "morus",
+        "morus-alba"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Turmeric Tulsi Green Tea | Tulasi",
+      "raw_type": "Beverages > Tea & Tisanes",
+      "candidates": [
+        "camellia-sinensis",
+        "curcuma-longa"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Lavender Bloom Green Tea",
+      "raw_type": "Beverages > Tea & Tisanes",
+      "candidates": [
+        "camellia-sinensis",
+        "lavandula-stoechas"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "herbuno.own",
+      "raw_title": "Lemon Mojito Green Tea",
+      "raw_type": "Beverages > Tea & Tisanes",
+      "candidates": [
+        "camellia-sinensis",
+        "citrus-limon"
+      ],
+      "ambiguous_name": null,
+      "requires_owner_review": true
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "_meta": {
+    "supplier_id": "bulknaturalswholesale.com",
+    "snapshot_date": "2026-07-17"
+  },
+  "unmapped_types": [
+    {
+      "type": "Essential oil",
+      "count": 96,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Hair and Skin Care",
+      "count": 43,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Fragrance oil",
+      "count": 33,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Skin Care",
+      "count": 32,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Plant butters",
+      "count": 32,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Health & Beauty",
+      "count": 24,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Clays & Colorants",
+      "count": 23,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Raw materials",
+      "count": 20,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Active",
+      "count": 16,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Antioxidants",
+      "count": 15,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Liposome",
+      "count": 12,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Wax",
+      "count": 12,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Oleoresin",
+      "count": 10,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Mushrooms",
+      "count": 9,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Infusion",
+      "count": 9,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Food & Cosmetic grade salt",
+      "count": 9,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Essential oil blend",
+      "count": 8,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Hair Care",
+      "count": 8,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Peptide",
+      "count": 7,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Dried flowers",
+      "count": 7,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Botanical extracts powder",
+      "count": 6,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Finished product",
+      "count": 6,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Emulsifiers",
+      "count": 5,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Gel",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Soap",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Honey",
+      "count": 4,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Preservative",
+      "count": 4,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "wax",
+      "count": 3,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Amino acid",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Cosmetic muds",
+      "count": 2,
+      "scope": "out_of_scope"
+    },
+    {
+      "type": "Enzyme",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Base",
+      "count": 2,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Lactobacillis ferment",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Protein",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "mushrooms",
+      "count": 1,
+      "scope": "in_scope_gap"
+    },
+    {
+      "type": "Soap base",
+      "count": 1,
+      "scope": "out_of_scope"
+    }
+  ]
+}

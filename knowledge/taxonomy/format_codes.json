@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "artifact": "Canonical Herbuno commercial-format code taxonomy",
+    "format_taxonomy_version": "2026-07-18",
+    "synchronised_from": "FORMULATOR_SPECIFICATION.md §3 (+ ADR-013 §6 new codes)",
+    "note": "SINGLE source of truth for format codes. Scripts MUST reference this file and never duplicate the code array. SE is an assay OVERLAY, not a base format. MUSH is an ingredient class, not a format. IC/LP route to application review, not a physical base."
+  },
+  "base_formats": {
+    "WL": {"canonical_label": "Water-soluble extract", "kind": "base", "state": "liquid", "description": "Water-soluble liquid extract.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": []},
+    "OE": {"canonical_label": "Oil-soluble extract", "kind": "base", "state": "liquid/paste", "description": "Oil-soluble liquid/paste extract.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": []},
+    "RE": {"canonical_label": "Botanical extract powder", "kind": "base", "state": "dry", "description": "Dry full-spectrum extract powder; solubility unknown from Type, water-favouring.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": ["full-spectrum extract"]},
+    "SD": {"canonical_label": "Spray-dried powder", "kind": "base", "state": "dry", "description": "Dry spray-dried powder; water-dispersibility is SKU-dependent, not proven by Type.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": ["spray-dried soluble powder"]},
+    "MP": {"canonical_label": "Dehydrated / milled powder", "kind": "base", "state": "dry", "description": "Dry milled botanical powder.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": []},
+    "FD": {"canonical_label": "Freeze-dried whole-material powder", "kind": "base", "state": "dry", "description": "Freeze-dried whole-material powder (parallel to MP/SD). A freeze-dried EXTRACT is NOT FD: model as its base extract code with a freeze-dry process note.", "introduced_by_adr": "ADR-013-pass3", "deprecated_aliases": []},
+    "CO": {"canonical_label": "Carrier oil", "kind": "base", "state": "oil", "description": "Oil vehicle/base (incl. infused oils).", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": ["infused oil"]},
+    "TC": {"canonical_label": "Tea & infusion cut", "kind": "base", "state": "dry-cut", "description": "Classical cut botanical for tea/infusion.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": []},
+    "WD": {"canonical_label": "Whole herb & spice", "kind": "base", "state": "whole", "description": "Coarse/whole dried botanical.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": []},
+    "WL-glycol": {"canonical_label": "Propylene-glycol extract", "kind": "base", "state": "liquid", "description": "Supplier-declared liquid extract in propylene glycol. Distinct from generic WL (regulatory/clean-label suitability varies).", "introduced_by_adr": "ADR-013", "deprecated_aliases": []},
+    "WL-glycerin": {"canonical_label": "Glycerin extract", "kind": "base", "state": "liquid", "description": "Supplier-declared liquid extract in glycerin. Distinct from generic WL (carrier identity affects formulation/labelling).", "introduced_by_adr": "ADR-013", "deprecated_aliases": []},
+    "RE-paste": {"canonical_label": "Concentrated extract paste", "kind": "base", "state": "semi-solid", "description": "Semi-solid extract state; behaviour depends on carrier/solids/phase/processing.", "introduced_by_adr": "ADR-013", "deprecated_aliases": []},
+    "OLR": {"canonical_label": "Oleoresin", "kind": "base", "state": "resinous", "description": "Concentrated resinous extract; flavour/colour/oil-phase associations. Phase/standardisation SKU-specific.", "introduced_by_adr": "ADR-013", "deprecated_aliases": []},
+    "HYD": {"canonical_label": "Hydrosol", "kind": "base", "state": "aqueous", "description": "Aqueous distillate with volatile constituents. Not an essential oil, WL, or ordinary liquid extract.", "introduced_by_adr": "ADR-013", "deprecated_aliases": ["floral water"]}
+  },
+  "overlays": {
+    "SE": {"canonical_label": "Standardised extract", "kind": "overlay", "description": "Assay overlay: standardised to a quantified marker. NEVER a base physical format; always sits on a base. Carries {marker, assay, method}.", "introduced_by_adr": "OptionB-v3", "deprecated_aliases": ["standardized extract"]}
+  },
+  "review_routing": {
+    "IC": {"canonical_label": "Nutraceutical active (isolate)", "kind": "review", "description": "Isolate / high-purity active. Routes to application review (§6). Not a physical base.", "introduced_by_adr": "OptionA", "deprecated_aliases": []},
+    "LP": {"canonical_label": "Liposomal ingredient", "kind": "review", "description": "Liposomal delivery. Routes to application review (§6). Not a physical base.", "introduced_by_adr": "OptionA", "deprecated_aliases": []}
+  },
+  "ingredient_classes": {
+    "mushroom": {"label": "Mushroom ingredient", "note": "Ingredient CLASS, not a format. Record ingredient_class=mushroom PLUS a real base format (MP/RE/WD/etc.). MUSH must never be a base code."}
+  },
+  "not_a_botanical_format": {
+    "note": "Supplier Type values in these families are NOT botanical commercial formats and must go to unmapped_types (do not guess): essential oil, fragrance/aroma/diffuser oil, finished dosage (capsules/tablets/gummies), cosmetics/skin-care finished goods, peptides/synthetic actives, clays/colorants/minerals, foods/beverages-finished, enzymes/probiotics."
+  }
+}
