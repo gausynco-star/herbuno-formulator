@@ -34,7 +34,7 @@ READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
 QUERY_DATE = "2026-07-18"
 # Immutable freeze stamp. Bump identity_version on any rebuild (Pass 2 correction -> rebuild ->
 # new version). Downstream artifacts (Pass 3+) MUST record which identity_version they built against.
-IDENTITY_VERSION = "2026-07-19.1"  # + Pass-2d private-catalogue enrichment (prior versions in git history)
+IDENTITY_VERSION = "2026-07-19.2"  # + owner common-name mapping round (prior versions in git history)
 IDENTITY_SCHEMA_VERSION = 1
 
 # Confirmed duplicate-record merges (absorb -> keep). Encoded explicitly so a rebuild never
@@ -353,6 +353,38 @@ def main():
         for m in merged_report:
             print("    %s -> %s [%s]" % (m["absorbed_id"], m["kept_id"], m.get("status", "merged")))
 
+    # ---- ADR-013: owner common-name mapping round (adds common_names / new identities) ----
+    CN = os.path.join(HERE, "..", "sources", "common_name_resolved_mappings.json")
+    cn_added = cn_merged = 0
+    if os.path.exists(CN):
+        by_acc = {r["accepted_name"].lower(): r for r in records if r["accepted_name"]}
+        for binom, m in json.load(open(CN, encoding="utf-8"))["mappings"].items():
+            ex = by_acc.get(binom.lower())
+            if ex:
+                cur = set(ex.get("common_names") or [])
+                ex["common_names"] = sorted(cur | set(m["common_names"]))
+                ex["provenance"]["accepted_outside_gbif_candidates"] = True
+                ex["provenance"]["owner_common_mapping"] = True
+                ex["provenance"]["gbif_recheck"] = m["gbif_recheck"]
+                cn_merged += 1
+            else:
+                g, sp, inf, rank_guess = parse_name(binom)
+                key, gbif_rank = gbif_info(binom)
+                rec = {"canonical_id": slug(binom, used_ids), "accepted_name": binom,
+                       "accepted_rank": gbif_rank or rank_guess, "genus": g, "species": sp,
+                       "infraspecific_epithet": inf, "gbif_usage_key": key,
+                       "original_parsed_names": [binom], "scientific_synonyms": [], "trade_synonyms": [],
+                       "common_names": sorted(m["common_names"]),
+                       "resolution_status": "owner-common-mapped",
+                       "provenance": {"authority": "owner", "resolved_by": "owner", "query_date": m["date"],
+                                      "review_date": m["date"], "provenance_note": m["provenance"],
+                                      "accepted_outside_gbif_candidates": True,
+                                      "gbif_recheck": m["gbif_recheck"], "source": "owner_common_mapping"}}
+                by_acc[binom.lower()] = rec
+                records.append(rec)
+                cn_added += 1
+        print("  common-name mappings: +%d new identities, %d common-name sets merged" % (cn_added, cn_merged))
+
     records.sort(key=lambda r: (r["accepted_name"] or "~" + r["canonical_id"]))
     _save(CACHE, _local)
 
@@ -371,6 +403,8 @@ def main():
         "identity_records": len(records), "excluded": len(excluded),
         "pass1_keys_accounted": key_total,
         "delta_enrichment": {"total_new": delta_added, "total_merged": delta_merged, "by_source": delta_by_source},
+        "common_name_mappings": {"new_identities": cn_added, "merged_into_existing": cn_merged,
+                                 "source": "knowledge/sources/common_name_resolved_mappings.json (owner)"},
         "record_merges": merged_report,
         "resolution_status_counts": dict(status_counts),
         "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. "
