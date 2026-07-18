@@ -1,10 +1,10 @@
 {
   "_meta": {
     "artifact": "Common-index part-stripping collision quarantine (Fix 2b)",
-    "identity_version": "2026-07-18.1",
-    "derived_keys_indexed": 318,
-    "collisions_quarantined": 25,
-    "note": "Part-stripped common-name keys that map to >1 identity are NOT indexed (no silent merge); listed here for adjudication. Derived keys that DO index are tagged provenance=part-stripped."
+    "identity_version": "2026-07-19",
+    "derived_keys_indexed": 320,
+    "collisions_quarantined": 21,
+    "note": "Part-stripped common-name keys mapping to >1 identity; not indexed (no silent merge)."
   },
   "quarantine": [
     {
@@ -36,14 +36,6 @@
       "canonical_ids": [
         "cinnamomum-tamala",
         "laurus-nobilis"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "bhringraj",
-      "canonical_ids": [
-        "eclipta-alba",
-        "eclipta-prostrata"
       ],
       "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
     },
@@ -121,14 +113,6 @@
       "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
     },
     {
-      "stripped_key": "mulberry",
-      "canonical_ids": [
-        "morus",
-        "morus-alba"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
       "stripped_key": "nagarmotha",
       "canonical_ids": [
         "cyperus-rotundus",
@@ -141,14 +125,6 @@
       "canonical_ids": [
         "butea-frondosa",
         "butea-monosperma"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "parijat",
-      "canonical_ids": [
-        "nyctanthes-arbor",
-        "nyctanthes-arbor-tristis"
       ],
       "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
     },
@@ -182,14 +158,6 @@
         "decalepis-hamiltonii",
         "hemidesmus-indicus",
         "smilax-medica"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "senna",
-      "canonical_ids": [
-        "senna-alexandrina",
-        "senna-alexandrina-alexandrina"
       ],
       "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
     },

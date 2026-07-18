@@ -34,8 +34,18 @@ READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
 QUERY_DATE = "2026-07-18"
 # Immutable freeze stamp. Bump identity_version on any rebuild (Pass 2 correction -> rebuild ->
 # new version). Downstream artifacts (Pass 3+) MUST record which identity_version they built against.
-IDENTITY_VERSION = "2026-07-18.1"  # bumped for Pass-2c enrichment rebuild (same calendar day as .0; prior version in git history)
+IDENTITY_VERSION = "2026-07-19"  # bumped for duplicate-record merges (prior versions in git history)
 IDENTITY_SCHEMA_VERSION = 1
+
+# Confirmed duplicate-record merges (absorb -> keep). Encoded explicitly so a rebuild never
+# auto-merges anything new. Genus-level records with >1 species (jasminum/gossypium/tagetes) are
+# deliberately NOT merged — that would assert a species the supplier never stated.
+RECORD_MERGES = [
+    ("senna-alexandrina-alexandrina", "senna-alexandrina", "autonym trinomial -> binomial"),
+    ("morus", "morus-alba", "genus-level record -> single species (Morus alba)"),
+    ("eclipta-alba", "eclipta-prostrata", "synonym: Eclipta alba = synonym of Eclipta prostrata (owner-stated)"),
+    ("nyctanthes-arbor", "nyctanthes-arbor-tristis", "truncated epithet -> full (arbor -> arbor-tristis)"),
+]
 AUTHORITY = "GBIF backbone (species/match v1)"
 GBIF_MATCH = "https://api.gbif.org/v1/species/match"
 SPECIESLIKE = ("SPECIES", "SUBSPECIES", "VARIETY", "FORM")
@@ -306,6 +316,36 @@ def main():
             delta_added += 1
         print("  pass2c enrichment: +%d new identities, %d merged into existing" % (delta_added, delta_merged))
 
+    # ---- ADR-013: merge confirmed duplicate records (absorb -> keep) ----
+    idx = {r["canonical_id"]: r for r in records}
+    merged_report, drop = [], set()
+    for a, k, why in RECORD_MERGES:
+        ra, rk = idx.get(a), idx.get(k)
+        if not ra or not rk:
+            merged_report.append({"absorbed_id": a, "kept_id": k, "reason": why, "status": "SKIPPED (record missing)"})
+            continue
+        before = {f: set(rk.get(f) or []) for f in ("original_parsed_names", "scientific_synonyms",
+                                                    "trade_synonyms", "common_names")}
+        for f in ("original_parsed_names", "trade_synonyms", "common_names"):
+            rk[f] = sorted(set(rk.get(f) or []) | set(ra.get(f) or []))
+        extra_sci = set(ra.get("scientific_synonyms") or [])
+        if ra.get("accepted_name") and is_scientific(ra["accepted_name"]):
+            extra_sci.add(ra["accepted_name"])                 # absorbed binomial becomes a synonym
+        rk["scientific_synonyms"] = sorted((set(rk.get("scientific_synonyms") or []) | extra_sci) - {rk["accepted_name"]})
+        rk.setdefault("provenance", {}).setdefault("merged_records", []).append(
+            {"absorbed_id": a, "absorbed_accepted_name": ra.get("accepted_name"), "reason": why})
+        merged_report.append({"absorbed_id": a, "absorbed_name": ra.get("accepted_name"),
+            "kept_id": k, "kept_name": rk.get("accepted_name"), "reason": why, "status": "merged",
+            "original_parsed_names_added": sorted(set(rk["original_parsed_names"]) - before["original_parsed_names"]),
+            "scientific_synonyms_added": sorted(set(rk["scientific_synonyms"]) - before["scientific_synonyms"]),
+            "common_names_added": sorted(set(rk["common_names"]) - before["common_names"])})
+        drop.add(a)
+    records = [r for r in records if r["canonical_id"] not in drop]
+    if merged_report:
+        print("  record merges: %d applied" % len(drop))
+        for m in merged_report:
+            print("    %s -> %s [%s]" % (m["absorbed_id"], m["kept_id"], m.get("status", "merged")))
+
     records.sort(key=lambda r: (r["accepted_name"] or "~" + r["canonical_id"]))
     _save(CACHE, _local)
 
@@ -325,6 +365,7 @@ def main():
         "pass1_keys_accounted": key_total,
         "pass2c_enrichment": {"new_identities": delta_added, "merged_into_existing": delta_merged,
                               "source": "knowledge/pass2c/delta_authority_results.json (independent suppliers)"},
+        "record_merges": merged_report,
         "resolution_status_counts": dict(status_counts),
         "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. "
                          "Corrections flow: fix in Pass 2 (review queue / sign-off) -> rebuild this "

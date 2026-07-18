@@ -1,12 +1,12 @@
 {
   "_meta": {
     "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
-    "identity_version": "2026-07-18.1",
+    "identity_version": "2026-07-19",
     "identity_schema_version": 1,
     "frozen": true,
     "built": "2026-07-18",
     "authority": "GBIF backbone (species/match v1)",
-    "identity_records": 583,
+    "identity_records": 579,
     "excluded": 28,
     "pass1_keys_accounted": 641,
     "pass2c_enrichment": {
@@ -14,13 +14,86 @@
       "merged_into_existing": 0,
       "source": "knowledge/pass2c/delta_authority_results.json (independent suppliers)"
     },
+    "record_merges": [
+      {
+        "absorbed_id": "senna-alexandrina-alexandrina",
+        "absorbed_name": "Senna alexandrina alexandrina",
+        "kept_id": "senna-alexandrina",
+        "kept_name": "Senna alexandrina",
+        "reason": "autonym trinomial -> binomial",
+        "status": "merged",
+        "original_parsed_names_added": [
+          "Cassia angustifolia"
+        ],
+        "scientific_synonyms_added": [
+          "Cassia angustifolia",
+          "Senna alexandrina alexandrina"
+        ],
+        "common_names_added": [
+          "Senna leaf"
+        ]
+      },
+      {
+        "absorbed_id": "morus",
+        "absorbed_name": "Morus",
+        "kept_id": "morus-alba",
+        "kept_name": "Morus alba",
+        "reason": "genus-level record -> single species (Morus alba)",
+        "status": "merged",
+        "original_parsed_names_added": [
+          "Morus spp"
+        ],
+        "scientific_synonyms_added": [
+          "Morus spp"
+        ],
+        "common_names_added": [
+          "Mulberry Fruit",
+          "Mulberry Leaf"
+        ]
+      },
+      {
+        "absorbed_id": "eclipta-alba",
+        "absorbed_name": "Eclipta alba",
+        "kept_id": "eclipta-prostrata",
+        "kept_name": "Eclipta prostrata",
+        "reason": "synonym: Eclipta alba = synonym of Eclipta prostrata (owner-stated)",
+        "status": "merged",
+        "original_parsed_names_added": [
+          "Eclipta alba"
+        ],
+        "scientific_synonyms_added": [
+          "Eclipta alba"
+        ],
+        "common_names_added": [
+          "Bhringraj Leaf, Cut",
+          "Bhringraj Leaf, Whole"
+        ]
+      },
+      {
+        "absorbed_id": "nyctanthes-arbor",
+        "absorbed_name": "Nyctanthes arbor",
+        "kept_id": "nyctanthes-arbor-tristis",
+        "kept_name": "Nyctanthes arbor-tristis",
+        "reason": "truncated epithet -> full (arbor -> arbor-tristis)",
+        "status": "merged",
+        "original_parsed_names_added": [
+          "Nyctanthes arbor"
+        ],
+        "scientific_synonyms_added": [
+          "Nyctanthes arbor"
+        ],
+        "common_names_added": [
+          "Parijat Flower, Cut"
+        ]
+      }
+    ],
     "resolution_status_counts": {
-      "accepted": 464,
-      "synonym-resolved": 67,
+      "accepted": 462,
+      "synonym-resolved": 66,
       "delta-accepted": 18,
       "owner-resolved": 11,
       "typo-corrected": 13,
-      "genus_level": 5,
+      "genus_level": 4,
       "delta-synonym-resolved": 1,
       "trade_ambiguous": 3,
       "species_ambiguous": 1
@@ -5368,32 +5441,6 @@
       }
     },
     {
-      "canonical_id": "eclipta-alba",
-      "accepted_name": "Eclipta alba",
-      "accepted_rank": "SPECIES",
-      "genus": "Eclipta",
-      "species": "alba",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 5384955,
-      "original_parsed_names": [
-        "Eclipta alba"
-      ],
-      "scientific_synonyms": [],
-      "trade_synonyms": [],
-      "common_names": [
-        "Bhringraj",
-        "Bhringraj Leaf, Cut",
-        "Bhringraj Leaf, Whole"
-      ],
-      "resolution_status": "accepted",
-      "provenance": {
-        "authority": "GBIF backbone (species/match v1)",
-        "query_date": "2026-07-18",
-        "resolved_by": "GBIF",
-        "review_date": null
-      }
-    },
-    {
       "canonical_id": "eclipta-prostrata",
       "accepted_name": "Eclipta prostrata",
       "accepted_rank": "SPECIES",
@@ -5402,12 +5449,17 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 5384950,
       "original_parsed_names": [
+        "Eclipta alba",
         "False daisy"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Eclipta alba"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Bhringraj",
+        "Bhringraj Leaf, Cut",
+        "Bhringraj Leaf, Whole",
         "False daisy"
       ],
       "resolution_status": "owner-resolved",
@@ -5415,7 +5467,14 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "owner",
-        "review_date": "2026-07-18"
+        "review_date": "2026-07-18",
+        "merged_records": [
+          {
+            "absorbed_id": "eclipta-alba",
+            "absorbed_accepted_name": "Eclipta alba",
+            "reason": "synonym: Eclipta alba = synonym of Eclipta prostrata (owner-stated)"
+          }
+        ]
       }
     },
     {
@@ -9052,33 +9111,6 @@
       }
     },
     {
-      "canonical_id": "morus",
-      "accepted_name": "Morus",
-      "accepted_rank": "GENUS",
-      "genus": "Morus",
-      "species": null,
-      "infraspecific_epithet": null,
-      "gbif_usage_key": null,
-      "original_parsed_names": [
-        "Morus spp"
-      ],
-      "scientific_synonyms": [
-        "Morus spp"
-      ],
-      "trade_synonyms": [],
-      "common_names": [
-        "Mulberry Fruit",
-        "Mulberry Leaf"
-      ],
-      "resolution_status": "genus_level",
-      "provenance": {
-        "authority": "GBIF backbone (species/match v1)",
-        "query_date": "2026-07-18",
-        "resolved_by": "owner",
-        "review_date": "2026-07-18"
-      }
-    },
-    {
       "canonical_id": "morus-alba",
       "accepted_name": "Morus alba",
       "accepted_rank": "SPECIES",
@@ -9087,12 +9119,17 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 5361889,
       "original_parsed_names": [
-        "Morus alba"
+        "Morus alba",
+        "Morus spp"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Morus spp"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Mulberry",
+        "Mulberry Fruit",
+        "Mulberry Leaf",
         "White Mulberry",
         "White mulberry"
       ],
@@ -9101,7 +9138,14 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "merged_records": [
+          {
+            "absorbed_id": "morus",
+            "absorbed_accepted_name": "Morus",
+            "reason": "genus-level record -> single species (Morus alba)"
+          }
+        ]
       }
     },
     {
@@ -9470,30 +9514,6 @@
       }
     },
     {
-      "canonical_id": "nyctanthes-arbor",
-      "accepted_name": "Nyctanthes arbor",
-      "accepted_rank": "SPECIES",
-      "genus": "Nyctanthes",
-      "species": "arbor",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 10871507,
-      "original_parsed_names": [
-        "Nyctanthes arbor"
-      ],
-      "scientific_synonyms": [],
-      "trade_synonyms": [],
-      "common_names": [
-        "Parijat Flower, Cut"
-      ],
-      "resolution_status": "accepted",
-      "provenance": {
-        "authority": "GBIF backbone (species/match v1)",
-        "query_date": "2026-07-18",
-        "resolved_by": "GBIF",
-        "review_date": null
-      }
-    },
-    {
       "canonical_id": "nyctanthes-arbor-tristis",
       "accepted_name": "Nyctanthes arbor-tristis",
       "accepted_rank": "SPECIES",
@@ -9502,12 +9522,16 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 3683008,
       "original_parsed_names": [
+        "Nyctanthes arbor",
         "Nyctanthes arbor-tristis"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Nyctanthes arbor"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Parijat Flower",
+        "Parijat Flower, Cut",
         "Parijat Flower, Whole",
         "Parijat Leaf",
         "Parijat Seed, Cut",
@@ -9519,7 +9543,14 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "merged_records": [
+          {
+            "absorbed_id": "nyctanthes-arbor",
+            "absorbed_accepted_name": "Nyctanthes arbor",
+            "reason": "truncated epithet -> full (arbor -> arbor-tristis)"
+          }
+        ]
       }
     },
     {
@@ -12653,12 +12684,17 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 2958032,
       "original_parsed_names": [
+        "Cassia angustifolia",
         "Senna alexandrina"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Cassia angustifolia",
+        "Senna alexandrina alexandrina"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Senna Leaf",
+        "Senna leaf",
         "Sonamukhi, Cut"
       ],
       "resolution_status": "accepted",
@@ -12666,33 +12702,14 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
-      }
-    },
-    {
-      "canonical_id": "senna-alexandrina-alexandrina",
-      "accepted_name": "Senna alexandrina alexandrina",
-      "accepted_rank": "VARIETY",
-      "genus": "Senna",
-      "species": "alexandrina",
-      "infraspecific_epithet": "alexandrina",
-      "gbif_usage_key": 7302622,
-      "original_parsed_names": [
-        "Cassia angustifolia"
-      ],
-      "scientific_synonyms": [
-        "Cassia angustifolia"
-      ],
-      "trade_synonyms": [],
-      "common_names": [
-        "Senna leaf"
-      ],
-      "resolution_status": "synonym-resolved",
-      "provenance": {
-        "authority": "GBIF backbone (species/match v1)",
-        "query_date": "2026-07-18",
-        "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "merged_records": [
+          {
+            "absorbed_id": "senna-alexandrina-alexandrina",
+            "absorbed_accepted_name": "Senna alexandrina alexandrina",
+            "reason": "autonym trinomial -> binomial"
+          }
+        ]
       }
     },
     {
