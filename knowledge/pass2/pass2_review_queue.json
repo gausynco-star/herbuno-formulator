@@ -9,12 +9,12 @@
     "owner_signoff": {
       "date": "2026-07-18",
       "resolved_by": "owner",
-      "provenance": "ChatGPT+owner review",
       "ambiguous_total": 20,
-      "resolved": 15,
-      "trade_ambiguous": 5,
-      "ambiguous_remaining": 0,
-      "note": "Decisions applied to synonym_remaps. authority_results.json (raw GBIF output) left unchanged — this is the human sign-off layer."
+      "resolved_from_gbif": 15,
+      "resolved_from_catalogue": 2,
+      "trade_ambiguous_remaining": 3,
+      "typos_corrected": 23,
+      "note": "Decisions applied to synonym_remaps and typo_flags. authority_results.json (raw GBIF output) left unchanged — this is the human sign-off layer."
     }
   },
   "synonym_remaps": [
@@ -52,7 +52,7 @@
         "Senegalia polyacantha"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Senegalia catechu",
@@ -71,7 +71,7 @@
         "Senegalia rugata"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Senegalia rugata",
@@ -121,7 +121,7 @@
         "Allium obliquum"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates. Keep original; Allium ampeloprasum complex.",
+      "note": "Owner-resolved from GBIF candidates. Keep original; Allium ampeloprasum complex.",
       "signoff": {
         "status": "resolved",
         "decision": "Allium porrum",
@@ -243,7 +243,7 @@
         "Senna insularis"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Chamaecrista absus",
@@ -315,10 +315,10 @@
       "signoff": {
         "status": "trade_ambiguous",
         "requires": "source/provenance before resolving",
-        "guidance": "Homonym; Chinese cassia trade material ≠ Neolitsea. Keep controlled identity \"Chinese cassia — Cinnamomum cassia/aromaticum\" pending source.",
+        "guidance": "Homonym; Chinese cassia trade material ≠ Neolitsea. Keep controlled identity \"Chinese cassia — Cinnamomum cassia/aromaticum\" pending source. Herbuno does not stock this species.",
         "resolved_by": "owner",
         "date": "2026-07-18",
-        "provenance": "ChatGPT+owner review"
+        "provenance": "Herbuno catalogue"
       }
     },
     {
@@ -354,7 +354,7 @@
         "Citrus ×limon"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates. Retain trade name: sweet lime / mosambi.",
+      "note": "Owner-resolved from GBIF candidates. Retain trade name: sweet lime / mosambi.",
       "signoff": {
         "status": "resolved",
         "decision": "Citrus ×limon",
@@ -397,22 +397,21 @@
     },
     {
       "latin": "Dolichos biflorus",
-      "accepted_name": null,
-      "ambiguous": true,
+      "accepted_name": "Macrotyloma uniflorum",
+      "ambiguous": false,
       "candidate_accepted_names": [
         "Macrotyloma axillare",
         "Macrotyloma biflorum"
       ],
       "match_confidence": 97,
-      "note": "Trade-ambiguous — NOT auto-resolved; requires source/provenance.",
-      "status": "trade_ambiguous",
+      "note": "Owner-resolved from Herbuno catalogue. Herbuno stocks 'Horse Gram — Dolichos biflorus'; Indian horse gram = M. uniflorum; keep Dolichos biflorus as trade synonym.",
       "signoff": {
-        "status": "trade_ambiguous",
-        "requires": "source/provenance before resolving",
-        "guidance": "Indian horse gram / kulattha = Macrotyloma uniflorum (not in GBIF candidates); strict Linnaean = Macrotyloma biflorum. Flag.",
+        "status": "resolved_from_catalogue",
+        "decision": "Macrotyloma uniflorum",
         "resolved_by": "owner",
         "date": "2026-07-18",
-        "provenance": "ChatGPT+owner review"
+        "provenance": "Herbuno catalogue",
+        "accepted_outside_gbif_candidates": true
       }
     },
     {
@@ -457,7 +456,7 @@
         "Garcinia hanburyi"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Garcinia gummi-gutta",
@@ -483,7 +482,7 @@
         "Wrightia antidysenterica"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Holarrhena pubescens",
@@ -509,7 +508,7 @@
         "Luffa aegyptiaca"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Luffa aegyptiaca",
@@ -568,22 +567,21 @@
     },
     {
       "latin": "Orchis latifolia",
-      "accepted_name": null,
-      "ambiguous": true,
+      "accepted_name": "Dactylorhiza hatagirea",
+      "ambiguous": false,
       "candidate_accepted_names": [
         "Dactylorhiza incarnata",
         "Dactylorhiza majalis"
       ],
       "match_confidence": 97,
-      "note": "Trade-ambiguous — NOT auto-resolved; requires source/provenance.",
-      "status": "trade_ambiguous",
+      "note": "Owner-resolved from Herbuno catalogue. Herbuno stocks 'Salam Panja Tuber — Dactylorhiza hatagirea'.",
       "signoff": {
-        "status": "trade_ambiguous",
-        "requires": "source/provenance before resolving",
-        "guidance": "Himalayan salam panja often Dactylorhiza hatagirea; require provenance.",
+        "status": "resolved_from_catalogue",
+        "decision": "Dactylorhiza hatagirea",
         "resolved_by": "owner",
         "date": "2026-07-18",
-        "provenance": "ChatGPT+owner review"
+        "provenance": "Herbuno catalogue",
+        "accepted_outside_gbif_candidates": true
       }
     },
     {
@@ -595,7 +593,7 @@
         "Anacamptis palustris"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Anacamptis laxiflora",
@@ -650,10 +648,10 @@
       "signoff": {
         "status": "trade_ambiguous",
         "requires": "source/provenance before resolving",
-        "guidance": "Indian Ayurvedic identity = Vigna trilobata (not in GBIF candidates); flag.",
+        "guidance": "Indian Ayurvedic identity = Vigna trilobata (not in GBIF candidates); flag. Herbuno does not stock this species.",
         "resolved_by": "owner",
         "date": "2026-07-18",
-        "provenance": "ChatGPT+owner review"
+        "provenance": "Herbuno catalogue"
       }
     },
     {
@@ -665,7 +663,7 @@
         "Physalis lagascae"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Alkekengi officinarum",
@@ -715,7 +713,7 @@
         "Reynoutria japonica"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Reynoutria japonica",
@@ -733,7 +731,7 @@
         "Bistorta vivipara"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Bistorta vivipara",
@@ -759,7 +757,7 @@
         "Prunus avium"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates. Retain trade synonym Prunus dulcis.",
+      "note": "Owner-resolved from GBIF candidates. Retain trade synonym Prunus dulcis.",
       "signoff": {
         "status": "resolved",
         "decision": "Prunus amygdalus",
@@ -838,10 +836,10 @@
       "signoff": {
         "status": "trade_ambiguous",
         "requires": "source/provenance before resolving",
-        "guidance": "Behman Surkh = Salvia pratensis subsp. haematodes; clary sage = S. sclarea; require author/commodity.",
+        "guidance": "Behman Surkh = Salvia pratensis subsp. haematodes; clary sage = S. sclarea; require author/commodity. Herbuno does not stock this species.",
         "resolved_by": "owner",
         "date": "2026-07-18",
-        "provenance": "ChatGPT+owner review"
+        "provenance": "Herbuno catalogue"
       }
     },
     {
@@ -869,7 +867,7 @@
         "Solanum virginianum"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Solanum virginianum",
@@ -935,7 +933,7 @@
         "Zanthoxylum armatum"
       ],
       "match_confidence": 97,
-      "note": "Owner-resolved from ambiguous candidates.",
+      "note": "Owner-resolved from GBIF candidates.",
       "signoff": {
         "status": "resolved",
         "decision": "Zanthoxylum armatum",
@@ -959,161 +957,345 @@
       "suggested_correction": "Althaea officinalis",
       "edit_distance": 2,
       "match_confidence": 80,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Althaea officinalis",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Althaea officinalis",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Astercantha longifolia",
       "suggested_correction": "Asteracantha longifolia",
       "edit_distance": 1,
       "match_confidence": 84,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Asteracantha longifolia",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Asteracantha longifolia",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Cedrus deodora",
       "suggested_correction": "Cedrus deodara",
       "edit_distance": 1,
       "match_confidence": 93,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Cedrus deodara",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Cedrus deodara",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Cinnamomum burmannii",
       "suggested_correction": "Cinnamomum burmanni",
       "edit_distance": 1,
       "match_confidence": 96,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Cinnamomum burmanni",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Cinnamomum burmanni",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Citrus aurantifolia",
       "suggested_correction": "Citrus aurantiifolia",
       "edit_distance": 1,
       "match_confidence": 96,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Citrus aurantiifolia",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Citrus aurantiifolia",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Clerodendrun serratum",
       "suggested_correction": "Clerodendrum serratum",
       "edit_distance": 1,
       "match_confidence": 80,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Clerodendrum serratum",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Clerodendrum serratum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Crataeva nurvala",
       "suggested_correction": "Crateva nurvala",
       "edit_distance": 1,
       "match_confidence": 84,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Crateva nurvala",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Crateva nurvala",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Embelica officinalis",
       "suggested_correction": "Emblica officinalis",
       "edit_distance": 1,
       "match_confidence": 84,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Emblica officinalis",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Emblica officinalis",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Enicostemma littorale",
       "suggested_correction": "Enicostema littorale",
       "edit_distance": 1,
       "match_confidence": 84,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Enicostema littorale",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Enicostema littorale",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Hydnocarpus wightiana",
       "suggested_correction": "Hydnocarpus wightianus",
       "edit_distance": 2,
       "match_confidence": 96,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Hydnocarpus wightianus",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Hydnocarpus wightianus",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Lavendula stoechas",
       "suggested_correction": "Lavandula stoechas",
       "edit_distance": 1,
       "match_confidence": 85,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Lavandula stoechas",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Lavandula stoechas",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Malve sylvestris",
       "suggested_correction": "Malva sylvestris",
       "edit_distance": 1,
       "match_confidence": 85,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Malva sylvestris",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Malva sylvestris",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Mytrus communis",
       "suggested_correction": "Myrtus communis",
       "edit_distance": 2,
       "match_confidence": 80,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Myrtus communis",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Myrtus communis",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Ocimum bassillicum",
       "suggested_correction": "Ocimum basilicum",
       "edit_distance": 2,
       "match_confidence": 96,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Ocimum basilicum",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Ocimum basilicum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Onosma bracteatum",
       "suggested_correction": "Onosma bracteata",
       "edit_distance": 2,
       "match_confidence": 95,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Onosma bracteata",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Onosma bracteata",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Pelargonium rosium",
       "suggested_correction": "Pelargonium roseum",
       "edit_distance": 1,
       "match_confidence": 93,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Pelargonium roseum",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Pelargonium roseum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Peper cubeba",
       "suggested_correction": "Piper cubeba",
       "edit_distance": 1,
       "match_confidence": 80,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Piper cubeba",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Piper cubeba",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Ricinus communes",
       "suggested_correction": "Ricinus communis",
       "edit_distance": 1,
       "match_confidence": 93,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Ricinus communis",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Ricinus communis",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Roscaea procera",
       "suggested_correction": "Roscoea procera",
       "edit_distance": 1,
       "match_confidence": 84,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Roscoea procera",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Roscoea procera",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Strychmos potatorum",
       "suggested_correction": "Strychnos potatorum",
       "edit_distance": 1,
       "match_confidence": 85,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Strychnos potatorum",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Strychnos potatorum",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Valeriana wallichi",
       "suggested_correction": "Valeriana wallichii",
       "edit_distance": 1,
       "match_confidence": 96,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Valeriana wallichii",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Valeriana wallichii",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Zingiber officinalis",
       "suggested_correction": "Zingiber officinale",
       "edit_distance": 2,
       "match_confidence": 96,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Zingiber officinale",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Zingiber officinale",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     },
     {
       "latin": "Zizyphus sativa",
       "suggested_correction": "Ziziphus sativa",
       "edit_distance": 1,
       "match_confidence": 84,
-      "note": "NOT auto-applied. Owner review; secondary check POWO (powo.science.kew.org)."
+      "note": "Owner-approved spelling correction.",
+      "corrected_name": "Ziziphus sativa",
+      "signoff": {
+        "status": "corrected",
+        "corrected_to": "Ziziphus sativa",
+        "resolved_by": "owner",
+        "date": "2026-07-18",
+        "provenance": "GBIF fuzzy match + owner approval"
+      }
     }
   ],
   "unknown_quarantine": [
