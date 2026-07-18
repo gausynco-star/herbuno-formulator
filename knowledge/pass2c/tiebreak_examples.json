@@ -1,0 +1,236 @@
+{
+  "_meta": {
+    "note": "Cases where longest-that-resolves picked a different identity than shortest would have (Fix 1b doing real work).",
+    "count": 19
+  },
+  "examples": [
+    {
+      "title": "Cassia Nodosa Bark Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Cassia nodosa",
+        "cid": "cassia-nodosa"
+      },
+      "shortest": {
+        "matched": "Cassia",
+        "cid": "cinnamomum-cassia"
+      }
+    },
+    {
+      "title": "Cassia Nodosa Seeds",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Cassia nodosa",
+        "cid": "cassia-nodosa"
+      },
+      "shortest": {
+        "matched": "Cassia",
+        "cid": "cinnamomum-cassia"
+      }
+    },
+    {
+      "title": "Costus Igneus Leaf Extract Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Costus igneus",
+        "cid": "costus-igneus"
+      },
+      "shortest": {
+        "matched": "Costus",
+        "cid": "dolomiaea-costus"
+      }
+    },
+    {
+      "title": "Costus Igneus Leaf Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Costus igneus",
+        "cid": "costus-igneus"
+      },
+      "shortest": {
+        "matched": "Costus",
+        "cid": "dolomiaea-costus"
+      }
+    },
+    {
+      "title": "Echinacea Angustifolia Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Echinacea angustifolia",
+        "cid": "echinacea-angustifolia"
+      },
+      "shortest": {
+        "matched": "Echinacea",
+        "cid": "echinacea-purpurea"
+      }
+    },
+    {
+      "title": "Lemon Balm Leaf Extract Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Leaf Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Mulberry Fruit Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Mulberry Fruit",
+        "cid": "morus"
+      },
+      "shortest": {
+        "matched": "Mulberry",
+        "cid": "morus-alba"
+      }
+    },
+    {
+      "title": "Mulberry Leaf Extract Powder",
+      "supplier": "medikonda.com",
+      "longest": {
+        "matched": "Mulberry Leaf",
+        "cid": "morus"
+      },
+      "shortest": {
+        "matched": "Mulberry",
+        "cid": "morus-alba"
+      }
+    },
+    {
+      "title": "Rose Geranium Floral Water",
+      "supplier": "bulknaturalswholesale.com",
+      "longest": {
+        "matched": "Rose geranium",
+        "cid": "pelargonium-roseum"
+      },
+      "shortest": {
+        "matched": "Rose",
+        "cid": "rosa-indica"
+      }
+    },
+    {
+      "title": "Rose Petal Botanical Powder",
+      "supplier": "bulknaturalswholesale.com",
+      "longest": {
+        "matched": "Rose petal",
+        "cid": "rosa-damascena"
+      },
+      "shortest": {
+        "matched": "Rose",
+        "cid": "rosa-indica"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract - Oil Soluble",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract - Water Soluble",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract - Water Soluble (Butylene Glycol)",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract - Water Soluble (Propanediol)",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract - WS (Butylene Glycol) - 50ML",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract - WS (Propanediol) - 50ML",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract (OS) - 50ML",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    },
+    {
+      "title": "Lemon Balm Extract (WS) - 50ML",
+      "supplier": "hiyaindia.in",
+      "longest": {
+        "matched": "Lemon balm",
+        "cid": "melissa-officinalis"
+      },
+      "shortest": {
+        "matched": "Lemon",
+        "cid": "citrus-limon"
+      }
+    }
+  ]
+}

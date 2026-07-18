@@ -1,0 +1,210 @@
+{
+  "_meta": {
+    "source": "Fix 2 collision guard",
+    "collisions": 25
+  },
+  "quarantine": [
+    {
+      "stripped_key": "apple",
+      "canonical_ids": [
+        "aegle-marmelos",
+        "malus-domestica"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "atish",
+      "canonical_ids": [
+        "aconitum-heterophyllum",
+        "aconitum-palmatum"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "basil",
+      "canonical_ids": [
+        "ocimum-basilicum",
+        "ocimum-tenuiflorum"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "bay",
+      "canonical_ids": [
+        "cinnamomum-tamala",
+        "laurus-nobilis"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "bhringraj",
+      "canonical_ids": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "chitrak",
+      "canonical_ids": [
+        "plumbago-indica",
+        "plumbago-zeylanica"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "cinnamon",
+      "canonical_ids": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "gaozaban",
+      "canonical_ids": [
+        "borago-officinalis",
+        "maharanga-bracteata"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "gokhru",
+      "canonical_ids": [
+        "pedalium-murex",
+        "tribulus-terrestris"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "hibiscus",
+      "canonical_ids": [
+        "hibiscus-mutabilis",
+        "hibiscus-sabdariffa"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "jasmine",
+      "canonical_ids": [
+        "jasminum",
+        "jasminum-grandiflorum",
+        "jasminum-sambac"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "kaiphal",
+      "canonical_ids": [
+        "morella-esculenta",
+        "nageia-nagi"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "lavender",
+      "canonical_ids": [
+        "lavandula-angustifolia",
+        "lavandula-stoechas"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "lemongrass",
+      "canonical_ids": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "mulberry",
+      "canonical_ids": [
+        "morus",
+        "morus-alba"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "nagarmotha",
+      "canonical_ids": [
+        "cyperus-rotundus",
+        "cyperus-scariosus"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "palash",
+      "canonical_ids": [
+        "butea-frondosa",
+        "butea-monosperma"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "parijat",
+      "canonical_ids": [
+        "nyctanthes-arbor",
+        "nyctanthes-arbor-tristis"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "passion",
+      "canonical_ids": [
+        "passiflora-edulis",
+        "passiflora-incarnata"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "rasna",
+      "canonical_ids": [
+        "pluchea-lanceolata",
+        "vanda-tessellata"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "rose petal",
+      "canonical_ids": [
+        "rosa-damascena",
+        "rosa-indica"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "sarsaparilla",
+      "canonical_ids": [
+        "decalepis-hamiltonii",
+        "hemidesmus-indicus",
+        "smilax-medica"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "senna",
+      "canonical_ids": [
+        "senna-alexandrina",
+        "senna-alexandrina-alexandrina"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "soap",
+      "canonical_ids": [
+        "sapindus-mukorossi",
+        "senegalia-rugata"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    },
+    {
+      "stripped_key": "tea",
+      "canonical_ids": [
+        "camellia-oleifera",
+        "camellia-sinensis"
+      ],
+      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "supplier_id": "aethon",
-    "count": 5
+    "count": 6
   },
   "entries": [
     {
@@ -31,6 +31,16 @@
       "candidates": [
         "cinnamomum-burmanni",
         "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "aethon",
+      "label": "Rose Geranium",
+      "candidates": [
+        "pelargonium-roseum",
+        "rosa-indica"
       ],
       "requires_owner_review": true
     },

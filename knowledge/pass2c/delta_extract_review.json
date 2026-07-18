@@ -1,0 +1,383 @@
+{
+  "_meta": {
+    "built_against_identity_version": "2026-07-18.1",
+    "count": 34,
+    "note": "Ambiguous common-name resolutions routed to review (Fix 1c). Owner adjudicates."
+  },
+  "entries": [
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Ajwain Powder",
+      "matched": "Ajwain",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Ajwain Seeds",
+      "matched": "Ajwain",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Bay Leaf Oil",
+      "matched": "Bay Leaf",
+      "candidates": [
+        "cinnamomum-tamala",
+        "laurus-nobilis"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Bay Leaf Oleoresins",
+      "matched": "Bay Leaf",
+      "candidates": [
+        "cinnamomum-tamala",
+        "laurus-nobilis"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Bay Leaf Powder",
+      "matched": "Bay Leaf",
+      "candidates": [
+        "cinnamomum-tamala",
+        "laurus-nobilis"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Bhringraj Powder",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Chitrak Root Powder",
+      "matched": "Chitrak Root",
+      "candidates": [
+        "plumbago-indica",
+        "plumbago-zeylanica"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Cinnamon Extract Powder",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Cinnamon Oleoresins",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Hibiscus Flower Oil",
+      "matched": "Hibiscus Flower",
+      "candidates": [
+        "hibiscus-mutabilis",
+        "hibiscus-sabdariffa"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Jasmine Powder",
+      "matched": "Jasmine",
+      "candidates": [
+        "jasminum",
+        "jasminum-sambac"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Senna Leaf Extract Powder",
+      "matched": "Senna Leaf",
+      "candidates": [
+        "senna-alexandrina",
+        "senna-alexandrina-alexandrina"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "medikonda.com",
+      "title": "Senna Leaf Powder",
+      "matched": "Senna Leaf",
+      "candidates": [
+        "senna-alexandrina",
+        "senna-alexandrina-alexandrina"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "bulknaturalswholesale.com",
+      "title": "Hibiscus Flower Infusion",
+      "matched": "Hibiscus Flower",
+      "candidates": [
+        "hibiscus-mutabilis",
+        "hibiscus-sabdariffa"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "bulknaturalswholesale.com",
+      "title": "Jasmine Hydrosol- Small Batch",
+      "matched": "Jasmine",
+      "candidates": [
+        "jasminum",
+        "jasminum-sambac"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "bulknaturalswholesale.com",
+      "title": "Lemongrass Floral Water-Clearance 30%",
+      "matched": "Lemongrass",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Ajwain oil",
+      "matched": "Ajwain",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Ajwain oil - 50ML",
+      "matched": "Ajwain",
+      "candidates": [
+        "carum-copticum",
+        "trachyspermum-ammi"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract - Oil Soluble",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract - Water Soluble",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract - Water Soluble (Butylene Glycol)",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract - Water Soluble (Propanediol)",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract - WS (Butylene Glycol) - 50ML",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract - WS (Propanediol) - 50ML",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract (OS) - 50ML",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Bhringraj Liquid Extract (WS) - 50ML",
+      "matched": "Bhringraj",
+      "candidates": [
+        "eclipta-alba",
+        "eclipta-prostrata"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract - Oil Soluble",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract - Water Soluble",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract - Water Soluble (Butylene Glycol)",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract - Water Soluble (Propanediol)",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract - WS (Butylene Glycol) - 50ML",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract - WS (Propanediol) - 50ML",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract (OS) - 50ML",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "hiyaindia.in",
+      "title": "Cinnamon Extract (WS) - 50ML",
+      "matched": "Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    }
+  ]
+}

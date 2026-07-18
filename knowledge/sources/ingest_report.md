@@ -6,20 +6,20 @@
 ## Per-supplier resolution
 | supplier | family | private | rows | resolved | id_rate | ambiguous | unresolved | ocr_fixes |
 |---|---|---|--:|--:|--:|--:|--:|--:|
-| sangam | sf_sangam | private | 104 | 72 | 69% | 0 | 32 | 13 |
-| herbal_creative | sf_herbal_creative | private | 85 | 64 | 75% | 0 | 21 | 0 |
-| vaishno | sf_vaishno | private | 313 | 110 | 35% | 3 | 200 | 0 |
-| pending-mapping-01 | sf_pending_01 | private | 363 | 156 | 43% | 3 | 204 | 0 |
-| aethon | sf_aethon | private | 85 | 57 | 67% | 5 | 23 | 0 |
-| nita | sf_nita | private | 318 | 140 | 44% | 3 | 175 | 0 |
+| sangam | sf_sangam | private | 104 | 77 | 74% | 0 | 27 | 13 |
+| herbal_creative | sf_herbal_creative | private | 85 | 65 | 76% | 0 | 20 | 0 |
+| vaishno | sf_vaishno | private | 313 | 144 | 46% | 3 | 166 | 0 |
+| pending-mapping-01 | sf_pending_01 | private | 363 | 184 | 51% | 3 | 176 | 0 |
+| aethon | sf_aethon | private | 85 | 64 | 75% | 6 | 15 | 0 |
+| nita | sf_nita | private | 318 | 165 | 52% | 3 | 150 | 0 |
 
 ### match methods
-- **sangam**: accepted_name_exact=55, common_name_exact_unique=4, original_parsed_name_exact=13, unresolved=32
-- **herbal_creative**: accepted_name_exact=50, common_name_exact_unique=7, original_parsed_name_exact=7, unresolved=21
-- **vaishno**: accepted_name_exact=41, ambiguous=3, common_name_exact_unique=61, original_parsed_name_exact=8, unresolved=200
-- **pending-mapping-01**: accepted_name_exact=88, ambiguous=3, common_name_exact_unique=56, original_parsed_name_exact=12, unresolved=204
-- **aethon**: ambiguous=5, common_name_exact_unique=57, unresolved=23
-- **nita**: accepted_name_exact=5, ambiguous=3, common_name_exact_unique=131, original_parsed_name_exact=4, unresolved=175
+- **sangam**: accepted_name_exact=55, common_name_exact_unique=9, original_parsed_name_exact=13, unresolved=27
+- **herbal_creative**: accepted_name_exact=50, common_name_exact_unique=8, original_parsed_name_exact=7, unresolved=20
+- **vaishno**: accepted_name_exact=41, ambiguous=3, common_name_exact_unique=95, original_parsed_name_exact=8, unresolved=166
+- **pending-mapping-01**: accepted_name_exact=88, ambiguous=3, common_name_exact_unique=84, original_parsed_name_exact=12, unresolved=176
+- **aethon**: ambiguous=6, common_name_exact_unique=64, unresolved=15
+- **nita**: accepted_name_exact=5, ambiguous=3, common_name_exact_unique=156, original_parsed_name_exact=4, unresolved=150
 
 ### format distribution
 - **sangam**: RE=104
@@ -57,9 +57,9 @@
 ## Enrichment delta (NEW botanicals -> Pass-2c)
 | metric | value |
 |---|--:|
-| distinct new botanicals (unresolved) | **459** |
-| with Latin binomial | 216 |
-| common-only (need Latin) | 243 |
+| distinct new botanicals (unresolved) | **394** |
+| with Latin binomial | 194 |
+| common-only (need Latin) | 200 |
 
 These feed a later GBIF (Pass-2c) -> backbone rebuild -> identity_version bump. NOT run here.
 

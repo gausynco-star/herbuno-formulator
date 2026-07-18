@@ -16,7 +16,7 @@
       "known_catalogue_bias": "Indian Ayurvedic herbal extracts; Latin + part + assay; multi-section sheet.",
       "notes": "Columns re-detected per section header (BOTANICAL); ratio+active combined into raw_assay_ratio.",
       "rows": 104,
-      "identity_resolution_rate": 0.692
+      "identity_resolution_rate": 0.74
     },
     {
       "supplier_id": "herbal_creative",
@@ -29,7 +29,7 @@
       "known_catalogue_bias": "Standardised herbal extracts; Latin in product-name parens; column drift.",
       "notes": "Row-scan (columns drift across pages); Latin from parens; marker+limits -> assay.",
       "rows": 85,
-      "identity_resolution_rate": 0.753
+      "identity_resolution_rate": 0.765
     },
     {
       "supplier_id": "vaishno",
@@ -48,7 +48,7 @@
       "known_catalogue_bias": "Imported + domestic extracts; trade labels, no Latin column.",
       "notes": "Two files, one supplier (sf_vaishno). Identity via common-name resolution.",
       "rows": 313,
-      "identity_resolution_rate": 0.351
+      "identity_resolution_rate": 0.46
     },
     {
       "supplier_id": "pending-mapping-01",
@@ -61,7 +61,7 @@
       "known_catalogue_bias": "Largest extract list; trade labels, some Latin/vernacular in parens.",
       "notes": "Supplier identity PENDING confirmation — placeholder id pending-mapping-01.",
       "rows": 363,
-      "identity_resolution_rate": 0.43
+      "identity_resolution_rate": 0.507
     },
     {
       "supplier_id": "aethon",
@@ -74,7 +74,7 @@
       "known_catalogue_bias": "Essential oils (steam-distilled); country_of_origin recorded.",
       "notes": "Two side-by-side blocks in section 1.1; base EO; origin per row.",
       "rows": 85,
-      "identity_resolution_rate": 0.671
+      "identity_resolution_rate": 0.753
     },
     {
       "supplier_id": "nita",
@@ -87,7 +87,7 @@
       "known_catalogue_bias": "Dehydrated powders + freeze-dried; heavy Hindi/vernacular naming.",
       "notes": "base MP (whole-material powder); freeze-dried -> FD. Vernacular common names.",
       "rows": 318,
-      "identity_resolution_rate": 0.44
+      "identity_resolution_rate": 0.519
     }
   ]
 }
