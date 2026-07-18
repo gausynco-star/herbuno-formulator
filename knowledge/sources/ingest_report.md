@@ -1,25 +1,25 @@
 # Ingest Report — 6 Private Supplier Catalogues (ADR-013)
 
 > INTERNAL. Supplier identity + counts are internal; never reach a storefront asset. Resolved
-> against frozen identity_version `2026-07-18.1`. No prevalence language. Backbone not edited.
+> against frozen identity_version `2026-07-19.1`. No prevalence language. Backbone not edited.
 
 ## Per-supplier resolution
 | supplier | family | private | rows | resolved | id_rate | ambiguous | unresolved | ocr_fixes |
 |---|---|---|--:|--:|--:|--:|--:|--:|
-| sangam | sf_sangam | private | 104 | 77 | 74% | 0 | 27 | 13 |
-| herbal_creative | sf_herbal_creative | private | 85 | 65 | 76% | 0 | 20 | 0 |
-| vaishno | sf_vaishno | private | 313 | 144 | 46% | 3 | 166 | 0 |
-| pending-mapping-01 | sf_pending_01 | private | 363 | 184 | 51% | 3 | 176 | 0 |
+| sangam | sf_sangam | private | 104 | 83 | 80% | 0 | 21 | 13 |
+| herbal_creative | sf_herbal_creative | private | 85 | 68 | 80% | 0 | 17 | 0 |
+| vaishno | sf_vaishno | private | 313 | 160 | 51% | 3 | 150 | 0 |
+| pending-mapping-01 | sf_pending_01 | private | 363 | 204 | 56% | 3 | 156 | 0 |
 | aethon | sf_aethon | private | 85 | 64 | 75% | 6 | 15 | 0 |
-| nita | sf_nita | private | 318 | 165 | 52% | 3 | 150 | 0 |
+| nita | sf_nita | private | 318 | 166 | 52% | 3 | 149 | 0 |
 
 ### match methods
-- **sangam**: accepted_name_exact=55, common_name_exact_unique=9, original_parsed_name_exact=13, unresolved=27
-- **herbal_creative**: accepted_name_exact=50, common_name_exact_unique=8, original_parsed_name_exact=7, unresolved=20
-- **vaishno**: accepted_name_exact=41, ambiguous=3, common_name_exact_unique=95, original_parsed_name_exact=8, unresolved=166
-- **pending-mapping-01**: accepted_name_exact=88, ambiguous=3, common_name_exact_unique=84, original_parsed_name_exact=12, unresolved=176
+- **sangam**: accepted_name_exact=59, common_name_exact_unique=8, original_parsed_name_exact=16, unresolved=21
+- **herbal_creative**: accepted_name_exact=52, common_name_exact_unique=8, original_parsed_name_exact=8, unresolved=17
+- **vaishno**: accepted_name_exact=48, ambiguous=3, common_name_exact_unique=96, original_parsed_name_exact=16, unresolved=150
+- **pending-mapping-01**: accepted_name_exact=101, ambiguous=3, common_name_exact_unique=83, original_parsed_name_exact=20, unresolved=156
 - **aethon**: ambiguous=6, common_name_exact_unique=64, unresolved=15
-- **nita**: accepted_name_exact=5, ambiguous=3, common_name_exact_unique=156, original_parsed_name_exact=4, unresolved=150
+- **nita**: accepted_name_exact=5, ambiguous=3, common_name_exact_unique=157, original_parsed_name_exact=4, unresolved=149
 
 ### format distribution
 - **sangam**: RE=104
@@ -57,9 +57,9 @@
 ## Enrichment delta (NEW botanicals -> Pass-2c)
 | metric | value |
 |---|--:|
-| distinct new botanicals (unresolved) | **394** |
-| with Latin binomial | 194 |
-| common-only (need Latin) | 200 |
+| distinct new botanicals (unresolved) | **363** |
+| with Latin binomial | 165 |
+| common-only (need Latin) | 198 |
 
 These feed a later GBIF (Pass-2c) -> backbone rebuild -> identity_version bump. NOT run here.
 

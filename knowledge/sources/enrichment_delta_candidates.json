@@ -1,10 +1,10 @@
 {
   "_meta": {
     "artifact": "ADR-013 enrichment delta from 6 private supplier catalogues",
-    "built_against_identity_version": "2026-07-18.1",
-    "total": 394,
-    "latin": 194,
-    "common_only": 200,
+    "built_against_identity_version": "2026-07-19.1",
+    "total": 363,
+    "latin": 165,
+    "common_only": 198,
     "note": "Unresolved botanicals from private suppliers. Feed a later GBIF (Pass-2c) -> backbone rebuild -> identity_version bump. NOT run here."
   },
   "candidates": [
@@ -1801,26 +1801,6 @@
       ]
     },
     {
-      "candidate": "Senna",
-      "type": "common_only",
-      "suppliers": [
-        "vaishno"
-      ],
-      "example_labels": [
-        "Senna Extract"
-      ]
-    },
-    {
-      "candidate": "Senna Calcium",
-      "type": "common_only",
-      "suppliers": [
-        "nita"
-      ],
-      "example_labels": [
-        "Senna/Calcium"
-      ]
-    },
-    {
       "candidate": "Sesbania S",
       "type": "common_only",
       "suppliers": [
@@ -2193,36 +2173,6 @@
       ]
     },
     {
-      "candidate": "ANDROPOGON MURICATUS",
-      "type": "latin",
-      "suppliers": [
-        "sangam"
-      ],
-      "example_labels": [
-        "USHIR"
-      ]
-    },
-    {
-      "candidate": "Acer saccharum",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01"
-      ],
-      "example_labels": [
-        "Acer Saccharum Extract"
-      ]
-    },
-    {
-      "candidate": "Agaricus bisporus",
-      "type": "latin",
-      "suppliers": [
-        "herbal_creative"
-      ],
-      "example_labels": [
-        "Mashroom Extract (Agaricus Bisporus)"
-      ]
-    },
-    {
       "candidate": "Alfa alfa",
       "type": "latin",
       "suppliers": [
@@ -2284,18 +2234,6 @@
       ]
     },
     {
-      "candidate": "Aspalathus linearis",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Aspalathus Linearis Extract",
-        "Aspalathus Linearis Extract"
-      ]
-    },
-    {
       "candidate": "Asparagus Ascendense",
       "type": "latin",
       "suppliers": [
@@ -2303,18 +2241,6 @@
       ],
       "example_labels": [
         "Safed Musliext"
-      ]
-    },
-    {
-      "candidate": "Asparagus adscendens",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Asparagus Adscendens Extract",
-        "Asparagus Adscendens Extract"
       ]
     },
     {
@@ -2335,16 +2261,6 @@
       ],
       "example_labels": [
         "Bambos Extract (Bambosa Arundinacea)"
-      ]
-    },
-    {
-      "candidate": "Berberis asiatica",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01"
-      ],
-      "example_labels": [
-        "Berberis Asiatica Extract (Daruharidra)"
       ]
     },
     {
@@ -2496,30 +2412,6 @@
       ]
     },
     {
-      "candidate": "Ceratonia siliqua",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Ceratonia Siliqua Extract",
-        "Ceratonia Siliqua Extract"
-      ]
-    },
-    {
-      "candidate": "Chamomilla recutita",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Chamomilla Recutita Flower Extract",
-        "Chamomilla Recutita Flower Extract"
-      ]
-    },
-    {
       "candidate": "Charconite mud",
       "type": "latin",
       "suppliers": [
@@ -2626,18 +2518,6 @@
       ]
     },
     {
-      "candidate": "Citrus lemon",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Citrus Lemon Fruit Extract",
-        "Citrus Lemon Fruit Extract"
-      ]
-    },
-    {
       "candidate": "Clitoria terratea",
       "type": "latin",
       "suppliers": [
@@ -2662,28 +2542,6 @@
       ]
     },
     {
-      "candidate": "Commiphora mukul",
-      "type": "latin",
-      "suppliers": [
-        "sangam"
-      ],
-      "example_labels": [
-        "Gugulext"
-      ]
-    },
-    {
-      "candidate": "Cordyceps sinensis",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Cordyceps Sinensis Extract",
-        "Cordyceps Sinensis Extract"
-      ]
-    },
-    {
       "candidate": "Crataevea nurvala",
       "type": "latin",
       "suppliers": [
@@ -2696,16 +2554,6 @@
       ]
     },
     {
-      "candidate": "Cynara cardunculus",
-      "type": "latin",
-      "suppliers": [
-        "herbal_creative"
-      ],
-      "example_labels": [
-        "Artichowk Extract(Cynara Cardunculus)"
-      ]
-    },
-    {
       "candidate": "Cynodon datylon",
       "type": "latin",
       "suppliers": [
@@ -2715,16 +2563,6 @@
       "example_labels": [
         "Cynodon Datylon",
         "Cynodon Datylon"
-      ]
-    },
-    {
-      "candidate": "DATURA STRAMONIUM",
-      "type": "latin",
-      "suppliers": [
-        "sangam"
-      ],
-      "example_labels": [
-        "DATURA"
       ]
     },
     {
@@ -3045,16 +2883,6 @@
       ]
     },
     {
-      "candidate": "Epimedium grandiflorum",
-      "type": "latin",
-      "suppliers": [
-        "herbal_creative"
-      ],
-      "example_labels": [
-        "Horny Goats weed(Epimedium Grandiflorum)"
-      ]
-    },
-    {
       "candidate": "Epsom salt",
       "type": "latin",
       "suppliers": [
@@ -3106,16 +2934,6 @@
       ],
       "example_labels": [
         "French pink Clay"
-      ]
-    },
-    {
-      "candidate": "GLYCINE MAX",
-      "type": "latin",
-      "suppliers": [
-        "sangam"
-      ],
-      "example_labels": [
-        "SOYA"
       ]
     },
     {
@@ -3302,16 +3120,6 @@
       ]
     },
     {
-      "candidate": "Humulus lupulus",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01"
-      ],
-      "example_labels": [
-        "Hops Extract (Humulus lupulus)"
-      ]
-    },
-    {
       "candidate": "Instant premix",
       "type": "latin",
       "suppliers": [
@@ -3405,16 +3213,6 @@
       "example_labels": [
         "Korean Red Ginseng Extract",
         "Korean Red Ginseng Extract"
-      ]
-    },
-    {
-      "candidate": "LENS CULINARIS",
-      "type": "latin",
-      "suppliers": [
-        "sangam"
-      ],
-      "example_labels": [
-        "MASUR"
       ]
     },
     {
@@ -3686,40 +3484,6 @@
       ]
     },
     {
-      "candidate": "Peumus boldus",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Peumus Boldus - Leaves Extract",
-        "Peumus Boldus - Leaves Extract"
-      ]
-    },
-    {
-      "candidate": "Phaleria macrocarpa",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Phaleria Macrocarpa Fruit Extract",
-        "Phaleria Macrocarpa Fruit Extract"
-      ]
-    },
-    {
-      "candidate": "Picrorhiza kurrooa",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01"
-      ],
-      "example_labels": [
-        "Kutaki Extract (Picrorhiza kurrooa)"
-      ]
-    },
-    {
       "candidate": "Picrorniza kurroa",
       "type": "latin",
       "suppliers": [
@@ -3738,52 +3502,6 @@
       "example_labels": [
         "Pink Guava Powder",
         "Freeze Dried Pink Guava Powder"
-      ]
-    },
-    {
-      "candidate": "Plantago lanceolata",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Plantago Lanceolata Extract",
-        "Plantago Lanceolata Extract"
-      ]
-    },
-    {
-      "candidate": "Primula veris",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01"
-      ],
-      "example_labels": [
-        "Primula Veris Extract (Cowslip)"
-      ]
-    },
-    {
-      "candidate": "Pueraria mirifica",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Pueraria Mirifica Extract",
-        "Pueraria Mirifica Extract"
-      ]
-    },
-    {
-      "candidate": "Pygeum africanum",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Pygeum Africanum Extract",
-        "Pygeum Africanum Extract"
       ]
     },
     {
@@ -3851,18 +3569,6 @@
       ]
     },
     {
-      "candidate": "Rosmarinus officinalis",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Rosmarinus Officinalis - Leaves Extract",
-        "Rosmarinus Officinalis - Leaves Extract"
-      ]
-    },
-    {
       "candidate": "Rutin from",
       "type": "latin",
       "suppliers": [
@@ -3902,16 +3608,6 @@
       ],
       "example_labels": [
         "Salai guggul Extract"
-      ]
-    },
-    {
-      "candidate": "Sambucus nigra",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01"
-      ],
-      "example_labels": [
-        "Elder Berry Extract (Sambucus nigra)"
       ]
     },
     {
@@ -4017,18 +3713,6 @@
       ]
     },
     {
-      "candidate": "Spergularia rubra",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Spergularia Rubra Extract",
-        "Spergularia Rubra Extract"
-      ]
-    },
-    {
       "candidate": "Spnaeranthus indicus",
       "type": "latin",
       "suppliers": [
@@ -4115,16 +3799,6 @@
       ]
     },
     {
-      "candidate": "VIGNA MUNGO",
-      "type": "latin",
-      "suppliers": [
-        "sangam"
-      ],
-      "example_labels": [
-        "UDADA"
-      ]
-    },
-    {
       "candidate": "Vegetable wax",
       "type": "latin",
       "suppliers": [
@@ -4132,19 +3806,6 @@
       ],
       "example_labels": [
         "Vegetable wax"
-      ]
-    },
-    {
-      "candidate": "Vitex agnus",
-      "type": "latin",
-      "suppliers": [
-        "pending-mapping-01",
-        "vaishno"
-      ],
-      "example_labels": [
-        "Vitex agnus Castus Extract",
-        "Vitex agnus- Chest Berry Extract",
-        "Vitex agnus- Chest Berry Extract"
       ]
     },
     {

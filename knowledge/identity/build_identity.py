@@ -34,7 +34,7 @@ READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
 QUERY_DATE = "2026-07-18"
 # Immutable freeze stamp. Bump identity_version on any rebuild (Pass 2 correction -> rebuild ->
 # new version). Downstream artifacts (Pass 3+) MUST record which identity_version they built against.
-IDENTITY_VERSION = "2026-07-19"  # bumped for duplicate-record merges (prior versions in git history)
+IDENTITY_VERSION = "2026-07-19.1"  # + Pass-2d private-catalogue enrichment (prior versions in git history)
 IDENTITY_SCHEMA_VERSION = 1
 
 # Confirmed duplicate-record merges (absorb -> keep). Encoded explicitly so a rebuild never
@@ -281,11 +281,16 @@ def main():
     # Pass-1 accounting is fixed at 641 BEFORE any Pass-2c enrichment is merged in.
     pass1_key_total = sum(len(r["original_parsed_names"]) for r in records) + len(excluded)
 
-    # ---- ADR-013 Pass-2c: merge backbone-enrichment delta (accepted + single-accepted synonym) ----
-    DELTA = os.path.join(HERE, "..", "pass2c", "delta_authority_results.json")
+    # ---- ADR-013: merge backbone-enrichment deltas (accepted + single-accepted synonym) ----
+    DELTA_SOURCES = [("pass2c_delta", os.path.join(HERE, "..", "pass2c", "delta_authority_results.json")),
+                     ("pass2d_delta", os.path.join(HERE, "..", "pass2d", "delta_authority_results.json"))]
     delta_added = delta_merged = 0
-    if os.path.exists(DELTA):
-        by_acc = {r["accepted_name"].lower(): r for r in records if r["accepted_name"]}
+    delta_by_source = {}
+    by_acc = {r["accepted_name"].lower(): r for r in records if r["accepted_name"]}
+    for source, DELTA in DELTA_SOURCES:
+        if not os.path.exists(DELTA):
+            continue
+        added = merged = 0
         for e in json.load(open(DELTA, encoding="utf-8")).get("enrichment", []):
             acc, pnames = e["accepted_name"], e["parsed_names"]
             ex = by_acc.get(acc.lower())
@@ -297,8 +302,8 @@ def main():
                         if is_scientific(p) and p != acc and p not in ex["scientific_synonyms"]:
                             ex["scientific_synonyms"].append(p)
                 ex["original_parsed_names"].sort(); ex["scientific_synonyms"].sort()
-                ex["provenance"]["enriched_by_pass2c"] = True
-                delta_merged += 1
+                ex["provenance"].setdefault("enriched_by", []).append(source)
+                merged += 1
                 continue
             g, sp, inf, rank_guess = parse_name(acc)
             key, gbif_rank = gbif_info(acc)
@@ -310,11 +315,13 @@ def main():
                    "trade_synonyms": [], "common_names": [],
                    "resolution_status": "delta-accepted" if e["via"] == "accepted" else "delta-synonym-resolved",
                    "provenance": {"authority": AUTHORITY, "query_date": QUERY_DATE, "resolved_by": "GBIF",
-                                  "review_date": None, "source": "pass2c_delta"}}
+                                  "review_date": None, "source": source}}
             by_acc[acc.lower()] = rec
             records.append(rec)
-            delta_added += 1
-        print("  pass2c enrichment: +%d new identities, %d merged into existing" % (delta_added, delta_merged))
+            added += 1
+        delta_by_source[source] = {"new_identities": added, "merged_into_existing": merged}
+        delta_added += added; delta_merged += merged
+        print("  %s: +%d new identities, %d merged into existing" % (source, added, merged))
 
     # ---- ADR-013: merge confirmed duplicate records (absorb -> keep) ----
     idx = {r["canonical_id"]: r for r in records}
@@ -363,8 +370,7 @@ def main():
         "built": QUERY_DATE, "authority": AUTHORITY,
         "identity_records": len(records), "excluded": len(excluded),
         "pass1_keys_accounted": key_total,
-        "pass2c_enrichment": {"new_identities": delta_added, "merged_into_existing": delta_merged,
-                              "source": "knowledge/pass2c/delta_authority_results.json (independent suppliers)"},
+        "delta_enrichment": {"total_new": delta_added, "total_merged": delta_merged, "by_source": delta_by_source},
         "record_merges": merged_report,
         "resolution_status_counts": dict(status_counts),
         "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. "

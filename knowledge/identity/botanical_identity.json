@@ -1,18 +1,27 @@
 {
   "_meta": {
     "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
-    "identity_version": "2026-07-19",
+    "identity_version": "2026-07-19.1",
     "identity_schema_version": 1,
     "frozen": true,
     "built": "2026-07-18",
     "authority": "GBIF backbone (species/match v1)",
-    "identity_records": 579,
+    "identity_records": 605,
     "excluded": 28,
     "pass1_keys_accounted": 641,
-    "pass2c_enrichment": {
-      "new_identities": 19,
-      "merged_into_existing": 0,
-      "source": "knowledge/pass2c/delta_authority_results.json (independent suppliers)"
+    "delta_enrichment": {
+      "total_new": 45,
+      "total_merged": 5,
+      "by_source": {
+        "pass2c_delta": {
+          "new_identities": 19,
+          "merged_into_existing": 0
+        },
+        "pass2d_delta": {
+          "new_identities": 26,
+          "merged_into_existing": 5
+        }
+      }
     },
     "record_merges": [
       {
@@ -90,11 +99,11 @@
     "resolution_status_counts": {
       "accepted": 462,
       "synonym-resolved": 66,
-      "delta-accepted": 18,
+      "delta-accepted": 39,
       "owner-resolved": 11,
+      "delta-synonym-resolved": 6,
       "typo-corrected": 13,
       "genus_level": 4,
-      "delta-synonym-resolved": 1,
       "trade_ambiguous": 3,
       "species_ambiguous": 1
     },
@@ -307,6 +316,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "acer-saccharum",
+      "accepted_name": "Acer saccharum",
+      "accepted_rank": "SPECIES",
+      "genus": "Acer",
+      "species": "saccharum",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3189859,
+      "original_parsed_names": [
+        "Acer saccharum"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -592,6 +624,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "agaricus-bisporus",
+      "accepted_name": "Agaricus bisporus",
+      "accepted_rank": "SPECIES",
+      "genus": "Agaricus",
+      "species": "bisporus",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5243447,
+      "original_parsed_names": [
+        "Agaricus bisporus"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -1729,6 +1784,52 @@
       }
     },
     {
+      "canonical_id": "aspalathus-linearis",
+      "accepted_name": "Aspalathus linearis",
+      "accepted_rank": "SPECIES",
+      "genus": "Aspalathus",
+      "species": "linearis",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5348220,
+      "original_parsed_names": [
+        "Aspalathus linearis"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
+      "canonical_id": "asparagus-adscendens",
+      "accepted_name": "Asparagus adscendens",
+      "accepted_rank": "SPECIES",
+      "genus": "Asparagus",
+      "species": "adscendens",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2768799,
+      "original_parsed_names": [
+        "Asparagus adscendens"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "asparagus-racemosus",
       "accepted_name": "Asparagus racemosus",
       "accepted_rank": "SPECIES",
@@ -2022,6 +2123,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "berberis-asiatica",
+      "accepted_name": "Berberis asiatica",
+      "accepted_rank": "SPECIES",
+      "genus": "Berberis",
+      "species": "asiatica",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 7539048,
+      "original_parsed_names": [
+        "Berberis asiatica"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -3257,6 +3381,29 @@
       }
     },
     {
+      "canonical_id": "ceratonia-siliqua",
+      "accepted_name": "Ceratonia siliqua",
+      "accepted_rank": "SPECIES",
+      "genus": "Ceratonia",
+      "species": "siliqua",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5356354,
+      "original_parsed_names": [
+        "Ceratonia siliqua"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "ceropegia-adscendens-fimbriata",
       "accepted_name": "Ceropegia adscendens fimbriata",
       "accepted_rank": "VARIETY",
@@ -3404,6 +3551,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "chrysopogon-zizanioides",
+      "accepted_name": "Chrysopogon zizanioides",
+      "accepted_rank": "SPECIES",
+      "genus": "Chrysopogon",
+      "species": "zizanioides",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5677150,
+      "original_parsed_names": [
+        "ANDROPOGON MURICATUS"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-synonym-resolved",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -3803,10 +3973,12 @@
       "gbif_usage_key": 7647136,
       "original_parsed_names": [
         "Citrus bergamia",
+        "Citrus lemon",
         "Citrus limon"
       ],
       "scientific_synonyms": [
-        "Citrus bergamia"
+        "Citrus bergamia",
+        "Citrus lemon"
       ],
       "trade_synonyms": [],
       "common_names": [
@@ -3825,7 +3997,10 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "enriched_by": [
+          "pass2d_delta"
+        ]
       }
     },
     {
@@ -4162,9 +4337,12 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 3992808,
       "original_parsed_names": [
+        "Commiphora mukul",
         "Commiphora wightii"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Commiphora mukul"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Guggul",
@@ -4175,7 +4353,10 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "enriched_by": [
+          "pass2d_delta"
+        ]
       }
     },
     {
@@ -5012,6 +5193,29 @@
       }
     },
     {
+      "canonical_id": "cynara-cardunculus",
+      "accepted_name": "Cynara cardunculus",
+      "accepted_rank": "SPECIES",
+      "genus": "Cynara",
+      "species": "cardunculus",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3112364,
+      "original_parsed_names": [
+        "Cynara cardunculus"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "cynara-scolymus",
       "accepted_name": "Cynara scolymus",
       "accepted_rank": "SPECIES",
@@ -5137,6 +5341,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "datura-stramonium",
+      "accepted_name": "Datura stramonium",
+      "accepted_rank": "SPECIES",
+      "genus": "Datura",
+      "species": "stramonium",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2928751,
+      "original_parsed_names": [
+        "DATURA STRAMONIUM"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -5602,6 +5829,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "owner",
         "review_date": "2026-07-18"
+      }
+    },
+    {
+      "canonical_id": "epimedium-grandiflorum",
+      "accepted_name": "Epimedium grandiflorum",
+      "accepted_rank": "SPECIES",
+      "genus": "Epimedium",
+      "species": "grandiflorum",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 7300218,
+      "original_parsed_names": [
+        "Epimedium grandiflorum"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -6363,6 +6613,29 @@
       }
     },
     {
+      "canonical_id": "glycine-max",
+      "accepted_name": "Glycine max",
+      "accepted_rank": "SPECIES",
+      "genus": "Glycine",
+      "species": "max",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5359660,
+      "original_parsed_names": [
+        "GLYCINE MAX"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "glycyrrhiza-glabra",
       "accepted_name": "Glycyrrhiza glabra",
       "accepted_rank": "SPECIES",
@@ -7093,6 +7366,29 @@
         "resolved_by": "GBIF",
         "review_date": null,
         "source": "pass2c_delta"
+      }
+    },
+    {
+      "canonical_id": "humulus-lupulus",
+      "accepted_name": "Humulus lupulus",
+      "accepted_rank": "SPECIES",
+      "genus": "Humulus",
+      "species": "lupulus",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2984535,
+      "original_parsed_names": [
+        "Humulus lupulus"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -8654,9 +8950,12 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 8370958,
       "original_parsed_names": [
+        "Chamomilla recutita",
         "Matricaria chamomilla"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Chamomilla recutita"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Chamomile Flower",
@@ -8668,7 +8967,10 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "enriched_by": [
+          "pass2d_delta"
+        ]
       }
     },
     {
@@ -9749,6 +10051,31 @@
       }
     },
     {
+      "canonical_id": "ophiocordyceps-sinensis",
+      "accepted_name": "Ophiocordyceps sinensis",
+      "accepted_rank": "SPECIES",
+      "genus": "Ophiocordyceps",
+      "species": "sinensis",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2560562,
+      "original_parsed_names": [
+        "Cordyceps sinensis"
+      ],
+      "scientific_synonyms": [
+        "Cordyceps sinensis"
+      ],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-synonym-resolved",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "opuntia-ficus-indica",
       "accepted_name": "Opuntia ficus-indica",
       "accepted_rank": "SPECIES",
@@ -10389,6 +10716,52 @@
       }
     },
     {
+      "canonical_id": "peumus-boldus",
+      "accepted_name": "Peumus boldus",
+      "accepted_rank": "SPECIES",
+      "genus": "Peumus",
+      "species": "boldus",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3034108,
+      "original_parsed_names": [
+        "Peumus boldus"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
+      "canonical_id": "phaleria-macrocarpa",
+      "accepted_name": "Phaleria macrocarpa",
+      "accepted_rank": "SPECIES",
+      "genus": "Phaleria",
+      "species": "macrocarpa",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5524327,
+      "original_parsed_names": [
+        "Phaleria macrocarpa"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "phaseolus-vulgaris",
       "accepted_name": "Phaseolus vulgaris",
       "accepted_rank": "SPECIES",
@@ -10557,9 +10930,12 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 3727300,
       "original_parsed_names": [
-        "Picrorhiza kurroa"
+        "Picrorhiza kurroa",
+        "Picrorhiza kurrooa"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Picrorhiza kurrooa"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Kutki"
@@ -10569,7 +10945,10 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "enriched_by": [
+          "pass2d_delta"
+        ]
       }
     },
     {
@@ -10837,6 +11216,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "plantago-lanceolata",
+      "accepted_name": "Plantago lanceolata",
+      "accepted_rank": "SPECIES",
+      "genus": "Plantago",
+      "species": "lanceolata",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 8208358,
+      "original_parsed_names": [
+        "Plantago lanceolata"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -11140,6 +11542,29 @@
       }
     },
     {
+      "canonical_id": "pongamia-glabra",
+      "accepted_name": "Pongamia glabra",
+      "accepted_rank": "SPECIES",
+      "genus": "Pongamia",
+      "species": "glabra",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 11377893,
+      "original_parsed_names": [
+        "PONGAMIA GLABRA"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "pongamia-pinnata",
       "accepted_name": "Pongamia pinnata",
       "accepted_rank": "SPECIES",
@@ -11239,6 +11664,54 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "primula-veris",
+      "accepted_name": "Primula veris",
+      "accepted_rank": "SPECIES",
+      "genus": "Primula",
+      "species": "veris",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 8377689,
+      "original_parsed_names": [
+        "Primula veris"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
+      "canonical_id": "prunus-africana",
+      "accepted_name": "Prunus africana",
+      "accepted_rank": "SPECIES",
+      "genus": "Prunus",
+      "species": "africana",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3022853,
+      "original_parsed_names": [
+        "Pygeum africanum"
+      ],
+      "scientific_synonyms": [
+        "Pygeum africanum"
+      ],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-synonym-resolved",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -11475,6 +11948,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "pueraria-mirifica",
+      "accepted_name": "Pueraria mirifica",
+      "accepted_rank": "SPECIES",
+      "genus": "Pueraria",
+      "species": "mirifica",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2977697,
+      "original_parsed_names": [
+        "Pueraria mirifica"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -12332,9 +12828,12 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 10902460,
       "original_parsed_names": [
+        "Rosmarinus officinalis",
         "Salvia rosmarinus"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Rosmarinus officinalis"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Rosemary",
@@ -12346,7 +12845,10 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "enriched_by": [
+          "pass2d_delta"
+        ]
       }
     },
     {
@@ -12371,6 +12873,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "sambucus-nigra",
+      "accepted_name": "Sambucus nigra",
+      "accepted_rank": "SPECIES",
+      "genus": "Sambucus",
+      "species": "nigra",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2888728,
+      "original_parsed_names": [
+        "Sambucus nigra"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -12422,6 +12947,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "saraca-indica",
+      "accepted_name": "Saraca indica",
+      "accepted_rank": "SPECIES",
+      "genus": "Saraca",
+      "species": "indica",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5359538,
+      "original_parsed_names": [
+        "Saraca indica"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -13329,6 +13877,29 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "spergularia-rubra",
+      "accepted_name": "Spergularia rubra",
+      "accepted_rank": "SPECIES",
+      "genus": "Spergularia",
+      "species": "rubra",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3085633,
+      "original_parsed_names": [
+        "Spergularia rubra"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {
@@ -14737,6 +15308,52 @@
       }
     },
     {
+      "canonical_id": "vicia-lens",
+      "accepted_name": "Vicia lens",
+      "accepted_rank": "SPECIES",
+      "genus": "Vicia",
+      "species": "lens",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 3973001,
+      "original_parsed_names": [
+        "LENS CULINARIS"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-synonym-resolved",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
+      "canonical_id": "vigna-mungo",
+      "accepted_name": "Vigna mungo",
+      "accepted_rank": "SPECIES",
+      "genus": "Vigna",
+      "species": "mungo",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2982533,
+      "original_parsed_names": [
+        "VIGNA MUNGO"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-accepted",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
+      }
+    },
+    {
       "canonical_id": "vincetoxicum-indicum",
       "accepted_name": "Vincetoxicum indicum",
       "accepted_rank": "SPECIES",
@@ -14788,6 +15405,31 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "vitex-agnus-castus",
+      "accepted_name": "Vitex agnus-castus",
+      "accepted_rank": "SPECIES",
+      "genus": "Vitex",
+      "species": "agnus-castus",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 2925562,
+      "original_parsed_names": [
+        "Vitex agnus"
+      ],
+      "scientific_synonyms": [
+        "Vitex agnus"
+      ],
+      "trade_synonyms": [],
+      "common_names": [],
+      "resolution_status": "delta-synonym-resolved",
+      "provenance": {
+        "authority": "GBIF backbone (species/match v1)",
+        "query_date": "2026-07-18",
+        "resolved_by": "GBIF",
+        "review_date": null,
+        "source": "pass2d_delta"
       }
     },
     {

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "artifact": "ADR-013 Pass-2c delta candidates (backbone enrichment) [FIX 1+2]",
-    "built_against_identity_version": "2026-07-18.1",
+    "built_against_identity_version": "2026-07-19.1",
     "enrichment_sources": [
       "medikonda.com",
       "bulknaturalswholesale.com",
@@ -13,12 +13,12 @@
     ],
     "resolution_stats": {
       "unresolved": 1107,
-      "resolved": 1242,
-      "ambiguous": 34
+      "resolved": 1253,
+      "ambiguous": 23
     },
-    "recovered_now_resolved": 1242,
-    "ambiguous_to_review": 34,
-    "tiebreak_diffs": 19,
+    "recovered_now_resolved": 1253,
+    "ambiguous_to_review": 23,
+    "tiebreak_diffs": 17,
     "total_delta": 779,
     "latin": 281,
     "common_only": 498

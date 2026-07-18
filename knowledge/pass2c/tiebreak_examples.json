@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Cases where longest-that-resolves picked a different identity than shortest would have (Fix 1b doing real work).",
-    "count": 19
+    "count": 17
   },
   "examples": [
     {
@@ -86,30 +86,6 @@
       "shortest": {
         "matched": "Lemon",
         "cid": "citrus-limon"
-      }
-    },
-    {
-      "title": "Mulberry Fruit Powder",
-      "supplier": "medikonda.com",
-      "longest": {
-        "matched": "Mulberry Fruit",
-        "cid": "morus"
-      },
-      "shortest": {
-        "matched": "Mulberry",
-        "cid": "morus-alba"
-      }
-    },
-    {
-      "title": "Mulberry Leaf Extract Powder",
-      "supplier": "medikonda.com",
-      "longest": {
-        "matched": "Mulberry Leaf",
-        "cid": "morus"
-      },
-      "shortest": {
-        "matched": "Mulberry",
-        "cid": "morus-alba"
       }
     },
     {

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "built_against_identity_version": "2026-07-18.1",
-    "count": 34,
+    "built_against_identity_version": "2026-07-19.1",
+    "count": 23,
     "note": "Ambiguous common-name resolutions routed to review (Fix 1c). Owner adjudicates."
   },
   "entries": [
@@ -63,17 +63,6 @@
     {
       "type": "ambiguous_common_name",
       "supplier_id": "medikonda.com",
-      "title": "Bhringraj Powder",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "medikonda.com",
       "title": "Chitrak Root Powder",
       "matched": "Chitrak Root",
       "candidates": [
@@ -123,28 +112,6 @@
       "candidates": [
         "jasminum",
         "jasminum-sambac"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "medikonda.com",
-      "title": "Senna Leaf Extract Powder",
-      "matched": "Senna Leaf",
-      "candidates": [
-        "senna-alexandrina",
-        "senna-alexandrina-alexandrina"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "medikonda.com",
-      "title": "Senna Leaf Powder",
-      "matched": "Senna Leaf",
-      "candidates": [
-        "senna-alexandrina",
-        "senna-alexandrina-alexandrina"
       ],
       "requires_owner_review": true
     },
@@ -200,94 +167,6 @@
       "candidates": [
         "carum-copticum",
         "trachyspermum-ammi"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract - Oil Soluble",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract - Water Soluble",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract - Water Soluble (Butylene Glycol)",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract - Water Soluble (Propanediol)",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract - WS (Butylene Glycol) - 50ML",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract - WS (Propanediol) - 50ML",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract (OS) - 50ML",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
-      ],
-      "requires_owner_review": true
-    },
-    {
-      "type": "ambiguous_common_name",
-      "supplier_id": "hiyaindia.in",
-      "title": "Bhringraj Liquid Extract (WS) - 50ML",
-      "matched": "Bhringraj",
-      "candidates": [
-        "eclipta-alba",
-        "eclipta-prostrata"
       ],
       "requires_owner_review": true
     },

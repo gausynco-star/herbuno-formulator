@@ -1,12 +1,11 @@
 # Common-only Worklist — manual binomial mapping (ADR-013)
 
-> Unresolved common/vernacular names with no Latin binomial, after Fix 1 (Pass-2c resolver) +
-> Fix 2 (part-stripped common-index). Ranked by supplier-row references. Built against
-> identity_version `2026-07-18.1`. Fill the binomial after each `->`.
+> Unresolved common/vernacular names with no Latin binomial. Ranked by supplier-row references.
+> Built against identity_version `2026-07-19.1`. Fill the binomial after each `->`.
 
 Format: `N. Name [supplier-row count] -> <accepted binomial>`
 
-**573 names.**
+**571 names.**
 
 1. Hibiscus [14] -> 
 2. Marigold [12] -> 
@@ -512,72 +511,70 @@ Format: `N. Name [supplier-row count] -> <accepted binomial>`
 502. Seaweed Kelp [1] -> 
 503. Seena [1] -> 
 504. Self [1] -> 
-505. Senna [1] -> 
-506. Senna Calcium [1] -> 
-507. Sesbania S [1] -> 
-508. Shalapari [1] -> 
-509. Shallot [1] -> 
-510. Shankhapushapi [1] -> 
-511. Shankhapushapi Convolvulus pluricaulis [1] -> 
-512. Shepherd s Purse [1] -> 
-513. Sidr Ziziphus [1] -> 
-514. Sloe Berry [1] -> 
-515. Soapwort [1] -> 
-516. Solomon s Seal [1] -> 
-517. Sourwood [1] -> 
-518. Sowa Dry [1] -> 
-519. Soybean [1] -> 
-520. Spikemosses [1] -> 
-521. Spikenard [1] -> 
-522. Steel Oats [1] -> 
-523. Stillingia [1] -> 
-524. Stone [1] -> 
-525. Stonecrop [1] -> 
-526. Sumac Berry [1] -> 
-527. Sundew [1] -> 
-528. Sweet Clover [1] -> 
-529. Sweet Potato [1] -> 
-530. Sweet Potato Peel [1] -> 
-531. Szechuan [1] -> 
-532. Tagara [1] -> 
-533. Tangerine [1] -> 
-534. Taramira [1] -> 
-535. Tarragon [1] -> 
-536. Tart [1] -> 
-537. Tayuya [1] -> 
-538. Thai Green Kratom [1] -> 
-539. Thai Red Kratom [1] -> 
-540. Thai White Kratom [1] -> 
-541. Thymus [1] -> 
-542. Trifla [1] -> 
-543. Triphalaext [1] -> 
-544. Turmeric [1] -> 
-545. Twelve clock [1] -> 
-546. Ube [1] -> 
-547. USDA Organic Moringa [1] -> 
-548. Usnea [1] -> 
-549. Vadarikand [1] -> 
-550. Vaividang [1] -> 
-551. Verbena [1] -> 
-552. Violet [1] -> 
-553. Violet Absolute [1] -> 
-554. Virgin Coconut [1] -> 
-555. Virgin Olive [1] -> 
-556. WardiaRose [1] -> 
-557. Wasabi [1] -> 
-558. WaterLilly [1] -> 
-559. Wheat [1] -> 
-560. White Ginger [1] -> 
-561. White Guava [1] -> 
-562. White Kratom [1] -> 
-563. White Oak [1] -> 
-564. White Poppy [1] -> 
-565. White Pumpkin [1] -> 
-566. White Sandalwood [1] -> 
-567. WhiteMusk [1] -> 
-568. WhiteOud [1] -> 
-569. Wild Mustard [1] -> 
-570. Wild Rice [1] -> 
-571. Wild Teasel [1] -> 
-572. Yarsagumba [1] -> 
-573. YlangYlang [1] -> 
+505. Sesbania S [1] -> 
+506. Shalapari [1] -> 
+507. Shallot [1] -> 
+508. Shankhapushapi [1] -> 
+509. Shankhapushapi Convolvulus pluricaulis [1] -> 
+510. Shepherd s Purse [1] -> 
+511. Sidr Ziziphus [1] -> 
+512. Sloe Berry [1] -> 
+513. Soapwort [1] -> 
+514. Solomon s Seal [1] -> 
+515. Sourwood [1] -> 
+516. Sowa Dry [1] -> 
+517. Soybean [1] -> 
+518. Spikemosses [1] -> 
+519. Spikenard [1] -> 
+520. Steel Oats [1] -> 
+521. Stillingia [1] -> 
+522. Stone [1] -> 
+523. Stonecrop [1] -> 
+524. Sumac Berry [1] -> 
+525. Sundew [1] -> 
+526. Sweet Clover [1] -> 
+527. Sweet Potato [1] -> 
+528. Sweet Potato Peel [1] -> 
+529. Szechuan [1] -> 
+530. Tagara [1] -> 
+531. Tangerine [1] -> 
+532. Taramira [1] -> 
+533. Tarragon [1] -> 
+534. Tart [1] -> 
+535. Tayuya [1] -> 
+536. Thai Green Kratom [1] -> 
+537. Thai Red Kratom [1] -> 
+538. Thai White Kratom [1] -> 
+539. Thymus [1] -> 
+540. Trifla [1] -> 
+541. Triphalaext [1] -> 
+542. Turmeric [1] -> 
+543. Twelve clock [1] -> 
+544. Ube [1] -> 
+545. USDA Organic Moringa [1] -> 
+546. Usnea [1] -> 
+547. Vadarikand [1] -> 
+548. Vaividang [1] -> 
+549. Verbena [1] -> 
+550. Violet [1] -> 
+551. Violet Absolute [1] -> 
+552. Virgin Coconut [1] -> 
+553. Virgin Olive [1] -> 
+554. WardiaRose [1] -> 
+555. Wasabi [1] -> 
+556. WaterLilly [1] -> 
+557. Wheat [1] -> 
+558. White Ginger [1] -> 
+559. White Guava [1] -> 
+560. White Kratom [1] -> 
+561. White Oak [1] -> 
+562. White Poppy [1] -> 
+563. White Pumpkin [1] -> 
+564. White Sandalwood [1] -> 
+565. WhiteMusk [1] -> 
+566. WhiteOud [1] -> 
+567. Wild Mustard [1] -> 
+568. Wild Rice [1] -> 
+569. Wild Teasel [1] -> 
+570. Yarsagumba [1] -> 
+571. YlangYlang [1] -> 

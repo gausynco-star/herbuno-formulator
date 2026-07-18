@@ -1,7 +1,7 @@
 {
   "_meta": {
     "artifact": "Common-index part-stripping collision quarantine (Fix 2b)",
-    "identity_version": "2026-07-19",
+    "identity_version": "2026-07-19.1",
     "derived_keys_indexed": 320,
     "collisions_quarantined": 21,
     "note": "Part-stripped common-name keys mapping to >1 identity; not indexed (no silent merge)."

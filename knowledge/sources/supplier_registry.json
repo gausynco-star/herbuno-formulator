@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "identity_version": "2026-07-18.1",
+    "identity_version": "2026-07-19.1",
     "visibility": "INTERNAL_ONLY",
     "note": "Private supplier-shared catalogues. Raw files off-repo, referenced by SHA-256."
   },
@@ -16,7 +16,7 @@
       "known_catalogue_bias": "Indian Ayurvedic herbal extracts; Latin + part + assay; multi-section sheet.",
       "notes": "Columns re-detected per section header (BOTANICAL); ratio+active combined into raw_assay_ratio.",
       "rows": 104,
-      "identity_resolution_rate": 0.74
+      "identity_resolution_rate": 0.798
     },
     {
       "supplier_id": "herbal_creative",
@@ -29,7 +29,7 @@
       "known_catalogue_bias": "Standardised herbal extracts; Latin in product-name parens; column drift.",
       "notes": "Row-scan (columns drift across pages); Latin from parens; marker+limits -> assay.",
       "rows": 85,
-      "identity_resolution_rate": 0.765
+      "identity_resolution_rate": 0.8
     },
     {
       "supplier_id": "vaishno",
@@ -48,7 +48,7 @@
       "known_catalogue_bias": "Imported + domestic extracts; trade labels, no Latin column.",
       "notes": "Two files, one supplier (sf_vaishno). Identity via common-name resolution.",
       "rows": 313,
-      "identity_resolution_rate": 0.46
+      "identity_resolution_rate": 0.511
     },
     {
       "supplier_id": "pending-mapping-01",
@@ -61,7 +61,7 @@
       "known_catalogue_bias": "Largest extract list; trade labels, some Latin/vernacular in parens.",
       "notes": "Supplier identity PENDING confirmation — placeholder id pending-mapping-01.",
       "rows": 363,
-      "identity_resolution_rate": 0.507
+      "identity_resolution_rate": 0.562
     },
     {
       "supplier_id": "aethon",
@@ -87,7 +87,7 @@
       "known_catalogue_bias": "Dehydrated powders + freeze-dried; heavy Hindi/vernacular naming.",
       "notes": "base MP (whole-material powder); freeze-dried -> FD. Vernacular common names.",
       "rows": 318,
-      "identity_resolution_rate": 0.519
+      "identity_resolution_rate": 0.522
     }
   ]
 }

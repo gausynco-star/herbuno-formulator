@@ -1,7 +1,7 @@
 {
   "_meta": {
     "supplier_id": "nita",
-    "identity_version": "2026-07-18.1",
+    "identity_version": "2026-07-19.1",
     "source_file": "Nita Trade product List.xlsx",
     "sha256": "073b7e569e7d20be4bc6397de49d455f0a77127a698d2602621de2ff12169f83",
     "row_count": 318
@@ -4961,8 +4961,8 @@
       "supplier_product_label": "Senna/Calcium",
       "raw_botanical_name": null,
       "normalized_botanical_name": null,
-      "canonical_id": null,
-      "match_method": "unresolved",
+      "canonical_id": "senna-alexandrina",
+      "match_method": "common_name_exact_unique",
       "plant_part": "unspecified",
       "raw_plant_part": null,
       "base_format_code": "MP",

@@ -1,6 +1,6 @@
 # Frozen Identity Backbone — ADR-013 (Pass-3 join target)
 
-> **🔒 FROZEN — identity_version `2026-07-19`, schema v1.** Do NOT edit `botanical_identity.json` in
+> **🔒 FROZEN — identity_version `2026-07-19.1`, schema v1.** Do NOT edit `botanical_identity.json` in
 > place once Pass 3 has started. Corrections: fix in Pass 2 → rebuild → bump identity_version.
 > Every downstream (Pass 3+) artifact must record the identity_version it built against. See README.md.
 
@@ -10,7 +10,7 @@
 ## Totals
 | metric | value |
 |---|---:|
-| identity records | **579** |
+| identity records | **605** |
 | excluded (non_botanical + unresolvable) | 28 |
 | Pass-1 keys accounted for | 641 / 641 |
 | trinomials (infraspecific) | 13 |
@@ -20,12 +20,12 @@
 |---|---:|
 | accepted | 462 |
 | synonym-resolved | 66 |
-| delta-accepted | 18 |
+| delta-accepted | 39 |
 | typo-corrected | 13 |
 | owner-resolved | 11 |
+| delta-synonym-resolved | 6 |
 | genus_level | 4 |
 | trade_ambiguous | 3 |
-| delta-synonym-resolved | 1 |
 | species_ambiguous | 1 |
 
 ## Trinomials parsed (accepted_name → rank · infraspecific epithet)
