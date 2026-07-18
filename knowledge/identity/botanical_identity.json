@@ -1,6 +1,9 @@
 {
   "_meta": {
     "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
+    "identity_version": "2026-07-18",
+    "identity_schema_version": 1,
+    "frozen": true,
     "built": "2026-07-18",
     "authority": "GBIF backbone (species/match v1)",
     "identity_records": 564,
@@ -15,6 +18,8 @@
       "trade_ambiguous": 3,
       "species_ambiguous": 1
     },
+    "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. Corrections flow: fix in Pass 2 (review queue / sign-off) -> rebuild this backbone -> bump identity_version. Never in-place edits. See README.md.",
+    "downstream_contract": "Every downstream artifact (Pass 3+) MUST record the identity_version it was built against.",
     "note": "One record per resolved botanical identity. Join Pass-3 supplier/form data via original_parsed_names. accepted_name is authoritative; owner sign-off overrides GBIF where recorded. Non-botanical/unresolvable are in excluded.json."
   },
   "identities": [
