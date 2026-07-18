@@ -1,0 +1,4956 @@
+{
+  "_meta": {
+    "artifact": "ADR-013 enrichment delta from 6 private supplier catalogues",
+    "built_against_identity_version": "2026-07-18.1",
+    "total": 459,
+    "latin": 216,
+    "common_only": 243,
+    "note": "Unresolved botanicals from private suppliers. Feed a later GBIF (Pass-2c) -> backbone rebuild -> identity_version bump. NOT run here."
+  },
+  "candidates": [
+    {
+      "candidate": "Aam Dry",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Aam Leaf Dry Extract",
+        "Aam Leaf Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Acai",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Acai berry Extract",
+        "Acai berry Extract"
+      ]
+    },
+    {
+      "candidate": "Acerola",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Acerola Extract",
+        "Acerola Extract"
+      ]
+    },
+    {
+      "candidate": "Aflapin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Aflapin Extract",
+        "Aflapin Extract"
+      ]
+    },
+    {
+      "candidate": "Ajmoda",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Ajmoda extract"
+      ]
+    },
+    {
+      "candidate": "Ajowan",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Ajowan"
+      ]
+    },
+    {
+      "candidate": "Aloevera",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Aloevera Extract"
+      ]
+    },
+    {
+      "candidate": "Alovera",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Alovera Leaves Powder"
+      ]
+    },
+    {
+      "candidate": "Amrud",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Amrud leaves powder"
+      ]
+    },
+    {
+      "candidate": "Amygdalin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Amygdalin Extract",
+        "Amygdalin Extract"
+      ]
+    },
+    {
+      "candidate": "Anise",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Anise"
+      ]
+    },
+    {
+      "candidate": "Antispasmodic Astringent",
+      "type": "common_only",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Antispasmodic,(B) Astringent,"
+      ]
+    },
+    {
+      "candidate": "Apricot",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Apricot extract"
+      ]
+    },
+    {
+      "candidate": "Aqua",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "17. Aqua"
+      ]
+    },
+    {
+      "candidate": "Aritha",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Aritha Powder"
+      ]
+    },
+    {
+      "candidate": "Arjuna",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Arjuna Extract",
+        "Arjuna Extract"
+      ]
+    },
+    {
+      "candidate": "Arlu",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Arlu extract"
+      ]
+    },
+    {
+      "candidate": "Artemisa",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Artemisa Extract",
+        "Artemisa Extract"
+      ]
+    },
+    {
+      "candidate": "Astaxanthin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Astaxanthin Extract"
+      ]
+    },
+    {
+      "candidate": "Astragalus",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Astragalus Extract",
+        "Astragalus Extract"
+      ]
+    },
+    {
+      "candidate": "Avacado",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Avacado Extract",
+        "Avacado Extract"
+      ]
+    },
+    {
+      "candidate": "Azwain",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Azwain Powder Extract"
+      ]
+    },
+    {
+      "candidate": "Azwan",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Azwan Powder Extract"
+      ]
+    },
+    {
+      "candidate": "Babool",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Babool Extract",
+        "Babool Extract"
+      ]
+    },
+    {
+      "candidate": "Bahava",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Bahava Extract",
+        "Bahava Extract"
+      ]
+    },
+    {
+      "candidate": "Banana",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Banana Powder",
+        "Freeze Dried Banana Powder"
+      ]
+    },
+    {
+      "candidate": "Banana Slice",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Banana Slice"
+      ]
+    },
+    {
+      "candidate": "Bay",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Bay Leaf"
+      ]
+    },
+    {
+      "candidate": "Bear",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Bear Berry Extract"
+      ]
+    },
+    {
+      "candidate": "Beeswax white",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Beeswax natural white"
+      ]
+    },
+    {
+      "candidate": "Beeswax yellow",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Beeswax natural yellow"
+      ]
+    },
+    {
+      "candidate": "Beet",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Beet Root extract",
+        "Beet root Extract (Chukandar)",
+        "Beet Root Powder"
+      ]
+    },
+    {
+      "candidate": "Behda",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Behda powder"
+      ]
+    },
+    {
+      "candidate": "Bentonite I P",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Bentonite I.P."
+      ]
+    },
+    {
+      "candidate": "Berberin HCL",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Berberin HCL",
+        "Berberin HCL"
+      ]
+    },
+    {
+      "candidate": "Bettle",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Bettle Leaf Extract"
+      ]
+    },
+    {
+      "candidate": "Bill",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Bill Berry Extract",
+        "Bill Berry Extract"
+      ]
+    },
+    {
+      "candidate": "Black",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Black Berry Extract",
+        "Black Berry Extract"
+      ]
+    },
+    {
+      "candidate": "Black Jamun",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Black Jamun Powder"
+      ]
+    },
+    {
+      "candidate": "Black Jamun Cube",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Black Jamun Cube"
+      ]
+    },
+    {
+      "candidate": "Boswellia",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Boswellia Extract",
+        "Boswellia Extract",
+        "Boswellia Extract (Shallaki)"
+      ]
+    },
+    {
+      "candidate": "Bringraj",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Bringraj powder"
+      ]
+    },
+    {
+      "candidate": "Brocolli",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Brocolli Extract",
+        "Brocolli Extract"
+      ]
+    },
+    {
+      "candidate": "Bromlein Pineapple",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Bromlein Powder / Pineapple"
+      ]
+    },
+    {
+      "candidate": "Buckthorn",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Buckthorn Extract"
+      ]
+    },
+    {
+      "candidate": "Burdock",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Burdock Root Extract",
+        "Burdock Root Extract"
+      ]
+    },
+    {
+      "candidate": "Butterbur",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Butterbur Extract"
+      ]
+    },
+    {
+      "candidate": "C Apple",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried C.Apple Powder"
+      ]
+    },
+    {
+      "candidate": "C Apple Cube",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried C.Apple Cube"
+      ]
+    },
+    {
+      "candidate": "Cacao",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Cacao Fruit Powder"
+      ]
+    },
+    {
+      "candidate": "Caffeine",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Caffeine Extract",
+        "Caffeine Extract",
+        "Natural Caffeine"
+      ]
+    },
+    {
+      "candidate": "Cajeput",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Cajeput"
+      ]
+    },
+    {
+      "candidate": "Calamine I P",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Calamine I.P."
+      ]
+    },
+    {
+      "candidate": "Capscicum",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Capscicum Powder"
+      ]
+    },
+    {
+      "candidate": "Capsicum",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Capsicum Extract",
+        "Capsicum Extract"
+      ]
+    },
+    {
+      "candidate": "Cat s Claw",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Cat’s Claw Extract",
+        "Cat’s Claw Extract"
+      ]
+    },
+    {
+      "candidate": "Catuaba",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Catuaba Bark Extract",
+        "Catuaba Bark Extract"
+      ]
+    },
+    {
+      "candidate": "Cedarwood",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Cedarwood (Indian)"
+      ]
+    },
+    {
+      "candidate": "Celery",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Celery Extract"
+      ]
+    },
+    {
+      "candidate": "Chamomile",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Chamomile Extract"
+      ]
+    },
+    {
+      "candidate": "Chamomile Polyphenol",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Chamomile Extract / 20% Polyphenol"
+      ]
+    },
+    {
+      "candidate": "Cheese",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Cheese Powder"
+      ]
+    },
+    {
+      "candidate": "Chia",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Chia Seed Extract",
+        "Chia Seed Extract"
+      ]
+    },
+    {
+      "candidate": "Chickoo",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Chickoo Powder"
+      ]
+    },
+    {
+      "candidate": "Chitrakmool",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Chitrakmool Extract",
+        "Chitrakmool Extract"
+      ]
+    },
+    {
+      "candidate": "Chlorella",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Chlorella Extract",
+        "Chlorella Extract"
+      ]
+    },
+    {
+      "candidate": "Chocolate",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "2. Chocolate"
+      ]
+    },
+    {
+      "candidate": "Chopchini",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Chopchini extract"
+      ]
+    },
+    {
+      "candidate": "Cinnamomum",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Cinnamomum Extract"
+      ]
+    },
+    {
+      "candidate": "Clarysage",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Clarysage"
+      ]
+    },
+    {
+      "candidate": "Coffee",
+      "type": "common_only",
+      "suppliers": [
+        "aethon",
+        "nita"
+      ],
+      "example_labels": [
+        "Coffee",
+        "3. Coffee"
+      ]
+    },
+    {
+      "candidate": "Coldpressed",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Coldpressed oil"
+      ]
+    },
+    {
+      "candidate": "Comfrey",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Comfrey Extract"
+      ]
+    },
+    {
+      "candidate": "Crataegus Sp",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Crataegus Sp. Extract",
+        "Crataegus Sp. Extract"
+      ]
+    },
+    {
+      "candidate": "Curcumin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Curcumin Extract",
+        "Curcumin Extract",
+        "Curcumin Extract"
+      ]
+    },
+    {
+      "candidate": "Curd",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Curd Powder"
+      ]
+    },
+    {
+      "candidate": "Curry",
+      "type": "common_only",
+      "suppliers": [
+        "aethon",
+        "nita",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Curry leaves Extract",
+        "Curry Leaf",
+        "Curry leaves powder"
+      ]
+    },
+    {
+      "candidate": "Custard",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Custard powder"
+      ]
+    },
+    {
+      "candidate": "D Mannose",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "D Mannose"
+      ]
+    },
+    {
+      "candidate": "DHA VEG",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "DHA 10 % - VEG"
+      ]
+    },
+    {
+      "candidate": "Damiana",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Damiana Extract",
+        "Damiana Extract"
+      ]
+    },
+    {
+      "candidate": "Dandelion",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Dandelion Extract"
+      ]
+    },
+    {
+      "candidate": "Dasmool",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Dasmool extract"
+      ]
+    },
+    {
+      "candidate": "Date",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Date powder"
+      ]
+    },
+    {
+      "candidate": "Diosmin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Diosmin",
+        "Diosmin"
+      ]
+    },
+    {
+      "candidate": "Dragon",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dragon Fruit Powder",
+        "Freeze Dried Dragon Fruit Powder"
+      ]
+    },
+    {
+      "candidate": "Dragon Slice",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Dragon Fruit Slice"
+      ]
+    },
+    {
+      "candidate": "Echinacea",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Echinacea Extract",
+        "Echinacea Extract",
+        "Echinacea Extract"
+      ]
+    },
+    {
+      "candidate": "Elder",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Elder Berry Extract"
+      ]
+    },
+    {
+      "candidate": "Ephedru",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Ephedru Extract",
+        "Ephedru Extract"
+      ]
+    },
+    {
+      "candidate": "Eyebright",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Eyebright Leaves Extract",
+        "Eyebright Leaves Extract"
+      ]
+    },
+    {
+      "candidate": "Fenugreek",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Fenugreek Extract"
+      ]
+    },
+    {
+      "candidate": "Fenugreek Methi",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Fenugreek/Methi Extract"
+      ]
+    },
+    {
+      "candidate": "Fig",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Fig Powder"
+      ]
+    },
+    {
+      "candidate": "Flax",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Flax Seeds Extract",
+        "Flax Seeds Extract"
+      ]
+    },
+    {
+      "candidate": "Foti",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Foti Extract",
+        "Foti Extract"
+      ]
+    },
+    {
+      "candidate": "Frankincnese",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "8. Frankincnese"
+      ]
+    },
+    {
+      "candidate": "Gajar",
+      "type": "common_only",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Gajar Extract (Dauc us Carota)"
+      ]
+    },
+    {
+      "candidate": "Ganoderma",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Ganoderma Extract",
+        "Ganoderma Extract"
+      ]
+    },
+    {
+      "candidate": "Gaurana",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Gaurana Extract",
+        "Gaurana Extract"
+      ]
+    },
+    {
+      "candidate": "Gauva",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Gauva Extract"
+      ]
+    },
+    {
+      "candidate": "Gensing",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Gensing Extract",
+        "Gensing Extract"
+      ]
+    },
+    {
+      "candidate": "Ginseng",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Ginseng Extract - 5%",
+        "Ginseng Extract - 5%",
+        "Ginseng Extract"
+      ]
+    },
+    {
+      "candidate": "Giyol",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Giyol powder"
+      ]
+    },
+    {
+      "candidate": "Goji",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Goji Berry Extract",
+        "Goji Berry Extract"
+      ]
+    },
+    {
+      "candidate": "Gond",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Gond powder"
+      ]
+    },
+    {
+      "candidate": "Gooseberry",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Gooseberry Powder"
+      ]
+    },
+    {
+      "candidate": "Gorakhganza",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Gorakhganza Extract",
+        "Gorakhganza Extract"
+      ]
+    },
+    {
+      "candidate": "Granular",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Granular"
+      ]
+    },
+    {
+      "candidate": "Grape",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Grape Leaf Extract",
+        "Grape Seed Extract",
+        "Grape Seed"
+      ]
+    },
+    {
+      "candidate": "Grapeseed",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Grapeseed Extract"
+      ]
+    },
+    {
+      "candidate": "Graviola",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Graviola Extract"
+      ]
+    },
+    {
+      "candidate": "Graviola Annona",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Graviola Extract / Annona Seeds"
+      ]
+    },
+    {
+      "candidate": "GreenApple",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "7. GreenApple"
+      ]
+    },
+    {
+      "candidate": "Griffonia",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Griffonia Seed Extract",
+        "Griffonia Seed Extract"
+      ]
+    },
+    {
+      "candidate": "Gudmar",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Gudmar powder"
+      ]
+    },
+    {
+      "candidate": "Harade",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Harade powder"
+      ]
+    },
+    {
+      "candidate": "Hawthorn",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Hawthorn Berry Extract",
+        "Hawthorn Berry Extract"
+      ]
+    },
+    {
+      "candidate": "Heena",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Heena Fine powder"
+      ]
+    },
+    {
+      "candidate": "Helichrysum",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Helichrysum"
+      ]
+    },
+    {
+      "candidate": "Hesperidin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Hesperidin",
+        "Hesperidin"
+      ]
+    },
+    {
+      "candidate": "Hibicus",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Hibicus Extract",
+        "Hibicus Extract (Gudhal)"
+      ]
+    },
+    {
+      "candidate": "Hibiscus",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Hibiscus powder"
+      ]
+    },
+    {
+      "candidate": "Honey",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Honey Powder"
+      ]
+    },
+    {
+      "candidate": "Irvengia",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Irvengia Extract"
+      ]
+    },
+    {
+      "candidate": "Irvengia African Mango",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Irvengia Extract / African Mango"
+      ]
+    },
+    {
+      "candidate": "Ivy Dry",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Ivy Leaf Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Ivy Dry Hedera helix",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Ivy Leaf Dry Extract / Hedera helix extract"
+      ]
+    },
+    {
+      "candidate": "Jack",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Jack Fruit Powder"
+      ]
+    },
+    {
+      "candidate": "Jatamashi",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Jatamashi powder"
+      ]
+    },
+    {
+      "candidate": "Juniper",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Juniper Berry"
+      ]
+    },
+    {
+      "candidate": "KAPOOR SUGANDGI",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "KAPOOR SUGANDGI powder"
+      ]
+    },
+    {
+      "candidate": "Kapikacchu",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Kapikacchu Extract",
+        "Kapikacchu Extract"
+      ]
+    },
+    {
+      "candidate": "Karela",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Karela Extract",
+        "Karela powder"
+      ]
+    },
+    {
+      "candidate": "Kateli",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Kateli Extract"
+      ]
+    },
+    {
+      "candidate": "Kela",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Kela Extract",
+        "Kela Extract"
+      ]
+    },
+    {
+      "candidate": "Kelp",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Kelp Extract"
+      ]
+    },
+    {
+      "candidate": "Kelp Bladder Wrack",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Kelp Extract / Bladder Wrack"
+      ]
+    },
+    {
+      "candidate": "KesarChandan",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "25. KesarChandan"
+      ]
+    },
+    {
+      "candidate": "Khellin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Khellin Extract",
+        "Khellin Extract"
+      ]
+    },
+    {
+      "candidate": "Kouch",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Kouch seeds powder:"
+      ]
+    },
+    {
+      "candidate": "Kuduzu",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Kuduzu Extract",
+        "Kuduzu Extract"
+      ]
+    },
+    {
+      "candidate": "Kulchi",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Kulchi Extract"
+      ]
+    },
+    {
+      "candidate": "Kutaki",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Kutaki Extract"
+      ]
+    },
+    {
+      "candidate": "L Glutathione",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "L-Glutathione",
+        "L-Glutathione"
+      ]
+    },
+    {
+      "candidate": "Labdanum",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Labdanum"
+      ]
+    },
+    {
+      "candidate": "LemonZest",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "40. LemonZest"
+      ]
+    },
+    {
+      "candidate": "Lilly",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "15. Lilly"
+      ]
+    },
+    {
+      "candidate": "Lingonberry",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Lingonberry Extract"
+      ]
+    },
+    {
+      "candidate": "Lotus",
+      "type": "common_only",
+      "suppliers": [
+        "aethon",
+        "nita"
+      ],
+      "example_labels": [
+        "Lotus (Blue)",
+        "Lotus powder",
+        "20. Lotus"
+      ]
+    },
+    {
+      "candidate": "Maca",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Maca Root Extract",
+        "Maca Root (4:1)",
+        "Maca Root Extract"
+      ]
+    },
+    {
+      "candidate": "Magnolia",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Magnolia Bark Extract",
+        "Magnolia Bark Extract"
+      ]
+    },
+    {
+      "candidate": "Manjestga Rubia cordifolia",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Manjestga Extract / Rubia cordifolia"
+      ]
+    },
+    {
+      "candidate": "Manuka",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Manuka"
+      ]
+    },
+    {
+      "candidate": "Marigold",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Marigold Extract (Lutein)"
+      ]
+    },
+    {
+      "candidate": "Marshmallow",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Marshmallow Extract"
+      ]
+    },
+    {
+      "candidate": "Marshmallow Althea officinalis",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Marshmallow Extract / Althea officinalis"
+      ]
+    },
+    {
+      "candidate": "Melissa",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Melissa"
+      ]
+    },
+    {
+      "candidate": "Methi",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Methi powder"
+      ]
+    },
+    {
+      "candidate": "Mogra",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "19. Mogra"
+      ]
+    },
+    {
+      "candidate": "Motherwort",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Motherwort Extract",
+        "Motherwort Extract"
+      ]
+    },
+    {
+      "candidate": "Mulethi",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Mulethi Extract",
+        "Mulethi powder"
+      ]
+    },
+    {
+      "candidate": "Mulethi Licorice",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Mulethi / Licorice Extract"
+      ]
+    },
+    {
+      "candidate": "Multani",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Multani powder"
+      ]
+    },
+    {
+      "candidate": "Mushroom",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Mushroom Powder",
+        "Mushroom Extract",
+        "Mushroom Extract"
+      ]
+    },
+    {
+      "candidate": "Mustard",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Mustard Seed Extract"
+      ]
+    },
+    {
+      "candidate": "Neem",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Neem Extract Powder",
+        "Neem powder",
+        "Neem Extract"
+      ]
+    },
+    {
+      "candidate": "Nettle",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Nettle Root Extract",
+        "Nettle Root Extract"
+      ]
+    },
+    {
+      "candidate": "Nimba",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Nimba Extract",
+        "Nimba Extract"
+      ]
+    },
+    {
+      "candidate": "Olive",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Olive Leaf Extract",
+        "Olive Leaf Extract"
+      ]
+    },
+    {
+      "candidate": "Omega",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Omega 3 Extract",
+        "Omega 3 Extract"
+      ]
+    },
+    {
+      "candidate": "Oud",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "21. Oud"
+      ]
+    },
+    {
+      "candidate": "Palak",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Palak Extract"
+      ]
+    },
+    {
+      "candidate": "Palmarosa",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Palmarosa"
+      ]
+    },
+    {
+      "candidate": "Passion",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Passion Flower Extract",
+        "Passion Flower Extract",
+        "Passion fruits powder"
+      ]
+    },
+    {
+      "candidate": "Phosphatidylcholine",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Phosphatidylcholine"
+      ]
+    },
+    {
+      "candidate": "Phytosterols",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Phytosterols Extract",
+        "Phytosterols Extract"
+      ]
+    },
+    {
+      "candidate": "Piperine",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Piperine Extract",
+        "Piperine Extract",
+        "Piperine Extract"
+      ]
+    },
+    {
+      "candidate": "Piperrine",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Piperrine"
+      ]
+    },
+    {
+      "candidate": "Piyaj Dry",
+      "type": "common_only",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Piyaj (Onion) Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Plaster of Paris",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Plaster of Paris"
+      ]
+    },
+    {
+      "candidate": "Plum",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Plum Extract",
+        "Plum Extract",
+        "Freeze Dried Plum Powder"
+      ]
+    },
+    {
+      "candidate": "Polypodium",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Polypodium Extract",
+        "Polypodium Extract"
+      ]
+    },
+    {
+      "candidate": "Prickly",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried Prickly Powder"
+      ]
+    },
+    {
+      "candidate": "Propolis",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Propolis Extract",
+        "Propolis Extract"
+      ]
+    },
+    {
+      "candidate": "Prune",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Prune Extract",
+        "Prune Extract"
+      ]
+    },
+    {
+      "candidate": "Pumice",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Pumice Powder"
+      ]
+    },
+    {
+      "candidate": "Punarva",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Punarva powder"
+      ]
+    },
+    {
+      "candidate": "Pushkermool",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Pushkermool Extract",
+        "Pushkermool Extract"
+      ]
+    },
+    {
+      "candidate": "Pygeum",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Pygeum Bark Extract",
+        "Pygeum Bark Extract"
+      ]
+    },
+    {
+      "candidate": "Quercetin",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Quercetin",
+        "Quercetin"
+      ]
+    },
+    {
+      "candidate": "Resveratrol",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Resveratrol Extract",
+        "Resveratrol Extract"
+      ]
+    },
+    {
+      "candidate": "Rhubarb",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Rhubarb Root Extract",
+        "Rhubarb Root Extract"
+      ]
+    },
+    {
+      "candidate": "Rose",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "9. Rose"
+      ]
+    },
+    {
+      "candidate": "Rosewood",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Rosewood (Bois de Rose)",
+        "Rosewood"
+      ]
+    },
+    {
+      "candidate": "Rumicis",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Rumicis Extract",
+        "Rumicis Extract"
+      ]
+    },
+    {
+      "candidate": "Salacia",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Salacia Extract"
+      ]
+    },
+    {
+      "candidate": "Sandal",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Sandal powder"
+      ]
+    },
+    {
+      "candidate": "Sandalwood",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "18. Sandalwood"
+      ]
+    },
+    {
+      "candidate": "Saptarangi",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Saptarangi Extract",
+        "Saptarangi Extract"
+      ]
+    },
+    {
+      "candidate": "Sarpagandha",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Sarpagandha Extract",
+        "Sarpagandha Extract"
+      ]
+    },
+    {
+      "candidate": "Satawari",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Satawari powder"
+      ]
+    },
+    {
+      "candidate": "Seabuckthorn",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Seabuckthorn Extract",
+        "Seabuckthorn Extract"
+      ]
+    },
+    {
+      "candidate": "Seena",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Seena Extract"
+      ]
+    },
+    {
+      "candidate": "Senna",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Senna Extract"
+      ]
+    },
+    {
+      "candidate": "Senna Calcium",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Senna/Calcium"
+      ]
+    },
+    {
+      "candidate": "Sesbania S",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Sesbania Extract S"
+      ]
+    },
+    {
+      "candidate": "Shankhapushapi",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Shankhapushapi Extract"
+      ]
+    },
+    {
+      "candidate": "Shankhapushapi Convolvulus pluricaulis",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Shankhapushapi Extract /Convolvulus pluricaulis"
+      ]
+    },
+    {
+      "candidate": "Shikhakai",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Shikhakai Extract",
+        "Shikhakai Extract"
+      ]
+    },
+    {
+      "candidate": "Shilajeet",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Shilajeet Extract",
+        "Shilajeet Extract (Asphaltum)"
+      ]
+    },
+    {
+      "candidate": "Shilajit",
+      "type": "common_only",
+      "suppliers": [
+        "herbal_creative",
+        "nita"
+      ],
+      "example_labels": [
+        "Shilajit Extract(Asphaltum)",
+        "Shilajit Extract"
+      ]
+    },
+    {
+      "candidate": "Soap",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Soap Nut Extract Powder",
+        "Soap Nut Extract Powder"
+      ]
+    },
+    {
+      "candidate": "Soapnut",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Soapnut Extract",
+        "Soapnut Extract"
+      ]
+    },
+    {
+      "candidate": "Sowa Dry",
+      "type": "common_only",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Sowa (Dill Seed) Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Talc I P N",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Talc I.P. “N1”"
+      ]
+    },
+    {
+      "candidate": "Thymus",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Thymus Extract"
+      ]
+    },
+    {
+      "candidate": "Trifla",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Trifla Powder"
+      ]
+    },
+    {
+      "candidate": "Triphalaext",
+      "type": "common_only",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Triphalaext"
+      ]
+    },
+    {
+      "candidate": "Triphla",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Triphla Powder Extract",
+        "Triphla Powder Extract"
+      ]
+    },
+    {
+      "candidate": "Tulsi",
+      "type": "common_only",
+      "suppliers": [
+        "nita",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Tulsi Extract",
+        "Tulsi powder"
+      ]
+    },
+    {
+      "candidate": "Tulsi Basil",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Tulsi/Basil Extract"
+      ]
+    },
+    {
+      "candidate": "Urtica Sp",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Urtica Sp. Extract",
+        "Urtica Sp. Extract"
+      ]
+    },
+    {
+      "candidate": "Vadarikand",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Vadarikand Extract"
+      ]
+    },
+    {
+      "candidate": "Vaividang",
+      "type": "common_only",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Vaividang Extract"
+      ]
+    },
+    {
+      "candidate": "Verbena",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Verbena Extract"
+      ]
+    },
+    {
+      "candidate": "Vinegar",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Vinegar Powder"
+      ]
+    },
+    {
+      "candidate": "Vitex",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Vitex Extract",
+        "Vitex Extract"
+      ]
+    },
+    {
+      "candidate": "WardiaRose",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "11. WardiaRose"
+      ]
+    },
+    {
+      "candidate": "WaterLilly",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "35. WaterLilly"
+      ]
+    },
+    {
+      "candidate": "White Guava",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Freeze Dried White Guava Powder"
+      ]
+    },
+    {
+      "candidate": "WhiteMusk",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "34. WhiteMusk"
+      ]
+    },
+    {
+      "candidate": "WhiteOud",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "24. WhiteOud"
+      ]
+    },
+    {
+      "candidate": "Willow",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Willow Bark Extract",
+        "Willow Bark Extract"
+      ]
+    },
+    {
+      "candidate": "Wormwood",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Wormwood Leaf Extract Powder",
+        "Wormwood Leaf Extract Powder"
+      ]
+    },
+    {
+      "candidate": "Xanthan",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Xanthan gum"
+      ]
+    },
+    {
+      "candidate": "Yeast",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Yeast Extract",
+        "Yeast Extract"
+      ]
+    },
+    {
+      "candidate": "YlangYlang",
+      "type": "common_only",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "YlangYlang"
+      ]
+    },
+    {
+      "candidate": "Zanthoxylam",
+      "type": "common_only",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Zanthoxylam Extract",
+        "Zanthoxylam Extract"
+      ]
+    },
+    {
+      "candidate": "castor cake",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "castor cake powder"
+      ]
+    },
+    {
+      "candidate": "i Dry",
+      "type": "common_only",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "i (Choti) Dry Extract"
+      ]
+    },
+    {
+      "candidate": "oils",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "essential oils"
+      ]
+    },
+    {
+      "candidate": "paraffin semi wax",
+      "type": "common_only",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "paraffin semi wax"
+      ]
+    },
+    {
+      "candidate": "ALOE VERA BARBEDOES",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "KUMARI"
+      ]
+    },
+    {
+      "candidate": "ANDROGRAPHICS PANICULATA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "KARIYATU"
+      ]
+    },
+    {
+      "candidate": "ANDROPOGON MURICATUS",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "USHIR"
+      ]
+    },
+    {
+      "candidate": "AZADIRCHITA INDICA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "NEEM"
+      ]
+    },
+    {
+      "candidate": "Acer saccharum",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Acer Saccharum Extract"
+      ]
+    },
+    {
+      "candidate": "Agaricus bisporus",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Mashroom Extract (Agaricus Bisporus)"
+      ]
+    },
+    {
+      "candidate": "Alfa alfa",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Alfa Alfa Extract"
+      ]
+    },
+    {
+      "candidate": "Allium cefa",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Allium Cefa Extract",
+        "Allium Cefa Extract(Onion)"
+      ]
+    },
+    {
+      "candidate": "American ginseng",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "American Ginseng Extract",
+        "American Ginseng Extract"
+      ]
+    },
+    {
+      "candidate": "Anar chilka",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Anar chilka powder"
+      ]
+    },
+    {
+      "candidate": "Andrographics Panicu lata",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Kalmeghext"
+      ]
+    },
+    {
+      "candidate": "Apmarg mool",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Apmarg mool dry extract"
+      ]
+    },
+    {
+      "candidate": "Arjun chal",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Arjun chal powder"
+      ]
+    },
+    {
+      "candidate": "Ashok chal",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Ashok chal powder"
+      ]
+    },
+    {
+      "candidate": "Aspalathus linearis",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Aspalathus Linearis Extract",
+        "Aspalathus Linearis Extract"
+      ]
+    },
+    {
+      "candidate": "Asparagus Ascendense",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Safed Musliext"
+      ]
+    },
+    {
+      "candidate": "Asparagus adscendens",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Asparagus Adscendens Extract",
+        "Asparagus Adscendens Extract"
+      ]
+    },
+    {
+      "candidate": "Asphaltum",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Shilajitext"
+      ]
+    },
+    {
+      "candidate": "Azadirachita Indica",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Neem ext"
+      ]
+    },
+    {
+      "candidate": "Bambosa arundinacea",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Bambos Extract (Bambosa Arundinacea)"
+      ]
+    },
+    {
+      "candidate": "Berberis asiatica",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Berberis Asiatica Extract (Daruharidra)"
+      ]
+    },
+    {
+      "candidate": "Beta sitosterol",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Beta Sitosterol Extract",
+        "Beta Sitosterol Extract"
+      ]
+    },
+    {
+      "candidate": "Bijora bada",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Bijora Bada Nimbu Extract",
+        "Bijora Bada Nimbu Extract"
+      ]
+    },
+    {
+      "candidate": "Bilva patra",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Bilva Patra Extract",
+        "Bilva Patra Extract"
+      ]
+    },
+    {
+      "candidate": "Bitter apricot",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Bitter Apricot Kernel Extract",
+        "Bitter Apricot Kernel Extract"
+      ]
+    },
+    {
+      "candidate": "Black cohosh",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Black Cohosh Extract",
+        "Black Cohosh Extract"
+      ]
+    },
+    {
+      "candidate": "Black wull",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Black Wull Nut Hull Extract",
+        "Black Wull Nut Hull Extract"
+      ]
+    },
+    {
+      "candidate": "Blue tansy",
+      "type": "latin",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Blue Tansy Oil"
+      ]
+    },
+    {
+      "candidate": "Brazilian yellow",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Brazilian Yellow Clay"
+      ]
+    },
+    {
+      "candidate": "CURCUMA ZEDORIA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "KACHURO"
+      ]
+    },
+    {
+      "candidate": "Camu camu",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Camu Camu Extract",
+        "Camu Camu Extract"
+      ]
+    },
+    {
+      "candidate": "Capsicum annum",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Mirch Extract (Capsicum Annum)"
+      ]
+    },
+    {
+      "candidate": "Caraduus marianus",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Caraduus Marianus Extract",
+        "Caraduus Marianus Extract"
+      ]
+    },
+    {
+      "candidate": "Cascara sagrada",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Cascara Sagrada Bark Extract",
+        "Cascara Sagrada Bark Extract"
+      ]
+    },
+    {
+      "candidate": "Cayenne pepper",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Cayenne Pepper Extract",
+        "Cayenne Pepper Extract"
+      ]
+    },
+    {
+      "candidate": "Ceratonia siliqua",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Ceratonia Siliqua Extract",
+        "Ceratonia Siliqua Extract"
+      ]
+    },
+    {
+      "candidate": "Chamomile blue",
+      "type": "latin",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Chamomile Blue (German)"
+      ]
+    },
+    {
+      "candidate": "Chamomile roman",
+      "type": "latin",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Chamomile Roman"
+      ]
+    },
+    {
+      "candidate": "Chamomilla recutita",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Chamomilla Recutita Flower Extract",
+        "Chamomilla Recutita Flower Extract"
+      ]
+    },
+    {
+      "candidate": "Charconite mud",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Charconite Mud"
+      ]
+    },
+    {
+      "candidate": "Cheddar cheese",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Cheddar Cheese Powder"
+      ]
+    },
+    {
+      "candidate": "Chhadila dry",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Chhadila Dry Extract Chirayata Dry Extract Chitrak Moo] Dry Extract ra Dry Extract eus Dry Extract Daruhaldi D Extract 52 Dashmool Dry Extract 53 Devdar Dry Extract 54 Devil's Clow Dry Extract 55 Dhai Phool Dry Extract 56 Dhania Dry Extract 57 Draksha Dry Extract 58 Dub Ghas Dry Extract 59 Dudal Dry Extract 60 Elaichi Dry Extract 61 Ful Babuna Dry Extract 62 Gadab Ghas Dry Extract 63 Gajar Fruit Dry Extract 64 Gajar Seed Dry Extract 65 Gambhari Dry Extract 66 Gandhprasami Dry Extract 67 Garcinia Dry Extract 68 Garlic Dry Extract 69 Gheekunwar Dry Extract 70 Ginseng Dry Extract 71 Gokhru Dry Extract 72 Gorakhmundi Dry Extract 73 Green Tea Dry Extract 74 Gudhal Dry Extract 75 Guduchi Dry Extract 76 Guggal Dry Ext.(Purified) 77 Guggal Dry Extract 78 Guiab Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Chick peas",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Chick Peas Extract",
+        "Chick Peas Extract"
+      ]
+    },
+    {
+      "candidate": "Chinese skullcap",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Chinese Skullcap Root Extract"
+      ]
+    },
+    {
+      "candidate": "Chocolate clay",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Chocolate clay"
+      ]
+    },
+    {
+      "candidate": "Cissus Quandragulari s",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Hadjodext"
+      ]
+    },
+    {
+      "candidate": "Citric acid",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Citric Acid"
+      ]
+    },
+    {
+      "candidate": "Citrus bigarardia",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Citrus Bigarardia Extract",
+        "Citrus Bigarardia Extract"
+      ]
+    },
+    {
+      "candidate": "Citrus bioflavonoid",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Citrus Bioflavonoid Extract",
+        "Citrus Bioflavonoid Extract"
+      ]
+    },
+    {
+      "candidate": "Citrus lemon",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Citrus Lemon Fruit Extract",
+        "Citrus Lemon Fruit Extract"
+      ]
+    },
+    {
+      "candidate": "Clitoria terratea",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Clitoria Terratea Extract",
+        "Clitoria Terratea Extract"
+      ]
+    },
+    {
+      "candidate": "Colostrum dry",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Colostrum Dry Powder",
+        "Colostrum Dry Powder"
+      ]
+    },
+    {
+      "candidate": "Commiphora mukul",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Gugulext"
+      ]
+    },
+    {
+      "candidate": "Cordyceps sinensis",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Cordyceps Sinensis Extract",
+        "Cordyceps Sinensis Extract"
+      ]
+    },
+    {
+      "candidate": "Corn starch",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Corn starch"
+      ]
+    },
+    {
+      "candidate": "Crataevea nurvala",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Varuna Extract (Crataevea Nurvala)",
+        "Varuna Extract (Crataevea Nurvala)"
+      ]
+    },
+    {
+      "candidate": "Cynara cardunculus",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Artichowk Extract(Cynara Cardunculus)"
+      ]
+    },
+    {
+      "candidate": "Cynodon datylon",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Cynodon Datylon",
+        "Cynodon Datylon"
+      ]
+    },
+    {
+      "candidate": "DATURA STRAMONIUM",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "DATURA"
+      ]
+    },
+    {
+      "candidate": "Dal chini",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dal chini powder"
+      ]
+    },
+    {
+      "candidate": "Dark red",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Dark Red Beet Root Color",
+        "Dark Red Beet Root Color"
+      ]
+    },
+    {
+      "candidate": "Daru haldi",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Daru Haldi powder"
+      ]
+    },
+    {
+      "candidate": "Dead sea",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dead Sea Scrub Clay"
+      ]
+    },
+    {
+      "candidate": "Dehydrated amchur",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Amchur Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated bay",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Bay Leaves Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated beetroot",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Beetroot Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated bitter",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Bitter Guard Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated cabbage",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Cabbage Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated carrot",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Carrot Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated coriander",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Coriander Leaves."
+      ]
+    },
+    {
+      "candidate": "Dehydrated curry",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Curry Leaves Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated garlic",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Garlic Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated ginger",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Ginger Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated green",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Green Chilly Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated kasuri",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Kasuri Methi Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated mint",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Mint Leaves.",
+        "Dehydrated Mint Leaves Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated okra",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Okra Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated pomegerante",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Pomegerante Seed Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated potato",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Potato Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated red",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Red Onion Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated spinach",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Spinach Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated sweet",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Sweet Potato Powder"
+      ]
+    },
+    {
+      "candidate": "Dehydrated tamarind",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Tamarind Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated tomato",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated Tomato Powder."
+      ]
+    },
+    {
+      "candidate": "Dehydrated white",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Dehydrated White Onion Powder."
+      ]
+    },
+    {
+      "candidate": "Diatomaceous earth",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Diatomaceous Earth"
+      ]
+    },
+    {
+      "candidate": "Dry ext",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Soya(Soyabean) Dry Ext."
+      ]
+    },
+    {
+      "candidate": "ECILIPTA ALBA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "BHANGRO"
+      ]
+    },
+    {
+      "candidate": "EMBLIA RIBES",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "VAVDING"
+      ]
+    },
+    {
+      "candidate": "Edible grade",
+      "type": "latin",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "Rose (Edible Grade)"
+      ]
+    },
+    {
+      "candidate": "Egg plant",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Egg Plant Extract",
+        "Egg Plant Extract"
+      ]
+    },
+    {
+      "candidate": "Ellagic acid",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Ellagic Acid Pomegrante Extract",
+        "Ellagic Acid Pomegrante Extract"
+      ]
+    },
+    {
+      "candidate": "Epimedium grandiflorum",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Horny Goats weed(Epimedium Grandiflorum)"
+      ]
+    },
+    {
+      "candidate": "Epsom salt",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Epsom Salt"
+      ]
+    },
+    {
+      "candidate": "Evolvus alsinoides",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Evolvus Alsinoides Extract",
+        "Evolvus Alsinoides Extract"
+      ]
+    },
+    {
+      "candidate": "Fever few",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Fever Few Extract",
+        "Fever Few Extract / 5% Parthanolide"
+      ]
+    },
+    {
+      "candidate": "Foenum graecum",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Methi Extract(Trigone\\la Foenum Graecum)"
+      ]
+    },
+    {
+      "candidate": "French green",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "French green Clay"
+      ]
+    },
+    {
+      "candidate": "French pink",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "French pink Clay"
+      ]
+    },
+    {
+      "candidate": "GLYCINE MAX",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "SOYA"
+      ]
+    },
+    {
+      "candidate": "Gairic clay",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Gairic Clay"
+      ]
+    },
+    {
+      "candidate": "Gajar dry",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Gajar Dry Extract",
+        "Gajar Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Gel wax",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Gel wax",
+        "Gel wax"
+      ]
+    },
+    {
+      "candidate": "Glacial marine",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Glacial Marine Clay"
+      ]
+    },
+    {
+      "candidate": "Glucosamine extracts",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Glucosamine Extracts"
+      ]
+    },
+    {
+      "candidate": "Golden seal",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Golden Seal Extract",
+        "Golden Seal Extract"
+      ]
+    },
+    {
+      "candidate": "Green apple",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Green Apple Extract",
+        "Green Apple Extract"
+      ]
+    },
+    {
+      "candidate": "Green coffea",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Green coffea bean Extracts"
+      ]
+    },
+    {
+      "candidate": "Green oat",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Green Oat Extract"
+      ]
+    },
+    {
+      "candidate": "Gynostemma jiaogulan",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Gynostemma Jiaogulan Extract"
+      ]
+    },
+    {
+      "candidate": "HEDYCHIUM",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "KAPURKACHLI"
+      ]
+    },
+    {
+      "candidate": "HIBISCUS ROSA SINENSIS",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "JASUD"
+      ]
+    },
+    {
+      "candidate": "Harpagophytum dry",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Harpagophytum Dry Extract",
+        "Harpagophytum Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Hibiscus rosa",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Gudhal (Hibiscus Rosa Extract)"
+      ]
+    },
+    {
+      "candidate": "Himalayan pink",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Himalayan Pink Salt"
+      ]
+    },
+    {
+      "candidate": "Hordeum vulgarae",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Yavakshara- Barley Extract (Hordeum Vulgarae)",
+        "Yavakshara- Barley Extract (Hordeum Vulgarae)"
+      ]
+    },
+    {
+      "candidate": "Horny goat",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Horny Goat Weed Extract",
+        "Horny Goat Weed Extract / Epimedium Extract"
+      ]
+    },
+    {
+      "candidate": "Humulus lupulus",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Hops Extract (Humulus lupulus)"
+      ]
+    },
+    {
+      "candidate": "Instant premix",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Instant premix powder"
+      ]
+    },
+    {
+      "candidate": "Jambu beej",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Jambu Beej Extract",
+        "Jambu Beej Extract"
+      ]
+    },
+    {
+      "candidate": "Johns wart",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "St. Johns Wart Extracts"
+      ]
+    },
+    {
+      "candidate": "Kaccha aam",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Aamchur (Kaccha Aam) Powder"
+      ]
+    },
+    {
+      "candidate": "Kapoor kachari",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Kapoor kachari"
+      ]
+    },
+    {
+      "candidate": "Karanj cake",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Karanj cake powder"
+      ]
+    },
+    {
+      "candidate": "Kasturi manjal",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Kasturi manjal powder"
+      ]
+    },
+    {
+      "candidate": "Kava kava",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Kava Kava Extract",
+        "Kava Kava Extract"
+      ]
+    },
+    {
+      "candidate": "Khadir chhal",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Khadir Chhal Extract"
+      ]
+    },
+    {
+      "candidate": "Korean red",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Korean Red Ginseng Extract",
+        "Korean Red Ginseng Extract"
+      ]
+    },
+    {
+      "candidate": "LENS CULINARIS",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "MASUR"
+      ]
+    },
+    {
+      "candidate": "Leptadenia reticulate",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Leptadenia Reticulate (Jivanti) Extract"
+      ]
+    },
+    {
+      "candidate": "Light kaolin",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Light Kaolin I.P."
+      ]
+    },
+    {
+      "candidate": "MAGNIFERA INDICA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "AMBA GOTLI"
+      ]
+    },
+    {
+      "candidate": "Maitake mushroom",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Maitake Mushroom Powder"
+      ]
+    },
+    {
+      "candidate": "May chang",
+      "type": "latin",
+      "suppliers": [
+        "aethon"
+      ],
+      "example_labels": [
+        "May Chang (LitseaCubeba)"
+      ]
+    },
+    {
+      "candidate": "Mongifera indica",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Mongifera Indica Extract"
+      ]
+    },
+    {
+      "candidate": "Mono ammonium",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Mono Ammonium Glycyrrhizinate"
+      ]
+    },
+    {
+      "candidate": "Monoammonium glycyrrhizinate",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Monoammonium Glycyrrhizinate (MAG)"
+      ]
+    },
+    {
+      "candidate": "Morns alba",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Mullberry Extract (Morns Alba)"
+      ]
+    },
+    {
+      "candidate": "Moroccan nude",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Moroccan Nude Clay"
+      ]
+    },
+    {
+      "candidate": "Moroccan red",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Moroccan red Clay"
+      ]
+    },
+    {
+      "candidate": "Muira puama",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Muira Puama Extract",
+        "Muira Puama Extract"
+      ]
+    },
+    {
+      "candidate": "Multani mitti",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Multani Mitti"
+      ]
+    },
+    {
+      "candidate": "Mustard cake",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Mustard cake powder"
+      ]
+    },
+    {
+      "candidate": "NYCTANTHES ARBORTISTIS",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "HARSHRINGAR"
+      ]
+    },
+    {
+      "candidate": "Nagar motha",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Nagar motha powder"
+      ]
+    },
+    {
+      "candidate": "Name kapas",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Name Kapas Beej Dry Extract Kapas Moo] Dry Extract Kasaundi Panchang Dry Ext. Kasaundi Seed Dry Extract ry Extract adeer Dry Extract eera Dry Extract fdiulanjan Dry Extract Khursani Aj ain Dry Ext. Kuchla Dry Extract Kuda Chhal Dry Extract Kulthi Dry Extract Kutaj(Kuda) Chal Dry Ext. Kuth(Uplet) Dry Extract Kutki Dry Extract Lal Behman Dry Extract Lal Chandan Dry Extract Lodhra Dry Extract Long Dry Extract Mahi Dry Extract Manjistha Dry Extract Majuphal Dry Extract Makhana Dry Extract Makoi Dry Extract Malkangni Dry Extract Maspami Dry Extract Marigold (Genda) Mehandi Leaves Dry Extract Methi Dry Extract Mocharas/Semal Dry Extract Mooli Beej Dry Extract Moringa Dry Extract Mulethi Dry Extract Muskdana Dry Extract Nagarmotha Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Neem cake",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Neem cake powder"
+      ]
+    },
+    {
+      "candidate": "Oat straw",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Oat Straw Extract"
+      ]
+    },
+    {
+      "candidate": "Olea europea",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Olea Europea Extract",
+        "Olea Europea Extract"
+      ]
+    },
+    {
+      "candidate": "Opuntia ficus",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Opuntia Ficus Indica Extract",
+        "Opuntia Ficus Indica Extract / Prickly Pear Extract"
+      ]
+    },
+    {
+      "candidate": "PHYLANTHUS NIRURI",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "BHOIAMLI"
+      ]
+    },
+    {
+      "candidate": "PLUMBAGO ZEYNILICA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "CHITRAK"
+      ]
+    },
+    {
+      "candidate": "PONGAMIA GLABRA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "KARANJ"
+      ]
+    },
+    {
+      "candidate": "Panax ginsen",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Panax Ginsen Extract"
+      ]
+    },
+    {
+      "candidate": "Pea protein",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Pea Protein Extract"
+      ]
+    },
+    {
+      "candidate": "Pearl wax",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Pearl wax"
+      ]
+    },
+    {
+      "candidate": "Pepper mint",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Pepper Mint Extract",
+        "Pepper Mint Extract"
+      ]
+    },
+    {
+      "candidate": "Peumus boldus",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Peumus Boldus - Leaves Extract",
+        "Peumus Boldus - Leaves Extract"
+      ]
+    },
+    {
+      "candidate": "Phaleria macrocarpa",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Phaleria Macrocarpa Fruit Extract",
+        "Phaleria Macrocarpa Fruit Extract"
+      ]
+    },
+    {
+      "candidate": "Picrorhiza kurrooa",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Kutaki Extract (Picrorhiza kurrooa)"
+      ]
+    },
+    {
+      "candidate": "Picrorniza kurroa",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Picrorniza Kurroa Extract"
+      ]
+    },
+    {
+      "candidate": "Pink guava",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Pink Guava Powder",
+        "Freeze Dried Pink Guava Powder"
+      ]
+    },
+    {
+      "candidate": "Plantago lanceolata",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Plantago Lanceolata Extract",
+        "Plantago Lanceolata Extract"
+      ]
+    },
+    {
+      "candidate": "Primula veris",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Primula Veris Extract (Cowslip)"
+      ]
+    },
+    {
+      "candidate": "Pueraria mirifica",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Pueraria Mirifica Extract",
+        "Pueraria Mirifica Extract"
+      ]
+    },
+    {
+      "candidate": "Pygeum africanum",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Pygeum Africanum Extract",
+        "Pygeum Africanum Extract"
+      ]
+    },
+    {
+      "candidate": "Rahodiola rosea",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Rahodiola Rosea Extract"
+      ]
+    },
+    {
+      "candidate": "Raphansus sativus",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Daikon Radish Fruit Powder (Raphansus Sativus)"
+      ]
+    },
+    {
+      "candidate": "Red raspberry",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Red Raspberry Extract",
+        "Red Raspberry Extract"
+      ]
+    },
+    {
+      "candidate": "Red wine",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Red Wine Extract",
+        "Red Wine Extract"
+      ]
+    },
+    {
+      "candidate": "Rhassoul brown",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Rhassoul Brown Clay"
+      ]
+    },
+    {
+      "candidate": "Rhassoul red",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Rhassoul Red Clay"
+      ]
+    },
+    {
+      "candidate": "Rose clay",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Rose Clay"
+      ]
+    },
+    {
+      "candidate": "Rose hip",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Rose Hip Extract",
+        "Rose Hip Extract"
+      ]
+    },
+    {
+      "candidate": "Rose petals",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Rose Petals Powder Extract",
+        "Rose Petals Powder Extract"
+      ]
+    },
+    {
+      "candidate": "Rosmarinus officinalis",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Rosmarinus Officinalis - Leaves Extract",
+        "Rosmarinus Officinalis - Leaves Extract"
+      ]
+    },
+    {
+      "candidate": "Rutin from",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Rutin from Fruit Peels",
+        "Rutin from Fruit Peels"
+      ]
+    },
+    {
+      "candidate": "Sa lacia",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Saptrangi Extract (Sa lacia Reticulata)"
+      ]
+    },
+    {
+      "candidate": "Safed musali",
+      "type": "latin",
+      "suppliers": [
+        "vaishno"
+      ],
+      "example_labels": [
+        "Safed Musali Extract"
+      ]
+    },
+    {
+      "candidate": "Salai guggul",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Salai guggul Extract"
+      ]
+    },
+    {
+      "candidate": "Sambucus nigra",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Elder Berry Extract (Sambucus nigra)"
+      ]
+    },
+    {
+      "candidate": "Saraca indica",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Ashoka Extract (Saraca indica)"
+      ]
+    },
+    {
+      "candidate": "Saw palmeto",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Saw Palmeto Extract",
+        "Saw Palmeto Extract / Serenoa repens"
+      ]
+    },
+    {
+      "candidate": "Serbian blue",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Serbian Blue Clay"
+      ]
+    },
+    {
+      "candidate": "Shudh kuchla",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Shudh Kuchla Extract",
+        "Shudh Kuchla Extract"
+      ]
+    },
+    {
+      "candidate": "Siberian ginseng",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Siberian Ginseng Extract",
+        "Siberian Ginseng Extract / Eleutherococcus senticosus"
+      ]
+    },
+    {
+      "candidate": "Silderitis angustifolia",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Silderitis Angustifolia Extract",
+        "Silderitis Angustifolia Extract"
+      ]
+    },
+    {
+      "candidate": "Soy wax",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Soy wax A464",
+        "Soy wax AA+",
+        "Soy wax Flakes"
+      ]
+    },
+    {
+      "candidate": "Soya bean",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Soya Bean Extract",
+        "Soya Bean Extract"
+      ]
+    },
+    {
+      "candidate": "Soya sauce",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Soya Sauce Powder"
+      ]
+    },
+    {
+      "candidate": "Soywax butter",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Soywax Butter"
+      ]
+    },
+    {
+      "candidate": "Spergularia rubra",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Spergularia Rubra Extract",
+        "Spergularia Rubra Extract"
+      ]
+    },
+    {
+      "candidate": "Spnaeranthus indicus",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Spnaeranthus Indicus Extract",
+        "Spnaeranthus Indicus Extract"
+      ]
+    },
+    {
+      "candidate": "TERMINALIA BELERICA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "BAHEDA"
+      ]
+    },
+    {
+      "candidate": "TRIGONELLA FOENUM GRACEUM",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "METHI"
+      ]
+    },
+    {
+      "candidate": "Tai makhana",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Tai Makhana(Kokilaksha) Dry Extract"
+      ]
+    },
+    {
+      "candidate": "Tapioca starch",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Tapioca starch"
+      ]
+    },
+    {
+      "candidate": "Terminala arjuna",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Terminala Arjuna Extract",
+        "Terminala Arjuna Extract"
+      ]
+    },
+    {
+      "candidate": "Terminiliabelericabel leric",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Behdaext"
+      ]
+    },
+    {
+      "candidate": "Trigonella foenum",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01"
+      ],
+      "example_labels": [
+        "Fenugreek Extract (Methi/Trigonella foenum- graecum)"
+      ]
+    },
+    {
+      "candidate": "Uncaria tomenttose",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Uncaria Tomenttose Bark Extract",
+        "Uncaria Tomenttose Bark Extract"
+      ]
+    },
+    {
+      "candidate": "Uva ursi",
+      "type": "latin",
+      "suppliers": [
+        "herbal_creative"
+      ],
+      "example_labels": [
+        "Uva Ursi (Bearberry) Extract"
+      ]
+    },
+    {
+      "candidate": "VALERIAN WALLICHI",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "TAGAR"
+      ]
+    },
+    {
+      "candidate": "VIGNA MUNGO",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "UDADA"
+      ]
+    },
+    {
+      "candidate": "Vegetable wax",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Vegetable wax"
+      ]
+    },
+    {
+      "candidate": "Velvet bean",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Velvet Bean Extract",
+        "Velvet Bean Extract"
+      ]
+    },
+    {
+      "candidate": "Vitex agnus",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Vitex agnus Castus Extract",
+        "Vitex agnus- Chest Berry Extract",
+        "Vitex agnus- Chest Berry Extract"
+      ]
+    },
+    {
+      "candidate": "WITHANNIA SOMNIFERA",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "ASHWGANDHA"
+      ]
+    },
+    {
+      "candidate": "Wheat grass",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Wheat Grass Extract",
+        "Wheat Grass Extract"
+      ]
+    },
+    {
+      "candidate": "Whitch hazzel",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Whitch Hazzel Extract",
+        "Whitch Hazzel Extract"
+      ]
+    },
+    {
+      "candidate": "White tea",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Black/Green/White Tea Extract"
+      ]
+    },
+    {
+      "candidate": "Wild rose",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Wild Rose Extract",
+        "Wild Rose Extract"
+      ]
+    },
+    {
+      "candidate": "Wild yarn",
+      "type": "latin",
+      "suppliers": [
+        "pending-mapping-01",
+        "vaishno"
+      ],
+      "example_labels": [
+        "Wild Yarn Extract",
+        "Wild Yarn Extract"
+      ]
+    },
+    {
+      "candidate": "Withanniasomnifera",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "Ashwgandhaext"
+      ]
+    },
+    {
+      "candidate": "ZINGIBER",
+      "type": "latin",
+      "suppliers": [
+        "sangam"
+      ],
+      "example_labels": [
+        "SUNTH"
+      ]
+    },
+    {
+      "candidate": "Zeolite clay",
+      "type": "latin",
+      "suppliers": [
+        "nita"
+      ],
+      "example_labels": [
+        "Zeolite Clay"
+      ]
+    }
+  ]
+}

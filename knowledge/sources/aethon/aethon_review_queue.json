@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "supplier_id": "aethon",
+    "count": 5
+  },
+  "entries": [
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "aethon",
+      "label": "Nagarmotha (Cypriol)",
+      "candidates": [
+        "cyperus-rotundus",
+        "cyperus-scariosus"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "aethon",
+      "label": "Cinnamon Leaf",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "aethon",
+      "label": "Cinnamon Bark",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "aethon",
+      "label": "Tea Tree",
+      "candidates": [
+        "camellia-sinensis",
+        "melaleuca-alternifolia"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "aethon",
+      "label": "Jasmine ( Grandi Flora)",
+      "candidates": [
+        "jasminum",
+        "jasminum-sambac"
+      ],
+      "requires_owner_review": true
+    }
+  ]
+}

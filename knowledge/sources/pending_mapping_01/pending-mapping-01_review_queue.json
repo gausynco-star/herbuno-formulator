@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "supplier_id": "pending-mapping-01",
+    "count": 3
+  },
+  "entries": [
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "pending-mapping-01",
+      "label": "Cinnamon Extract",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "pending-mapping-01",
+      "label": "Lemon Balm Extract (Leaf Ext)",
+      "candidates": [
+        "citrus-limon",
+        "melissa-officinalis"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "pending-mapping-01",
+      "label": "Tea Tree Extract",
+      "candidates": [
+        "camellia-sinensis",
+        "melaleuca-alternifolia"
+      ],
+      "requires_owner_review": true
+    }
+  ]
+}

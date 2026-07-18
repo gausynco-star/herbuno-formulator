@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "supplier_id": "nita",
+    "count": 3
+  },
+  "entries": [
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "nita",
+      "label": "4. Cinnamon",
+      "candidates": [
+        "cinnamomum-burmanni",
+        "cinnamomum-verum"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "nita",
+      "label": "14. Jasmine",
+      "candidates": [
+        "jasminum",
+        "jasminum-sambac"
+      ],
+      "requires_owner_review": true
+    },
+    {
+      "type": "ambiguous_common_name",
+      "supplier_id": "nita",
+      "label": "36. Lemongrass",
+      "candidates": [
+        "curcuma-zedoaria",
+        "cymbopogon-citratus"
+      ],
+      "requires_owner_review": true
+    }
+  ]
+}
