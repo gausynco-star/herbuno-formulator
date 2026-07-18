@@ -1,0 +1,335 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+ADR-013 — Frozen identity backbone for Pass 3.
+
+Consolidates pass1 + pass2 + pass2b + all owner sign-offs into ONE canonical artifact:
+one record per resolved botanical identity, keyed by a stable canonical_id. Pass 3
+(multi-supplier consensus + form availability) joins against this by original_parsed_names.
+
+Every one of the 641 Pass-1 keys is dispositioned:
+  464 accepted · 87 synonym-resolved · 3 trade_ambiguous · 23 typo-corrected ·
+  30 owner-resolved(unknown) · 5 genus_level · 1 species_ambiguous · 28 excluded.
+Keys sharing a final accepted name merge into one identity. Non-botanical (18) and
+unresolvable (10) go to excluded.json with a reason.
+
+Trinomials are parsed into accepted_rank + infraspecific_epithet (GBIF rank where available).
+
+Outputs -> knowledge/identity/: botanical_identity.json, botanical_identity.md, excluded.json
+Reuses pass2/pass2b GBIF match caches; new lookups cached under .cache/.
+
+Run:  python3 knowledge/identity/build_identity.py
+"""
+
+import json, os, re, time, urllib.parse, urllib.request, urllib.error
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+K = os.path.join(HERE, "..")
+P1 = os.path.join(K, "pass1", "botanical_candidates.json")
+AUTH = os.path.join(K, "pass2", "authority_results.json")
+RQ = os.path.join(K, "pass2", "pass2_review_queue.json")
+CACHE = os.path.join(HERE, ".cache", "gbif_match.json")
+READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
+               os.path.join(K, "pass2b", ".cache", "gbif_match.json")]
+QUERY_DATE = "2026-07-18"
+AUTHORITY = "GBIF backbone (species/match v1)"
+GBIF_MATCH = "https://api.gbif.org/v1/species/match"
+SPECIESLIKE = ("SPECIES", "SUBSPECIES", "VARIETY", "FORM")
+
+
+def _load(p, d):
+    try:
+        with open(p, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return d
+
+
+def _save(p, o):
+    with open(p, "w", encoding="utf-8") as f:
+        json.dump(o, f, ensure_ascii=False, indent=2)
+
+
+# merged read cache (pass2 + pass2b) + local write cache
+match_cache = {}
+for rc in READ_CACHES:
+    match_cache.update(_load(rc, {}))
+_local = _load(CACHE, {})
+match_cache.update(_local)
+
+
+def gbif_match(name):
+    if name in match_cache:
+        return match_cache[name]
+    url = GBIF_MATCH + "?" + urllib.parse.urlencode({"name": name, "verbose": "false", "strict": "false"})
+    for a in range(3):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "herbuno-formulator/ADR-013-identity (hello@herbuno.com)"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                d = json.loads(r.read().decode("utf-8"))
+                break
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError):
+            time.sleep(0.4 * (a + 1))
+    else:
+        d = {}
+    match_cache[name] = d
+    _local[name] = d
+    time.sleep(0.03)
+    return d
+
+
+RANK_MARKERS = {"var.", "subsp.", "ssp.", "f.", "forma", "cv.", "×"}
+
+
+def parse_name(name):
+    """(genus, species, infraspecific_epithet, rank_guess). Handles ×hybrid & hyphenated epithets."""
+    toks = [t for t in name.replace("×", " ").split() if t and t not in RANK_MARKERS]
+    genus = toks[0] if toks else None
+    species = toks[1] if len(toks) >= 2 else None
+    infra = toks[2] if len(toks) >= 3 else None
+    rank = "GENUS" if len(toks) == 1 else "SPECIES" if len(toks) == 2 else "INFRASPECIFIC"
+    return genus, species, infra, rank
+
+
+def gbif_info(accepted_name):
+    """Return (usage_key, rank) from GBIF for an accepted name (rank precise for infraspecifics)."""
+    if not accepted_name:
+        return None, None
+    m = gbif_match(accepted_name)
+    key = m.get("usageKey")
+    rank = m.get("rank") if m.get("rank") in SPECIESLIKE + ("GENUS",) else None
+    # only trust the key if GBIF matched the same canonical (avoid fuzzy drift)
+    if m.get("matchType") == "NONE":
+        return None, None
+    return key, rank
+
+
+def slug(name, used):
+    s = name.lower().replace("×", "x-")
+    s = re.sub(r"\b(var|subsp|ssp|f|cv|forma)\.?\b", "", s)
+    s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+    base, i = s, 2
+    while s in used:
+        s = "%s-%d" % (base, i)
+        i += 1
+    used.add(s)
+    return s
+
+
+# English/vernacular last-tokens that make a "Genus species"-shaped string NOT a Latin binomial
+# (e.g. "Rose petal", "Holy basil"). None of these are real Latin species epithets.
+VERNACULAR_STOP = {
+    "petal", "basil", "gourd", "daisy", "mustard", "cornflower", "pea", "apple", "tree",
+    "barberry", "kino", "kudzu", "matcha", "husk", "jivak", "iridis", "patti", "phool", "phul",
+    "mirch", "chaal", "dana", "badi", "murga", "irani", "madrasi", "fagonia", "wood", "kahwa",
+}
+
+
+def is_scientific(s):
+    """A Latin binomial (Genus species...), excluding vernacular 'Genus word' strings."""
+    if not re.match(r"^[A-Z][a-z]+(?:[- ][a-z]+)* [a-z]", s or ""):
+        return False
+    return s.split()[-1].lower() not in VERNACULAR_STOP
+
+
+def main():
+    p1 = _load(P1, {}).get("botanicals", {})
+    auth = _load(AUTH, {})["results"]
+    rq = _load(RQ, {})
+    sr = {s["latin"]: s for s in rq["synonym_remaps"]}
+    ty = {t["latin"]: t for t in rq["typo_flags"]}
+    unk = {u["latin"]: u for u in rq["unknown_quarantine"]}
+
+    # ---- disposition per Pass-1 key ----
+    # groups[group_key] = list of member dicts; excluded = list
+    groups = {}
+    excluded = []
+    RANK = {"accepted": 0, "synonym-resolved": 1, "owner-resolved": 2, "typo-corrected": 3,
+            "genus_level": 4, "species_ambiguous": 5, "trade_ambiguous": 6}
+
+    def add(group, member):
+        groups.setdefault(group, []).append(member)
+
+    for key in sorted(auth):
+        st = auth[key]["status"]
+        if st == "accepted":
+            acc = auth[key].get("accepted_name") or key
+            add(acc, {"key": key, "status": "accepted", "accepted_name": acc,
+                      "resolved_by": "GBIF", "review_date": None,
+                      "usage_key": auth[key].get("gbif_usage_key"), "trade": []})
+        elif st == "synonym":
+            e = sr[key]
+            so = (e.get("signoff") or {}).get("status")
+            if so == "trade_ambiguous":
+                add("AMB::" + key, {"key": key, "status": "trade_ambiguous", "accepted_name": None,
+                                    "candidates": e.get("candidate_accepted_names"),
+                                    "resolved_by": "owner", "review_date": QUERY_DATE,
+                                    "guidance": (e.get("signoff") or {}).get("guidance"), "trade": []})
+            else:
+                acc = e.get("accepted_name")
+                rs = "owner-resolved" if so == "resolved_from_catalogue" else "synonym-resolved"
+                rb = "owner" if so in ("resolved", "resolved_from_catalogue") else "GBIF"
+                rv = QUERY_DATE if rb == "owner" else None
+                trade = [key] if so == "resolved_from_catalogue" else []
+                add(acc, {"key": key, "status": rs, "accepted_name": acc, "resolved_by": rb,
+                          "review_date": rv, "trade": trade})
+        elif st == "typo":
+            e = ty[key]
+            adopted = e.get("gbif_adopted")
+            acc = adopted["accepted_name"] if adopted else e.get("corrected_name")
+            add(acc, {"key": key, "status": "typo-corrected", "accepted_name": acc,
+                      "corrected_name": e.get("corrected_name"), "resolved_by": "owner",
+                      "review_date": QUERY_DATE, "trade": e.get("trade_synonyms", [])})
+        else:  # unknown
+            e = unk[key]
+            b = e.get("triage_bucket")
+            if b in ("non_botanical", "unresolvable"):
+                excluded.append({"parsed_name": key, "bucket": b, "identity": e.get("identity"),
+                                 "reason": e.get("note")})
+            elif b == "genus_level":
+                g = e.get("identity")
+                add(g, {"key": key, "status": "genus_level", "accepted_name": g,
+                        "resolved_by": "owner", "review_date": QUERY_DATE, "genus_rank": True, "trade": []})
+            elif b == "species_ambiguous":
+                add("AMB::" + key, {"key": key, "status": "species_ambiguous", "accepted_name": None,
+                                    "candidates": e.get("candidate_accepted_names"),
+                                    "resolved_by": "owner", "review_date": QUERY_DATE,
+                                    "guidance": (e.get("signoff") or {}).get("guidance"), "trade": []})
+            else:  # resolved
+                adopted = e.get("gbif_adopted")
+                acc = adopted["accepted_name"] if adopted else e.get("accepted_name")
+                add(acc, {"key": key, "status": "owner-resolved", "accepted_name": acc,
+                          "resolved_by": "owner", "review_date": QUERY_DATE,
+                          "trade": e.get("trade_synonyms", [])})
+
+    # ---- build one record per group ----
+    used_ids = set()
+    records = []
+    for group, members in sorted(groups.items()):
+        amb = group.startswith("AMB::")
+        rep = min(members, key=lambda m: RANK[m["status"]])
+        res_status = rep["status"]
+        accepted_name = None if amb else group
+        genus_rank = any(m.get("genus_rank") for m in members)
+
+        # aliases across members
+        keys = sorted({m["key"] for m in members})
+        trade = sorted({t for m in members for t in (m.get("trade") or [])})
+        corrected = sorted({m.get("corrected_name") for m in members if m.get("corrected_name")})
+        p1_commons = sorted({c for k in keys for c in p1.get(k, {}).get("common_names", [])})
+
+        sci_syn, common, trade_syn = [], [], sorted(set(trade))
+        alias_pool = set(keys) | set(corrected)
+        for a in sorted(alias_pool):
+            if accepted_name and a == accepted_name:
+                continue
+            if a in trade_syn:
+                continue
+            (sci_syn if is_scientific(a) else common).append(a)
+        # vernacular common names from pass-1 (dedup vs sci/trade)
+        for c in p1_commons:
+            if c not in common and c not in sci_syn and c not in trade_syn:
+                common.append(c)
+        common = sorted(set(common))
+        sci_syn = sorted(set(sci_syn))
+
+        rec = {
+            "canonical_id": slug(group.replace("AMB::", "") if amb else group, used_ids),
+            "accepted_name": accepted_name,
+            "accepted_rank": None, "genus": None, "species": None, "infraspecific_epithet": None,
+            "gbif_usage_key": None,
+            "original_parsed_names": keys,
+            "scientific_synonyms": sci_syn,
+            "trade_synonyms": trade_syn,
+            "common_names": common,
+            "resolution_status": res_status,
+            "provenance": {
+                "authority": AUTHORITY, "query_date": QUERY_DATE,
+                "resolved_by": rep["resolved_by"], "review_date": rep["review_date"],
+            },
+        }
+
+        if amb:
+            rec["ambiguity_flag"] = True
+            rec["candidate_accepted_names"] = sorted(rep.get("candidates") or [])
+            if rep.get("guidance"):
+                rec["provenance"]["guidance"] = rep["guidance"]
+        else:
+            g, sp, inf, rank_guess = parse_name(accepted_name)
+            key, gbif_rank = gbif_info(accepted_name)
+            if genus_rank:
+                rank_guess, sp, inf = "GENUS", None, None
+            rec["genus"], rec["species"], rec["infraspecific_epithet"] = g, sp, inf
+            rec["accepted_rank"] = gbif_rank or rank_guess
+            rec["gbif_usage_key"] = key
+        records.append(rec)
+
+    records.sort(key=lambda r: (r["accepted_name"] or "~" + r["canonical_id"]))
+    _save(CACHE, _local)
+
+    # ---- write outputs ----
+    from collections import Counter
+    status_counts = Counter(r["resolution_status"] for r in records)
+    trinomials = sorted(r["accepted_name"] for r in records if r["infraspecific_epithet"])
+    key_total = sum(len(r["original_parsed_names"]) for r in records) + len(excluded)
+
+    doc = {"_meta": {
+        "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
+        "built": QUERY_DATE, "authority": AUTHORITY,
+        "identity_records": len(records), "excluded": len(excluded),
+        "pass1_keys_accounted": key_total,
+        "resolution_status_counts": dict(status_counts),
+        "note": "One record per resolved botanical identity. Join Pass-3 supplier/form data via "
+                "original_parsed_names. accepted_name is authoritative; owner sign-off overrides GBIF "
+                "where recorded. Non-botanical/unresolvable are in excluded.json.",
+    }, "identities": records}
+    _save(os.path.join(HERE, "botanical_identity.json"), doc)
+
+    exc_doc = {"_meta": {"built": QUERY_DATE, "count": len(excluded),
+                         "note": "Pass-1 keys excluded from the botanical backbone: not plants "
+                                 "(non_botanical) or not identifiable to one taxon (unresolvable)."},
+               "excluded": sorted(excluded, key=lambda e: (e["bucket"], e["parsed_name"]))}
+    _save(os.path.join(HERE, "excluded.json"), exc_doc)
+
+    L = ["# Frozen Identity Backbone — ADR-013 (Pass-3 join target)\n",
+         "> One record per resolved botanical identity. Pass 3 joins supplier/form data via",
+         "> `original_parsed_names`. `accepted_name` authoritative; owner sign-off overrides GBIF where set.\n",
+         "## Totals",
+         "| metric | value |", "|---|---:|",
+         "| identity records | **%d** |" % len(records),
+         "| excluded (non_botanical + unresolvable) | %d |" % len(excluded),
+         "| Pass-1 keys accounted for | %d / 641 |" % key_total,
+         "| trinomials (infraspecific) | %d |" % len(trinomials), "",
+         "## Records by resolution_status",
+         "| status | count |", "|---|---:|"]
+    for s, n in sorted(status_counts.items(), key=lambda kv: -kv[1]):
+        L.append("| %s | %d |" % (s, n))
+    L.append("")
+    L.append("## Trinomials parsed (accepted_name → rank · infraspecific epithet)")
+    L.append("| accepted_name | rank | infraspecific |")
+    L.append("|---|---|---|")
+    for r in records:
+        if r["infraspecific_epithet"]:
+            L.append("| `%s` | %s | %s |" % (r["accepted_name"], r["accepted_rank"], r["infraspecific_epithet"]))
+    L.append("")
+    L.append("## Excluded (%d)" % len(excluded))
+    L.append("non_botanical %d · unresolvable %d — see excluded.json." %
+             (sum(1 for e in excluded if e["bucket"] == "non_botanical"),
+              sum(1 for e in excluded if e["bucket"] == "unresolvable")))
+    L.append("")
+    with open(os.path.join(HERE, "botanical_identity.md"), "w", encoding="utf-8") as f:
+        f.write("\n".join(L))
+
+    print("IDENTITY BACKBONE BUILT")
+    print("  identity records: %d   excluded: %d   pass-1 keys accounted: %d/641" %
+          (len(records), len(excluded), key_total))
+    print("  by status:", dict(status_counts))
+    print("  trinomials (%d):" % len(trinomials))
+    for t in trinomials:
+        r = next(x for x in records if x["accepted_name"] == t)
+        print("     %-34s rank=%-12s infra=%s" % (t, r["accepted_rank"], r["infraspecific_epithet"]))
+    assert key_total == 641, "key accounting mismatch: %d != 641" % key_total
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,177 @@
+{
+  "_meta": {
+    "built": "2026-07-18",
+    "count": 28,
+    "note": "Pass-1 keys excluded from the botanical backbone: not plants (non_botanical) or not identifiable to one taxon (unresolvable)."
+  },
+  "excluded": [
+    {
+      "parsed_name": "Abhrak bhasm",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Activated charcoal",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Asphaltum punjabianum",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Bentonite clay",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Bura armani",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Cuttle fish",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Ferrous sulphate",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Geru mitti",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Hartaal varki",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Kasheesh hara",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Keherwa dana",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Potassium carbonate",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Potassium nitrate",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Rajat makshik",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Rock sugar",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Sangesar mahi",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Sat nimbu",
+      "bucket": "non_botanical",
+      "identity": "citric acid",
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Sendha namak",
+      "bucket": "non_botanical",
+      "identity": null,
+      "reason": "Non-botanical (mineral/salt/chemical/animal); not a plant identity."
+    },
+    {
+      "parsed_name": "Ber patthar",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Chokh wood",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Dhoop wood",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Dooku patti",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Kashmiri kahwa",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Kashmiri patta",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Lotus saffron",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Rosa hybrid",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Sabut garam",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    },
+    {
+      "parsed_name": "Velvety beauty",
+      "bucket": "unresolvable",
+      "identity": null,
+      "reason": "Unresolvable: fragment / blend / too vague to identify one species."
+    }
+  ]
+}
