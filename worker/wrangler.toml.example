@@ -10,6 +10,11 @@ compatibility_date = "2026-07-19"
 # the Worker fails closed (degraded) if it is absent. Use the store's permanent .myshopify.com domain.
 [vars]
 SHOP_DOMAIN = "7zyiqd-p7.myshopify.com"
+# HEADER_CAPTURE: TEMPORARY dev-theme diagnostic to clear the X-Forwarded-For DEPLOYMENT GATE. Set to "1"
+# ONLY on the dev-theme Worker to log the proxy header chain (raw XFF, CF-Connecting-IP, derived shopper
+# key, shop, egress fan-out) — NEVER botanical queries or tokens. MUST stay UNSET in production. Leave the
+# line commented out below except during a capture run.
+# HEADER_CAPTURE = "1"
 
 # App Proxy forwards https://<shop>/apps/formulator/* to this Worker. Configure the proxy in the
 # Shopify custom app admin (subpath prefix "apps", subpath "formulator", proxy URL = this Worker).

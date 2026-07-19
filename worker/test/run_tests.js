@@ -53,7 +53,7 @@ function fakeState() {
 function fakeDO() { const inst = new RateLimiterDurableObject(fakeState(), {}); return { idFromName: () => 'global', get: () => ({ fetch: (u, init) => inst.fetch(new Request(u, init)) }) }; }
 const SHOP = '7zyiqd-p7.myshopify.com';
 function envWith(kv, opts = {}) {
-  return { SHOPIFY_APP_SECRET: SECRET, SPECIFICATION_TOKEN_SECRET: TOKEN_SECRET, SHOP_DOMAIN: opts.omitShopDomain ? undefined : SHOP, HB_KV: kv, RATE_LIMITER: opts.noLimiter ? undefined : fakeDO() };
+  return { SHOPIFY_APP_SECRET: SECRET, SPECIFICATION_TOKEN_SECRET: TOKEN_SECRET, SHOP_DOMAIN: opts.omitShopDomain ? undefined : SHOP, HEADER_CAPTURE: opts.capture ? '1' : undefined, HB_KV: kv, RATE_LIMITER: opts.noLimiter ? undefined : fakeDO() };
 }
 
 async function specRequest(body, opts = {}) {
@@ -228,6 +228,20 @@ async function run() {
     await call(env, specBody(), { ip: EG, xff: '203.0.113.55, ' + EG });
     const t = await env.RATE_LIMITER.get('global').fetch('https://do/x', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'stat', key: 'tm:' + EG }) }).then(r => r.json());
     ok('transport backstop: request increments the transport counter keyed on the egress (CF-Connecting-IP)', t.count === 1, 'tm count=' + t.count);
+  }
+
+  // ===== dev-theme header capture (gated; DEPLOYMENT-GATE evidence; privacy: NEVER botanical/token/session) =====
+  { __resetStore(); __resetRate(); const EG = '198.51.100.30';
+    const grab = async (env, opts) => { const orig = console.log, lines = []; console.log = (...a) => lines.push(a.map(String).join(' ')); try { await call(env, specBody({ session_id: 'capsess42' }), opts); } finally { console.log = orig; } return lines; };
+    const on = await grab(envWith(buildFakeKV(B), { capture: true }), { ip: EG, xff: '203.0.113.60, ' + EG });
+    const cap = on.find(l => l.includes('[xff-capture]')) || '';
+    ok('capture: emits an [xff-capture] line when HEADER_CAPTURE is set, with the raw XFF', cap.includes('[xff-capture]') && cap.includes('"xff":"203.0.113.60, ' + EG + '"'), cap.slice(0, 160));
+    ok('capture: records cf, derived shopper key, shop, and the shared-transport signal',
+      cap.includes('"cf":"' + EG + '"') && cap.includes('"derived":"203.0.113.60"') && cap.includes('"shop":"' + SHOP + '"') && cap.includes('"shared_transport":'), cap.slice(0, 200));
+    ok('capture: NEVER logs the botanical query, the token, or session_id (HARD RULE 7 privacy)',
+      !cap.toLowerCase().includes(latinTerm.toLowerCase()) && !cap.includes('token') && !cap.includes('capsess42'), cap.slice(0, 200));
+    const off = await grab(envWith(buildFakeKV(B)), { ip: EG, xff: '203.0.113.61, ' + EG });
+    ok('capture: OFF by default — no [xff-capture] line unless HEADER_CAPTURE is set', !off.some(l => l.includes('[xff-capture]')));
   }
 
   // ===== degraded: honest, no internal detail; fail-closed on version mismatch =====

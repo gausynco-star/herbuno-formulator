@@ -117,6 +117,12 @@ that key is shared by all shoppers behind one egress, so its ceiling is delibera
 > shopper, and that Shopify does not forward a browser-supplied header verbatim). While confirming, also log
 > how many shoppers share one `CF-Connecting-IP` and size `RATE.transport` so it never throttles legitimate
 > egress fan-out. Dev-theme deployment (to gather this) is permitted; production launch is not until it passes.
+>
+> **How to clear it:** set `HEADER_CAPTURE = "1"` on the **dev-theme Worker only**, drive a few real requests
+> from 2–3 devices, and read the `[xff-capture]` log lines (raw `X-Forwarded-For`, `CF-Connecting-IP`, derived
+> shopper key, `shop`, and per-transport fan-out). The capture logs **only** the proxy header chain — never a
+> botanical query, token, or session. Confirm the derived key matches the true shopper, then remove
+> `HEADER_CAPTURE` (and the temporary capture block in `index.js`) before production.
 
 ## Central rate limiter (Durable Object) — persisted
 

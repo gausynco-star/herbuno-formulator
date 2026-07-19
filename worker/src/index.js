@@ -38,6 +38,30 @@ function clientIp(request) {
   return deriveClientIp(request.headers.get('X-Forwarded-For'), request.headers.get('CF-Connecting-IP'));
 }
 
+// TEMPORARY dev-theme header capture — the evidence that clears the X-Forwarded-For DEPLOYMENT GATE.
+// Gated behind env.HEADER_CAPTURE; emits NOTHING unless it is '1'/'true' (so it is off in production).
+// It logs ONLY the proxy header chain needed to confirm the real X-Forwarded-For shape / peel offset:
+// the raw XFF, CF-Connecting-IP, the derived shopper key, and the shop param. It deliberately NEVER logs
+// the botanical query, the specification_token, session_id, or any response content (HARD RULE 7 privacy).
+// `distinct_shoppers_on_transport` is a per-isolate approximation to surface egress fan-out live; the
+// authoritative fan-out is obtained by aggregating capture lines (group by `cf`, count distinct `derived`).
+// REMOVE this whole block once the gate is cleared.
+const HDR_CAP_MAX = 2_000;
+const seenShoppersByTransport = new Map(); // cf -> Set<derived>, bounded
+function logHeaderCapture(env, { xff, cf, derived, shop }) {
+  if (!env || (env.HEADER_CAPTURE !== '1' && env.HEADER_CAPTURE !== 'true')) return;
+  const t = cf || 'no-transport';
+  let seen = seenShoppersByTransport.get(t);
+  if (!seen) { seen = new Set(); if (seenShoppersByTransport.size < HDR_CAP_MAX) seenShoppersByTransport.set(t, seen); }
+  seen.add(derived);
+  try {
+    console.log('[xff-capture]', JSON.stringify({
+      xff: xff || null, cf: cf || null, derived, shop: shop || null,
+      distinct_shoppers_on_transport: seen.size, shared_transport: seen.size > 1,
+    }));
+  } catch { /* noop — capture must never affect the response */ }
+}
+
 export async function handleRequest(request, env, ctx) {
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, '') || '/';
@@ -80,6 +104,8 @@ export async function handleRequest(request, env, ctx) {
 
   const ip = clientIp(request);                                     // shopper key (XFF, trust-from-right)
   const transportIp = request.headers.get('CF-Connecting-IP') || 'no-transport'; // non-spoofable egress
+  // Dev-theme-only: capture the proxy header chain to clear the XFF gate (off unless HEADER_CAPTURE set).
+  logHeaderCapture(env, { xff: request.headers.get('X-Forwarded-For'), cf: request.headers.get('CF-Connecting-IP'), derived: ip, shop: url.searchParams.get('shop') });
   try {
     if (isSpec) return await specification(env, context, body, ip, transportIp, tokenSecret);
     return await procurement(env, context, body, ip, transportIp, tokenSecret);

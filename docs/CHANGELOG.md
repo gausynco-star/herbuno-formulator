@@ -42,10 +42,11 @@ ADR and a decision record in `/matrix`.
 - Step 1 feasibility benchmark (size + CPU); Step 2 Worker + endpoints; Step 2a external-audit
   security fixes; Step 2b persisted Durable-Object limiter + Miniflare integration tests.
 - Step 2b client-IP fix (external review): behind the App Proxy `CF-Connecting-IP` is Shopify's
-  **shared egress**, so the limiter now keys on the shopper IP from `X-Forwarded-For` — trusted only
-  after signature verification, extracted **trust-from-the-right** (peel Cloudflare's appended egress
-  hop, take the rightmost remaining entry; leftmost is spoofable; malformed → fall back to
-  `CF-Connecting-IP`).
+  **shared egress**, so the limiter keys on the **expected shopper-IP position derived from the proxy
+  header chain** (`X-Forwarded-For`) — read only after signature verification, extracted
+  **trust-from-the-right** (peel Cloudflare's appended egress hop, take the rightmost remaining entry;
+  leftmost is spoofable; malformed → fall back to `CF-Connecting-IP`). The position is *expected* from
+  the documented topology, not yet *proven* — see the deployment gate below.
 - Step 2b follow-ups (owner review): (a) **dual-key limiter** — the fine-grained shopper-IP limit is
   now backed by a coarse limit on the non-spoofable `CF-Connecting-IP` (`RATE.transport`, provisional
   120/min · 1200/hr · 6000/day — pending dev-theme telemetry), bounding aggregate abuse when the shopper
@@ -60,6 +61,10 @@ ADR and a decision record in `/matrix`.
   genuinely the shopper, with no Shopify verbatim-passthrough of a browser-supplied header). Dev-theme
   deployment to gather this — and to size `RATE.transport` from real per-egress shopper fan-out — is
   permitted; production is not until the gate passes.
+- Temporary dev-theme **header-capture logging** to clear that gate: gated behind `HEADER_CAPTURE` (off
+  unless `"1"`/`"true"`; must stay unset in production). Logs ONLY the proxy header chain — raw
+  `X-Forwarded-For`, `CF-Connecting-IP`, derived shopper key, `shop`, and per-transport fan-out — and
+  **never** the botanical query, token, or session_id (HARD RULE 7). Remove the block once the gate clears.
 
 ## 2026-07 — Stage-1 ladder ordering applied (ADR-011)
 ### Added
