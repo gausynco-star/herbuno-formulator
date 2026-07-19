@@ -1,0 +1,9 @@
+# Generated runtime payloads — reproduce with: node tools/generate_payloads.js
+# The generator is committed; the derived data is not (keeps the repo free of duplicated,
+# version-churning knowledge and mirrors the ADR-013 "generator is source of truth" rule).
+data/*.json
+
+# Local wrangler state / secrets (never commit secrets — Shopify shared secret is a Worker secret)
+.dev.vars
+.wrangler/
+wrangler.toml

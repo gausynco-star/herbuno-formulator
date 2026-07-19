@@ -1,0 +1,22 @@
+# ADR-014 Worker deployment config — TEMPLATE. Copy to wrangler.toml (gitignored) and fill in.
+# Claude Code does NOT deploy; this documents the shape for the owner.
+
+name = "herbuno-formulator"
+main = "src/index.js"
+compatibility_date = "2026-07-19"
+
+# App Proxy forwards https://<shop>/apps/formulator/* to this Worker. Configure the proxy in the
+# Shopify custom app admin (subpath prefix "apps", subpath "formulator", proxy URL = this Worker).
+# Optionally also pin a route here if fronting a custom domain:
+# routes = [{ pattern = "herbuno.com/apps/formulator/*", zone_name = "herbuno.com" }]
+
+# KV namespace holding the versioned bundles (manifest:current, identity:<v>, formgraph:<v>, matrix:<v>).
+# Create with: wrangler kv namespace create HB_KV   then paste the id below.
+[[kv_namespaces]]
+binding = "HB_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# SECRET — do NOT put here. Set out of band:
+#   wrangler secret put SHOPIFY_APP_SECRET
+# Locally, use .dev.vars (gitignored):
+#   SHOPIFY_APP_SECRET = "shpss_..."

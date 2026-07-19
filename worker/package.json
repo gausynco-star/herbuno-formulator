@@ -1,0 +1,11 @@
+{
+  "name": "herbuno-formulator-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ADR-014 server-side knowledge backend (Cloudflare Worker). Not deployed by Claude Code.",
+  "scripts": {
+    "generate": "node tools/generate_payloads.js",
+    "test": "node test/run_tests.js"
+  }
+}
