@@ -349,10 +349,15 @@ async function run() {
     const ih = (await call(env, { product: 'instant-hot', role: 'base', botanical: latinTerm })).body;
     ok('fix#4 phase: dry powder in a dry product reads as compatible, not a separate liquid phase', /compatible with incorporation into the product.s dry-solid matrix/.test(ih.reasoning_checks.phase) && !/separate phase/.test(ih.reasoning_checks.phase), JSON.stringify(ih.reasoning_checks.phase));
   }
-  // #3 an unmapped product×role combination is a 400 (bad_input), NOT a 503 degraded — the client renders it as guidance
+  // #3 an unmapped-but-well-formed product×role is a DOMAIN outcome: 200 guidance (robust through the App
+  // Proxy, never degraded), NOT a 400/5xx. Genuinely malformed input still 400s.
   { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B));
     const r = await call(env, { product: 'rtd-cloudy', role: 'carrier', botanical: 'orange' });
-    ok('fix#3 unmapped cell: rtd-cloudy|carrier returns 400 unknown_product_role (not 503 degraded)', r.status === 400 && r.body.detail === 'unknown_product_role', 'status=' + r.status + ' detail=' + (r.body && r.body.detail));
+    ok('fix#3 unmapped cell: rtd-cloudy|carrier returns 200 guidance (not 400/5xx)',
+      r.status === 200 && r.body.guidance_status === 'not_available_for_product' && r.body.specification === null && r.body.specification_token === null, 'status=' + r.status + ' body=' + JSON.stringify(r.body).slice(0, 160));
+    ok('fix#3 guidance carries the version block (client apiCompatible passes)', r.body.version && r.body.version.api_schema_version === API_SCHEMA_VERSION);
+    // genuinely malformed input still 400s
+    ok('fix#3 malformed input still 400s (unexpected field)', (await call(env, { product: PRODUCT, role: ROLE, botanical: latinTerm, bogus: 1 })).status === 400);
   }
 
   // ===== degraded: honest, no internal detail; fail-closed on version mismatch =====

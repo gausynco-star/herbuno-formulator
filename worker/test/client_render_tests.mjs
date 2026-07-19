@@ -112,6 +112,9 @@ const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|i
   const na = client.renderNotAvailable('unknown_product_role');
   ok('fix#3: 400 renders a "not available for this product" card, not degraded', /isn.t set up for this product/.test(na) && !/[Tt]emporarily un/.test(na), na);
   ok('fix#3: notAvailableMessage distinguishes unknown_product_role from generic input errors', /role isn.t set up/.test(client.notAvailableMessage('unknown_product_role')) && /check your selections/.test(client.notAvailableMessage('bad_botanical')));
+  // #3 the 200 guidance response (guidance_status) renders the not-available card, whatever identity_status says
+  const gd = client.renderResponse({ identity_status: 'not_applicable', guidance_status: 'not_available_for_product', guidance: 'This role is not set up for the selected finished product.', specification: null, specification_token: null, version: { api_schema_version: 2 } });
+  ok('fix#3: a 200 guidance_status response renders the not-available card (not a spec/degraded card)', /Not available for this product/.test(gd) && /not set up for the selected finished product/.test(gd) && !/Recommended form|Temporarily/.test(gd), gd);
   // #2 guidance response (selected_format null) → guidance card, no fake "Recommended form", Stage-2 disabled
   const guidance = { identity_status: 'resolved', identity: { display_name: 'Pomegranate', authority_name: 'Punica granatum' },
     specification: { selected_format: null, technical_status: 'Not a separately sourced ingredient here', role: 'Base' },

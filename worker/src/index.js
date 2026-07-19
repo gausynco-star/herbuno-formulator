@@ -119,6 +119,22 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
   const { engine, versions } = context;
   // 3. strict input allow-list (session_id is validated + never used as a limiter key)
   const bad = validateSpecInput(body, engine);
+  // A well-formed selection whose product×role simply isn't a supported matrix cell is a DOMAIN outcome,
+  // not malformed input — return 200 guidance (robust through the App Proxy, never read as degraded even by
+  // an older client), NOT a 400. Genuinely malformed input still 400s below.
+  if (bad === 'unknown_product_role') {
+    return json(200, {
+      identity_status: 'not_applicable',
+      identity: { display_name: null, authority_name: null },
+      guidance_status: 'not_available_for_product',
+      guidance: 'This role is not set up for the selected finished product.',
+      specification: null,
+      reasoning_checks: null,
+      reasoning_basis: 'role',
+      specification_token: null,
+      version: versionBlock(versions),
+    });
+  }
   if (bad) return json(400, { error: 'bad_input', detail: bad });
 
   const productRole = body.product + '|' + body.role;

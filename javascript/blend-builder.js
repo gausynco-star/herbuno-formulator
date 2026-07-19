@@ -144,8 +144,16 @@
     h += renderStage2Action(resp);
     return h;
   }
+  // A 200 with guidance_status is a domain outcome (e.g. product×role isn't a supported cell) — render the
+  // guidance card, whatever identity_status says.
+  function renderGuidanceCard(resp) {
+    return '<div class="bb-card notavailable"><div class="bb-card-head">Not available for this product</div>' +
+      '<p class="bb-card-msg">' + esc(resp.guidance || 'This combination is not available.') + '</p>' +
+      '<div class="bb-actions"><button class="bb-btn o" data-enquiry="1">Open an enquiry</button></div></div>';
+  }
   // Valid 200 responses (the caller must have already confirmed apiCompatible).
   function renderResponse(resp) {
+    if (resp.guidance_status) return renderGuidanceCard(resp);
     return resp.identity_status === 'resolved' ? renderResolved(resp) : renderNonResolved(resp);
   }
   function renderStage2Result(proc) {
@@ -184,7 +192,7 @@
         renderResolved: renderResolved, renderNonResolved: renderNonResolved, renderReasoning: renderReasoning,
         renderCandidate: renderCandidate, renderStage2Action: renderStage2Action, renderStage2Result: renderStage2Result,
         renderLoading: renderLoading, renderRateLimited: renderRateLimited, renderDegraded: renderDegraded,
-        renderNotAvailable: renderNotAvailable, notAvailableMessage: notAvailableMessage,
+        renderNotAvailable: renderNotAvailable, notAvailableMessage: notAvailableMessage, renderGuidanceCard: renderGuidanceCard,
         formLabel: formLabel, candidateLabel: candidateLabel, FORMAT_LABELS: FORMAT_LABELS,
         CANDIDATE_OPTIONS: CANDIDATE_OPTIONS, ROLES: ROLES, PRODUCTS: PRODUCTS, API_SCHEMA_VERSION: API_SCHEMA_VERSION,
         BUILD_STUB: BUILD_STUB };
