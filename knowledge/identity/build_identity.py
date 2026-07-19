@@ -34,8 +34,8 @@ READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
 QUERY_DATE = "2026-07-18"
 # Immutable freeze stamp. Bump identity_version on any rebuild (Pass 2 correction -> rebuild ->
 # new version). Downstream artifacts (Pass 3+) MUST record which identity_version they built against.
-IDENTITY_VERSION = "2026-07-19.3"  # + trade-usage adjudication (GBIF adoptions, ambiguity/collision) (prior versions in git history)
-IDENTITY_SCHEMA_VERSION = 1
+IDENTITY_VERSION = "2026-07-19.4"  # schema v2: authority/trade-primary/display naming split (prior versions in git history)
+IDENTITY_SCHEMA_VERSION = 2        # v2: added authority_accepted_name / trade_primary_name / canonical_display_name
 
 # Confirmed duplicate-record merges (absorb -> keep). Encoded explicitly so a rebuild never
 # auto-merges anything new. Genus-level records with >1 species (jasminum/gossypium/tagetes) are
@@ -553,7 +553,91 @@ def main():
     if adj["not_found"]:
         print("  !! adjudication targets NOT FOUND:", adj["not_found"])
 
+    # ---- ADR-013 schema v2: separate authority vs trade-primary vs display naming ----
+    # accepted_name is now STRICTLY taxonomic (== authority_accepted_name). For the 9 trade-primary
+    # exceptions the authority name differed from the commercially entrenched name and accepted_name
+    # held the trade name — the field meant two things. Fix: flip accepted_name to the authority name,
+    # keep the trade name as a scientific_synonym (still resolvable), and show the trade name via
+    # canonical_display_name. canonical_id is IMMUTABLE and unchanged by any of this.
+    trade_primary_of = {}
+    for r in records:
+        auth = r.get("provenance", {}).get("gbif_authority_synonym")
+        if auth and r["accepted_name"] and r["accepted_name"] != auth:
+            trade = r["accepted_name"]
+            r["accepted_name"] = auth
+            syn = set(r["scientific_synonyms"]) - {auth}
+            if is_scientific(trade):
+                syn.add(trade)                        # trade name remains a resolvable synonym
+            r["scientific_synonyms"] = sorted(syn)
+            g, sp, inf, rank_guess = parse_name(auth)
+            key, gbif_rank = gbif_info(auth)
+            r["genus"], r["species"], r["infraspecific_epithet"] = g, sp, inf
+            r["accepted_rank"] = gbif_rank or rank_guess
+            r["gbif_usage_key"] = key
+            r["provenance"]["accepted_name_semantics"] = "authority (adopted); trade name shown via canonical_display_name"
+            trade_primary_of[r["canonical_id"]] = trade
+
+    # ---- ADR-013 schema v2: dedup identities that converged on one accepted_name ----
+    # The common-name mapping round can create a fresh record for a binomial that a delta had already
+    # resolved to a DIFFERENT accepted_name (owner 'Pisum sativum' vs delta-accepted 'Lathyrus
+    # oleraceus'); after the authority flip both carry the same accepted_name. Two records with the
+    # same accepted_name are the same identity -> merge. Keep the pre-existing (non-owner-common-mapped)
+    # record's canonical_id for stability; carry the trade-primary designation onto the survivor.
+    acc_groups = {}
+    for r in records:
+        if r["accepted_name"]:
+            acc_groups.setdefault(r["accepted_name"], []).append(r)
+    schema_dupes, drop2 = [], set()
+    for acc, grp in acc_groups.items():
+        if len(grp) < 2:
+            continue
+        grp = sorted(grp, key=lambda r: (r["provenance"].get("source") == "owner_common_mapping", r["canonical_id"]))
+        keep = grp[0]
+        for r in grp[1:]:
+            for f in ("original_parsed_names", "scientific_synonyms", "trade_synonyms", "common_names"):
+                keep[f] = sorted(set(keep.get(f) or []) | set(r.get(f) or []))
+            keep["scientific_synonyms"] = sorted(set(keep["scientific_synonyms"]) - {keep["accepted_name"]})
+            if r["canonical_id"] in trade_primary_of and keep["canonical_id"] not in trade_primary_of:
+                trade_primary_of[keep["canonical_id"]] = trade_primary_of[r["canonical_id"]]
+            for pk in ("owner_common_mapping", "accepted_outside_gbif_candidates", "gbif_authority_synonym",
+                       "adjudication", "gbif_recheck"):
+                if pk in r["provenance"] and pk not in keep["provenance"]:
+                    keep["provenance"][pk] = r["provenance"][pk]
+            keep["provenance"].setdefault("merged_records", []).append(
+                {"absorbed_id": r["canonical_id"], "absorbed_source": r["provenance"].get("source"),
+                 "reason": "converged on accepted_name '%s' after authority adjudication" % acc})
+            trade_primary_of.pop(r["canonical_id"], None)
+            drop2.add(r["canonical_id"])
+            schema_dupes.append({"absorbed": r["canonical_id"], "kept": keep["canonical_id"], "accepted_name": acc})
+    records = [r for r in records if r["canonical_id"] not in drop2]
+    if schema_dupes:
+        print("  schema v2 dedup: merged %d converged duplicate(s):" % len(schema_dupes))
+        for d in schema_dupes:
+            print("    %s -> %s [%s]" % (d["absorbed"], d["kept"], d["accepted_name"]))
+
     records.sort(key=lambda r: (r["accepted_name"] or "~" + r["canonical_id"]))
+
+    # Add the three explicit naming fields to EVERY record, right after accepted_name.
+    #   authority_accepted_name  == accepted_name (strictly taxonomic; None if trade_ambiguous)
+    #   trade_primary_name       == entrenched trade name where it differs from authority, else None
+    #   canonical_display_name   == what the tool shows: trade_primary_name if set, else the authority name
+    def _with_naming(r):
+        acc = r["accepted_name"]
+        trade = trade_primary_of.get(r["canonical_id"])
+        out = {}
+        for k, v in r.items():
+            out[k] = v
+            if k == "accepted_name":
+                out["authority_accepted_name"] = acc
+                out["trade_primary_name"] = trade
+                out["canonical_display_name"] = trade or acc
+        return out
+    records = [_with_naming(r) for r in records]
+    naming_exceptions = sorted(r["canonical_id"] for r in records if r["trade_primary_name"])
+    print("  schema v2 naming: %d trade-primary exceptions (display=trade, accepted_name=authority):" % len(naming_exceptions))
+    for r in records:
+        if r["trade_primary_name"]:
+            print("    %-26s display=%-26s authority=%s" % (r["canonical_id"], r["trade_primary_name"], r["authority_accepted_name"]))
     _save(CACHE, _local)
 
     # ---- write outputs ----
@@ -570,6 +654,26 @@ def main():
         "built": QUERY_DATE, "authority": AUTHORITY,
         "identity_records": len(records), "excluded": len(excluded),
         "pass1_keys_accounted": key_total,
+        "schema": {
+            "version": IDENTITY_SCHEMA_VERSION,
+            "naming_fields": {
+                "authority_accepted_name": "The taxonomic authority (GBIF) accepted name. Strictly taxonomic. "
+                                           "None for trade_ambiguous records (see candidate_accepted_names).",
+                "trade_primary_name": "The commercially entrenched name where it differs from the authority "
+                                      "name and the tool shows it instead. Null when display == authority.",
+                "canonical_display_name": "What the tool displays: trade_primary_name if set, else the "
+                                          "authority name. None for trade_ambiguous.",
+                "accepted_name": "STRICTLY TAXONOMIC, == authority_accepted_name. (Was overloaded pre-v2: it "
+                                 "held the trade name for the trade-primary exceptions. Now unambiguous. "
+                                 "Retained as the resolver/index key.)",
+            },
+            "trade_primary_exceptions": naming_exceptions,
+            "converged_duplicates_merged": schema_dupes,
+            "canonical_id_contract": "canonical_id is an IMMUTABLE identifier and is NOT guaranteed to mirror "
+                                     "the current accepted_name (e.g. astragalus-membranaceus now resolves to "
+                                     "Astragalus mongholicus). Join by original_parsed_names/synonyms, never by "
+                                     "parsing the canonical_id string.",
+        },
         "delta_enrichment": {"total_new": delta_added, "total_merged": delta_merged, "by_source": delta_by_source},
         "common_name_mappings": {"new_identities": cn_added, "merged_into_existing": cn_merged,
                                  "source": "knowledge/sources/common_name_resolved_mappings.json (owner)"},

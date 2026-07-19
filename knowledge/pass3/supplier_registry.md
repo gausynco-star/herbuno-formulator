@@ -5,11 +5,11 @@
 
 | supplier_id | entity | source_family | domain | region | public | snapshot | rows | with_type | processed | tax_rate | id_rate | in_graph | bias |
 |---|---|---|---|---|---|---|--:|--:|--:|--:|--:|---|---|
-| thewholesaler.eu | ent_thewholesaler | sf_thewholesaler | thewholesaler.eu | EU distributor (India-sourced) | True | 2026-06-13 | 29075 | 5006 | 3930 | 96% | 97% | yes | Ayurvedic/Indian botanical extracts & powders; e-commerce distributor. |
-| medikonda.com | ent_medikonda | sf_medikonda | medikonda.com | US | True | 2026-07-17 | 2529 | 2505 | 1575 | 96% | 34% | **no** | US e-commerce; broad category vocabulary (Powders/Extracts/Oils); many finished-dosage & non-botanical SKUs. |
-| bulknaturalswholesale.com | ent_bulknaturals | sf_bulknaturals | bulknaturalswholesale.com | US | True | 2026-07-17 | 3938 | 702 | 229 | 76% | 50% | **no** | US cosmetic-ingredient wholesaler; carrier oils/butters/actives/fragrance-heavy; few classical botanical forms. |
-| hiyaindia.in | ent_hiyaindia | sf_hiyaindia | hiyaindia.in | India | True | 2026-07-15 | 2135 | 1186 | 579 | 100% | 64% | **no** | India e-commerce; fragrance/aroma-diffuser oil dominant; some water/oil-soluble extracts & carrier oils. |
-| herbuno.own | ent_herbuno | sf_thewholesaler | herbuno.com | own (US body) | True | unknown (sanitized export) | 10443 | 1693 | 1693 | 100% | 70% | yes | Herbuno's OWN catalogue. Dual role: (a) taxonomy authority [handled by taxonomy asset], (b) ONE market observation source. Only real product rows count as observations. |
+| thewholesaler.eu | ent_thewholesaler | sf_thewholesaler | thewholesaler.eu | EU distributor (India-sourced) | True | 2026-06-13 | 29075 | 5006 | 3930 | 96% | 98% | yes | Ayurvedic/Indian botanical extracts & powders; e-commerce distributor. |
+| medikonda.com | ent_medikonda | sf_medikonda | medikonda.com | US | True | 2026-07-17 | 2529 | 2505 | 1575 | 96% | 76% | yes | US e-commerce; broad category vocabulary (Powders/Extracts/Oils); many finished-dosage & non-botanical SKUs. |
+| bulknaturalswholesale.com | ent_bulknaturals | sf_bulknaturals | bulknaturalswholesale.com | US | True | 2026-07-17 | 3938 | 702 | 229 | 76% | 77% | **no** | US cosmetic-ingredient wholesaler; carrier oils/butters/actives/fragrance-heavy; few classical botanical forms. |
+| hiyaindia.in | ent_hiyaindia | sf_hiyaindia | hiyaindia.in | India | True | 2026-07-15 | 2135 | 1186 | 579 | 100% | 94% | yes | India e-commerce; fragrance/aroma-diffuser oil dominant; some water/oil-soluble extracts & carrier oils. |
+| herbuno.own | ent_herbuno | sf_thewholesaler | herbuno.com | own (US body) | True | unknown (sanitized export) | 10443 | 1693 | 1693 | 100% | 74% | yes | Herbuno's OWN catalogue. Dual role: (a) taxonomy authority [handled by taxonomy asset], (b) ONE market observation source. Only real product rows count as observations. |
 
 > **Source families:** `sf_thewholesaler` = {thewholesaler, Herbuno} — Herbuno's listings were
 > catalogue-derived from thewholesaler, so their observations are CORRELATED (not independent

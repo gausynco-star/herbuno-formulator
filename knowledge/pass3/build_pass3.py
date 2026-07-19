@@ -334,7 +334,11 @@ def main():
     id_schema = backbone["_meta"]["identity_schema_version"]
     tax = json.load(open(TAXONOMY, encoding="utf-8"))
     tax_version = tax["_meta"]["format_taxonomy_version"]
-    accepted_of = {r["canonical_id"]: r.get("accepted_name") for r in backbone["identities"]}
+    # schema v2: display name (trade-primary where set) + strictly-taxonomic authority name, per identity
+    names_of = {r["canonical_id"]: {
+        "canonical_display_name": r.get("canonical_display_name", r.get("accepted_name")),
+        "authority_accepted_name": r.get("authority_accepted_name", r.get("accepted_name"))}
+        for r in backbone["identities"]}
     exact, common = build_indices(backbone)
 
     QUAL = {"min_identity": 0.70, "min_taxonomy": 0.80}
@@ -457,7 +461,9 @@ def main():
         entities_by_identity[cid].add(entity)
         families_by_identity[cid].add(FAMILY_OF.get(entity, entity))
         sig = base + ("+" + "+".join(ov) if ov else "")
-        node = graph.setdefault(cid, {"accepted_name": accepted_of.get(cid), "plant_parts": {}})
+        nm = names_of.get(cid, {})
+        node = graph.setdefault(cid, {"canonical_display_name": nm.get("canonical_display_name"),
+            "authority_accepted_name": nm.get("authority_accepted_name"), "plant_parts": {}})
         pp = node["plant_parts"].setdefault(part, {"forms": {}})
         form = pp["forms"].get(sig)
         if not form:

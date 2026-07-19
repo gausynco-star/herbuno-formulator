@@ -1,6 +1,6 @@
 # Frozen Identity Backbone — ADR-013 (Pass-3 join target)
 
-> **🔒 FROZEN — identity_version `2026-07-19.3`, schema v1.** Do NOT edit `botanical_identity.json` in
+> **🔒 FROZEN — identity_version `2026-07-19.4`, schema v2.** Do NOT edit `botanical_identity.json` in
 > place once Pass 3 has started. Corrections: fix in Pass 2 → rebuild → bump identity_version.
 > Every downstream (Pass 3+) artifact must record the identity_version it built against. See README.md.
 
@@ -10,16 +10,16 @@
 ## Totals
 | metric | value |
 |---|---:|
-| identity records | **830** |
+| identity records | **826** |
 | excluded (non_botanical + unresolvable) | 28 |
 | Pass-1 keys accounted for | 641 / 641 |
-| trinomials (infraspecific) | 13 |
+| trinomials (infraspecific) | 15 |
 
 ## Records by resolution_status
 | status | count |
 |---|---:|
 | accepted | 461 |
-| owner-common-mapped | 226 |
+| owner-common-mapped | 222 |
 | synonym-resolved | 65 |
 | delta-accepted | 39 |
 | typo-corrected | 13 |
@@ -36,10 +36,12 @@
 | `Betula pubescens pubescens` | SUBSPECIES | pubescens |
 | `Celosia argentea cristata` | FORM | cristata |
 | `Ceropegia adscendens fimbriata` | VARIETY | fimbriata |
+| `Crambe hispanica abyssinica` | SUBSPECIES | abyssinica |
 | `Diplocyclos palmatus palmatus` | SUBSPECIES | palmatus |
 | `Echinochloa crus-galli utilis` | SUBSPECIES | utilis |
 | `Enicostema axillare littorale` | SUBSPECIES | littorale |
 | `Frangula alnus alnus` | SUBSPECIES | alnus |
+| `Leuzea carthamoides carthamoides` | SUBSPECIES | carthamoides |
 | `Madhuca longifolia latifolia` | VARIETY | latifolia |
 | `Orthosiphon aristatus aristatus` | VARIETY | aristatus |
 | `Roscoea purpurea purpurea` | FORM | purpurea |

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "build_date": "2026-07-18",
-    "count": 1906,
+    "count": 938,
     "note": "Supplier rows with a mapped botanical format but no canonical identity match. Kept, not discarded."
   },
   "rows": [
@@ -14,12 +14,6 @@
     {
       "supplier_id": "thewholesaler.eu",
       "raw_title": "[IN] Freeze Dried Cheese Powder",
-      "raw_type": "Fruit Powder",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "[IN] Freeze Dried Green Banana Powder - Musa",
       "raw_type": "Fruit Powder",
       "mapped_base": "FD"
     },
@@ -127,60 +121,6 @@
     },
     {
       "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana - Musa - Sliced - Dehydrated and Dried Fruit - TheWholesalerCo",
-      "raw_type": "Dried Fruits",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana (Ripe) Powder - Musa",
-      "raw_type": "Fruit Powder",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana Fruit Extract - Musa",
-      "raw_type": "Extract Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana Fruit Glycerin Extract - Musa",
-      "raw_type": "Glycerin Extract",
-      "mapped_base": "WL-glycerin"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana Fruit Oil Soluble Extract - Musa",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana Fruit PG Extract - Musa",
-      "raw_type": "Propylene Glycol Extract",
-      "mapped_base": "WL-glycol"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana Fruit Water Soluble Extract - Musa",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana Peel Infused Oil - Musa",
-      "raw_type": "Infused Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Banana Peel Powder - Musa",
-      "raw_type": "Herbal Powder",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
       "raw_title": "Ber Patthar, Granules- Fossil Encrinite",
       "raw_type": "Herb,Cut",
       "mapped_base": "TC"
@@ -199,27 +139,9 @@
     },
     {
       "supplier_id": "thewholesaler.eu",
-      "raw_title": "Chamomile Tea",
-      "raw_type": "Tea & Infusions",
-      "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
       "raw_title": "Chokh Wood, Cut",
       "raw_type": "Herb,Cut",
       "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Dandasa Infused Oil - Juglans",
-      "raw_type": "Infused Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Dandasa Powder - Juglans",
-      "raw_type": "Herbal Powder",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "thewholesaler.eu",
@@ -262,12 +184,6 @@
       "raw_title": "Dooku Patti, Cut - Doku leaves",
       "raw_type": "Herb,Cut",
       "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Elderberry Oil Soluble Extract - Sambucus",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
     },
     {
       "supplier_id": "thewholesaler.eu",
@@ -333,48 +249,6 @@
       "supplier_id": "thewholesaler.eu",
       "raw_title": "Hartaal Yellow, Granules",
       "raw_type": "Herb,Cut",
-      "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Hawthorn Extract - Crataegus",
-      "raw_type": "Extract Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Hawthorn Glycerin Extract - Crataegus",
-      "raw_type": "Glycerin Extract",
-      "mapped_base": "WL-glycerin"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Hawthorn Infused Oil - Crataegus",
-      "raw_type": "Infused Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Hawthorn Oil Soluble Extract - Crataegus",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Hawthorn PG Extract - Crataegus",
-      "raw_type": "Propylene Glycol Extract",
-      "mapped_base": "WL-glycol"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Hawthorn Powder - Crataegus",
-      "raw_type": "Herbal Powder",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Hibiscus Tea",
-      "raw_type": "Tea & Infusions",
       "mapped_base": "TC"
     },
     {
@@ -448,12 +322,6 @@
       "raw_title": "Keherva Dana - Keherwa Dana",
       "raw_type": "Seed",
       "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "thewholesaler.eu",
-      "raw_title": "Marigold Flower, Cut -  Tagetes",
-      "raw_type": "Dried Flowers, Cut",
-      "mapped_base": "TC"
     },
     {
       "supplier_id": "thewholesaler.eu",
@@ -595,24 +463,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Abuta Grandifolia Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Abuta Grandifolia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Abyssinian Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Acacia Bark Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -625,61 +475,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Acai Berry Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Acai Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Acai Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Acerola Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Acerola Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Adam's needle Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Adam's needle Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Adzuki Beans Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Agar Wood Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Agar Wood Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -687,114 +483,6 @@
       "supplier_id": "medikonda.com",
       "raw_title": "Agaricus Mushroom Powder",
       "raw_type": "Mushrooms",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Agave Inulin Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Agave Liquid",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Agave Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Agnimantha Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Agrimony Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ajuga Turkestanica Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Alfalfa Grass Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Alfalfa Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Alfalfa Sprout Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Allspice Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Almond / Sweet Almond Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Almond Bitter Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Almond Milk Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Almond Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Amaranth Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Amaranth Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ambrette Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Amchoor Powder",
-      "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
@@ -811,133 +499,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Anamu Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Anamu Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Andiroba Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Anise Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Anise Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Annatto Seed Liquid",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Annatto Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Apricot Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Apricot Kernel Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Apricot Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arborio Whole Rice Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Argemone Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arjuna Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arlu Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arlu Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arnica Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arnica Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arnica Root Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Aronia Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Arrowroot Starch",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Arugula Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Asafoetida Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -949,67 +511,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Ashitaba Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ashoka Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ashoka Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ashoka Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Astragalus Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Astragalus Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Ayahuasca Vine Ground",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Azolla Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Babassu Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Babool / Babul Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Babul Seed / Nep Nep Seed Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1069,55 +571,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Banana Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Banana Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Baobab Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Baobab Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Barberry Bark Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Barberry Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Barley Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Basmati Brown Rice Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bayberry Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1147,60 +601,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Betony Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bibhitaki Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bilberry Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bilberry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bilva Leaves Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bilva Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bitter Apricot Kernel Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bitter Orange Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bitter Orange Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Black Ayahuasca Vine Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -1213,152 +613,8 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Black Bean Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Carrot Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black cherry Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black cherry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Chokeberry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Cohosh Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Cohosh Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Cress Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Current Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Garlic Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Garlic Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Haw Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Horse Gram",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Locust Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Maca Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Olive Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Raspberry Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Raspberry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Rice Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Black Salt",
       "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Spruce Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Walnut Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Wheat Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Wheat Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Black Wood Ear Powder",
-      "raw_type": "Mushrooms",
       "mapped_base": "MP"
     },
     {
@@ -1370,12 +626,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Bladder Cherry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bladderwrack Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1399,152 +649,8 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Bloodroot Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Cohosh Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Cohosh Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Flag Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Lotus Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Poppy Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Spirulina Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Vervain Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Blue Vervain Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Boldo Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Boldo Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Bolete Mushroom Powder",
       "raw_type": "Mushrooms",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Boneset Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borage Leaf Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borage Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borneo Green Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borneo Red Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borneo White Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borojo Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borojo Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Borututu Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Boswellia Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Boswellia Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Boswellia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bottle Gourd Powder",
-      "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
@@ -1555,19 +661,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Brazil Nuts Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Brigham Tea Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Brihati Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1621,115 +715,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Buchu Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Buckwheat Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Bupleurum Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Burdock Fruit Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Burdock Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Buriti Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Butcher's Broom Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Butcher's Broom Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Butterbur Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Butterbur Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Butterhead Lettuce Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Butternut Bark Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Butternut Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Butternut Squash Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cacao Milk Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Cactus Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Caigua Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Calaguala Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Calaguala Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1753,48 +745,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Calotropies Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Calotropis Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Calotropis Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Calotropis Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Camu-Camu Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Camu-Camu Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Canaigre Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Canary Seed Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -1807,31 +757,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Canistel/Egg Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Cape Aloe Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Capparis Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Capsicum Oleoresins",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Capsicum Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1843,25 +769,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Carob Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Carolina Redroot Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Carqueja Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cascara Bark Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1886,18 +794,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Cassava Starch Pregel (Pregelatinized)",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cat's Claw Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cat's Claw Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -1939,49 +835,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Celastrus Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Celastrus Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Celastrus Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Celery Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Celery Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Celtic Sea Salt",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Centaury Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Centaury Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2005,24 +859,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Chamomile Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Champaca Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Champaca Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Chanca Piedra Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -2035,63 +871,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Chaparral Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chard Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Chaste Tree Berry Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chasteberry Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chasteberry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chaya Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chayota Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cherimoya Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chervil Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chia Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
     },
     {
       "supplier_id": "medikonda.com",
@@ -2107,75 +889,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Chickweed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Chinese Ivy Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chirata Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chirata Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chitrak Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chives Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chlorella Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chrysanthemum Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chrysanthemum Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Chuchuhuasi extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cinchona Bark Extract Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cinchona Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -2215,79 +931,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Cleavers Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Clubmoss Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cnidium Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cnidium Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Coarse Oat Bran",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Cocillana Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Codonopsis Pilosula Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Codonopsis Pilosula Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Coffee Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Coix Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Coleus Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Collard Greens Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Coltsfoot Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2299,42 +949,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Comfrey Bark Extract",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Comfrey Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Comfrey Leaf Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Comfrey Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Comfrey Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Comfrey Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Concord Grape Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -2342,12 +956,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Concord Grape Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Condurango Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2377,54 +985,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Cornsilk Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Corydalis Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Corydalis Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Costus Igneus Leaf Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Costus Igneus Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cotton Seed Meal",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cotton Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cotton Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Couch Grass Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -2437,19 +997,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Cowpea Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Cramp Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cranesbill Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2461,67 +1009,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Culver’s Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Curcumin Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Curry Leaves Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cyani Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Cyperus Rhizome Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Damiana Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Damiana Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Dandelion Green Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Daruharidra Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Date Palm Jaggery Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Davana Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2534,12 +1022,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Desiccated Coconut Medium",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Devil's club Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2569,12 +1051,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Dogwood Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Dong Quai Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -2582,30 +1058,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Dong Quai Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Dragon's Blood Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Dragon's Blood Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Dried Fig powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Dried Onions",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2635,85 +1087,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Drynaria Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Duckweed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Dulse Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Dunaliella Salina Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Dwarf Periwinkle Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Echinacea Angustifolia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Echinacea Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Egg Shell Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Eggplant Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Elderberry Flower Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Elderberry Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Elderberry Fruit Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Elderberry Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Elecampane Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2726,18 +1106,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Elephant Foot Yam Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Eleuthero Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Eleuthero Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2779,18 +1147,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Eucommia Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Eucommia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Evening-Primrose Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -2798,30 +1154,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Evening-Primrose Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Evodia Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Evodia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Eyebright Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Eyebright Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2839,49 +1171,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Fenugreek Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fenugreek Oleoresins",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Fescue Grass Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fig Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fig Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fig Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Figwort Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fine Oat Bran",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -2905,104 +1195,8 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Forsythia Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fragonia Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Acai Powder",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Banana Fruit Powder",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Banana Fruit Slices Chunks",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Banana Fruit Slices for Ice Cream, Juice and Smoothie Toppings",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Chamomile Powder",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Chasteberry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Coffee Powder",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Olive Fruit Powder",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Olive Fruit Slices Chunks",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Olive Fruit Slices for Ice Cream, Juice and Smoothie Toppings",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Freeze Dried Passion Powder",
       "raw_type": "Powders",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Pear Fruit Powder",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Pear Fruit Slices Chunks",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Pear Fruit Slices for Ice Cream, Juice and Smoothie Toppings",
-      "raw_type": "Freeze-Dried",
-      "mapped_base": "FD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Freeze Dried Purple Sweet Potato Powder",
-      "raw_type": "Freeze-Dried",
       "mapped_base": "FD"
     },
     {
@@ -3013,49 +1207,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Fringetree Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Fritillaria Bulb Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fumitory Liquid Extract",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fumitory Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Fumitory Tea Cuts",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Gardenia Blue Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Gardenia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Gardenia Yellow Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -3067,12 +1219,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Gentian Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Giant Dodder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -3080,12 +1226,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Giant Dodder Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ginkgo Leaf Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -3145,61 +1285,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Goat’s Rue/Galega Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Goat's Rue/Galega Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Gokshura Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Gokshura Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Goldenberry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Goldenthread Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Goldenthread Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Grains of Paradise Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Grape Fruit Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Grapes Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -3211,139 +1297,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Graviola Soursop Leaf Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Apple Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Banana Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Banana Resistant Starch",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Banana Starch",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Malay Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Onion Bulb Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Green Pea Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Green Raw Papaya Dried Slices Chunks",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Grindelia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Groundnut / Peanut Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guacatonga Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guar Gum Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guar Meal (Churi)",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guar Meal (Korma)",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guar Split",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guarana Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guayusa Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Guayusa Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Gum Ammoniac",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Gynostemma Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Gynura Procumbens Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -3367,105 +1327,15 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Hawthorn Berry Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hawthorn Berry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hazel Alder Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hazel Nut Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hazelnut Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Heather Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Helichrysm Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Hemlock Spruce Essential Oil",
       "raw_type": "Oils",
       "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Hemp Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hemp Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hempseed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hercampuri Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hercampuri Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Hesperidin Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hibiscus Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hibiscus Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hibiscus Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -3487,12 +1357,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Hinoki Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Ho Leaf Essential Oil",
       "raw_type": "Oils",
       "mapped_base": "CO"
@@ -3505,39 +1369,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Honeyberry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Honeysuckle Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Hong Kuai Essential Oil",
       "raw_type": "Oils",
       "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hops Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hops Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Horehound Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -3553,57 +1387,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Horseradish Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Horseradish Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hovenia Dulcis Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Huanarpo Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Huanarpo Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Huang Qin Leaf Exract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Huperzia Serrata Extract Powder 1% Huperzine-A",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hydrangea Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hydrangea Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -3619,33 +1405,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Hyssop Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hyssop Leaf Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Hyssop Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Iceland Moss Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Illipe Nut Butter",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -3697,61 +1459,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Iporuro Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Iporuro Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Irish Moss Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Irvingia Gabonensis Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Irvingia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Isabgol Husk",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Isabgol Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Isatis Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ishpingo Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ishpingo Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -3769,18 +1477,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Ivy Gourd Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Jaborandi Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Jaggery Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -3793,12 +1489,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Jatoba Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Jerusalem Artichoke Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -3806,18 +1496,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Jerusalem Artichoke Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Jojoba Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Jurubeba Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -3841,42 +1519,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Kanna Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kanna Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kanuka Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Karanj Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Katuki Extract Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Katuki Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Kava Kava Root Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -3886,30 +1528,6 @@
       "raw_title": "Kelp Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "King Tuber Mushroom Powder",
-      "raw_type": "Mushrooms",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Knotgrass Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Knotweed Extract Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Knotweed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -3925,111 +1543,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Kola Nut Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kola Nut Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kratom Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kratom Leaf Crushed",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kratom Leaf Shredded",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kratom Leaf Tea Cuts",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kratom Liquid Extract",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kratom Tincture Full Spectrum",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Krill Oil",
       "raw_type": "Oils",
       "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kudzu Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kudzu Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kukui Nut Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Kurchi Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lady's Mantle Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Laurel Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ledum Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Leek Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -4039,44 +1555,8 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Lentil Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lespedeza Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Lima Bean Powder",
       "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Linden Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Linseed Golden Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lion's Mane Extract Powder",
-      "raw_type": "Mushrooms",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lion's Mane Powder",
-      "raw_type": "Mushrooms",
       "mapped_base": "MP"
     },
     {
@@ -4105,84 +1585,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Lobelia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lotus Leaf Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lotus Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lotus Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lotus Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lotus Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lovage Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lucuma Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lucuma Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lungwort Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lupine Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Lupine Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maca Root Extract Powder 10:1",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Mad Honey",
       "raw_type": "Oils",
       "mapped_base": "CO"
@@ -4195,55 +1597,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Maeng Da Dark Green Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maeng Da Green Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maeng Da Red Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maeng Da Super Green Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maeng Da White Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Magnesium Sulfate",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Magnolia-Bark Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Magnolia-Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mahua Flower Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4279,61 +1633,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Manayupa Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mandrake Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Manna Ash Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Manuka Honey Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maqui Berry Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maqui Berry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maral Root Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Maral Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Marigold Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Marigold Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4345,61 +1645,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Marshmallow Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Marshmallow Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Marshmallow Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Matcha Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Matico Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Matico Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Matrine",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "MCT Coconut Powder 50%",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Meadowfoam Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Meadowsweet Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4459,24 +1705,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Mistletoe Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mistletoe Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mitragyna Speciosa Extract Liquid",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Mojave Yucca Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -4501,18 +1729,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Motherwort Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Muhuhu Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Muira Puama Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -4525,31 +1741,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Mullein Leaf Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mullein Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Multani Mitti Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mulungu Bark Extract Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mulungu Bark Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4558,30 +1750,6 @@
       "raw_title": "Mung Beans Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mustard Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mustard Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Mutamba Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Nard Essential Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -4603,39 +1771,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Neem Chewing Sticks",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Neem Flower Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Neem Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Nettle Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Noto Ginseng Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Nut Mug Oleoresins",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -4645,37 +1783,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Oat Fiber Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Oat Sprout Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Oat Straw Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ocotillo Flower Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Odorless Garlic Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Oleaster Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4693,27 +1801,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Oleoresin Paprika Liquid",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Oolong Tea Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ophiopogon Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Opoponax Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -4723,27 +1813,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Organic Tamanu Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Osha Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Osmanthus Absolute Oil",
       "raw_type": "Oils",
       "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Oud Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -4777,25 +1849,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Paneer Dodi Phool Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Paneer Dodi Phool Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Parboiled Rice Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Parsnip Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4813,24 +1867,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Patala Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pau D'arco Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pau D'arco Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Pea Protein Isolate",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -4843,73 +1879,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Pear Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pear Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pecan Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pennyroyal Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Peony Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pepper Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Persimmon Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Peru Balsam Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Phellodendron Bark Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pholiota Nameko Powder",
-      "raw_type": "Mushrooms",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Picao Preto Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pinguica Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4927,55 +1903,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Pipsissewa Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pistachio Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pistachio Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pistachio Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Plantain Flour",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Platycodon Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pleurisy Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Plum Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Poke Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -4984,30 +1912,6 @@
       "raw_title": "Polydatin Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Polygonum Multiflorum Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Poppy Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Poppy Husk",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Poppy Seed Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -5029,24 +1933,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Prickly Pear Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Prickly Pear Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Prickly Pear Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Prickly-Ash Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -5054,12 +1940,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Prickly-Ash Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Prishnaparni Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5074,30 +1954,6 @@
       "raw_title": "Proso Millet Seeds",
       "raw_type": "Seeds",
       "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Prune Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Psoralea Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pulsatilla Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Purple Sweet Potato Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -5119,37 +1975,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Pygeum Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Pygeum Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Quaking Aspen Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Quassia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Quebracho Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Quebracho Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5158,24 +1984,6 @@
       "raw_title": "Quick Rolled Oats",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Quince Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Quinoa Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Quinoa Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
     },
     {
       "supplier_id": "medikonda.com",
@@ -5197,18 +2005,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Ragweed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rambutan Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Rangoon Creeper Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -5216,12 +2012,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Ratanjot Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Raw Banana Flour",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5239,91 +2029,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Red Cress Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Red Ginseng Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Red Huanarpo Macho Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Red Kamala Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Red Kidney Beans Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Red Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Red Maca Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Red Root Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Red Sage Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Red Wine Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Redcurrant Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Redcurrant Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Regular Rolled Oats",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rehmannia Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rehmannia Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5338,24 +2050,6 @@
       "raw_title": "Resveratrol Granules Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rhododendron powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rhubarb Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rhubarb Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -5377,31 +2071,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Rooibos Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rose Wood Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Rowan Tree Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rue Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Rue Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5414,12 +2084,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Sabah Snake Grass Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sacha Inchi Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5443,67 +2107,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Salvia Divinorum Dried Leaves",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Salvia Divinorum Extract Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Salvia Divinorum Leaf Tea Cuts",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Salvia Divinorum Liquid Extract",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sambong Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sandalwood Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Saphora Japonica Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Sarpagandha Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sassafras Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Sattu / Sattoo Flour",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Schizonepeta Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5516,36 +2126,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Seneca snakeroot Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sesbania Grandiflora Extract Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sesbania Grandiflora Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sesbania Grandiflora Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Shalapari Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Shallot Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5581,12 +2161,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Shepherd's Purse Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Shilajit Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -5605,25 +2179,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Sidr Leaves Ziziphus Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Skimmed Camel Milk Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Skullcap Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Skullcap Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5635,37 +2191,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Slippery Elm Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sloe Berry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Snake Gourd Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Soapnut Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Soapnut Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Soapwort Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5678,12 +2204,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Sodium Citrate",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Solomon's Seal Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5704,24 +2224,6 @@
       "raw_title": "Sorghum Millet Seeds",
       "raw_type": "Seeds",
       "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sorrel Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sorrel Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sourwood Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -5791,12 +2293,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Soybean Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Spanish Moss Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -5818,30 +2314,6 @@
       "raw_title": "Spikemosses Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Spikenard Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Spilanthes Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Spilanthes Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sponge Gourd Seed Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -5881,37 +2353,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Steel Cut Oats",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Stem and Vein Kratom Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Stephania Delavayi Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Stillingia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Stone Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Stonecrop Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -5929,57 +2377,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Suma Root Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Suma Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sumac Berry Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Summer Savory Leaf Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sundew Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sunflower Lecithin Liquid",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sunflower Lecithin Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sunflower Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sunflower Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
     },
     {
       "supplier_id": "medikonda.com",
@@ -5995,43 +2395,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Suranjan Sweet (Colchicum) Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Suranjan Sweet Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sweet Clover Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Sweet Paprika/ Hungarian Paprika Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sweet Potato Peel Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sweet Potato Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Sweet Potato Resistant Starch Extract Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -6043,18 +2407,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Szechuan Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Tagara Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Tamarisk Gallica Leaf Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -6062,24 +2414,6 @@
     {
       "supplier_id": "medikonda.com",
       "raw_title": "Tamarisk Gallica Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Tangerine Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Tansy Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Tansy Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -6115,18 +2449,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Taramira Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Tarragon Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Tart Cherry Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
@@ -6139,31 +2461,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Tayuya Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Teff Flour",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Thai Green Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Thai Red Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Thai White Kratom Leaf Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -6193,25 +2491,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Tribulus Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Tribulus Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "True Unicorn Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Tuberose Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -6229,37 +2509,7 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Turnip Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Twelve 0'clock Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ube Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Ube Purple Yam Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "USDA Organic Moringa Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Usnea Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -6283,63 +2533,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Verdolaga Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Verdolaga Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Vervain Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Vervain Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Vidanga Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Vidanga Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Vine Tea Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Violet Leaf Absolute Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Violet Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Virgin Olive Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "medikonda.com",
@@ -6355,24 +2551,6 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Wakame Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wakame Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wasabi Root Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Water-Soluble Resveratrol Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
@@ -6382,156 +2560,6 @@
       "raw_title": "Water-Soluble Soy Isoflavones Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wheat Fiber Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wheat Flour",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wheat Germ Oil",
-      "raw_type": "Oils",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wheat Grass Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wheat Seeds",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wheat Starch",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Behman Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Behman Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Ginger Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Kratom Leaf Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Oak Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Pine Bark Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Pine Bark Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Poppy Seeds",
-      "raw_type": "Seeds",
-      "mapped_base": "WD"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Pumpkin Fruit Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Sandalwood Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Tea Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Tea Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Willow Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "White Willow Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Whole Oat Groat",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Whole Paneer Dodi Phool Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wild Mustard Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wild Rice Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wild Teasel Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
@@ -6559,61 +2587,13 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Wormwood Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Wormwood Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Xanthan Gum",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Xanthoparmelia Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Xanthoparmelia Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "Xylitol Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Yarsagumba Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Yellow Dock Root Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Yellow Dock Root Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Yellow Maca Root Powder",
       "raw_type": "Powders",
       "mapped_base": "MP"
     },
@@ -6673,45 +2653,9 @@
     },
     {
       "supplier_id": "medikonda.com",
-      "raw_title": "Zucchini Extract Powder",
-      "raw_type": "Extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "medikonda.com",
-      "raw_title": "Zucchini Powder",
-      "raw_type": "Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "medikonda.com",
       "raw_title": "α-Glucosyl Hesperidin Extract Powder",
       "raw_type": "Extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Abyssinian Oil (Crambe Oil)",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Acai Berry Oil - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Agar Agar Powder",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Amaranth Seed Oil (Supercritical Co2 Extracted)",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
@@ -6721,33 +2665,9 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Apricot Kernel Oil - Refined",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Apricot Kernel Oil - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Arnica Botanical Extract Powder 4:1",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Arrowroot Starch Powder",
       "raw_type": "Botanical extract powders",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Arugula Carrier Oil by Vynava",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
@@ -6769,45 +2689,9 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Beet Root Powder",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Black Garlic Extract 10:1",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Black Gold Double Extracted Black Tumeric",
       "raw_type": "Botanical extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Black Raspberry Seed Oil",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Black Walnut Hull Powder",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Blue Butterfly Pea Extract",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Blue Lotus Extract",
-      "raw_type": "Liquid Botanical Extracts",
-      "mapped_base": "WL"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
@@ -6817,57 +2701,9 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Blue Spirulina Phycocyanin Powder (Clearance 30%off)",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Boswellia Extract-Frankincense Resin",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Brazil Nut Oil - Virgin- 30% OFF CLEARANCE",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Buah Merah Oil - Virgin- Crimson Glow Botanical Oil",
       "raw_type": "Carrier oil",
       "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Bulk Batana Oil (American Palm)",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Buriti Fruit Oil - Virgin - 30% OFF CLEARANCE",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Cacay Nut Carrier Oil by Vynava",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Cacay Nut Oil - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Camu Camu Botanical Extract Powder (Vitamin C Rich)",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
@@ -6890,36 +2726,6 @@
     {
       "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Ceramide- Oil Soluable",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Chamomile Extract Powder-Soothing and Skin Calming Botanical",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Chamomile Floral Water",
-      "raw_type": "Floral water/ Hydrosol",
-      "mapped_base": "HYD"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Chia Rejuvenation Extract",
-      "raw_type": "Liquid Botanical Extracts",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Chlorella Powder",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Chlorella Powder",
       "raw_type": "Botanical extracts",
       "mapped_base": "RE"
     },
@@ -6949,12 +2755,6 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Dragon’s Blood Extract-Croton Lecheri Tree Sap",
-      "raw_type": "Liquid Botanical Extracts",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "EGCG (Epigallocatechin Gallate) — Antioxidant Skin Active",
       "raw_type": "Botanical extracts",
       "mapped_base": "RE"
@@ -6973,37 +2773,7 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Green Caviar Oil (Caulerpa lentillifera)",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Guarana Seed Extract – Caffeine 22%",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Helichrysum Italicum (IMM/EVER)  Floral Water",
-      "raw_type": "Floral water/ Hydrosol",
-      "mapped_base": "HYD"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Hemisqualene",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Hibiscus Extract 10:1",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Hibiscus Seed Oil",
       "raw_type": "Carrier oil",
       "mapped_base": "CO"
     },
@@ -7011,12 +2781,6 @@
       "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Honey Powder",
       "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Honeysuckle Flower Botanical Extract – 10% Chlorogenic Acid",
-      "raw_type": "Botanical extracts",
       "mapped_base": "RE"
     },
     {
@@ -7033,19 +2797,7 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Kukui Seed Oil",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Lycopene Liquid Tomato Extract 30% Clearance",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Magnolia Bark Extract 98% (Honokiol)",
       "raw_type": "Botanical extracts",
       "mapped_base": "RE"
     },
@@ -7057,43 +2809,13 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Manuka Honey Extract - Oil Soluble",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Marigold Extract 10:1",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Marine Collagen Powder",
       "raw_type": "Botanical extracts",
       "mapped_base": "RE"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Matcha A6 | Premium Green Tea Powder | Antioxidant-Rich Skincare Ingredient",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "MCT Caprylic/Capric Triglycerides",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Meadowfoam Seed Oil",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Mustard Seed Oil-Cold Pressed-Small Batch",
       "raw_type": "Carrier oil",
       "mapped_base": "CO"
     },
@@ -7111,39 +2833,9 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Neem Carrier Oil by Vynava",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Neem Extract 10:1",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Oat Oil",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Ojon Oil (Caiaue) - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Palm Fruit Oil -Virgin Organic",
       "raw_type": "Carrier oil",
       "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Peony Botanical Liquid Extract",
-      "raw_type": "Botanical extracts",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
@@ -7165,57 +2857,15 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Plum Kernel Oil",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Pracaxi Seed Oil - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Prickly Pear Cactus Seed Oil - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Prickly Pear Extract - Water Soluble",
-      "raw_type": "Liquid Botanical Extracts",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Propolis Extract G",
       "raw_type": "Liquid Botanical Extracts",
       "mapped_base": "WL"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Red Onion Seed Oil - for Hair Growth",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Red Raspberry Seed Oil - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Resveratrol Powder 99.5% Pure Plant Derived",
       "raw_type": "Botanical extracts",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Rose Hydrosol",
-      "raw_type": "Floral water/ Hydrosol",
-      "mapped_base": "HYD"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
@@ -7228,30 +2878,6 @@
       "raw_title": "Royal Jelly Powder - Freeze Dried",
       "raw_type": "Botanical extract powders",
       "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Sacha Inchi Carrier Oil by Vynava",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Sacha Inchi Oil - Virgin Organic",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Sandalwood Floral Water",
-      "raw_type": "Floral water/ Hydrosol",
-      "mapped_base": "HYD"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Sandalwood Seed Carrier Oil",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
@@ -7315,24 +2941,6 @@
     },
     {
       "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "Wheat Germ Oil - Virgin",
-      "raw_type": "Carrier oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "White Willow Bark Extract-Salicin Rich Botanical for Skincare",
-      "raw_type": "Botanical extract powders",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
-      "raw_title": "White Willow Liquid Botanical Extract 10%+ Salicylates",
-      "raw_type": "Liquid Botanical Extracts",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "bulknaturalswholesale.com",
       "raw_title": "Witch Hazel Alcohol-Free",
       "raw_type": "Floral water/ Hydrosol",
       "mapped_base": "HYD"
@@ -7354,558 +2962,6 @@
       "raw_title": "Ximenia Seed Oil (Sour Plum) - Virgin",
       "raw_type": "Carrier oil",
       "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Anise Flower Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Anise Flower Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Aniseed Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Aniseed Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Apricot Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Apricot Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Babassu Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Babassu Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Baobab Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Baobab Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Barberry Liquid Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Bearberry Liquid Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Bearberry Liquid Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Bearberry Liquid Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Bearberry Liquid Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Bearberry Liquid Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Bearberry Liquid Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Bearberry Liquid Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Blackseed Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Blackseed Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Carom Seed Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chamomile Liquid Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chamomile Liquid Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chamomile Liquid Extract - Water Soluble  (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chamomile Liquid Extract - Water Soluble  (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chamomile Liquid Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chamomile Liquid Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chamomile Liquid Extract (WS) (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chasteberry Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chaulmoogra Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Chaulmoogra Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Coffee Bean Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Fenugreek Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Flaxseed Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Flaxseed Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract – Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapes Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapeseed Carrier Oil (Green)",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapeseed Carrier Oil (Green) - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapeseed Carrier Oil (Yellow)",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Grapeseed Carrier Oil (Yellow) - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Hibiscus Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
     },
     {
       "supplier_id": "hiyaindia.in",
@@ -8002,444 +3058,6 @@
       "raw_title": "Lilly Extract (WS) - 50ML",
       "raw_type": "Extract Oil",
       "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Lotus Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Malkangani Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Malkangani Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marigold Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marula Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Marula Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Matcha Tea Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Mushroom Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Oak Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Pear Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Plum Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract - Oil Soluble",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract - Water Soluble",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract - Water Soluble (Butylene Glycol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract - Water Soluble (Propanediol)",
-      "raw_type": "Water Soluble Extract",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract - WS (Butylene Glycol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract - WS (Propanediol) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract (OS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Rose Extract (WS) - 50ML",
-      "raw_type": "Extract Oil",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Seabuckthorn Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Turpentine Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Turpentine Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Wheatgerm Carrier Oil",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
-    },
-    {
-      "supplier_id": "hiyaindia.in",
-      "raw_title": "Wheatgerm Carrier Oil - 50ML",
-      "raw_type": "Carrier Oil",
-      "mapped_base": "CO"
     },
     {
       "supplier_id": "herbuno.own",
@@ -8677,18 +3295,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Ginsenosides 10% Powder (American Ginseng Extract) | Standardized Panax quinquefolius",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Ginsenosides 30% Powder (American Ginseng Extract) | Standardized Panax quinquefolius",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Astragalosides 1% Powder (Huang Qi Extract) | Standardized Astragalus membranaceus",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
@@ -8708,12 +3314,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Polysaccharides 70% Powder (Huang Qi Extract) | Standardized Astragalus membranaceus",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Cycloastragenol 98% Powder (Astragalus Root) | High-Purity Isolate | Astragalus membranaceus",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
     },
@@ -8947,12 +3547,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Puerarin 98% Powder (Kudzu)| High-Purity Isolate | Pueraria Lobata",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Andrographolides 10% Powder (Andrographis Extract)| Standardized Andrographis Paniculata",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
@@ -9061,24 +3655,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Paeoniflorin 10% Powder (White Peony Extract) | Standardized Paeonia lactiflora",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Paeoniflorin 30% Powder (White Peony Extract) | Standardized Paeonia lactiflora",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Paeoniflorin 98% Powder (White Peony) | High-Purity Isolate | Paeonia lactiflora",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Gingerols 5% Powder (Ginger Extract)| Standardized Zingiber Officinale",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
@@ -9164,12 +3740,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Apigenin 2% Powder (Chamomile Extract) | Standardized Matricaria recutita",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Apigenin 98% Powder (Chamomile) | High-Purity Isolate | Matricaria recutita",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
     },
@@ -9277,18 +3847,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Salicin 15% Powder (White Willow Bark Extract) | Standardized Salix alba",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Salicin 25% Powder (White Willow Bark Extract) | Standardized Salix alba",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Vitamin C (Natural) 17% Powder (Acerola Extract) | Standardized Malpighia glabra",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
@@ -9344,18 +3902,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Anthocyanins 25% Powder (Aronia Extract) | Standardized Aronia melanocarpa",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Anthocyanins 10% Powder (Maqui Berry Extract) | Standardized Aristotelia chilensis",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Anthocyanins 30% Powder (Maqui Berry Extract) | Standardized Aristotelia chilensis",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
     },
@@ -9457,18 +4003,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Hesperidin 90% Powder (Bitter Orange Extract) | Standardized Citrus aurantium",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Hesperidin 95% Powder (Bitter Orange Extract) | Standardized Citrus aurantium",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Apigenin 98% Powder (Botanical Source Varies) | High-Purity Flavone Isolate",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
@@ -9488,18 +4022,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Soy Isoflavones 80% Powder (Soy Extract) | Standardized Glycine max",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Genistein 98% Powder (Soy) | High-Purity Isolate | Glycine max",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Daidzein 98% Powder (Soy) | High-Purity Isolate | Glycine max",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
     },
@@ -9566,12 +4088,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Polyphenols 12% Powder (Cocoa Extract) | Standardized Theobroma cacao",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Macamides 0.6% Powder (Maca) | Standardized Lepidium meyenii",
       "raw_type": "Standardised Extract",
       "mapped_base": "RE"
     },
@@ -9715,43 +4231,13 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Papain 1000 USP/mg Powder (Papaya Extract)| Standardized Carica Papaya",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Papain 6000 USP/mg Powder (Papaya Extract)| Standardized Carica Papaya",
-      "raw_type": "Standardised Extract",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Honey Oil Soluble Extract| Shahad Tel",
       "raw_type": "Oil Soluble Extract",
       "mapped_base": "OE"
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Hawthorn Oil Soluble Extract - Crataegus",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Fish Stone Oil Soluble Extract - Sangesar Mahi",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Elderberry Oil Soluble Extract - Sambucus",
-      "raw_type": "Oil Soluble Extract",
-      "mapped_base": "OE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Banana Fruit Oil Soluble Extract - Musa| Kela Tel",
       "raw_type": "Oil Soluble Extract",
       "mapped_base": "OE"
     },
@@ -9937,21 +4423,9 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "White Peony Root Liquid Extract (Water Soluble) - Paeonia lactiflora",
-      "raw_type": "Ingredients > Botanical Extracts > liquid",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Shilajit Mineral Liquid Extract (Water Soluble) - Asphaltum punjabinum | Shilajatu",
       "raw_type": "Ingredients > Botanical Extracts > liquid",
       "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Kashmiri Saffron Powder | Kesar Powder",
-      "raw_type": "Ingredients > Food Powders",
-      "mapped_base": "MP"
     },
     {
       "supplier_id": "herbuno.own",
@@ -9968,12 +4442,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Honey Liquid Extract (Water Soluble)| Shahad Ras",
-      "raw_type": "Ingredients > Botanical Extracts > liquid",
-      "mapped_base": "WL"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Banana Fruit Liquid Extract (Water Soluble) - Musa| Kela Ras",
       "raw_type": "Ingredients > Botanical Extracts > liquid",
       "mapped_base": "WL"
     },
@@ -10003,31 +4471,13 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Organic Ashoka (Saraca indica) Bark Powder | Ashoka Powder",
-      "raw_type": "Ingredients > Food Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Organic Ram Tulsi / Shrubby Basil Leaf Powder - Ocimum gratissimum",
       "raw_type": "Ingredients > Food Powders",
       "mapped_base": "MP"
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Organic Banana Ripe (Musa acuminata) Fruit Powder - Musa acuminata | Kela Powder",
-      "raw_type": "Ingredients > Food Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Organic Kelp Seaweed Powder - Laminaria spp.",
-      "raw_type": "Ingredients > Food Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Organic Hibiscus Flower Powder - Hibiscus rosa-sinensis | Gudhal Powder",
       "raw_type": "Ingredients > Food Powders",
       "mapped_base": "MP"
     },
@@ -10411,12 +4861,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Maca Root Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "L-Cysteine 99% Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
@@ -10438,12 +4882,6 @@
       "raw_title": "Hesperidin 90% Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Elderberry Extract Powder - Sambucus nigra",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "herbuno.own",
@@ -10543,12 +4981,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Vitamin B12 — from Chlorella vulgaris",
-      "raw_type": "Ingredients > Nutraceuticals > Powder",
-      "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Vitamin K2-MK7 (500 ppm) — from Fermented Soy/Cassava",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
@@ -10558,12 +4990,6 @@
       "raw_title": "Vitamin B1 (4%) — From Sprouted Mung Bean",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Hops Flower Extract Powder - Humulus lupulus",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "herbuno.own",
@@ -10621,37 +5047,13 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Psyllium (Ispaghula) Seed Husk Powder | Isabgol",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Arachidonic Acid Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Astragalus Extract Powder (Astragalus gummifer)",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Persian Lime Extract Powder - Citrus latifolia",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Galactomannan (from Guar Gum) Extract Powder - Cyamopsis tetragonoloba",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Gentian Root Extract Powder - Gentiana lutea",
       "raw_type": "Ingredients > Botanical Extracts > Powder",
       "mapped_base": "RE"
     },
@@ -10687,12 +5089,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Vitex Agnus Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Dong Quai Extract Powder",
       "raw_type": "Ingredients > Botanical Extracts > Powder",
       "mapped_base": "RE"
@@ -10711,33 +5107,9 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Gurmar Extract Powder| Gurmar Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Babool Bark Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "White Tea Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Anthocyanin Extract Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Wheat Germ Extract Powder | Gehun Ankur",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "herbuno.own",
@@ -10837,12 +5209,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Red Raspberry Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Quercetin Powder 98%",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
@@ -10852,18 +5218,6 @@
       "raw_title": "Policosanol Extract Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "African Cherry Bark (Pygeum Africanum) Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Thai Kudzu (Pueraria Mirifica) Extract Powder| White Kwao Krua Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "herbuno.own",
@@ -10885,69 +5239,15 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Marshmallow Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Maqui Berry Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Lycopene 10% Extract Powder | Standardized Solanum lycopersicum",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Marigold Flower Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Lingonberry Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "L-Glutathione (Reduced) Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Huperzia Serrata (Huperzine A 1%) Extract Powder",
-      "raw_type": "Ingredients > Nutraceuticals > Powder",
-      "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Hibiscus Extract Powder | Gudhal",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "5-HTP 98% Extract Powder (Griffonia Simplicifolia)",
-      "raw_type": "Ingredients > Nutraceuticals > Powder",
-      "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Green Apple Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Grape Leaf Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "herbuno.own",
@@ -10987,12 +5287,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Hawthorn Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Colostrum Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
@@ -11005,33 +5299,9 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Opuntia Ficus-Indica (Prickly Pear) Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Black Cohosh Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Bilberry Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Beta Sitosterol 80% Powder",
       "raw_type": "Ingredients > Nutraceuticals > Powder",
       "mapped_base": "IC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Acerola Extract Powder - Malpighia emarginata",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
     },
     {
       "supplier_id": "herbuno.own",
@@ -11077,12 +5347,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Tulsi Turmeric Moringa Tisane | Tulasi",
-      "raw_type": "Beverages > Tea & Tisanes",
-      "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Golden Orchard Spice Tisane",
       "raw_type": "Beverages > Tea & Tisanes",
       "mapped_base": "TC"
@@ -11096,12 +5360,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Himalayan Detox Tisane",
-      "raw_type": "Beverages > Tea & Tisanes",
-      "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Hibiscus Herbal Tisane | Gudhal",
       "raw_type": "Beverages > Tea & Tisanes",
       "mapped_base": "TC"
     },
@@ -11125,19 +5383,7 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Rooibos Apple Cinnamon Tisane",
-      "raw_type": "Beverages > Tea & Tisanes",
-      "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Blue Tea Relax Tisane",
-      "raw_type": "Beverages > Tea & Tisanes",
-      "mapped_base": "TC"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Matcha Tea",
       "raw_type": "Beverages > Tea & Tisanes",
       "mapped_base": "TC"
     },
@@ -11155,25 +5401,7 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Date Powder - Natural Sweetener & Fiber",
-      "raw_type": "Ingredients > Food Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Jalapeño Powder – Spicy Green Seasoning",
-      "raw_type": "Ingredients > Food Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Capsicum Powder - Sweet Red Pepper Spice | Lal Mirch",
-      "raw_type": "Ingredients > Food Powders",
-      "mapped_base": "MP"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Banana Ripe Powder - Musa acuminata | Kela Powder",
       "raw_type": "Ingredients > Food Powders",
       "mapped_base": "MP"
     },
@@ -11317,12 +5545,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Vaividang Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Arjun Tree Bark Extract Powder",
       "raw_type": "Ingredients > Botanical Extracts > Powder",
       "mapped_base": "RE"
@@ -11341,12 +5563,6 @@
     },
     {
       "supplier_id": "herbuno.own",
-      "raw_title": "Soapnut Extract Powder | Reetha Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
       "raw_title": "Shudh Kuchla Extract Powder - Detoxified Alkaloids",
       "raw_type": "Ingredients > Botanical Extracts > Powder",
       "mapped_base": "RE"
@@ -11354,30 +5570,6 @@
     {
       "supplier_id": "herbuno.own",
       "raw_title": "Shilajit Extract Powder (80% Fulvic Acid) | Shilajatu",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Shikhakai Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Shankhapushpi Extract Powder",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Senna Extract Powder | Sonamukhi",
-      "raw_type": "Ingredients > Botanical Extracts > Powder",
-      "mapped_base": "RE"
-    },
-    {
-      "supplier_id": "herbuno.own",
-      "raw_title": "Sarpagandha Extract Powder",
       "raw_type": "Ingredients > Botanical Extracts > Powder",
       "mapped_base": "RE"
     },
