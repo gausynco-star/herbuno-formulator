@@ -32,7 +32,7 @@ function mfOptions({ persist, withDO = true } = {}) {
     modulesRules: [{ type: 'ESModule', include: ['**/*.js'] }],
     compatibilityDate: '2026-07-19',
     kvNamespaces: ['HB_KV'],
-    bindings: { SHOPIFY_APP_SECRET: SECRET, SPECIFICATION_TOKEN_SECRET: TOKEN_SECRET },
+    bindings: { SHOPIFY_APP_SECRET: SECRET, SPECIFICATION_TOKEN_SECRET: TOKEN_SECRET, SHOP_DOMAIN: '7zyiqd-p7.myshopify.com' },
   };
   if (withDO) o.durableObjects = { RATE_LIMITER: 'RateLimiterDurableObject' };
   if (persist) o.durableObjectsPersist = persist;
@@ -45,13 +45,15 @@ async function seedKV(mf) {
   await kv.put('formgraph:' + B.manifest.observed_form_graph_version, JSON.stringify(B.formGraph));
   await kv.put('matrix:' + B.manifest.matrix_version, JSON.stringify(B.matrix));
 }
-async function specFetch(mf, body, { ip = '203.0.113.7', endpoint = 'specification' } = {}) {
+async function specFetch(mf, body, { ip = '203.0.113.7', endpoint = 'specification', xff = null } = {}) {
   const ts = Math.floor(Date.now() / 1000);
-  const params = { shop: 'h.myshopify.com', path_prefix: '/apps/formulator', timestamp: String(ts) };
+  const params = { shop: '7zyiqd-p7.myshopify.com', path_prefix: '/apps/formulator', timestamp: String(ts) };
   const sig = await signProxyQuery(params, SECRET);
   const qs = new URLSearchParams(params); qs.set('signature', sig);
+  const headers = { 'content-type': 'application/json', 'CF-Connecting-IP': ip };
+  if (xff) headers['X-Forwarded-For'] = xff;
   const res = await mf.dispatchFetch('https://herbuno.com/apps/formulator/' + endpoint + '?' + qs.toString(),
-    { method: 'POST', headers: { 'content-type': 'application/json', 'CF-Connecting-IP': ip }, body: JSON.stringify(body) });
+    { method: 'POST', headers, body: JSON.stringify(body) });
   return { status: res.status, body: await res.json() };
 }
 // Direct DO call (internal; the public Worker never sends action:'stat') for precise stat/concurrency.
@@ -109,6 +111,24 @@ async function run() {
   await mfC.dispose();
   ok('fail-closed: missing DO binding => 503 degraded, no silent fallback to the isolate limiter',
     rc.status === 503 && rc.body.message === DEGRADED_MESSAGE, 'status=' + rc.status);
+
+  // ---------- 6. client IP behind the Shopify App Proxy (X-Forwarded-For) ----------
+  // Real topology: two shoppers reach the Worker through ONE Shopify egress IP (CF-Connecting-IP).
+  // They MUST land in separate DO buckets keyed on the shopper IP from X-Forwarded-For — not one
+  // shared egress bucket (Step-2b BLOCKER). This exercises the full Shopify -> Worker header shape.
+  const mfD = new Miniflare(mfOptions());
+  await seedKV(mfD);
+  const EGRESS = '198.51.100.200';                 // Shopify egress == CF-Connecting-IP for both shoppers
+  const SHOP_A = '203.0.113.101', SHOP_B = '203.0.113.102';
+  const rA = await specFetch(mfD, { product: PRODUCT, role: ROLE, botanical: BOTANICAL }, { ip: EGRESS, xff: SHOP_A + ', ' + EGRESS });
+  const rB = await specFetch(mfD, { product: PRODUCT, role: ROLE, botanical: BOTANICAL }, { ip: EGRESS, xff: SHOP_B + ', ' + EGRESS });
+  const sA = await stat(mfD, 'm:' + SHOP_A);
+  const sB = await stat(mfD, 'm:' + SHOP_B);
+  const sEgress = await stat(mfD, 'm:' + EGRESS);
+  await mfD.dispose();
+  ok('client-ip: two shoppers behind one Shopify egress get SEPARATE DO buckets',
+    rA.status === 200 && rB.status === 200 && sA.count === 1 && sB.count === 1, 'A=' + sA.count + ' B=' + sB.count);
+  ok('client-ip: the shared Shopify egress IP is NOT used as the limiter key', sEgress.count === 0, 'egress count=' + sEgress.count);
 
   fs.rmSync(persistDir, { recursive: true, force: true });
 

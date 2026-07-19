@@ -69,12 +69,54 @@ Response minimisation throughout. **No bulk endpoint exists** (exact route match
 1. **App Proxy signature** (constant-time Web Crypto verify). Proves Shopify forwarded an untampered
    request — **not** that the caller is the Formulator UI (anonymous proxy calls are possible); the
    remaining controls exist because of this.
+1b. **Shop binding** — reject a validly-signed request whose `shop` param is not our exact `SHOP_DOMAIN`
+   (`*.myshopify.com`). Defence in depth: the signature proves only that our app secret signed it. Required
+   config — fails closed (degraded) if `SHOP_DOMAIN` is unset.
 2. **Timestamp freshness** (replay resistance).
 3. **Strict input allow-list**. `session_id` is UNTRUSTED — bounded length/charset, and **never** a
    rate-limit key.
-4. **Rate limit** — a cheap per-isolate pre-check, then the **authoritative central limiter** (see
-   below). Keyed on the Cloudflare **connecting IP** (`x-forwarded-for` is never trusted).
+4. **Rate limit** — a cheap per-isolate pre-check, then the **authoritative central limiter** (see below).
+   Dual-key: fine-grained on the **shopper IP** (see "Client IP behind the App Proxy") plus a coarse
+   backstop on the non-spoofable **transport IP** (`CF-Connecting-IP`).
 5. Resolve → select → respond.
+
+## Client IP behind the App Proxy
+
+The shopper does **not** connect to the Worker directly — Shopify's App Proxy forwards the request
+server-to-server, so `CF-Connecting-IP` is **Shopify's shared egress**, not the shopper. Keying limits
+on it would collapse every unrelated shopper into one bucket, letting a few visitors exhaust the
+per-minute / traversal ceilings for everyone. Shopify forwards the real shopper IP in `X-Forwarded-For`.
+
+`X-Forwarded-For` is read **only after** the App Proxy signature verifies (step 1), and extracted
+**trust-from-the-right**, never leftmost. Note precisely: **the App Proxy signature authenticates the query
+parameters, not the request headers — `X-Forwarded-For` is never cryptographically authenticated.**
+Verification proves only that Shopify forwarded the request; the header is trusted by *topology*, not by
+signature (hence the deployment gate below).
+
+- Cloudflare itself **appends** its connecting peer (= Shopify egress = `CF-Connecting-IP`) to
+  `X-Forwarded-For`, so a legitimate chain is normally multi-hop `<shopper>, <shopify-egress>` — hence
+  "reject any multi-hop value" would reject real traffic and is **not** used.
+- We peel a trailing entry equal to `CF-Connecting-IP`, then take the rightmost remaining entry — the
+  shopper-IP position expected from the documented Shopify → Cloudflare proxy topology; confirmed during
+  dev-theme testing. Leftmost is browser-spoofable and ignored. Malformed/empty → fall back to
+  `CF-Connecting-IP` (the shared-bucket behaviour — safe, never attacker-chosen).
+
+**Why a second, transport-keyed limit exists.** The shopper key is only as trustworthy as Shopify's
+`X-Forwarded-For` stamping. If a caller could influence it — rotating distinct IPs, straddling a valid IP
+and a malformed one (two different buckets), or forcing the fallback — they could stretch the fine-grained
+limit. So every request *also* hits a coarse limit keyed on `CF-Connecting-IP`, which Cloudflare sets from
+the real TCP peer and a caller **cannot** spoof. All of an abuser's traffic through one Shopify egress
+shares that key, so aggregate abuse is bounded regardless of what `X-Forwarded-For` says. The trade-off:
+that key is shared by all shoppers behind one egress, so its ceiling is deliberately high (`RATE.transport`)
+— too low would throttle innocent co-tenants. It is a STARTING value to size from real egress fan-out.
+
+> **🚫 DEPLOYMENT GATE (production is BLOCKED until this is cleared):** Miniflare cannot reproduce the real
+> Shopify→Cloudflare header topology, and `X-Forwarded-For` is not cryptographically authenticated (above).
+> **Production deploy is blocked until a live dev-theme request confirms the actual `X-Forwarded-For` shape
+> and the peel offset** (i.e. that the rightmost-after-peeling-`CF-Connecting-IP` entry is genuinely the
+> shopper, and that Shopify does not forward a browser-supplied header verbatim). While confirming, also log
+> how many shoppers share one `CF-Connecting-IP` and size `RATE.transport` so it never throttles legitimate
+> egress fan-out. Dev-theme deployment (to gather this) is permitted; production launch is not until it passes.
 
 ## Central rate limiter (Durable Object) — persisted
 

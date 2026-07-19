@@ -15,7 +15,17 @@ export const ROUTES = { SPEC: '/apps/formulator/specification', PROC: '/apps/for
 // distinctProductRolePerHour is the enumeration/traversal ceiling per server-derived key. STARTING
 // value 12: with only 238 cells a ceiling of 50 let one IP reconstruct the whole selected-output layer
 // in <5h; 12/hour makes that cost meaningful (Step-2b FIX 3). Tune from telemetry.
-export const RATE = { perMin: 10, perHour: 60, perDay: 150, uniqBotanicalsPerHour: 30, distinctProductRolePerHour: 12 };
+// The fine-grained limits below are keyed on the SHOPPER IP (X-Forwarded-For). `transport` is a SECOND,
+// coarser backstop keyed on the NON-SPOOFABLE transport IP (CF-Connecting-IP = Shopify's shared egress),
+// checked on every request. It bounds aggregate abuse when the shopper key is rotated, straddled, or
+// malformed into the fallback (Step-2b review). Because many unrelated shoppers legitimately share one
+// Shopify egress, it is deliberately MUCH higher than the per-shopper limits — a shared-fate ceiling, so
+// too-low a value throttles innocent co-tenants. STARTING values only; MUST be sized from the real egress
+// fan-out (confirm on the dev theme). Set `transport: null` to disable the backstop.
+export const RATE = {
+  perMin: 10, perHour: 60, perDay: 150, uniqBotanicalsPerHour: 30, distinctProductRolePerHour: 12,
+  transport: { perMin: 120, perHour: 1200, perDay: 6000 },
+};
 
 // Honest degraded-state message (ADR-014 §"Degraded state"). Never serve a partial/guessed result.
 export const DEGRADED_MESSAGE =

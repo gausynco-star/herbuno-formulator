@@ -5,6 +5,12 @@ name = "herbuno-formulator"
 main = "src/index.js"
 compatibility_date = "2026-07-19"
 
+# Non-secret config. SHOP_DOMAIN pins the storefront: the Worker rejects any validly-signed request whose
+# `shop` param is not this exact *.myshopify.com host (defence in depth beyond the signature). REQUIRED —
+# the Worker fails closed (degraded) if it is absent. Use the store's permanent .myshopify.com domain.
+[vars]
+SHOP_DOMAIN = "7zyiqd-p7.myshopify.com"
+
 # App Proxy forwards https://<shop>/apps/formulator/* to this Worker. Configure the proxy in the
 # Shopify custom app admin (subpath prefix "apps", subpath "formulator", proxy URL = this Worker).
 # routes = [{ pattern = "herbuno.com/apps/formulator/*", zone_name = "herbuno.com" }]

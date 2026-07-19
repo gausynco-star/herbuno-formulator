@@ -3,7 +3,7 @@
 // Step-2a security hardening folded in. No framework. Nothing here is deployed by CC.
 import { getContext } from './store.js';
 import { resolve, statusOf, selectSpecification, oneCaveat, procurementMatch } from './engine.js';
-import { verifyProxyQuery, checkTimestamp, validateSpecInput, validateProcurementInput, localRatePreCheck } from './security.js';
+import { verifyProxyQuery, checkTimestamp, validateSpecInput, validateProcurementInput, localRatePreCheck, deriveClientIp } from './security.js';
 import { centralRateLimit } from './rate_limiter_do.js';
 import { signToken, verifyToken } from './token.js';
 import { versionBlock, DegradedError, DEGRADED_MESSAGE, FRESH_WINDOW_MS, MAX_BODY_BYTES, ROUTES, API_SCHEMA_VERSION } from './version.js';
@@ -31,8 +31,12 @@ function isJsonContentType(request) {
   const ct = request.headers.get('content-type') || '';
   return ct.split(';')[0].trim().toLowerCase() === 'application/json';
 }
-// Cloudflare-set connecting IP ONLY — never trust x-forwarded-for. Unknown => a shared strict bucket.
-function clientIp(request) { return request.headers.get('CF-Connecting-IP') || 'no-ip'; }
+// Behind the Shopify App Proxy the real shopper IP is in X-Forwarded-For; CF-Connecting-IP is only
+// Shopify's shared egress. Trusted ONLY here — clientIp() runs after verifyProxyQuery() has succeeded
+// (see the call site in handleRequest). See deriveClientIp() for the trust-from-the-right model.
+function clientIp(request) {
+  return deriveClientIp(request.headers.get('X-Forwarded-For'), request.headers.get('CF-Connecting-IP'));
+}
 
 export async function handleRequest(request, env, ctx) {
   const url = new URL(request.url);
@@ -46,11 +50,17 @@ export async function handleRequest(request, env, ctx) {
 
   const proxySecret = env.SHOPIFY_APP_SECRET;
   const tokenSecret = env.SPECIFICATION_TOKEN_SECRET;
+  const shopDomain = env.SHOP_DOMAIN;
   if (!proxySecret || !tokenSecret) return degraded('missing_secret');
+  if (!shopDomain) return degraded('missing_shop_domain'); // fail closed: the shop binding is required
 
   // 1. App Proxy signature
   const sig = await verifyProxyQuery(url.searchParams, proxySecret);
   if (!sig.ok) return json(401, { error: 'invalid_signature' });
+
+  // 1b. Shop binding — reject a validly-signed request whose `shop` is not our exact store. Defence in
+  // depth beyond the signature (which proves only that OUR app secret signed it): pin the storefront.
+  if (url.searchParams.get('shop') !== shopDomain) return json(401, { error: 'invalid_shop' });
 
   // 2. Timestamp freshness
   if (!checkTimestamp(url.searchParams.get('timestamp'), Date.now(), FRESH_WINDOW_MS)) {
@@ -68,17 +78,18 @@ export async function handleRequest(request, env, ctx) {
   try { context = await getContext(env); }
   catch (e) { if (e instanceof DegradedError) return degraded(e.reason); throw e; }
 
-  const ip = clientIp(request);
+  const ip = clientIp(request);                                     // shopper key (XFF, trust-from-right)
+  const transportIp = request.headers.get('CF-Connecting-IP') || 'no-transport'; // non-spoofable egress
   try {
-    if (isSpec) return await specification(env, context, body, ip, tokenSecret);
-    return await procurement(env, context, body, ip, tokenSecret);
+    if (isSpec) return await specification(env, context, body, ip, transportIp, tokenSecret);
+    return await procurement(env, context, body, ip, transportIp, tokenSecret);
   } catch (e) {
     if (e instanceof DegradedError) return degraded(e.reason);
     return degraded('internal'); // honest degrade; never a partial/guessed result
   }
 }
 
-async function specification(env, context, body, ip, tokenSecret) {
+async function specification(env, context, body, ip, transportIp, tokenSecret) {
   const { engine, versions } = context;
   // 3. strict input allow-list (session_id is validated + never used as a limiter key)
   const bad = validateSpecInput(body, engine);
@@ -86,9 +97,10 @@ async function specification(env, context, body, ip, tokenSecret) {
 
   const productRole = body.product + '|' + body.role;
   const now = Date.now();
-  // 4a. cheap per-isolate pre-check, then 4b. AUTHORITATIVE central limiter (keyed on IP)
+  // 4a. cheap per-isolate pre-check, then 4b. AUTHORITATIVE central limiter (fine-grained shopper key +
+  // coarse non-spoofable transport-key backstop)
   if (!localRatePreCheck(ip, body.botanical, now).ok) return rateLimited();
-  const central = await centralRateLimit(env, { key: ip, botanical: body.botanical, productRole, now });
+  const central = await centralRateLimit(env, { key: ip, transportKey: transportIp, botanical: body.botanical, productRole, now });
   if (central.unavailable) return degraded('limiter_unavailable'); // fail closed if DO unbound
   if (!central.ok) return central.challenge ? challenge429() : rateLimited();
 
@@ -128,7 +140,7 @@ async function specification(env, context, body, ip, tokenSecret) {
   });
 }
 
-async function procurement(env, context, body, ip, tokenSecret) {
+async function procurement(env, context, body, ip, transportIp, tokenSecret) {
   const { engine, versions } = context;
   // reject anything but the token — the client must not fabricate/alter a specification
   const bad = validateProcurementInput(body);
@@ -136,7 +148,7 @@ async function procurement(env, context, body, ip, tokenSecret) {
 
   const now = Date.now();
   if (!localRatePreCheck(ip, null, now).ok) return rateLimited();
-  const central = await centralRateLimit(env, { key: ip, now });
+  const central = await centralRateLimit(env, { key: ip, transportKey: transportIp, now });
   if (central.unavailable) return degraded('limiter_unavailable');
   if (!central.ok) return central.challenge ? challenge429() : rateLimited();
 

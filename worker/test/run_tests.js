@@ -2,7 +2,7 @@
 import { handleRequest } from '../src/index.js';
 import { __resetStore, __stats } from '../src/store.js';
 import { __resetRate } from '../src/security.js';
-import { signProxyQuery } from '../src/security.js';
+import { signProxyQuery, deriveClientIp } from '../src/security.js';
 import { signToken } from '../src/token.js';
 import { b64urlEncode, hmacB64url } from '../src/hmac.js';
 import { resolve, statusOf, makeEngine } from '../src/engine.js';
@@ -51,18 +51,20 @@ function fakeState() {
 }
 // One in-process instance => globally consistent, like a real DO.
 function fakeDO() { const inst = new RateLimiterDurableObject(fakeState(), {}); return { idFromName: () => 'global', get: () => ({ fetch: (u, init) => inst.fetch(new Request(u, init)) }) }; }
+const SHOP = '7zyiqd-p7.myshopify.com';
 function envWith(kv, opts = {}) {
-  return { SHOPIFY_APP_SECRET: SECRET, SPECIFICATION_TOKEN_SECRET: TOKEN_SECRET, HB_KV: kv, RATE_LIMITER: opts.noLimiter ? undefined : fakeDO() };
+  return { SHOPIFY_APP_SECRET: SECRET, SPECIFICATION_TOKEN_SECRET: TOKEN_SECRET, SHOP_DOMAIN: opts.omitShopDomain ? undefined : SHOP, HB_KV: kv, RATE_LIMITER: opts.noLimiter ? undefined : fakeDO() };
 }
 
 async function specRequest(body, opts = {}) {
   const ts = opts.ts != null ? opts.ts : Math.floor(Date.now() / 1000);
-  const params = { shop: 'herbuno.myshopify.com', path_prefix: '/apps/formulator', timestamp: String(ts) };
+  const params = { shop: opts.shop || SHOP, path_prefix: '/apps/formulator', timestamp: String(ts) };
   if (opts.customer) params.logged_in_customer_id = opts.customer;
   const signature = opts.badSig ? 'deadbeef' : await signProxyQuery(params, SECRET);
   const qs = new URLSearchParams(params); if (!opts.omitSig) qs.set('signature', signature);
   const url = 'https://herbuno.com/apps/formulator/' + (opts.endpoint || 'specification') + '?' + qs.toString();
   const headers = { 'content-type': opts.contentType || 'application/json', 'CF-Connecting-IP': opts.ip || '203.0.113.7' };
+  if (opts.xff) headers['X-Forwarded-For'] = opts.xff;
   return new Request(url, { method: opts.method || 'POST', headers, body: body === undefined ? undefined : (opts.rawBody || JSON.stringify(body)) });
 }
 const call = async (env, body, opts) => { const res = await handleRequest(await specRequest(body, opts), env); return { status: res.status, body: await res.json() }; };
@@ -86,6 +88,11 @@ async function run() {
     ok('signature: tampered rejected (401)', (await call(env, specBody(), { badSig: true })).status === 401);
     ok('signature: absent rejected (401)', (await call(env, specBody(), { omitSig: true })).status === 401);
     ok('timestamp: stale rejected (401)', (await call(env, specBody(), { ts: nowSec() - 3600 })).status === 401);
+    // shop binding: a VALIDLY-SIGNED request for a different store is rejected (defence in depth)
+    const wrongShop = await call(env, specBody(), { shop: 'someone-else.myshopify.com' });
+    ok('shop binding: validly-signed request for a foreign shop rejected (401 invalid_shop)', wrongShop.status === 401 && wrongShop.body.error === 'invalid_shop', JSON.stringify(wrongShop.body));
+    ok('shop binding: our exact shop accepted', (await call(env, specBody(), { shop: SHOP })).status === 200);
+    ok('shop binding: absent SHOP_DOMAIN fails closed (503 degraded)', (await call(envWith(buildFakeKV(B), { omitShopDomain: true }), specBody())).status === 503);
   }
 
   // ===== BLOCKER 1: minimal response — no ladder arrays / observed_available / canonical IDs =====
@@ -185,6 +192,42 @@ async function run() {
   }
   { const e = envWith(buildFakeKV(B), { noLimiter: true }); __resetStore(); __resetRate();
     ok('pipeline: unbound central limiter => degraded (fail closed)', (await call(e, specBody(), { ip: '9.9.9.9' })).status === 503);
+  }
+
+  // ===== Step-2b BLOCKER: client IP behind the Shopify App Proxy (X-Forwarded-For, trust-from-right) =====
+  // deriveClientIp unit coverage: real chain, spoof resistance, IPv6, and safe fallback.
+  { const EG = '198.51.100.50'; // Shopify egress == CF-Connecting-IP appended by Cloudflare
+    ok('client-ip: real chain "<shopper>, <egress>" keys on the shopper', deriveClientIp('203.0.113.9, ' + EG, EG) === '203.0.113.9');
+    ok('client-ip: browser-injected leftmost is ignored (trust-from-the-right)', deriveClientIp('6.6.6.6, 203.0.113.9, ' + EG, EG) === '203.0.113.9');
+    ok('client-ip: single-entry XFF (no visible CF append) keys on the shopper', deriveClientIp('203.0.113.9', EG) === '203.0.113.9');
+    ok('client-ip: IPv4 :port on the shopper entry is normalised', deriveClientIp('203.0.113.9:54321, ' + EG, EG) === '203.0.113.9');
+    ok('client-ip: IPv6 shopper accepted', deriveClientIp('2001:db8::1, ' + EG, EG) === '2001:db8::1');
+    ok('client-ip: malformed shopper entry falls back to CF-Connecting-IP (never attacker-chosen)', deriveClientIp('not-an-ip, ' + EG, EG) === EG);
+    ok('client-ip: empty XFF falls back to CF-Connecting-IP', deriveClientIp('', EG) === EG);
+    ok('client-ip: absent XFF and absent CF-IP => stable shared bucket', deriveClientIp(null, null) === 'no-ip');
+  }
+  // end-to-end: two shoppers behind ONE Shopify egress must land in SEPARATE limiter buckets, not one shared.
+  { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B)); const EG = '198.51.100.77';
+    let a; for (let i = 0; i < 10; i++) a = await call(env, specBody({ session_id: 's' + i }), { ip: EG, xff: '203.0.113.40, ' + EG });
+    const aOver = await call(env, specBody(), { ip: EG, xff: '203.0.113.40, ' + EG });
+    const bFresh = await call(env, specBody(), { ip: EG, xff: '203.0.113.41, ' + EG });
+    ok('client-ip: shopper A throttled at the 11th request behind the shared egress', a.status === 200 && aOver.status === 429, 'a=' + a.status + ' over=' + aOver.status);
+    ok('client-ip: shopper B (same egress, different X-Forwarded-For) is NOT throttled by A', bFresh.status === 200, 'status=' + bFresh.status);
+  }
+
+  // ===== Step-2b review (a): dual-key limiter — coarse transport backstop on the non-spoofable egress =====
+  // Unit: rotating the shopper key past the transport ceiling still trips (each shopper key stays fresh).
+  { const ls = new LimiterState({ perMin: 5, perHour: 1000, perDay: 100000, uniqBotanicalsPerHour: 1000, distinctProductRolePerHour: 1000, transport: { perMin: 8, perHour: 1000, perDay: 100000 } });
+    const now = 2_000_000; let res;
+    for (let i = 0; i < 9; i++) res = ls.check('shopper-' + i, { transportKey: 'egress-X', now }); // 9 distinct shopper keys, one egress
+    ok('transport backstop: XFF rotation past the transport ceiling is blocked (aggregate egress bound)', res.ok === false && res.reason === 'transport_per_minute', JSON.stringify(res));
+    ok('transport backstop: a different egress is unaffected by the first egress hitting its ceiling', ls.check('shopper-z', { transportKey: 'egress-Y', now }).ok === true);
+  }
+  // Wiring: a normal spec request increments the transport counter keyed on CF-Connecting-IP (the egress).
+  { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B)); const EG = '198.51.100.90';
+    await call(env, specBody(), { ip: EG, xff: '203.0.113.55, ' + EG });
+    const t = await env.RATE_LIMITER.get('global').fetch('https://do/x', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'stat', key: 'tm:' + EG }) }).then(r => r.json());
+    ok('transport backstop: request increments the transport counter keyed on the egress (CF-Connecting-IP)', t.count === 1, 'tm count=' + t.count);
   }
 
   // ===== degraded: honest, no internal detail; fail-closed on version mismatch =====

@@ -65,10 +65,19 @@ export class LimiterState {
     return e.set.size;
   }
 
-  check(key, { botanical, productRole, now } = {}) {
+  check(key, { botanical, productRole, now, transportKey } = {}) {
     now = now || Date.now();
     if (++this.sinceSweep >= CLEANUP_EVERY) { this.sinceSweep = 0; this._sweep(now); }
     const cfg = this.cfg;
+    // Coarse transport backstop on the non-spoofable egress IP: checked FIRST so aggregate abuse is
+    // bounded even when the shopper key is rotated / straddled / malformed to the fallback. Disabled if
+    // cfg.transport is null or no transportKey supplied. Distinct 't*:' namespace from the shopper keys.
+    if (transportKey != null && cfg.transport) {
+      const t = cfg.transport;
+      if (!this._bump('tm:' + transportKey, MIN, t.perMin, now)) return { ok: false, reason: 'transport_per_minute', challenge: false };
+      if (!this._bump('th:' + transportKey, HOUR, t.perHour, now)) return { ok: false, reason: 'transport_per_hour', challenge: false };
+      if (!this._bump('td:' + transportKey, DAY, t.perDay, now)) return { ok: false, reason: 'transport_per_day', challenge: false };
+    }
     if (!this._bump('m:' + key, MIN, cfg.perMin, now)) return { ok: false, reason: 'per_minute', challenge: false };
     if (!this._bump('h:' + key, HOUR, cfg.perHour, now)) return { ok: false, reason: 'per_hour', challenge: false };
     if (!this._bump('d:' + key, DAY, cfg.perDay, now)) return { ok: false, reason: 'per_day', challenge: false };
@@ -118,7 +127,7 @@ export class RateLimiterDurableObject {
 
     const key = typeof body.key === 'string' ? body.key : null;
     if (!key) return jr(400, { ok: false, reason: 'no_key' });
-    const result = this.limiter.check(key, { botanical: body.botanical, productRole: body.productRole, now: body.now });
+    const result = this.limiter.check(key, { botanical: body.botanical, productRole: body.productRole, now: body.now, transportKey: body.transportKey });
 
     // Atomic persistence via the DO's single-threaded request path. Storage is the source of truth.
     const ops = this.limiter.drainDirty();

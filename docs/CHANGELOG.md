@@ -38,6 +38,28 @@ ADR and a decision record in `/matrix`.
 ### Before build
 - Benchmark the real 826-record backbone + observed-form graph against Worker free-tier limits
   (10 ms CPU, 3 MB script). Paid tier ($5/mo) acceptable if exceeded — measure first.
+### Built (server-side under `worker/`, not deployed)
+- Step 1 feasibility benchmark (size + CPU); Step 2 Worker + endpoints; Step 2a external-audit
+  security fixes; Step 2b persisted Durable-Object limiter + Miniflare integration tests.
+- Step 2b client-IP fix (external review): behind the App Proxy `CF-Connecting-IP` is Shopify's
+  **shared egress**, so the limiter now keys on the shopper IP from `X-Forwarded-For` — trusted only
+  after signature verification, extracted **trust-from-the-right** (peel Cloudflare's appended egress
+  hop, take the rightmost remaining entry; leftmost is spoofable; malformed → fall back to
+  `CF-Connecting-IP`).
+- Step 2b follow-ups (owner review): (a) **dual-key limiter** — the fine-grained shopper-IP limit is
+  now backed by a coarse limit on the non-spoofable `CF-Connecting-IP` (`RATE.transport`, provisional
+  120/min · 1200/hr · 6000/day — pending dev-theme telemetry), bounding aggregate abuse when the shopper
+  key is rotated/straddled/malformed; (b) **shop binding** — a validly-signed request whose `shop` param
+  ≠ `SHOP_DOMAIN` (`7zyiqd-p7.myshopify.com`) is rejected (fails closed if unset). Wording note recorded:
+  the App Proxy signature authenticates query parameters, not headers — `X-Forwarded-For` is never
+  cryptographically authenticated; it is trusted by topology, confirmed on the dev theme.
+  Unit 57/57, integration 7/7, incl. two-shoppers-behind-one-egress → separate buckets, XFF-rotation →
+  transport ceiling, and foreign-shop → 401.
+- **🚫 DEPLOYMENT GATE (production blocked):** production launch is blocked until a live dev-theme request
+  confirms the actual `X-Forwarded-For` header shape and peel offset (that the rightmost-after-peel entry is
+  genuinely the shopper, with no Shopify verbatim-passthrough of a browser-supplied header). Dev-theme
+  deployment to gather this — and to size `RATE.transport` from real per-egress shopper fan-out — is
+  permitted; production is not until the gate passes.
 
 ## 2026-07 — Stage-1 ladder ordering applied (ADR-011)
 ### Added
