@@ -97,6 +97,21 @@ ADR and a decision record in `/matrix`.
   downstream contract); version mismatches fail closed both directions. Unit 89 · integration 9 · client
   render 25 — all green; leakage guard passes.
 
+#### Step 3 live-test fixes (dev-theme; Worker redeploy only, no KV re-upload)
+- **Display name** now shows a clean common name — a heuristic picks the most frequent part/form-stripped
+  common name ("Pomegranate" from the messy `common_names` list, since the backbone's
+  `canonical_display_name` is the Latin for ~99% of records), with a **presentation-only** override file
+  (`matrix/display_name_overrides.json`, versioned, bundled — NOT KV, NOT identity truth; resolution order
+  override → heuristic → `canonical_display_name`). Client de-dupes when only the Latin exists.
+- **Guidance roles surfaced:** non-catalogue routings (out_of_scope / ask_us / guidance_only) now return the
+  role's `rec` guidance (e.g. gummy·base → "the gel or compressed-chew matrix is the body") instead of a
+  "no suitable format" dead-end; null format, no token, no reasoning; client renders a guidance card.
+- **Phase vs solubility de-conflated:** the phase axis reads a format's PHYSICAL state (a spray-dried/
+  full-spectrum powder is dry even when water-soluble); solubility stays on the dissolution axis. Fixes
+  SD/RE being mis-read as a liquid phase in dry products.
+- **Unmapped product×role** (e.g. rtd-cloudy·carrier) now renders as a "not available for this product"
+  guidance card client-side — a `400`, never the `degraded` (5xx) state. Unit 99 · integration 9 · client 31.
+
 ## 2026-07 — Stage-1 ladder ordering applied (ADR-011)
 ### Added
 - `preferred_formats` / `conditional_formats` / `unsuitable_formats` ordered arrays on all 71

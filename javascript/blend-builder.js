@@ -100,15 +100,25 @@
     return '<div class="bb-actions"><button class="bb-btn" disabled>Check sourcing options →</button>' +
       '<span class="bb-actions-note">Confirm the botanical identity to check sourcing.</span></div>';
   }
+  // "Pomegranate — Punica granatum"; if the display name is just the Latin (no common name), show it once.
+  function whoLine(id) {
+    if (!id.display_name) return '<i>unnamed</i>';
+    var latin = id.authority_name && id.authority_name !== id.display_name ? ' — <i>' + esc(id.authority_name) + '</i>' : '';
+    return esc(id.display_name) + latin;
+  }
   function renderResolved(resp) {
     var sp = resp.specification || {}, id = resp.identity || {};
-    var who = id.display_name ? esc(id.display_name) + (id.authority_name ? ' — <i>' + esc(id.authority_name) + '</i>' : '') : '<i>unnamed</i>';
-    var h = '<div class="bb-card resolved">' +
-      specRow('Resolved botanical', who) +
-      specRow('Recommended form', '<b>' + esc(formLabel(sp.selected_format)) + '</b>') +
-      specRow('Technical status', esc(sp.technical_status || '—')) +
-      specRow('Why', esc(resp.explanation || '')) +
-      '</div>';
+    var h = '<div class="bb-card resolved">' + specRow('Resolved botanical', whoLine(id));
+    if (sp.selected_format) {
+      h += specRow('Recommended form', '<b>' + esc(formLabel(sp.selected_format)) + '</b>') +
+        specRow('Technical status', esc(sp.technical_status || '—')) +
+        specRow('Why', esc(resp.explanation || ''));
+    } else {
+      // guidance role (e.g. base = the product matrix itself) or no suitable catalogue format
+      h += specRow('Status', '<b>' + esc(sp.technical_status || '—') + '</b>') +
+        specRow('Guidance', esc(resp.explanation || ''));
+    }
+    h += '</div>';
     h += renderCandidate(resp);
     h += renderReasoning(resp);
     h += renderStage2Action(resp);
@@ -125,8 +135,9 @@
       '<div class="bb-card-head">' + esc(headline) + '</div>' +
       '<p class="bb-card-msg">' + esc(resp.explanation || '') + '</p>' +
       '<p class="bb-card-sub">Guidance below is <b>role-based, not botanical-specific</b>.</p>' +
-      specRow('Form for this role', '<b>' + esc(formLabel(sp.selected_format)) + '</b>') +
-      specRow('Technical status', esc(sp.technical_status || '—')) +
+      (sp.selected_format
+        ? specRow('Form for this role', '<b>' + esc(formLabel(sp.selected_format)) + '</b>') + specRow('Technical status', esc(sp.technical_status || '—'))
+        : specRow('Status', esc(sp.technical_status || '—'))) +
       '</div>';
     h += renderCandidate(resp);
     h += renderReasoning(resp);
@@ -148,6 +159,15 @@
       '<div class="bb-actions"><button class="bb-btn o" data-enquiry="1">Ask Herbuno to source this →</button>' +
       '<button class="bb-btn o" data-backspec="1">← Back to specification</button></div></div>';
   }
+  // 400 from the guided flow means the chosen product×role combination isn't in the matrix (or an input was
+  // rejected) — a mapping gap, NOT an infrastructure failure, so it must not read as "degraded".
+  function notAvailableMessage(detail) {
+    if (detail === 'unknown_product_role') return "That role isn't set up for this product. Try a different role, or open an enquiry.";
+    return 'Please check your selections and try again.';
+  }
+  function renderNotAvailable(detail) { return '<div class="bb-card notavailable"><div class="bb-card-head">Not available for this product</div>' +
+    '<p class="bb-card-msg">' + esc(notAvailableMessage(detail)) + '</p>' +
+    '<div class="bb-actions"><button class="bb-btn o" data-enquiry="1">Open an enquiry</button></div></div>'; }
   function renderLoading(label) { return '<div class="bb-loading"><span class="bb-spinner" aria-hidden="true"></span>' + esc(label || 'Generating specification…') + '</div>'; }
   function renderRateLimited() { return '<div class="bb-card ratelimited"><div class="bb-card-head">Too many checks just now</div>' +
     '<p class="bb-card-msg">Please wait a moment and try again.</p></div>'; }
@@ -164,6 +184,7 @@
         renderResolved: renderResolved, renderNonResolved: renderNonResolved, renderReasoning: renderReasoning,
         renderCandidate: renderCandidate, renderStage2Action: renderStage2Action, renderStage2Result: renderStage2Result,
         renderLoading: renderLoading, renderRateLimited: renderRateLimited, renderDegraded: renderDegraded,
+        renderNotAvailable: renderNotAvailable, notAvailableMessage: notAvailableMessage,
         formLabel: formLabel, candidateLabel: candidateLabel, FORMAT_LABELS: FORMAT_LABELS,
         CANDIDATE_OPTIONS: CANDIDATE_OPTIONS, ROLES: ROLES, PRODUCTS: PRODUCTS, API_SCHEMA_VERSION: API_SCHEMA_VERSION,
         BUILD_STUB: BUILD_STUB };
@@ -210,6 +231,7 @@
     if (S.view === 'loading') return renderLoading('Generating specification…');
     if (S.view === 'loading2') return renderResponse(S.resp) + renderLoading('Checking sourcing options…');
     if (S.view === 'degraded') return renderDegraded(S.message);
+    if (S.view === 'notavailable') return renderNotAvailable(S.message);
     if (S.view === 'ratelimited') return renderRateLimited();
     if (S.view === 'sourcing' && S.proc) return renderResponse(S.resp) + renderStage2Result(S.proc);
     if (S.view === 'result' && S.resp) return renderResponse(S.resp);
@@ -242,6 +264,8 @@
     S.view = 'loading'; S.resp = null; S.proc = null; draw();
     postJson(SPEC_ENDPOINT, buildSpecBody(S)).then(function (r) {
       if (r.rate) { S.view = 'ratelimited'; return draw(); }
+      // 400 = unmapped product×role / rejected input — a guidance case, NOT degraded (degraded is 5xx only)
+      if (r.status === 400) { S.view = 'notavailable'; S.message = (r.body && r.body.detail) || ''; return draw(); }
       if (r.status !== 200 || !apiCompatible(r.body)) { S.view = 'degraded'; S.message = (r.body && r.body.message) || DEGRADED_FALLBACK; return draw(); }
       S.resp = r.body; S.view = 'result'; draw();
     }).catch(function () { S.view = 'degraded'; S.message = DEGRADED_FALLBACK; draw(); });

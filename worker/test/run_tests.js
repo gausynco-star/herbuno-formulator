@@ -5,7 +5,7 @@ import { __resetRate } from '../src/security.js';
 import { signProxyQuery, deriveClientIp } from '../src/security.js';
 import { signToken } from '../src/token.js';
 import { b64urlEncode, hmacB64url } from '../src/hmac.js';
-import { resolve, statusOf, makeEngine } from '../src/engine.js';
+import { resolve, statusOf, makeEngine, displayName } from '../src/engine.js';
 import { LimiterState, RateLimiterDurableObject } from '../src/rate_limiter_do.js';
 import { DEGRADED_MESSAGE, API_SCHEMA_VERSION } from '../src/version.js';
 import { generateAll, leakageScan } from '../tools/generate_payloads.js';
@@ -324,6 +324,35 @@ async function run() {
     const bad = { ...B, matrix: { ...B.matrix, data: { ...B.matrix.data, phase_map_version: '1999-01-01.0' } } };
     const r = await call(envWith(buildFakeKV(bad)), specBody());
     ok('phase map: a phase_map_version mismatch fails closed (503 degraded), no internal reason leaked', r.status === 503 && r.body.message === DEGRADED_MESSAGE && !JSON.stringify(r.body).includes('phase_map_version'), 'status=' + r.status);
+  }
+
+  // ===== ADR-014 Step 3 live-fixes: display name · guidance routing · phase/solubility · unmapped cell =====
+  { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B));
+    // #1 display name: prefer a clean common name over the bare Latin
+    const pg = B.identityIndex.identities.find(r => r.authority_accepted_name === 'Punica granatum');
+    if (pg) ok('fix#1 display: Punica granatum -> "Pomegranate" (not the Latin)', displayName(pg) === 'Pomegranate', displayName(pg));
+    const spec = (await call(env, specBody())).body;
+    ok('fix#1 display: identity.display_name is not a duplicate of the Latin authority name', typeof spec.identity.display_name === 'string' && spec.identity.display_name !== spec.identity.authority_name, JSON.stringify(spec.identity));
+    // #1 override file: presentation-only, precedence override -> heuristic -> canonical_display_name
+    const overrideKeys = ['camellia-sinensis', 'aloe-vera', 'terminalia-chebula', 'glycyrrhiza-glabra'];
+    const present = overrideKeys.filter(k => B.identityIndex.identities.some(r => r.canonical_id === k));
+    ok('fix#1 override: every override canonical_id exists in the backbone (no dead overrides)', present.length === overrideKeys.length, 'present=' + present.join(','));
+    const cs = B.identityIndex.identities.find(r => r.canonical_id === 'camellia-sinensis');
+    if (cs) ok('fix#1 override: override WINS over the heuristic (camellia-sinensis -> "Tea", not "Green Tea")', displayName(cs) === 'Tea', displayName(cs));
+    ok('fix#1 order: heuristic applies when there is no override (Punica -> "Pomegranate")', pg ? displayName(pg) === 'Pomegranate' : true);
+    ok('fix#1 fallback: no override + no usable common_names -> canonical_display_name', displayName({ canonical_id: 'zzz-none', canonical_display_name: 'Zzz example', authority_accepted_name: 'Zzz example', common_names: [] }) === 'Zzz example');
+    // #2 guidance routing (gummy|base is out_of_scope): surface rec, null format, no token, no reasoning
+    const gb = (await call(env, { product: 'gummy', role: 'base', botanical: latinTerm })).body;
+    ok('fix#2 guidance: out_of_scope role surfaces rec guidance, not a dead-end', gb.specification.selected_format === null && /gel or compressed-chew matrix/.test(gb.explanation), JSON.stringify(gb.specification) + ' | ' + gb.explanation);
+    ok('fix#2 guidance: no specification_token and no reasoning_checks for a guidance role', gb.specification_token === null && gb.reasoning_checks === null);
+    // #4 phase/solubility: a dry powder (SD) in a dry product is in-phase, not a "separate phase"
+    const ih = (await call(env, { product: 'instant-hot', role: 'base', botanical: latinTerm })).body;
+    ok('fix#4 phase: dry powder in a dry product reads as compatible, not a separate liquid phase', /compatible with incorporation into the product.s dry-solid matrix/.test(ih.reasoning_checks.phase) && !/separate phase/.test(ih.reasoning_checks.phase), JSON.stringify(ih.reasoning_checks.phase));
+  }
+  // #3 an unmapped product×role combination is a 400 (bad_input), NOT a 503 degraded — the client renders it as guidance
+  { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B));
+    const r = await call(env, { product: 'rtd-cloudy', role: 'carrier', botanical: 'orange' });
+    ok('fix#3 unmapped cell: rtd-cloudy|carrier returns 400 unknown_product_role (not 503 degraded)', r.status === 400 && r.body.detail === 'unknown_product_role', 'status=' + r.status + ' detail=' + (r.body && r.body.detail));
   }
 
   // ===== degraded: honest, no internal detail; fail-closed on version mismatch =====

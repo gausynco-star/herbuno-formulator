@@ -218,7 +218,7 @@ position:fixed;inset:0;background:rgba(30,90,90,.55);z-index:9999;display:flex;a
 .bb-card{border:1px solid var(--bd);border-radius:8px;margin:16px 0;overflow:hidden}
 .bb-card.resolved{border-color:var(--bdm)}
 .bb-card.ambiguous,.bb-card.unrecognised{border-color:var(--a);background:var(--ap)}
-.bb-card.degraded,.bb-card.ratelimited{border-color:var(--bdm);background:var(--ow)}
+.bb-card.degraded,.bb-card.ratelimited,.bb-card.notavailable{border-color:var(--bdm);background:var(--ow)}
 .bb-card-head{font-family:var(--fd);font-size:1.02em;color:var(--d);padding:13px 16px 4px;line-height:1.4}
 .bb-card.ambiguous .bb-card-head,.bb-card.unrecognised .bb-card-head{color:var(--ad)}
 .bb-card-msg{font-size:.92em;line-height:1.55;color:var(--m);padding:0 16px 12px}

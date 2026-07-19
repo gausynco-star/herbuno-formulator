@@ -107,6 +107,25 @@ const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|i
   ok('schema: v3 (newer worker) rejected -> client would degrade', client.apiCompatible({ version: { api_schema_version: 3 } }) === false);
   ok('schema: missing version rejected', client.apiCompatible({}) === false && client.apiCompatible(null) === false);
 }
+// ---- Step 3 live-fixes ----
+{ // #3 a 400 (unmapped product×role) renders "not available", NEVER the degraded message
+  const na = client.renderNotAvailable('unknown_product_role');
+  ok('fix#3: 400 renders a "not available for this product" card, not degraded', /isn.t set up for this product/.test(na) && !/[Tt]emporarily un/.test(na), na);
+  ok('fix#3: notAvailableMessage distinguishes unknown_product_role from generic input errors', /role isn.t set up/.test(client.notAvailableMessage('unknown_product_role')) && /check your selections/.test(client.notAvailableMessage('bad_botanical')));
+  // #2 guidance response (selected_format null) → guidance card, no fake "Recommended form", Stage-2 disabled
+  const guidance = { identity_status: 'resolved', identity: { display_name: 'Pomegranate', authority_name: 'Punica granatum' },
+    specification: { selected_format: null, technical_status: 'Not a separately sourced ingredient here', role: 'Base' },
+    explanation: 'No sourced base — the gel or compressed-chew matrix is the body',
+    reasoning_checks: null, reasoning_basis: 'botanical', specification_token: null };
+  const gh = client.renderResponse(guidance);
+  ok('fix#2: guidance response shows the guidance text and no fake "Recommended form" row', /No sourced base/.test(gh) && !/Recommended form/.test(gh), gh);
+  ok('fix#2: guidance response disables Stage-2 (no token)', /disabled/.test(gh));
+  // #1 display: common name + Latin, and de-duplicated when identical
+  ok('fix#1: renders "Pomegranate — Punica granatum"', /Pomegranate/.test(gh) && /Punica granatum/.test(gh));
+  const dup = client.renderResolved({ identity_status: 'resolved', identity: { display_name: 'Punica granatum', authority_name: 'Punica granatum' }, specification: { selected_format: 'MP', technical_status: 'Best physical fit', role: 'Active' }, explanation: 'x', reasoning_checks: null, reasoning_basis: 'botanical', specification_token: 'T' });
+  ok('fix#1: when display == Latin, it is shown once (no "X — X" duplicate)', (dup.match(/Punica granatum/g) || []).length === 1, dup.slice(0, 160));
+}
+
 // ---- no matrix/identity/graph decision data in the shipped client or shell ----
 { // scan CODE, not the explanatory comments (which legitimately name what was removed)
   const stripJs = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|\n)\s*\/\/[^\n]*/g, '$1');

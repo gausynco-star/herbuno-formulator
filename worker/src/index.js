@@ -2,7 +2,7 @@
 // Pipeline order (ADR-014 §2): signature -> timestamp -> allow-list -> rate limit -> resolve.
 // Step-2a security hardening folded in. No framework. Nothing here is deployed by CC.
 import { getContext } from './store.js';
-import { resolve, statusOf, selectSpecification, oneCaveat, procurementMatch, reasoningChecks, assessCandidate } from './engine.js';
+import { resolve, statusOf, selectSpecification, oneCaveat, procurementMatch, reasoningChecks, assessCandidate, displayName } from './engine.js';
 import { verifyProxyQuery, checkTimestamp, validateSpecInput, validateProcurementInput, localRatePreCheck, deriveClientIp } from './security.js';
 import { centralRateLimit } from './rate_limiter_do.js';
 import { signToken, verifyToken } from './token.js';
@@ -138,29 +138,40 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
   const status = statusOf(idn);
   const resolved = status === 'resolved';
   const ladder = engine.ladder.get(productRole);
-  const sel = selectSpecification(ladder);
   const rec = resolved && idn.canonical_id ? engine.byId.get(idn.canonical_id) : null;
+
+  // A role can route to the format ladder ('catalogue') OR to guidance (out_of_scope / ask_us /
+  // guidance_only / no_code_application_dependent). For guidance roles there is no format to select, so we
+  // surface the role's guidance text (rec) instead of a "no suitable format" dead-end, and issue no token.
+  const isCatalogue = ladder && ladder.routing === 'catalogue';
+  const sel = isCatalogue
+    ? selectSpecification(ladder)
+    : { selected_format: null, technical_status: routingStatus(ladder && ladder.routing), role: ladder ? ladder.label : null };
+  const explanation = !resolved
+    ? oneCaveat(status, sel, ladder)                        // ambiguous/unrecognised identity message
+    : isCatalogue
+      ? oneCaveat('resolved', sel, ladder)                 // the selected format's caveat
+      : (ladder.rec || 'The right approach depends on the product and process — contact Herbuno for guidance.');
 
   const resp = {
     identity_status: status,
-    // ambiguous/unrecognised: NEVER an identity claim or candidate IDs
-    identity: { display_name: rec ? rec.canonical_display_name : null, authority_name: rec ? rec.authority_accepted_name : null },
+    // ambiguous/unrecognised: NEVER an identity claim or candidate IDs. display_name prefers a clean common name.
+    identity: { display_name: rec ? displayName(rec) : null, authority_name: rec ? rec.authority_accepted_name : null },
     specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
-    explanation: oneCaveat(status, sel, ladder),
-    // three physics-only conclusions; reasoning_basis tells the client to label them 'role-based, not
-    // botanical-specific' when identity did not resolve
-    reasoning_checks: reasoningChecks(ladder, sel.selected_format),
+    explanation,
+    // three physics-only conclusions — only for catalogue roles (guidance roles have no format to reason about)
+    reasoning_checks: isCatalogue ? reasoningChecks(ladder, sel.selected_format) : null,
     reasoning_basis: resolved ? 'botanical' : 'role',
-    specification_token: null,      // set below ONLY for resolved (server-side enforcement)
+    specification_token: null,      // set below ONLY for resolved catalogue roles (server-side enforcement)
     version: versionBlock(versions),
   };
   // candidate mismatch check — only when the user actually supplied a format (role physics; runs for every
   // status). SE returns the LOCKED application-review response inside assessCandidate.
   if (candidateFormat !== undefined) resp.candidate_assessment = assessCandidate(ladder, candidateFormat);
 
-  // Token ONLY for resolved: without a trustworthy identity there is nothing for Stage 2 to match against,
-  // so the client also disables the Stage-2 action for ambiguous/unrecognised.
-  if (resolved) {
+  // Token ONLY for a resolved identity on a catalogue role: guidance roles and unresolved identities have
+  // nothing for Stage 2 to match against, so the client disables the Stage-2 action for them.
+  if (resolved && isCatalogue) {
     resp.specification_token = await signToken(tokenSecret, {
       cid: idn.canonical_id, product: body.product, role: body.role,
       sf: sel.selected_format, api: API_SCHEMA_VERSION,
@@ -168,6 +179,17 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
     });
   }
   return json(200, resp);
+}
+
+// Guidance-role status label (non-catalogue routings). rec carries the actual guidance in `explanation`.
+function routingStatus(routing) {
+  switch (routing) {
+    case 'out_of_scope': return 'Not a separately sourced ingredient here';
+    case 'guidance_only': return 'Technical guidance — no direct catalogue match';
+    case 'ask_us':
+    case 'no_code_application_dependent': return 'Application review needed';
+    default: return 'Application review needed';
+  }
 }
 
 async function procurement(env, context, body, ip, transportIp, tokenSecret) {

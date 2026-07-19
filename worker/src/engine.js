@@ -1,7 +1,12 @@
 // Resolution + Product×Role intersection + specification build.
 // Ported from the Step-1 benchmark stub (which mirrors knowledge/pass3/build_pass3.build_indices and
 // knowledge/sources/common.resolve). Indices are built ONCE per isolate by makeEngine() — the hot
-// requirement from ADR-014 Step 1. Nothing here does I/O.
+// requirement from ADR-014 Step 1. No runtime I/O.
+
+// PRESENTATION-ONLY display-name overrides (ADR-014 Step 3), bundled at build time (not KV). Keyed by
+// canonical_id; overrides ONLY the label shown on the card — never resolution/matching/identity truth.
+import DISPLAY_OVERRIDES_FILE from '../../matrix/display_name_overrides.json' with { type: 'json' };
+const DISPLAY_OVERRIDES = (DISPLAY_OVERRIDES_FILE && DISPLAY_OVERRIDES_FILE.overrides) || {};
 
 const enc = new Set(); // placeholder to keep shape parity; unused
 const EMPTY = new Set();
@@ -92,6 +97,35 @@ export function statusOf(idn) {
   return 'unrecognised';
 }
 
+// Heuristic: cleanest common name = the most frequent part/form-stripped base among common_names
+// (e.g. "Pomegranate" out of "Pomegranate Peel", "Anar Beej", "Pomegranate Seed Oil"). null if none usable.
+function heuristicCommon(rec) {
+  const commons = (rec && rec.common_names) || [];
+  if (!commons.length) return null;
+  const counts = new Map(), sample = new Map();
+  for (const c of commons) {
+    const base = nb(partStrip(c));
+    if (!base || base.length < 3) continue;
+    const k = norm(base);
+    counts.set(k, (counts.get(k) || 0) + 1);
+    if (!sample.has(k)) sample.set(k, base);
+  }
+  if (!counts.size) return null;
+  let bestK = null, bestN = -1;
+  for (const [k, n] of counts) if (n > bestN || (n === bestN && bestK && sample.get(k).length < sample.get(bestK).length)) { bestK = k; bestN = n; }
+  const exact = commons.find(c => norm(c) === bestK); // prefer an actual common_name (nicer casing)
+  return exact || sample.get(bestK) || null;
+}
+// Display name for the identity card (ADR-014 Step 3 fix). The backbone's canonical_display_name is the
+// Latin accepted name for ~99% of records. Resolution order (owner-ruled): 1) presentation override,
+// 2) common-name heuristic, 3) canonical_display_name fallback. PRESENTATION only — long-term the display
+// name belongs in the identity backbone (ADR-013).
+export function displayName(rec) {
+  if (!rec) return null;
+  if (rec.canonical_id && DISPLAY_OVERRIDES[rec.canonical_id]) return DISPLAY_OVERRIDES[rec.canonical_id]; // 1
+  return heuristicCommon(rec) || rec.canonical_display_name || rec.authority_accepted_name || null;         // 2, 3
+}
+
 function buildLadderIndex(matrixData) {
   const idx = new Map();
   for (const fam of matrixData.fam) for (const p of fam.products) for (const rid of Object.keys(p.roles)) {
@@ -99,7 +133,7 @@ function buildLadderIndex(matrixData) {
     // product physics-class (tag/tag_label) is retained so reasoning_checks can be derived from physics
     // (ADR-014 Step 3). Decision content (tiers/notes) is unchanged and never leaves the Worker.
     idx.set(p.id + '|' + rid, { preferred: r.preferred_formats || [], conditional: r.conditional_formats || [],
-      unsuitable: r.unsuitable_formats || [], fmt: r.fmt || {}, routing: r.routing, label: r.label,
+      unsuitable: r.unsuitable_formats || [], fmt: r.fmt || {}, routing: r.routing, label: r.label, rec: r.rec || null,
       tag: p.tag, tag_label: p.tag_label, phase: p.phase || 'application-dependent' });
   }
   return idx;
@@ -167,38 +201,35 @@ const PROCESS_SKU = 'Confirm process compatibility for the specific SKU.';
 const PHASE_LABEL = { 'dry-solid': 'dry-solid matrix', aqueous: 'aqueous phase', oil: 'oil phase', 'suspension-dispersion': 'aqueous suspension' };
 const DISS_NOUN = { aqueous: 'aqueous phase', oil: 'oil phase', emulsion: 'continuous phase', 'suspension-dispersion': 'aqueous phase' };
 
+// PHYSICAL form of the selected format for the PHASE axis — its physical STATE as added (dry solid /
+// water liquid / oil liquid / phase-matched), NOT its solubility. A spray-dried or full-spectrum powder is
+// physically DRY even when water-SOLUBLE — solubility is the orthogonal DISSOLUTION axis (from `tag`), not
+// a phase. So dry-solid is detected FIRST and wins over any soluble/dispersible qualifier.
 function formPhysical(behaviour) {
   const b = String(behaviour || '').toLowerCase();
-  if (b.includes('water-soluble')) return 'water-soluble';
-  if (b.includes('dispersible')) return 'water-dispersible';
-  if (b.includes('oil')) return 'oil';
-  if (b.includes('dual') || b.includes('matched')) return 'matched';
+  if (b.includes('unresolved') || b.includes('per row text')) return null; // genuinely ambiguous => SKU fallback
   if (b.includes('dry-solid') || b.includes('coarse') || b.includes('whole') || b.includes('dried')) return 'dry';
-  return null; // unresolved / row-text behaviours => fall back honestly
-}
-function formFamily(form) { // phase family for phase-identification only (no behaviour claim)
-  if (form === 'water-soluble' || form === 'water-dispersible') return 'water';
-  if (form === 'oil') return 'oil';
-  if (form === 'dry') return 'dry';
-  return null; // matched handled separately
+  if (b.includes('dual') || b.includes('matched')) return 'matched';
+  if (b.includes('oil')) return 'oil';       // an oil LIQUID (oil-soluble / oil / liquid)
+  if (b.includes('water-soluble') || b.includes('dispersible')) return 'water'; // a water LIQUID (not a dry powder)
+  return null;
 }
 function phaseCheck(phase, form) {
   if (phase === 'application-dependent') return 'The product’s phase varies by formulation — confirm phase compatibility for the specific formulation and SKU.';
   if (!form) return 'Confirm phase compatibility for the specific SKU.';
   if (phase === 'emulsion') {
     if (form === 'oil') return 'This form is intended for incorporation into the emulsion’s oil phase.';
-    if (form === 'water-soluble' || form === 'water-dispersible') return 'This form is intended for incorporation into the emulsion’s water phase.';
+    if (form === 'water') return 'This form is intended for incorporation into the emulsion’s water phase.';
     if (form === 'matched') return 'A phase-matched extract is intended for incorporation into the emulsion.';
     return 'This dry form is intended for incorporation into the emulsion.';
   }
   const label = PHASE_LABEL[phase];
   if (form === 'matched') return 'A phase-matched extract is compatible with incorporation into the product’s ' + label + '.';
-  const fam = formFamily(form);
-  const aligned = (phase === 'dry-solid' && fam === 'dry') ||
-    ((phase === 'aqueous' || phase === 'suspension-dispersion') && (fam === 'water' || (phase === 'suspension-dispersion' && fam === 'dry'))) ||
-    (phase === 'oil' && fam === 'oil');
+  const aligned = (phase === 'dry-solid' && form === 'dry') ||
+    ((phase === 'aqueous' || phase === 'suspension-dispersion') && (form === 'water' || (phase === 'suspension-dispersion' && form === 'dry'))) ||
+    (phase === 'oil' && form === 'oil');
   if (aligned) return 'This form is compatible with incorporation into the product’s ' + label + '.';
-  return 'This ' + (fam === 'oil' ? 'oil-based' : fam === 'water' ? 'water-based' : 'dry') + ' form is a separate phase from the product’s ' + label + '.';
+  return 'This ' + (form === 'oil' ? 'oil-based' : form === 'water' ? 'water-based' : 'dry') + ' form is a separate phase from the product’s ' + label + '.';
 }
 function dissolutionCheck(tag, phase) {
   if (tag === 'NND') return 'Dissolution is not required for this role.';
@@ -213,8 +244,8 @@ function dissolutionCheck(tag, phase) {
 function processCheck(phase, form) {
   if (phase === 'application-dependent' || !form) return PROCESS_VARIABLE;
   let cross = false;
-  if (phase === 'dry-solid') cross = (form === 'oil' || form === 'water-soluble' || form === 'water-dispersible');
-  else if (phase === 'oil') cross = (form === 'water-soluble' || form === 'water-dispersible');
+  if (phase === 'dry-solid') cross = (form === 'oil' || form === 'water');
+  else if (phase === 'oil') cross = (form === 'water');
   else if (phase === 'aqueous' || phase === 'suspension-dispersion') cross = (form === 'oil');
   // emulsion accommodates both phases => never a cross-phase process step
   if (!cross) return PROCESS_SKU;
