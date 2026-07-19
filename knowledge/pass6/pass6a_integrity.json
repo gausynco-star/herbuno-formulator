@@ -1,0 +1,729 @@
+{
+  "artifact": "ADR-013 Pass 6A backbone mechanical integrity (Gate 1, report-only)",
+  "run_against_identity_version": "2026-07-19.4",
+  "identity_schema_version": 2,
+  "backbone_records": 826,
+  "headline_anomaly_counts": {
+    "s1_taxonomy": 0,
+    "s2_provenance": 0,
+    "s3_normalisation_mechanical": 0,
+    "s4_resolver_deviations": 2,
+    "s5_schema": 1,
+    "TOTAL": 3
+  },
+  "sections": {
+    "s1": {
+      "title": "Taxonomy mechanics",
+      "counts": {
+        "malformed_accepted_name": 0,
+        "accepted_vs_authority_mismatch": 0,
+        "rank_field_inconsistency": 0,
+        "malformed_synonym": 0,
+        "converged_accepted_name_duplicates": 0,
+        "duplicate_canonical_id": 0,
+        "missing_genus_species": 0
+      },
+      "detail": {
+        "malformed_accepted_name": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "accepted_vs_authority_mismatch": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "rank_field_inconsistency": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "malformed_synonym": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "converged_accepted_name_duplicates": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "duplicate_canonical_id": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "missing_genus_species": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        }
+      }
+    },
+    "s2": {
+      "title": "Provenance integrity",
+      "provenance_granularity": "record-level only (names are flat strings; provenance is one object per record — carried by the whole record, not per name)",
+      "provenance_record_keys": [
+        "authority",
+        "query_date",
+        "resolved_by",
+        "review_date"
+      ],
+      "name_assignment_classification": {
+        "total_name_assignments": 2982,
+        "per_name_provenance": 0,
+        "record_level": 2982,
+        "unknown": 0
+      },
+      "accepted_outside_gbif_candidates_records": 386,
+      "counts": {
+        "records_without_provenance": 0,
+        "records_untraceable_to_source": 0,
+        "enriched_by_not_array": 0,
+        "accepted_outside_gbif_missing_stamp": 0
+      },
+      "detail": {
+        "records_without_provenance": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "records_untraceable_to_source": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "enriched_by_not_array": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "accepted_outside_gbif_missing_stamp": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        }
+      }
+    },
+    "s3": {
+      "title": "Normalisation",
+      "mechanical_anomaly_counts": {
+        "accepted_name_normalised_collisions": 0,
+        "synonym_normalised_collisions": 0,
+        "non_breaking_space": 0,
+        "leading_trailing_or_double_space": 0,
+        "author_abbreviation_in_accepted_or_synonym": 0
+      },
+      "expected_or_feature_counts": {
+        "common_name_normalised_collisions_EXPECTED": 12,
+        "non_ascii_names_present": 55,
+        "hybrid_multiplication_sign_present": 1
+      },
+      "detail": {
+        "accepted_name_normalised_collisions": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "synonym_normalised_collisions": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "non_breaking_space": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "leading_trailing_or_double_space": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "author_abbreviation_in_accepted_or_synonym": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "common_name_normalised_collisions_EXPECTED": {
+          "total": 12,
+          "shown": [
+            {
+              "normalized": "black cardamom",
+              "canonical_ids": [
+                "amomum-subulatum",
+                "wurfbainia-villosa"
+              ]
+            },
+            {
+              "normalized": "ajwain",
+              "canonical_ids": [
+                "carum-copticum",
+                "trachyspermum-ammi"
+              ]
+            },
+            {
+              "normalized": "cinnamon",
+              "canonical_ids": [
+                "cinnamomum-burmanni",
+                "cinnamomum-verum"
+              ]
+            },
+            {
+              "normalized": "cinnamon bark",
+              "canonical_ids": [
+                "cinnamomum-burmanni",
+                "cinnamomum-verum"
+              ]
+            },
+            {
+              "normalized": "bay leaf",
+              "canonical_ids": [
+                "cinnamomum-tamala",
+                "laurus-nobilis"
+              ]
+            },
+            {
+              "normalized": "nagarmotha",
+              "canonical_ids": [
+                "cyperus-rotundus",
+                "cyperus-scariosus"
+              ]
+            },
+            {
+              "normalized": "hibiscus flower",
+              "canonical_ids": [
+                "hibiscus-mutabilis",
+                "hibiscus-sabdariffa"
+              ]
+            },
+            {
+              "normalized": "hibiscus flower cut",
+              "canonical_ids": [
+                "hibiscus-mutabilis",
+                "hibiscus-sabdariffa"
+              ]
+            },
+            {
+              "normalized": "hibiscus flower whole",
+              "canonical_ids": [
+                "hibiscus-mutabilis",
+                "hibiscus-sabdariffa"
+              ]
+            },
+            {
+              "normalized": "jasmine",
+              "canonical_ids": [
+                "jasminum",
+                "jasminum-sambac"
+              ]
+            },
+            {
+              "normalized": "chitrak root",
+              "canonical_ids": [
+                "plumbago-indica",
+                "plumbago-zeylanica"
+              ]
+            },
+            {
+              "normalized": "rose petal",
+              "canonical_ids": [
+                "rosa-damascena",
+                "rosa-indica"
+              ]
+            }
+          ],
+          "truncated": false
+        },
+        "non_ascii_names_present": {
+          "total": 55,
+          "shown": [
+            {
+              "id": "allium-cepa",
+              "where": "common",
+              "name": "Onion (≥5% quercetin)"
+            },
+            {
+              "id": "andrographis-paniculata",
+              "where": "common",
+              "name": "Fah Talai Jone (≥20% andrographolide)"
+            },
+            {
+              "id": "andrographis-paniculata",
+              "where": "common",
+              "name": "Sambiloto (≥20% andrographolide)"
+            },
+            {
+              "id": "andrographis-paniculata",
+              "where": "common",
+              "name": "Sambiloto (≥30% andrographolide)"
+            },
+            {
+              "id": "andrographis-paniculata",
+              "where": "common",
+              "name": "Sambiloto (≥50% andrographolide)"
+            },
+            {
+              "id": "andrographis-paniculata",
+              "where": "common",
+              "name": "Sambiloto Leaf (≥10% andrographolide)"
+            },
+            {
+              "id": "bacopa-monnieri",
+              "where": "common",
+              "name": "Bacopa (≥20% bacosides)"
+            },
+            {
+              "id": "bacopa-monnieri",
+              "where": "common",
+              "name": "Bacopa (≥40% bacosides)"
+            },
+            {
+              "id": "bacopa-monnieri",
+              "where": "common",
+              "name": "Bacopa (≥50% bacosides)"
+            },
+            {
+              "id": "camellia-sinensis",
+              "where": "common",
+              "name": "Green Tea (≥45% EGCG)"
+            },
+            {
+              "id": "camellia-sinensis",
+              "where": "common",
+              "name": "Green Tea (≥50% polyphenols)"
+            },
+            {
+              "id": "camellia-sinensis",
+              "where": "common",
+              "name": "Green Tea (≥98% EGCG)"
+            },
+            {
+              "id": "centella-asiatica",
+              "where": "common",
+              "name": "Gotu Kola (≥40% triterpenes)"
+            },
+            {
+              "id": "centella-asiatica",
+              "where": "common",
+              "name": "Pegagan (Gotu Kola) (≥40% triterpenes)"
+            },
+            {
+              "id": "citrus-maxima",
+              "where": "common",
+              "name": "Pomelo Peel (≥20% hesperidin)"
+            },
+            {
+              "id": "clitoria-ternatea",
+              "where": "common",
+              "name": "Butterfly Pea Flower (≥20% anthocyanins)"
+            },
+            {
+              "id": "coffea-arabica",
+              "where": "common",
+              "name": "Green Coffee (≥50% chlorogenic acids)"
+            },
+            {
+              "id": "coffea-arabica",
+              "where": "common",
+              "name": "Green Coffee (≥70% chlorogenic acids)"
+            },
+            {
+              "id": "curcuma-longa",
+              "where": "common",
+              "name": "Turmeric (≥10% curcuminoids)"
+            },
+            {
+              "id": "curcuma-longa",
+              "where": "common",
+              "name": "Turmeric (≥95% curcuminoids)"
+            },
+            {
+              "id": "curcuma-longa",
+              "where": "common",
+              "name": "Turmeric (≥98% curcuminoids)"
+            },
+            {
+              "id": "curcuma-xanthorrhiza",
+              "where": "common",
+              "name": "Temulawak (≥10% xanthorrhizol)"
+            },
+            {
+              "id": "curcuma-xanthorrhiza",
+              "where": "common",
+              "name": "Temulawak (≥20% xanthorrhizol)"
+            },
+            {
+              "id": "curcuma-xanthorrhiza",
+              "where": "common",
+              "name": "Temulawak (≥5% xanthorrhizol)"
+            },
+            {
+              "id": "garcinia-mangostana",
+              "where": "common",
+              "name": "Mangosteen Pericarp (≥10% alpha-mangostin)"
+            }
+          ],
+          "truncated": true
+        },
+        "hybrid_multiplication_sign_present": {
+          "total": 1,
+          "shown": [
+            {
+              "id": "citrus-x-limon",
+              "where": "accepted",
+              "name": "Citrus ×limon"
+            }
+          ],
+          "truncated": false
+        }
+      }
+    },
+    "s4": {
+      "title": "Resolver mechanics (behaviour of the code, not commercial correctness)",
+      "counts": {
+        "paths_checked": 8,
+        "paths_behaving_as_specified": 6,
+        "paths_deviating": 2
+      },
+      "probes": [
+        {
+          "path": "accepted_name_exact",
+          "expect": "each accepted name resolves to its own record",
+          "ok": false,
+          "got": "813 ok / 13 fail (12 of them hyphenated-epithet)"
+        },
+        {
+          "path": "scientific_synonym_exact",
+          "expect": "each synonym resolves to its record (or ambiguous)",
+          "ok": true,
+          "got": "0 not resolving to own record (0 hyphenated)"
+        },
+        {
+          "path": "common_name_exact_unique",
+          "expect": "a unique common never resolves to a DIFFERENT record",
+          "ok": false,
+          "got": "22 wrong picks (1826/1886 round-trip; rest → ambiguous/unrecognised by part-strip/quarantine design)"
+        },
+        {
+          "path": "ambiguous_never_picks_outside_candidates",
+          "expect": "ambiguous input never resolves to a non-candidate species",
+          "ok": true,
+          "got": "0 violations (6/12 return ambiguous; rest owner-pinned to a candidate or part-stripped)"
+        },
+        {
+          "path": "unrecognised",
+          "expect": "gibberish → unrecognised",
+          "ok": true,
+          "got": "4/4 unrecognised"
+        },
+        {
+          "path": "part_and_format_stripped",
+          "expect": "part/format-suffixed input still resolves",
+          "ok": true,
+          "got": "240 resolve / 0 lost"
+        },
+        {
+          "path": "case_whitespace_normalisation",
+          "expect": "case/whitespace variants → same record",
+          "ok": true,
+          "got": "4/4 normalised"
+        },
+        {
+          "path": "no_substring_or_fuzzy_false_match",
+          "expect": "genus-only / substring / typo never fuzzy-match",
+          "ok": true,
+          "got": "none (resolver is exact-only, no fuzzy)"
+        }
+      ],
+      "key_finding": "Resolver gap: 13 accepted names (12 with hyphenated epithets, e.g. \"Arctostaphylos uva-ursi\") do NOT resolve to themselves — resolve()'s cleanLabel splits hyphens the exact index retains. The index KEY exists; resolve() cannot reach it.",
+      "detail": {
+        "accepted_name_not_resolving_to_self": {
+          "total": 13,
+          "shown": [
+            {
+              "id": "arctostaphylos-uva-ursi",
+              "name": "Arctostaphylos uva-ursi",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "aspidosperma-quebracho-blanco",
+              "name": "Aspidosperma quebracho-blanco",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "auricularia-auricula-judae",
+              "name": "Auricularia auricula-judae",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "capsella-bursa-pastoris",
+              "name": "Capsella bursa-pastoris",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "citrus-x-limon",
+              "name": "Citrus ×limon",
+              "got": "resolved:citrus-limon",
+              "hyphen_epithet": false
+            },
+            {
+              "id": "echinochloa-crus-galli-utilis",
+              "name": "Echinochloa crus-galli utilis",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "ferula-assa-foetida",
+              "name": "Ferula assa-foetida",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "opuntia-ficus-indica",
+              "name": "Opuntia ficus-indica",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "pleurotus-tuber-regium",
+              "name": "Pleurotus tuber-regium",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "strychnos-nux-vomica",
+              "name": "Strychnos nux-vomica",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "trigonella-foenum-graecum",
+              "name": "Trigonella foenum-graecum",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "vaccinium-vitis-idaea",
+              "name": "Vaccinium vitis-idaea",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            },
+            {
+              "id": "ziziphus-spina-christi",
+              "name": "Ziziphus spina-christi",
+              "got": "unrecognised",
+              "hyphen_epithet": true
+            }
+          ],
+          "truncated": false
+        },
+        "synonym_not_resolving_to_own_record": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "common_unique_wrong_pick": {
+          "total": 22,
+          "shown": [
+            {
+              "common": "wood apple oil",
+              "expected": "aegle-marmelos",
+              "got": "malus-domestica"
+            },
+            {
+              "common": "tea seed oil",
+              "expected": "camellia-oleifera",
+              "got": "camellia-sinensis"
+            },
+            {
+              "common": "sarsaparilla root",
+              "expected": "hemidesmus-indicus",
+              "got": "decalepis-hamiltonii"
+            },
+            {
+              "common": "sarsaparilla root cut",
+              "expected": "hemidesmus-indicus",
+              "got": "decalepis-hamiltonii"
+            },
+            {
+              "common": "lavender",
+              "expected": "lavandula-stoechas",
+              "got": "lavandula-angustifolia"
+            },
+            {
+              "common": "lavender flower bud whole",
+              "expected": "lavandula-stoechas",
+              "got": "lavandula-angustifolia"
+            },
+            {
+              "common": "freeze dried basil",
+              "expected": "ocimum-tenuiflorum",
+              "got": "ocimum-basilicum"
+            },
+            {
+              "common": "gokhru big cut",
+              "expected": "pedalium-murex",
+              "got": "tribulus-terrestris"
+            },
+            {
+              "common": "chitrak bark cut",
+              "expected": "plumbago-indica",
+              "got": "plumbago-zeylanica"
+            },
+            {
+              "common": "chitrak roots cut",
+              "expected": "plumbago-indica",
+              "got": "plumbago-zeylanica"
+            },
+            {
+              "common": "freeze dried rose petal",
+              "expected": "rosa-indica",
+              "got": "rosa-damascena"
+            },
+            {
+              "common": "rose petal tea",
+              "expected": "rosa-indica",
+              "got": "rosa-damascena"
+            },
+            {
+              "common": "rose petal cut",
+              "expected": "rosa-indica",
+              "got": "rosa-damascena"
+            },
+            {
+              "common": "rose petal whole",
+              "expected": "rosa-indica",
+              "got": "rosa-damascena"
+            },
+            {
+              "common": "sarsaparilla cut",
+              "expected": "smilax-medica",
+              "got": "decalepis-hamiltonii"
+            },
+            {
+              "common": "sarsaparilla whole",
+              "expected": "smilax-medica",
+              "got": "decalepis-hamiltonii"
+            },
+            {
+              "common": "tagetes",
+              "expected": "tagetes-minuta",
+              "got": "tagetes"
+            },
+            {
+              "common": "valerian",
+              "expected": "valeriana-jatamansi",
+              "got": "valeriana-officinalis"
+            },
+            {
+              "common": "valerian root",
+              "expected": "valeriana-jatamansi",
+              "got": "valeriana-officinalis"
+            },
+            {
+              "common": "valerian root cut",
+              "expected": "valeriana-jatamansi",
+              "got": "valeriana-officinalis"
+            },
+            {
+              "common": "valerian root whole",
+              "expected": "valeriana-jatamansi",
+              "got": "valeriana-officinalis"
+            },
+            {
+              "common": "rasna leaf",
+              "expected": "vanda-tessellata",
+              "got": "pluchea-lanceolata"
+            }
+          ],
+          "truncated": false
+        },
+        "ambiguous_picked_outside_candidates": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "part_format_lost": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        }
+      }
+    },
+    "s5": {
+      "title": "Schema consistency",
+      "facts": {
+        "backbone_records": 826,
+        "meta_identity_records": 826,
+        "pass1_keys": 641,
+        "meta_pass1_keys_accounted": 641,
+        "excluded_json_count": 28,
+        "meta_excluded": 28
+      },
+      "counts": {
+        "missing_schema_v2_fields": 0,
+        "display_name_semantics_violation": 0,
+        "trade_primary_semantics_violation": 0,
+        "excluded_name_also_resolved": 0,
+        "pass1_keys_unaccounted": 0,
+        "version_field_issues": 0,
+        "quarantine_version_mismatch": 1,
+        "excluded_count_mismatch": 0
+      },
+      "detail": {
+        "missing_schema_v2_fields": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "display_name_semantics_violation": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "trade_primary_semantics_violation": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "excluded_name_also_resolved": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "pass1_keys_unaccounted": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "version_field_issues": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        },
+        "quarantine_version_mismatch": {
+          "total": 1,
+          "shown": [
+            {
+              "artifact": "knowledge/identity/common_index_quarantine.json",
+              "its_identity_version": "2026-07-19.3",
+              "backbone_identity_version": "2026-07-19.4"
+            }
+          ],
+          "truncated": false
+        },
+        "excluded_count_mismatch": {
+          "total": 0,
+          "shown": [],
+          "truncated": false
+        }
+      }
+    }
+  }
+}
