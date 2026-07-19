@@ -2,7 +2,7 @@
 // per-isolate rate pre-check. The AUTHORITATIVE limiter is the Durable Object in rate_limiter_do.js;
 // this module is only the first, best-effort layer.
 import { hmacHex, hmacVerifyHex } from './hmac.js';
-import { RATE, SESSION_ID_RE } from './version.js';
+import { RATE, SESSION_ID_RE, FORMAT_CODES } from './version.js';
 
 // ---- 1. Shopify App Proxy signature ----
 // Shopify signs the QUERY params (sorted by key, `key=value` concatenated with NO separator) with the
@@ -104,10 +104,13 @@ export function deriveClientIp(xff, cfConnectingIp) {
 function validSession(v) { return v === undefined || (typeof v === 'string' && SESSION_ID_RE.test(v)); }
 export function validateSpecInput(body, engine) {
   if (!body || typeof body !== 'object' || Array.isArray(body)) return 'bad_body';
-  for (const k of Object.keys(body)) if (!['product', 'role', 'botanical', 'session_id'].includes(k)) return 'unexpected_field';
+  for (const k of Object.keys(body)) if (!['product', 'role', 'botanical', 'session_id', 'candidate_format'].includes(k)) return 'unexpected_field';
   if (typeof body.product !== 'string' || typeof body.role !== 'string') return 'missing_product_role';
   if (typeof body.botanical !== 'string' || !body.botanical.trim() || body.botanical.length > 80) return 'bad_botanical';
   if (!validSession(body.session_id)) return 'bad_session';
+  // candidate_format is OPTIONAL; when present it MUST be an allow-listed code. 'Other'/unknown/non-string
+  // are rejected here (the label is never the contract; 'Other' is free text in the enquiry only).
+  if (body.candidate_format !== undefined && !FORMAT_CODES.has(body.candidate_format)) return 'bad_candidate_format';
   if (!engine.ladder.has(body.product + '|' + body.role)) return 'unknown_product_role';
   return null;
 }

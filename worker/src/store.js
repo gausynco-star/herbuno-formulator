@@ -52,6 +52,7 @@ async function initialise(env) {
       identity_version: manifest.identity_version,
       observed_form_graph_version: manifest.observed_form_graph_version,
       matrix_version: manifest.matrix_version,
+      phase_map_version: manifest.phase_map_version,
     },
     manifest,
   };

@@ -65,7 +65,7 @@ export class LimiterState {
     return e.set.size;
   }
 
-  check(key, { botanical, productRole, now, transportKey } = {}) {
+  check(key, { botanical, productRole, now, transportKey, candidateFormat } = {}) {
     now = now || Date.now();
     if (++this.sinceSweep >= CLEANUP_EVERY) { this.sinceSweep = 0; this._sweep(now); }
     const cfg = this.cfg;
@@ -88,6 +88,14 @@ export class LimiterState {
     if (productRole != null) {
       const n = this._addToSet('t:' + key, String(productRole), HOUR, now);
       if (n > cfg.distinctProductRolePerHour) return { ok: false, reason: 'enumeration', challenge: true };
+    }
+    // candidate_format enumeration guard (ADR-014 Step 3): a SET of the DISTINCT candidate formats queried
+    // for this shopper×hour×product×role. Repeats of one format keep size at 1 (legitimate re-checking); a
+    // 4th DISTINCT format for the cell trips. Separate from ordinary/botanical/traversal limits above, all
+    // of which have already incremented for this request.
+    if (candidateFormat != null && productRole != null) {
+      const n = this._addToSet('cf:' + key + '|' + productRole, String(candidateFormat), HOUR, now);
+      if (n > cfg.distinctCandidateFormatsPerCellPerHour) return { ok: false, reason: 'candidate_enumeration', challenge: false };
     }
     return { ok: true, challenge: false };
   }
@@ -127,7 +135,7 @@ export class RateLimiterDurableObject {
 
     const key = typeof body.key === 'string' ? body.key : null;
     if (!key) return jr(400, { ok: false, reason: 'no_key' });
-    const result = this.limiter.check(key, { botanical: body.botanical, productRole: body.productRole, now: body.now, transportKey: body.transportKey });
+    const result = this.limiter.check(key, { botanical: body.botanical, productRole: body.productRole, now: body.now, transportKey: body.transportKey, candidateFormat: body.candidateFormat });
 
     // Atomic persistence via the DO's single-threaded request path. Storage is the source of truth.
     const ops = this.limiter.drainDirty();

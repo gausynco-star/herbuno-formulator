@@ -206,3 +206,55 @@ position:fixed;inset:0;background:rgba(30,90,90,.55);z-index:9999;display:flex;a
 .bb-stage2-h .bb-btn.o:hover{background:rgba(255,255,255,.24)}
 .bb-stage2-b{padding:14px 15px}
 .bb-stage2-b>.bb-note:first-child{margin-top:0}
+
+/* ---- ADR-014 Step 3: server-wired Stage-1 UI (minimal; a visual overhaul comes later) ---- */
+.bb-controls{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(max-width:640px){.bb-controls{grid-template-columns:1fr}}
+.bb-field .bb-lbl{display:block;margin-bottom:6px}
+.bb-field .bb-opt{text-transform:none;letter-spacing:0;color:var(--l)}
+.bb-controls .bb-actions{grid-column:1/-1;margin-top:2px}
+.bb-actions-note{font-size:.84em;color:var(--m);align-self:center;line-height:1.4}
+.bb-btn:disabled{opacity:.45;cursor:not-allowed}
+.bb-card{border:1px solid var(--bd);border-radius:8px;margin:16px 0;overflow:hidden}
+.bb-card.resolved{border-color:var(--bdm)}
+.bb-card.ambiguous,.bb-card.unrecognised{border-color:var(--a);background:var(--ap)}
+.bb-card.degraded,.bb-card.ratelimited{border-color:var(--bdm);background:var(--ow)}
+.bb-card-head{font-family:var(--fd);font-size:1.02em;color:var(--d);padding:13px 16px 4px;line-height:1.4}
+.bb-card.ambiguous .bb-card-head,.bb-card.unrecognised .bb-card-head{color:var(--ad)}
+.bb-card-msg{font-size:.92em;line-height:1.55;color:var(--m);padding:0 16px 12px}
+.bb-card-sub{font-size:.86em;line-height:1.5;color:var(--m);padding:0 16px 12px}
+.bb-card-sub b{color:var(--ad)}
+.bb-sp-r{display:grid;grid-template-columns:170px 1fr;gap:10px;padding:9px 16px;border-top:1px solid #f2f2f2;font-size:.94em;line-height:1.45}
+.bb-sp-k{font-family:var(--fm);font-size:.82em;letter-spacing:.03em;text-transform:uppercase;color:var(--m)}
+.bb-sp-v{color:var(--d)}.bb-sp-v i{color:var(--m)}
+@media(max-width:560px){.bb-sp-r{grid-template-columns:1fr;gap:2px}}
+.bb-cand{border:1px solid var(--bd);border-left-width:4px;border-radius:6px;margin:14px 0;padding:12px 15px}
+.bb-cand.ok{border-left-color:#1e7a4a;background:#f2fbf6}
+.bb-cand.warn{border-left-color:var(--a);background:var(--ap)}
+.bb-cand.avoid{border-left-color:#b3261e;background:#fdf3f2}
+.bb-cand.review{border-left-color:var(--td);background:var(--tp)}
+.bb-cand-r{display:flex;gap:10px;justify-content:space-between;align-items:baseline}
+.bb-cand-k{font-family:var(--fm);font-size:.66em;letter-spacing:.1em;text-transform:uppercase;color:var(--m)}
+.bb-cand-v{font-weight:600;color:var(--d)}
+.bb-cand-status{font-family:var(--fm);font-size:.74em;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin:7px 0 5px}
+.bb-cand.ok .bb-cand-status{color:#1e7a4a}.bb-cand.warn .bb-cand-status{color:var(--ad)}
+.bb-cand.avoid .bb-cand-status{color:#b3261e}.bb-cand.review .bb-cand-status{color:var(--tk)}
+.bb-cand-exp{font-size:.9em;line-height:1.55;color:var(--d)}
+.bb-reasoning{border:1px solid var(--bd);border-radius:6px;margin:14px 0}
+.bb-reasoning summary{padding:11px 15px;cursor:pointer;font-family:var(--fm);font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--m);list-style:none}
+.bb-reasoning summary::-webkit-details-marker{display:none}
+.bb-reasoning summary:before{content:'\25B8 ';color:var(--l)}
+.bb-reasoning[open] summary:before{content:'\25BE '}
+.bb-rc-body{padding:2px 15px 12px}
+.bb-rc-note{font-size:.84em;color:var(--ad);font-style:italic;line-height:1.5;margin:4px 0 8px}
+.bb-rc-r{display:grid;grid-template-columns:220px 1fr;gap:10px;padding:7px 0;border-top:1px solid #f2f2f2;font-size:.9em;line-height:1.5}
+.bb-rc-k{font-family:var(--fm);font-size:.82em;letter-spacing:.02em;color:var(--tk)}
+.bb-rc-v{color:var(--d)}
+@media(max-width:560px){.bb-rc-r{grid-template-columns:1fr;gap:2px}}
+.bb-sourcing{border:1px solid var(--td);border-radius:8px;margin:16px 0 4px;background:var(--ow);overflow:hidden}
+.bb-sourcing-h{background:var(--td);padding:10px 15px;font-family:var(--fm);font-size:.66em;letter-spacing:.1em;text-transform:uppercase;color:#fff;font-weight:600}
+.bb-sourcing-msg{padding:14px 15px 4px;font-size:.94em;line-height:1.55;color:var(--d)}
+.bb-sourcing .bb-actions{padding:4px 15px 14px;margin-top:8px}
+.bb-loading{display:flex;align-items:center;gap:11px;padding:26px 16px;color:var(--m);font-size:.94em}
+.bb-spinner{width:16px;height:16px;border:2px solid var(--bdm);border-top-color:var(--tk);border-radius:50%;display:inline-block;animation:bb-spin .7s linear infinite}
+@keyframes bb-spin{to{transform:rotate(360deg)}}

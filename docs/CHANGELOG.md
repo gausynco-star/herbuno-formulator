@@ -12,7 +12,8 @@ ADR and a decision record in `/matrix`.
   of Herbuno catalogue availability.
 - Stage-2 procurement is revealed only through the explicit "Check Herbuno availability" action.
 - Remaining: Shopify dev-theme visual testing, guided intake refinement, full five-class procurement
-  rendering, Layer 1 / Path B, and eventual full-blend-mode migration.
+  rendering, Layer 1 / Path B, and full-blend-mode migration (now BLOCKED on the ADR-014 server-side
+  migration — the matrix cannot ship to the client, so build mode is stubbed until it runs server-side).
 - Canonical design: `docs/STAGE1_STAGE2_TARGET_DESIGN.md`.
 
 ### Pending sign-off
@@ -65,6 +66,36 @@ ADR and a decision record in `/matrix`.
   unless `"1"`/`"true"`; must stay unset in production). Logs ONLY the proxy header chain — raw
   `X-Forwarded-For`, `CF-Connecting-IP`, derived shopper key, `shop`, and per-transport fan-out — and
   **never** the botanical query, token, or session_id (HARD RULE 7). Remove the block once the gate clears.
+
+### Step 3 — client wiring + locked Stage-1 UI (server-side; not deployed)
+- **Client rewired to the Worker.** `javascript/blend-builder.js` no longer reads `window.HB_MX`; the shell
+  no longer loads `herbuno-matrix.js`. The client ships **no matrix/identity/graph decision data** — only
+  UI vocabulary (product/role labels + format-code display labels). Guided inputs → App Proxy → Worker;
+  loading state on submit; honest degraded / rate-limited states; rejects any response whose
+  `api_schema_version` ≠ its own (fails closed, both directions). A test asserts the shipped client + shell
+  carry no decision tokens.
+- **Build mode is now explicitly BLOCKED on this step, not merely deferred:** loading the matrix client-side
+  for build mode would re-expose it in view-source and defeat ADR-014, so the full multi-ingredient builder
+  cannot migrate until it runs server-side. Build mode shows an honest "being upgraded" placeholder; the
+  toggle stays.
+- **`candidate_format` (bounded).** Optional input; strict allow-list (`MP/RE/SE/WL/OE/WD`, `Other` never
+  sent); response gains exactly one `candidate_assessment`. `SE` returns the LOCKED "application review"
+  response (assay overlay, never a base format). Enumeration guard: a **persisted SET** of distinct
+  candidate formats per `shopper×hour×product×role` (max 3), separate from — and additive to — the ordinary
+  counters and the existing product×role traversal set.
+- **`reasoning_checks` {phase, dissolution, process}** — three physics-only conclusions. Two orthogonal
+  axes: PHASE from an **authored 6-class product→phase map** (`matrix/product_phase_map.json`, a third
+  versioned data layer; the payload build fails closed if a product is unmapped), DISSOLUTION from the
+  matrix `tag`. Phase identifies the phase only (never asserts dissolves/miscible/partitions); process
+  derives solely from phase + format behaviour and invents no heat/pH/sensory/grit/stability claims.
+  `reasoning_basis` labels ambiguous/unrecognised guidance "role-based, not botanical-specific".
+- **No `specification_token` for ambiguous/unrecognised (server-enforced)** → the client disables the
+  Stage-2 action ("Check sourcing options" — never "Check Herbuno availability"; Stage 2 returns a sourcing
+  route, never a "catalogue match", until real stock is wired). Generic role-based Product×Role guidance +
+  candidate check still render.
+- **`api_schema_version` bumped 1 → 2**; `phase_map_version` added to the response version block (ADR-013
+  downstream contract); version mismatches fail closed both directions. Unit 89 · integration 9 · client
+  render 25 — all green; leakage guard passes.
 
 ## 2026-07 — Stage-1 ladder ordering applied (ADR-011)
 ### Added

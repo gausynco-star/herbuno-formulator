@@ -104,12 +104,19 @@ async function run() {
     const wire = JSON.stringify({ ...b, specification_token: null });
     ok('response: no ladder arrays / observed_available on the wire', !/preferred|conditional|unsuitable|observed_available|format_ladder/.test(wire), wire.slice(0, 120));
     ok('response: no canonical_id on the wire', !wire.includes(realCid) && !('canonical_id' in b.identity) && !('candidates' in b.identity), realCid);
-    ok('response: top-level keys are exactly the permitted set', JSON.stringify(Object.keys(b).sort()) === '["explanation","identity","identity_status","specification","specification_token","version"]', JSON.stringify(Object.keys(b)));
+    // v2 (Step 3): reasoning_checks + reasoning_basis added; candidate_assessment only when supplied
+    ok('response: top-level keys are exactly the v2 permitted set (no candidate supplied)', JSON.stringify(Object.keys(b).sort()) === '["explanation","identity","identity_status","reasoning_basis","reasoning_checks","specification","specification_token","version"]', JSON.stringify(Object.keys(b)));
+    ok('response: reasoning_checks is exactly {phase,dissolution,process} of conclusions', JSON.stringify(Object.keys(b.reasoning_checks).sort()) === '["dissolution","phase","process"]' && typeof b.reasoning_checks.phase === 'string', JSON.stringify(b.reasoning_checks));
+    ok('response: resolved reasoning_basis is botanical', b.reasoning_basis === 'botanical');
+    ok('response: no candidate_assessment key unless a candidate_format was sent', !('candidate_assessment' in b));
     const amb = await call(env, specBody({ botanical: AMBIG_TERM }));
-    ok('response: ambiguous returns neutral message, no candidate IDs, no token',
-      amb.body.identity_status === 'ambiguous' && amb.body.specification === null && amb.body.specification_token === null &&
+    ok('response: ambiguous returns neutral message, no identity, no candidate IDs, no token',
+      amb.body.identity_status === 'ambiguous' && amb.body.specification_token === null &&
       amb.body.identity.display_name === null && amb.body.identity.authority_name === null && !('candidates' in amb.body.identity),
       JSON.stringify(amb.body));
+    ok('response: ambiguous STILL returns a generic role-based Product×Role spec + reasoning (labelled role)',
+      amb.body.specification && typeof amb.body.specification.technical_status === 'string' && amb.body.reasoning_basis === 'role' && !JSON.stringify(amb.body).includes(realCid),
+      JSON.stringify(amb.body.specification));
   }
 
   // ===== resolution parity vs local resolver (status + authority) =====
@@ -242,6 +249,81 @@ async function run() {
       !cap.toLowerCase().includes(latinTerm.toLowerCase()) && !cap.includes('token') && !cap.includes('capsess42'), cap.slice(0, 200));
     const off = await grab(envWith(buildFakeKV(B)), { ip: EG, xff: '203.0.113.61, ' + EG });
     ok('capture: OFF by default — no [xff-capture] line unless HEADER_CAPTURE is set', !off.some(l => l.includes('[xff-capture]')));
+  }
+
+  // ===== ADR-014 Step 3: candidate_format assessment + SE lock + validation =====
+  // a catalogue cell that has BOTH an ok and an avoid code, for deterministic candidate assessment
+  let CPR = null, C_OK = null, C_AVOID = null;
+  for (const [k, L] of engineRef.ladder) { if (L.routing !== 'catalogue') continue;
+    const okc = Object.keys(L.fmt).find(c => L.fmt[c].tier === 'ok' && c !== 'SE');
+    const avc = Object.keys(L.fmt).find(c => L.fmt[c].tier === 'avoid' && c !== 'SE');
+    if (okc && avc) { CPR = k; C_OK = okc; C_AVOID = avc; break; } }
+  const [CPROD, CROLE] = CPR.split('|');
+  const cand = (cf, opts) => call(envWith(buildFakeKV(B)), { product: CPROD, role: CROLE, botanical: latinTerm, candidate_format: cf }, opts);
+  { __resetStore(); __resetRate();
+    ok('candidate: absent unless the user supplies one', !('candidate_assessment' in (await call(envWith(buildFakeKV(B)), specBody())).body));
+    const se = (await cand('SE')).body.candidate_assessment;
+    ok('candidate SE: LOCKED application-review response, never assessed as a base format',
+      se && se.format === 'SE' && se.technical_status === 'Application review needed' && /Standardisation describes assay, not physical format/.test(se.explanation), JSON.stringify(se));
+    const av = (await cand(C_AVOID)).body.candidate_assessment;
+    ok('candidate avoid-tier: "Not suitable for this role" + conclusion, no ladder arrays', av.technical_status === 'Not suitable for this role' && !/preferred|conditional|unsuitable/.test(JSON.stringify(av)), JSON.stringify(av));
+    const okc = (await cand(C_OK)).body.candidate_assessment;
+    ok('candidate ok-tier: "Best physical fit"', okc.technical_status === 'Best physical fit', JSON.stringify(okc));
+    const withCand = Object.keys((await cand(C_OK)).body).sort();
+    const noCand = Object.keys((await call(envWith(buildFakeKV(B)), { product: CPROD, role: CROLE, botanical: latinTerm })).body).sort();
+    ok('candidate: supplying a format adds EXACTLY the candidate_assessment key, nothing else', JSON.stringify(withCand.filter(k => !noCand.includes(k))) === '["candidate_assessment"]', JSON.stringify(withCand));
+    ok('candidate: "Other" rejected server-side (400)', (await cand('Other')).status === 400);
+    ok('candidate: unknown code rejected server-side (400)', (await cand('ZZ')).status === 400);
+    ok('candidate: non-string rejected server-side (400)', (await call(envWith(buildFakeKV(B)), { product: CPROD, role: CROLE, botanical: latinTerm, candidate_format: 3 })).status === 400);
+    // candidate check runs and is labelled role-based under ambiguous (identity doesn't gate role physics)
+    const ambCand = (await call(envWith(buildFakeKV(B)), { product: CPROD, role: CROLE, botanical: AMBIG_TERM, candidate_format: C_AVOID })).body;
+    ok('candidate under ambiguous: assessment still runs, labelled role-based, no token/identity',
+      ambCand.candidate_assessment && ambCand.candidate_assessment.technical_status === 'Not suitable for this role' && ambCand.reasoning_basis === 'role' && ambCand.specification_token === null && ambCand.identity.display_name === null, JSON.stringify(ambCand));
+  }
+
+  // ===== Step 3: candidate_format SET limiter (distinct formats per shopper×hour×product×role) =====
+  { const ls = new LimiterState({ perMin: 1000, perHour: 1000, perDay: 100000, uniqBotanicalsPerHour: 1000, distinctProductRolePerHour: 1000, distinctCandidateFormatsPerCellPerHour: 3, transport: null });
+    const now = 3_000_000, cell = 'gummy|active';
+    let rep; for (let i = 0; i < 5; i++) rep = ls.check('ipA', { productRole: cell, candidateFormat: 'MP', now });
+    ok('candidate SET: repeating ONE format never trips (set stays size 1 = legitimate re-checking)', rep.ok === true, JSON.stringify(rep));
+    ls.check('ipB', { productRole: cell, candidateFormat: 'MP', now });
+    ls.check('ipB', { productRole: cell, candidateFormat: 'RE', now });
+    const third = ls.check('ipB', { productRole: cell, candidateFormat: 'WL', now });
+    const fourth = ls.check('ipB', { productRole: cell, candidateFormat: 'OE', now });
+    ok('candidate SET: 3 distinct pass; the 4th DISTINCT format for the cell is rate-limited', third.ok === true && fourth.ok === false && fourth.reason === 'candidate_enumeration', JSON.stringify({ third, fourth }));
+    ok('candidate SET: a different product×role cell keeps its own set', ls.check('ipB', { productRole: 'tablet-dc|active', candidateFormat: 'OE', now }).ok === true);
+  }
+  // end-to-end: candidate queries update the distinct-format SET AND still increment ordinary + traversal limits
+  { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B)); const IP = '198.51.100.44';
+    const doStat = (key) => env.RATE_LIMITER.get('global').fetch('https://do/x', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'stat', key }) }).then(r => r.json());
+    const send = (cf) => call(env, { product: CPROD, role: CROLE, botanical: latinTerm, candidate_format: cf }, { ip: IP });
+    const four = ['MP', 'RE', 'WL', 'OE'];
+    let last; for (let i = 0; i < 3; i++) last = await send(four[i]);
+    ok('candidate SET e2e: first 3 distinct candidate formats for a cell pass (200)', last.status === 200, 'status=' + last.status);
+    ok('candidate SET e2e: repeating an already-seen format does NOT trip', (await send(four[0])).status === 200);
+    ok('candidate SET e2e: the 4th DISTINCT format for the cell is rate-limited (429)', (await send(four[3])).status === 429);
+    const m = await doStat('m:' + IP), t = await doStat('t:' + IP), cf = await doStat('cf:' + IP + '|' + CPR);
+    ok('candidate SET e2e: ordinary per-minute counter still incremented for every candidate query', m.count === 5, 'm=' + m.count);
+    ok('candidate SET e2e: the cell also joined the existing product×role traversal set', t.setSize === 1, 't=' + t.setSize);
+    ok('candidate SET e2e: the persisted distinct-format set holds the queried formats', cf.setSize === 4, 'cf=' + cf.setSize);
+  }
+
+  // ===== Step 3: token suppression (server-side) + schema-version fail-closed =====
+  { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B));
+    ok('token suppression: NO specification_token for ambiguous (server-side)', (await call(env, specBody({ botanical: AMBIG_TERM }))).body.specification_token === null);
+    const unrec = (await call(env, specBody({ botanical: 'Xyzzy Blorptonium 42' }))).body;
+    ok('token suppression: NO specification_token for unrecognised (server-side)', unrec.identity_status === 'unrecognised' && unrec.specification_token === null);
+    const oldTok = await signToken(TOKEN_SECRET, { cid: realCid, product: PRODUCT, role: ROLE, sf: 'RE', api: 1, ...snap });
+    ok('schema: a v1 (old) token is rejected at v2 procurement — fails closed', (await call(env, { specification_token: oldTok }, { endpoint: 'procurement' })).body.detail === 'api_schema');
+    const vb = (await call(env, specBody())).body.version;
+    ok('schema: response carries api_schema_version 2', vb.api_schema_version === 2);
+    ok('schema: version block records phase_map_version (third authored layer, ADR-013 contract)', vb.phase_map_version === B.manifest.phase_map_version && typeof vb.phase_map_version === 'string', JSON.stringify(vb));
+  }
+  // phase_map_version mismatch between the matrix bundle and the manifest => fail closed (degraded)
+  { __resetStore(); __resetRate();
+    const bad = { ...B, matrix: { ...B.matrix, data: { ...B.matrix.data, phase_map_version: '1999-01-01.0' } } };
+    const r = await call(envWith(buildFakeKV(bad)), specBody());
+    ok('phase map: a phase_map_version mismatch fails closed (503 degraded), no internal reason leaked', r.status === 503 && r.body.message === DEGRADED_MESSAGE && !JSON.stringify(r.body).includes('phase_map_version'), 'status=' + r.status);
   }
 
   // ===== degraded: honest, no internal detail; fail-closed on version mismatch =====

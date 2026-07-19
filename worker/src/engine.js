@@ -96,8 +96,11 @@ function buildLadderIndex(matrixData) {
   const idx = new Map();
   for (const fam of matrixData.fam) for (const p of fam.products) for (const rid of Object.keys(p.roles)) {
     const r = p.roles[rid];
+    // product physics-class (tag/tag_label) is retained so reasoning_checks can be derived from physics
+    // (ADR-014 Step 3). Decision content (tiers/notes) is unchanged and never leaves the Worker.
     idx.set(p.id + '|' + rid, { preferred: r.preferred_formats || [], conditional: r.conditional_formats || [],
-      unsuitable: r.unsuitable_formats || [], fmt: r.fmt || {}, routing: r.routing, label: r.label });
+      unsuitable: r.unsuitable_formats || [], fmt: r.fmt || {}, routing: r.routing, label: r.label,
+      tag: p.tag, tag_label: p.tag_label, phase: p.phase || 'application-dependent' });
   }
   return idx;
 }
@@ -131,13 +134,120 @@ export function selectSpecification(ladder) {
 
 // ONE caveat only. For a selected format, the single first sentence of that cell's note (a caveat is
 // explicitly permitted by BLOCKER 1); otherwise a controlled fallback. Never the full note.
+function firstSentence(note) {
+  if (!note) return '';
+  const first = String(note).split(/\.\s/)[0].trim();
+  return first ? (first.endsWith('.') ? first : first + '.') : '';
+}
 export function oneCaveat(status, sel, ladder) {
   if (status === 'ambiguous') return AMBIGUOUS_MESSAGE;
   if (status === 'unrecognised') return 'No botanical identity matched this term in the current knowledge snapshot.';
   if (!sel.selected_format) return `No commercial format is rated suitable for ${sel.role || 'this role'} — contact Herbuno for review.`;
-  const note = ladder && (ladder.fmt[sel.selected_format] || {}).note;
-  if (note) { const first = String(note).split(/\.\s/)[0].trim(); if (first) return first.endsWith('.') ? first : first + '.'; }
+  const s = firstSentence(ladder && (ladder.fmt[sel.selected_format] || {}).note);
+  if (s) return s;
   return `Confirm SKU-level suitability of the ${sel.selected_format} grade with the supplier.`;
+}
+
+// ---- reasoning_checks (Stage 1, ADR-014 Step 3) ----
+// Three query-specific CONCLUSIONS derived from PHYSICS ONLY. TWO orthogonal axes (owner ruling):
+//   * PHASE  = the product's physical phase, from the AUTHORED 6-class map (ladder.phase). Drives `phase`
+//              and `process`. NEVER inferred from `tag`.
+//   * DISSOLUTION = the product's dissolution requirement, from `tag` (NND/MD/DISP). Drives `dissolution`.
+//                   MD means the active must dissolve in WHATEVER phase the product IS.
+// Constraints: state the conclusion for THIS query, never the rule; no ladder text, no rejected
+// alternatives, no supplier/graph evidence; process derives ONLY from product phase + format behaviour and
+// NEVER infers heat/pH/sensory/grit/stability/bioavailability/manufacturing not encoded by the matrix;
+// where the subtype is genuinely variable (application-dependent) return the SKU fallback. For
+// ambiguous/unrecognised the physics is identical (product×role-based) — reasoning_basis marks that.
+const PROCESS_VARIABLE = 'Confirm process compatibility for the specific formulation and SKU.';
+const PROCESS_SKU = 'Confirm process compatibility for the specific SKU.';
+// The PHASE check IDENTIFIES the relevant phase ONLY (owner ruling) — never a behaviour verb (dissolves /
+// miscible / partitions), which is only established at SKU level. Aligned form -> "compatible with
+// incorporation into <phase>"; cross-phase -> "a separate phase from <phase>".
+const PHASE_LABEL = { 'dry-solid': 'dry-solid matrix', aqueous: 'aqueous phase', oil: 'oil phase', 'suspension-dispersion': 'aqueous suspension' };
+const DISS_NOUN = { aqueous: 'aqueous phase', oil: 'oil phase', emulsion: 'continuous phase', 'suspension-dispersion': 'aqueous phase' };
+
+function formPhysical(behaviour) {
+  const b = String(behaviour || '').toLowerCase();
+  if (b.includes('water-soluble')) return 'water-soluble';
+  if (b.includes('dispersible')) return 'water-dispersible';
+  if (b.includes('oil')) return 'oil';
+  if (b.includes('dual') || b.includes('matched')) return 'matched';
+  if (b.includes('dry-solid') || b.includes('coarse') || b.includes('whole') || b.includes('dried')) return 'dry';
+  return null; // unresolved / row-text behaviours => fall back honestly
+}
+function formFamily(form) { // phase family for phase-identification only (no behaviour claim)
+  if (form === 'water-soluble' || form === 'water-dispersible') return 'water';
+  if (form === 'oil') return 'oil';
+  if (form === 'dry') return 'dry';
+  return null; // matched handled separately
+}
+function phaseCheck(phase, form) {
+  if (phase === 'application-dependent') return 'The product’s phase varies by formulation — confirm phase compatibility for the specific formulation and SKU.';
+  if (!form) return 'Confirm phase compatibility for the specific SKU.';
+  if (phase === 'emulsion') {
+    if (form === 'oil') return 'This form is intended for incorporation into the emulsion’s oil phase.';
+    if (form === 'water-soluble' || form === 'water-dispersible') return 'This form is intended for incorporation into the emulsion’s water phase.';
+    if (form === 'matched') return 'A phase-matched extract is intended for incorporation into the emulsion.';
+    return 'This dry form is intended for incorporation into the emulsion.';
+  }
+  const label = PHASE_LABEL[phase];
+  if (form === 'matched') return 'A phase-matched extract is compatible with incorporation into the product’s ' + label + '.';
+  const fam = formFamily(form);
+  const aligned = (phase === 'dry-solid' && fam === 'dry') ||
+    ((phase === 'aqueous' || phase === 'suspension-dispersion') && (fam === 'water' || (phase === 'suspension-dispersion' && fam === 'dry'))) ||
+    (phase === 'oil' && fam === 'oil');
+  if (aligned) return 'This form is compatible with incorporation into the product’s ' + label + '.';
+  return 'This ' + (fam === 'oil' ? 'oil-based' : fam === 'water' ? 'water-based' : 'dry') + ' form is a separate phase from the product’s ' + label + '.';
+}
+function dissolutionCheck(tag, phase) {
+  if (tag === 'NND') return 'Dissolution is not required for this role.';
+  if (tag === 'DISP') return 'This role requires dispersion, not full dissolution.';
+  if (tag === 'MD') {
+    if (phase === 'application-dependent') return 'This role requires dissolution in the product’s phase; confirm it for the specific SKU.';
+    if (phase === 'dry-solid') return 'This role requires the form to dissolve on use; confirm it for the specific SKU.';
+    return 'This role requires dissolution in the product’s ' + (DISS_NOUN[phase] || 'phase') + '; confirm it for the specific SKU.';
+  }
+  return 'Confirm the dissolution requirement for this product at SKU level.';
+}
+function processCheck(phase, form) {
+  if (phase === 'application-dependent' || !form) return PROCESS_VARIABLE;
+  let cross = false;
+  if (phase === 'dry-solid') cross = (form === 'oil' || form === 'water-soluble' || form === 'water-dispersible');
+  else if (phase === 'oil') cross = (form === 'water-soluble' || form === 'water-dispersible');
+  else if (phase === 'aqueous' || phase === 'suspension-dispersion') cross = (form === 'oil');
+  // emulsion accommodates both phases => never a cross-phase process step
+  if (!cross) return PROCESS_SKU;
+  if (phase === 'dry-solid') return 'This form adds a liquid phase to a dry-solid process step — confirm a suitable grade for the SKU.';
+  if (phase === 'oil') return 'This water-based form is a separate phase from the oil process — confirm incorporation for the SKU.';
+  return 'This oil-based form is a separate phase from the aqueous process — confirm incorporation for the SKU.';
+}
+export function reasoningChecks(ladder, selectedFormat) {
+  const phase = ladder ? ladder.phase : 'application-dependent';
+  const tag = ladder ? ladder.tag : null;
+  const beh = ladder && selectedFormat ? (ladder.fmt[selectedFormat] || {}).behaviour : null;
+  const form = formPhysical(beh);
+  return { phase: phaseCheck(phase, form), dissolution: dissolutionCheck(tag, phase), process: processCheck(phase, form) };
+}
+
+// ---- candidate_assessment (Stage 1, ADR-014 Step 3) ----
+// Answers ONE asked question — "is my proposed format right?" — without exposing the ladder. SE is LOCKED:
+// an assay overlay, never assessed as a base physical format. Independent of identity (role physics), so
+// it runs for ambiguous/unrecognised too (labelled role-based via reasoning_basis).
+const SE_LOCKED_ASSESSMENT = {
+  format: 'SE', technical_status: 'Application review needed',
+  explanation: 'Standardisation describes assay, not physical format. Specify whether the extract is water-soluble, oil-soluble, powdered, liquid, or another base form.',
+};
+export function assessCandidate(ladder, code) {
+  if (code === 'SE') return { ...SE_LOCKED_ASSESSMENT };
+  const e = ladder && ladder.fmt ? ladder.fmt[code] : null;
+  if (!e) return { format: code, technical_status: 'Not evaluated for this role', explanation: 'This format is not evaluated for this product and role — confirm suitability with Herbuno.' };
+  const status = e.tier === 'ok' ? 'Best physical fit' : e.tier === 'warn' ? 'Conditional fit — confirm at SKU level' : 'Not suitable for this role';
+  const explanation = firstSentence(e.note) ||
+    (e.tier === 'ok' ? 'A physically appropriate form for this role; confirm SKU-level suitability.'
+      : e.tier === 'warn' ? 'Usable with a compromise for this role; confirm suitability at SKU level.'
+      : 'This format is not physically suited to this role.');
+  return { format: code, technical_status: status, explanation };
 }
 
 // ---- procurement (Stage 2) ----

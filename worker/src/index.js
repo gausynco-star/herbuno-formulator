@@ -2,7 +2,7 @@
 // Pipeline order (ADR-014 §2): signature -> timestamp -> allow-list -> rate limit -> resolve.
 // Step-2a security hardening folded in. No framework. Nothing here is deployed by CC.
 import { getContext } from './store.js';
-import { resolve, statusOf, selectSpecification, oneCaveat, procurementMatch } from './engine.js';
+import { resolve, statusOf, selectSpecification, oneCaveat, procurementMatch, reasoningChecks, assessCandidate } from './engine.js';
 import { verifyProxyQuery, checkTimestamp, validateSpecInput, validateProcurementInput, localRatePreCheck, deriveClientIp } from './security.js';
 import { centralRateLimit } from './rate_limiter_do.js';
 import { signToken, verifyToken } from './token.js';
@@ -122,48 +122,52 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
   if (bad) return json(400, { error: 'bad_input', detail: bad });
 
   const productRole = body.product + '|' + body.role;
+  const candidateFormat = body.candidate_format;  // undefined unless the user chose one; validated above
   const now = Date.now();
   // 4a. cheap per-isolate pre-check, then 4b. AUTHORITATIVE central limiter (fine-grained shopper key +
-  // coarse non-spoofable transport-key backstop)
+  // coarse non-spoofable transport-key backstop + the per-cell candidate_format enumeration SET)
   if (!localRatePreCheck(ip, body.botanical, now).ok) return rateLimited();
-  const central = await centralRateLimit(env, { key: ip, transportKey: transportIp, botanical: body.botanical, productRole, now });
+  const central = await centralRateLimit(env, { key: ip, transportKey: transportIp, botanical: body.botanical, productRole, candidateFormat, now });
   if (central.unavailable) return degraded('limiter_unavailable'); // fail closed if DO unbound
   if (!central.ok) return central.challenge ? challenge429() : rateLimited();
 
-  // 5. resolve -> select single spec (ladder never leaves the Worker)
+  // 5. resolve -> select single spec (the ladder itself never leaves the Worker). The Product×Role
+  // specification + reasoning + candidate assessment are identity-INDEPENDENT (role physics), so they are
+  // returned for every status; identity detail and the specification_token are gated on `resolved`.
   const idn = resolve(null, body.botanical, engine.exact, engine.common);
   const status = statusOf(idn);
+  const resolved = status === 'resolved';
   const ladder = engine.ladder.get(productRole);
-  const rec = idn.canonical_id ? engine.byId.get(idn.canonical_id) : null;
-
-  // ambiguous / unrecognised: no identity detail, no candidate IDs, no spec, no token
-  if (status !== 'resolved') {
-    return json(200, {
-      identity_status: status,
-      identity: { display_name: null, authority_name: null },
-      specification: null,
-      explanation: oneCaveat(status, {}, null),
-      specification_token: null,
-      version: versionBlock(versions),
-    });
-  }
-
   const sel = selectSpecification(ladder);
-  const token = await signToken(tokenSecret, {
-    cid: idn.canonical_id, product: body.product, role: body.role,
-    sf: sel.selected_format, api: API_SCHEMA_VERSION,
-    iv: versions.identity_version, gv: versions.observed_form_graph_version, mv: versions.matrix_version,
-  });
+  const rec = resolved && idn.canonical_id ? engine.byId.get(idn.canonical_id) : null;
 
-  // MINIMAL response — nothing beyond this crosses the wire (BLOCKER 1 / Option A)
-  return json(200, {
+  const resp = {
     identity_status: status,
-    identity: { display_name: rec.canonical_display_name, authority_name: rec.authority_accepted_name },
+    // ambiguous/unrecognised: NEVER an identity claim or candidate IDs
+    identity: { display_name: rec ? rec.canonical_display_name : null, authority_name: rec ? rec.authority_accepted_name : null },
     specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
     explanation: oneCaveat(status, sel, ladder),
-    specification_token: token,
+    // three physics-only conclusions; reasoning_basis tells the client to label them 'role-based, not
+    // botanical-specific' when identity did not resolve
+    reasoning_checks: reasoningChecks(ladder, sel.selected_format),
+    reasoning_basis: resolved ? 'botanical' : 'role',
+    specification_token: null,      // set below ONLY for resolved (server-side enforcement)
     version: versionBlock(versions),
-  });
+  };
+  // candidate mismatch check — only when the user actually supplied a format (role physics; runs for every
+  // status). SE returns the LOCKED application-review response inside assessCandidate.
+  if (candidateFormat !== undefined) resp.candidate_assessment = assessCandidate(ladder, candidateFormat);
+
+  // Token ONLY for resolved: without a trustworthy identity there is nothing for Stage 2 to match against,
+  // so the client also disables the Stage-2 action for ambiguous/unrecognised.
+  if (resolved) {
+    resp.specification_token = await signToken(tokenSecret, {
+      cid: idn.canonical_id, product: body.product, role: body.role,
+      sf: sel.selected_format, api: API_SCHEMA_VERSION,
+      iv: versions.identity_version, gv: versions.observed_form_graph_version, mv: versions.matrix_version,
+    });
+  }
+  return json(200, resp);
 }
 
 async function procurement(env, context, body, ip, transportIp, tokenSecret) {

@@ -104,6 +104,19 @@ async function run() {
   ok('persistence: minute counter survives DO restart (5 before, 5 after reload)', before.count === 5 && after.count === 5, 'before=' + before.count + ' after=' + after.count);
   ok('persistence: enforcement continues from persisted state (6th increment lands)', continued.count === 6, 'continued=' + continued.count);
 
+  // ---------- 2b. candidate_format distinct-format SET persists across restart (ADR-014 Step 3) ----------
+  const cNow = Date.now();
+  const mfE1 = new Miniflare(mfOptions({ persist: persistDir }));
+  for (const cf of ['MP', 'RE', 'WL']) await doCall(mfE1, { key: 'cand-ip', productRole: 'gummy|active', candidateFormat: cf, now: cNow });
+  const cBefore = await stat(mfE1, 'cf:cand-ip|gummy|active');
+  await mfE1.dispose();
+  const mfE2 = new Miniflare(mfOptions({ persist: persistDir }));
+  const cAfter = await stat(mfE2, 'cf:cand-ip|gummy|active');
+  const fourth = await doCall(mfE2, { key: 'cand-ip', productRole: 'gummy|active', candidateFormat: 'OE', now: cNow });
+  await mfE2.dispose();
+  ok('persistence: candidate distinct-format SET survives DO restart (3 before, 3 after reload)', cBefore.setSize === 3 && cAfter.setSize === 3, 'before=' + cBefore.setSize + ' after=' + cAfter.setSize);
+  ok('persistence: 4th distinct candidate format is blocked from the PERSISTED set after restart', fourth.ok === false && fourth.reason === 'candidate_enumeration', JSON.stringify(fourth));
+
   // ---------- 4. fail-closed when the DO binding is absent ----------
   const mfC = new Miniflare(mfOptions({ withDO: false }));
   await seedKV(mfC);

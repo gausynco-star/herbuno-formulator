@@ -51,8 +51,21 @@ export function buildFormGraph(graph) {
 }
 
 // ---- matrix (as data) ----
-export function buildMatrix(matrixSrc) {
+// Injects the authored product PHASE (ADR-014 Step 3, matrix/product_phase_map.json) into each product so
+// the runtime matrix bundle is self-contained. FAILS THE BUILD (fail closed) if any matrix product is
+// unmapped or carries an unknown class — so a newly-added product must be classified in the map, no code
+// change. `phase` is orthogonal to `tag` (dissolution requirement) and drives reasoning_checks only.
+export function buildMatrix(matrixSrc, phaseMap) {
   const data = JSON.parse(matrixSrc.slice(matrixSrc.indexOf('=') + 1).replace(/;\s*$/, '').trim());
+  const classes = new Set(phaseMap.phase_classes);
+  const bad = [];
+  for (const fam of data.fam) for (const p of fam.products) {
+    const phase = phaseMap.products[p.id];
+    if (!phase || !classes.has(phase)) { bad.push(p.id); continue; }
+    p.phase = phase;
+  }
+  if (bad.length) throw new Error('product_phase_map incomplete/invalid for: ' + bad.join(', '));
+  data.phase_map_version = phaseMap._meta.phase_map_version;
   return { matrix_version: data.schema_version, data };
 }
 
@@ -62,6 +75,7 @@ export function buildManifest(identityIndex, formGraph, matrix) {
     identity_version: identityIndex.identity_version,
     observed_form_graph_version: formGraph.observed_form_graph_version,
     matrix_version: matrix.matrix_version,
+    phase_map_version: matrix.data.phase_map_version, // third authored data layer (ADR-014 Step 3)
   };
 }
 
@@ -97,10 +111,11 @@ export function generateAll() {
   const backbone = JSON.parse(fs.readFileSync(P('knowledge/identity/botanical_identity.json'), 'utf8'));
   const graph = JSON.parse(fs.readFileSync(P('knowledge/pass3/observed_form_graph.json'), 'utf8'));
   const matrixSrc = fs.readFileSync(P('javascript/herbuno-matrix.js'), 'utf8');
+  const phaseMap = JSON.parse(fs.readFileSync(P('matrix/product_phase_map.json'), 'utf8'));
 
   const identityIndex = buildIdentityIndex(backbone);
   const formGraph = buildFormGraph(graph);
-  const matrix = buildMatrix(matrixSrc);
+  const matrix = buildMatrix(matrixSrc, phaseMap);
   const manifest = buildManifest(identityIndex, formGraph, matrix);
   return { identityIndex, formGraph, matrix, manifest };
 }
