@@ -7,8 +7,11 @@
 
 - **Nothing edits `botanical_identity.json` directly once Pass 3 has started.** No in-place edits,
   no hand-patches, no "quick fix" to a single record.
-- Corrections flow **upstream, then rebuild**:
-  1. Fix the identity in **Pass 2** (`knowledge/pass2/` review queue / sign-off, or `knowledge/pass2b/`).
+- Corrections flow **upstream, then rebuild**: fix upstream in the applicable Pass-2
+  authority/adjudication source (`pass2`, `pass2b`, `pass2c`, or `pass2d`), rebuild the backbone, and
+  bump `identity_version`. Concretely:
+  1. Fix the identity in the applicable **Pass-2 source** — `knowledge/pass2/` (authority + review
+     queue / sign-off), `knowledge/pass2b/`, `knowledge/pass2c/`, or `knowledge/pass2d/`.
   2. Re-run `build_identity.py` to **rebuild** the backbone.
   3. **Bump `identity_version`** (`IDENTITY_VERSION` in `build_identity.py`).
 - This guarantees every identity change has a Pass-2 audit trail and a new version — never a silent

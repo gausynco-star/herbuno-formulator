@@ -1,7 +1,7 @@
 # Frozen Identity Backbone — ADR-013 (Pass-3 join target)
 
 > **🔒 FROZEN — identity_version `2026-07-19.4`, schema v2.** Do NOT edit `botanical_identity.json` in
-> place once Pass 3 has started. Corrections: fix in Pass 2 → rebuild → bump identity_version.
+> place once Pass 3 has started. Corrections: fix upstream in the applicable Pass-2 source (pass2, pass2b, pass2c, or pass2d) → rebuild → bump identity_version.
 > Every downstream (Pass 3+) artifact must record the identity_version it built against. See README.md.
 
 > One record per resolved botanical identity. Pass 3 joins supplier/form data via

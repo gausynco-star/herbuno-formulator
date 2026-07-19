@@ -21,7 +21,7 @@ Reuses pass2/pass2b GBIF match caches; new lookups cached under .cache/.
 Run:  python3 knowledge/identity/build_identity.py
 """
 
-import json, os, re, time, urllib.parse, urllib.request, urllib.error
+import json, os, re, time, datetime, urllib.parse, urllib.request, urllib.error
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 K = os.path.join(HERE, "..")
@@ -31,7 +31,8 @@ RQ = os.path.join(K, "pass2", "pass2_review_queue.json")
 CACHE = os.path.join(HERE, ".cache", "gbif_match.json")
 READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
                os.path.join(K, "pass2b", ".cache", "gbif_match.json")]
-QUERY_DATE = "2026-07-18"
+QUERY_DATE = "2026-07-18"                 # Pass-2 authority query / owner sign-off date (historical; provenance stamps)
+INITIAL_BACKBONE_CREATED = "2026-07-18"   # date the backbone was first built (fixed; distinct from generated_at)
 # Immutable freeze stamp. Bump identity_version on any rebuild (Pass 2 correction -> rebuild ->
 # new version). Downstream artifacts (Pass 3+) MUST record which identity_version they built against.
 IDENTITY_VERSION = "2026-07-19.4"  # schema v2: authority/trade-primary/display naming split (prior versions in git history)
@@ -645,13 +646,17 @@ def main():
     status_counts = Counter(r["resolution_status"] for r in records)
     trinomials = sorted(r["accepted_name"] for r in records if r["infraspecific_epithet"])
     key_total = pass1_key_total  # Pass-1 accounting stays 641; enrichment tracked separately
+    # Regeneration timestamp — refreshes on every rebuild (distinct from initial_backbone_created).
+    generated_at = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
 
     doc = {"_meta": {
         "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
         "identity_version": IDENTITY_VERSION,
         "identity_schema_version": IDENTITY_SCHEMA_VERSION,
         "frozen": True,
-        "built": QUERY_DATE, "authority": AUTHORITY,
+        "initial_backbone_created": INITIAL_BACKBONE_CREATED,
+        "generated_at": generated_at,
+        "authority": AUTHORITY,
         "identity_records": len(records), "excluded": len(excluded),
         "pass1_keys_accounted": key_total,
         "schema": {
@@ -690,8 +695,9 @@ def main():
         "record_merges": merged_report,
         "resolution_status_counts": dict(status_counts),
         "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. "
-                         "Corrections flow: fix in Pass 2 (review queue / sign-off) -> rebuild this "
-                         "backbone -> bump identity_version. Never in-place edits. See README.md.",
+                         "Corrections flow: fix upstream in the applicable Pass-2 authority/adjudication "
+                         "source (pass2, pass2b, pass2c, or pass2d) -> rebuild this backbone -> bump "
+                         "identity_version. Never in-place edits. See README.md.",
         "downstream_contract": "Every downstream artifact (Pass 3+) MUST record the identity_version "
                                "it was built against.",
         "note": "One record per resolved botanical identity. Join Pass-3 supplier/form data via "
@@ -700,7 +706,8 @@ def main():
     }, "identities": records}
     _save(os.path.join(HERE, "botanical_identity.json"), doc)
 
-    exc_doc = {"_meta": {"built": QUERY_DATE, "count": len(excluded),
+    exc_doc = {"_meta": {"initial_backbone_created": INITIAL_BACKBONE_CREATED, "generated_at": generated_at,
+                         "identity_version": IDENTITY_VERSION, "count": len(excluded),
                          "note": "Pass-1 keys excluded from the botanical backbone: not plants "
                                  "(non_botanical) or not identifiable to one taxon (unresolvable)."},
                "excluded": sorted(excluded, key=lambda e: (e["bucket"], e["parsed_name"]))}
@@ -709,7 +716,8 @@ def main():
     L = ["# Frozen Identity Backbone — ADR-013 (Pass-3 join target)\n",
          "> **🔒 FROZEN — identity_version `%s`, schema v%d.** Do NOT edit `botanical_identity.json` in"
          % (IDENTITY_VERSION, IDENTITY_SCHEMA_VERSION),
-         "> place once Pass 3 has started. Corrections: fix in Pass 2 → rebuild → bump identity_version.",
+         "> place once Pass 3 has started. Corrections: fix upstream in the applicable Pass-2 source "
+         "(pass2, pass2b, pass2c, or pass2d) → rebuild → bump identity_version.",
          "> Every downstream (Pass 3+) artifact must record the identity_version it built against. See README.md.\n",
          "> One record per resolved botanical identity. Pass 3 joins supplier/form data via",
          "> `original_parsed_names`. `accepted_name` authoritative; owner sign-off overrides GBIF where set.\n",

@@ -4,7 +4,8 @@
     "identity_version": "2026-07-19.4",
     "identity_schema_version": 2,
     "frozen": true,
-    "built": "2026-07-18",
+    "initial_backbone_created": "2026-07-18",
+    "generated_at": "2026-07-19T08:15:55+00:00",
     "authority": "GBIF backbone (species/match v1)",
     "identity_records": 826,
     "excluded": 28,
@@ -307,7 +308,7 @@
       "trade_ambiguous": 4,
       "species_ambiguous": 1
     },
-    "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. Corrections flow: fix in Pass 2 (review queue / sign-off) -> rebuild this backbone -> bump identity_version. Never in-place edits. See README.md.",
+    "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. Corrections flow: fix upstream in the applicable Pass-2 authority/adjudication source (pass2, pass2b, pass2c, or pass2d) -> rebuild this backbone -> bump identity_version. Never in-place edits. See README.md.",
     "downstream_contract": "Every downstream artifact (Pass 3+) MUST record the identity_version it was built against.",
     "note": "One record per resolved botanical identity. Join Pass-3 supplier/form data via original_parsed_names. accepted_name is authoritative; owner sign-off overrides GBIF where recorded. Non-botanical/unresolvable are in excluded.json."
   },

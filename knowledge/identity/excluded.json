@@ -1,6 +1,8 @@
 {
   "_meta": {
-    "built": "2026-07-18",
+    "initial_backbone_created": "2026-07-18",
+    "generated_at": "2026-07-19T08:15:55+00:00",
+    "identity_version": "2026-07-19.4",
     "count": 28,
     "note": "Pass-1 keys excluded from the botanical backbone: not plants (non_botanical) or not identifiable to one taxon (unresolvable)."
   },
