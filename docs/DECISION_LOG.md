@@ -427,7 +427,7 @@ theme assets are plaintext to every visitor; view-source is sufficient to take t
 identity or observed-form asset would, under the current design, be shipped the same way.
 
 The tool architecture is reconstructible by a competent formulator and that is accepted. **The
-knowledge layer is not**: the identity backbone (830 records, authority-verified, owner-adjudicated)
+knowledge layer is not**: the identity backbone (826 records, authority-verified, owner-adjudicated)
 and the observed-form graph are built substantially from private supplier catalogues that cannot be
 scraped. That is the durable asset.
 
@@ -472,7 +472,7 @@ script.** Paid starts at $5/month with substantially more CPU and a larger scrip
 Two consequences, both requiring benchmarking before committing to the free tier:
 - **10 ms CPU/request** should suffice for indexed lookups and intersection, but must be measured
   against the full graph.
-- **3 MB script cap** means the 830-record backbone plus the form graph almost certainly **cannot be
+- **3 MB script cap** means the 826-record backbone plus the form graph almost certainly **cannot be
   bundled** into the Worker. Data lives in **KV or another suitable private/versioned store, such as R2, D1 or protected
   static assets; the Worker holds logic only.** D1 only if relational queries become necessary. Private supplier
   provenance stays in a separate non-public dataset, never queryable from the storefront.
@@ -545,7 +545,7 @@ reasoning.
 
 ## Before build
 
-Benchmark dataset size and CPU against the free-tier limits (10 ms, 3 MB) with the real 830-record
+Benchmark dataset size and CPU against the free-tier limits (10 ms, 3 MB) with the real 826-record
 backbone and form graph. If exceeded, the $5/month paid tier is acceptable — but measure first.
 
 ## Not in scope

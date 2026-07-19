@@ -36,7 +36,7 @@ ADR and a decision record in `/matrix`.
   endpoint). Honest degraded state — never a cached-matrix fallback. Pass-3's storefront contract
   (strip supplier identity/counts/location) is satisfied structurally: the browser never receives the graph.
 ### Before build
-- Benchmark the real 830-record backbone + observed-form graph against Worker free-tier limits
+- Benchmark the real 826-record backbone + observed-form graph against Worker free-tier limits
   (10 ms CPU, 3 MB script). Paid tier ($5/mo) acceptable if exceeded — measure first.
 
 ## 2026-07 — Stage-1 ladder ordering applied (ADR-011)
