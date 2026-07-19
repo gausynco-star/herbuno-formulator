@@ -21,6 +21,24 @@ ADR and a decision record in `/matrix`.
 - `pet`: precise dry dosage form vs keep routed to application review.
 - Layer-1 (botanical suggestions) curation — Role-level first (ADR-012), not built.
 
+## 2026-07 — ADR-014: server-side knowledge layer (accepted)
+### Decided
+- Move the knowledge layer (Product × Role matrix, identity backbone, observed-form graph, supplier
+  provenance, and all resolution/intersection logic) **server-side** behind a Shopify App Proxy →
+  Cloudflare Worker → KV/versioned store. The browser keeps only input handling, rendering, and the
+  minimal display vocabulary — no matrix, no graph, no identity data. (ADR-014; reviewer: ChatGPT.)
+- Two endpoints mirror the two stages: `POST /apps/formulator/specification` returns a signed,
+  short-lived `specification_token`; `POST /apps/formulator/procurement` consumes it. Every response
+  carries the version block (`api_schema_version` · `matrix_version` · `identity_version` ·
+  `observed_form_graph_version` · `response_generated_at`), satisfying the ADR-013 downstream contract.
+- Defence-in-depth (App Proxy signature + timestamp freshness + strict input allow-list + response
+  minimisation + per-IP/session rate limits + enumeration detection + adaptive Turnstile + no bulk
+  endpoint). Honest degraded state — never a cached-matrix fallback. Pass-3's storefront contract
+  (strip supplier identity/counts/location) is satisfied structurally: the browser never receives the graph.
+### Before build
+- Benchmark the real 830-record backbone + observed-form graph against Worker free-tier limits
+  (10 ms CPU, 3 MB script). Paid tier ($5/mo) acceptable if exceeded — measure first.
+
 ## 2026-07 — Stage-1 ladder ordering applied (ADR-011)
 ### Added
 - `preferred_formats` / `conditional_formats` / `unsuitable_formats` ordered arrays on all 71

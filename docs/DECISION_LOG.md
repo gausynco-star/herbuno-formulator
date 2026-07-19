@@ -412,4 +412,143 @@ break-at-volume pipeline and an unaffordable curation commitment discovered at b
 - On acceptance: record as ADR-013 (Accepted), add the 5 codes, and open the verification pipeline as
   a build task.
 
+---
 
+# ADR-014 (ACCEPTED) — Server-side knowledge layer
+
+**Status:** ACCEPTED (reviewer: ChatGPT) · 2026-07-19. Child of ADR-012 (two-stage) and ADR-013 (ingredient
+intelligence). Changes *where the knowledge executes*, not what the tool does.
+
+## Context
+
+The Formulator currently ships its knowledge layer to the browser: `herbuno-matrix.js` (~138 KB) is
+the complete Product × Role matrix — 238 cells, format rules, disqualification reasoning. Shopify
+theme assets are plaintext to every visitor; view-source is sufficient to take the engine. Any
+identity or observed-form asset would, under the current design, be shipped the same way.
+
+The tool architecture is reconstructible by a competent formulator and that is accepted. **The
+knowledge layer is not**: the identity backbone (830 records, authority-verified, owner-adjudicated)
+and the observed-form graph are built substantially from private supplier catalogues that cannot be
+scraped. That is the durable asset.
+
+**Owner constraint (recorded):** *no IP on the client side unless operationally necessary.*
+
+**Objective, stated plainly:** the aim is not to hide the tool's outputs, but to prevent disclosure
+of the curated knowledge graph and the underlying supplier-derived intelligence from which those
+outputs are generated.
+
+## Decision
+
+```
+Browser  →  herbuno.com/apps/formulator/*   (Shopify App Proxy — same-origin, signed proxy requests)
+         →  Cloudflare Worker  (verifies signature; resolution + intersection logic)
+         →  KV / versioned store  (matrix / identity / form-graph bundles)
+         →  render-ready specification
+```
+
+**Server-side:** Product × Role matrix · identity backbone · observed-form graph · supplier
+provenance · all resolution and intersection logic.
+
+**Client-side (operationally necessary only):** input handling, rendering, and the minimal display
+vocabulary needed to draw a response. No matrix, no graph, no identity data.
+
+### Why App Proxy — corrected justification
+
+> Shopify App Proxy is selected because it provides same-origin storefront routing, hides the Worker
+> origin, and attaches a verifiable Shopify signature to forwarded parameters. The signature proves
+> that **Shopify forwarded an untampered request**; it does **not** prove the request came from the
+> Formulator UI, nor does it prevent automated calls through the public proxy route (anonymous proxy
+> requests are supported, with an empty `logged_in_customer_id`). Protection against harvesting
+> therefore also requires response minimisation, timestamp validation, rate limiting, enumeration
+> detection and adaptive bot challenges.
+
+**Note:** App Proxy strips cookies and `Set-Cookie` — do not design cookie sessions around it.
+
+### Why Cloudflare Worker
+
+Workers Free: **100,000 requests/day · 10 ms CPU per request · 128 MB memory · 3 MB compressed
+script.** Paid starts at $5/month with substantially more CPU and a larger script budget.
+
+Two consequences, both requiring benchmarking before committing to the free tier:
+- **10 ms CPU/request** should suffice for indexed lookups and intersection, but must be measured
+  against the full graph.
+- **3 MB script cap** means the 830-record backbone plus the form graph almost certainly **cannot be
+  bundled** into the Worker. Data lives in **KV or another suitable private/versioned store, such as R2, D1 or protected
+  static assets; the Worker holds logic only.** D1 only if relational queries become necessary. Private supplier
+  provenance stays in a separate non-public dataset, never queryable from the storefront.
+
+## Defence in depth (no single control is sufficient)
+
+1. **App Proxy signature verification** — reject unsigned direct calls to the Worker.
+2. **Timestamp freshness** — reject signed requests outside a short window (replay resistance).
+3. **Strict input allow-list** — published product IDs, known role IDs, one botanical term. Nothing else.
+4. **Response minimisation** — return only the selected specification. Never unused ladder cells,
+   alternative botanicals, supplier counts, or graph fragments.
+5. **Rate limits — per IP and per session** (a browser-generated session ID alone is regenerable).
+6. **Enumeration detection** — flag systematic traversal across products/roles/botanicals.
+7. **Adaptive Cloudflare Turnstile** — not on every user; only after thresholds are crossed.
+8. **Response caching** for legitimate repeats, kept separate from rate-limit accounting.
+9. **No bulk endpoint, ever** — no list-botanicals, no all-forms, no export, no wildcard queries.
+
+**Honest limit:** no public query tool can make its outputs impossible to collect. These controls
+raise the cost of extraction; they do not eliminate it.
+
+**Starting rate limits** (tune from telemetry, not permanent): 10/min/IP · 60/hour/IP · 150/day/IP ·
+max 30 unique botanical queries/hour · Turnstile on suspicious enumeration.
+
+## Endpoints — separate, mirroring ADR-012
+
+**`POST /apps/formulator/specification`**
+In: finished product · role · botanical term.
+Out: identity status · accepted/display identity · specification object · technical explanation ·
+version block · **short-lived signed `specification_token`**.
+
+**`POST /apps/formulator/procurement`**
+In: the signed `specification_token`.
+Out: Herbuno match class · product handles · sourcing route.
+
+**The browser must not construct or alter the Stage-1 specification before sending it to Stage 2.**
+Stage 2 verifies the token; the token embeds (or references) the knowledge-snapshot versions so both
+stages use the same data. This also keeps procurement data out of Stage-1 traffic entirely.
+
+## Version contract
+
+Every response carries: `api_schema_version` · `matrix_version` · `identity_version` ·
+`observed_form_graph_version` · `response_generated_at`. Client and Worker **reject incompatible
+schema versions** rather than rendering malformed results. Satisfies the ADR-013 downstream contract.
+
+## Degraded state
+
+If the endpoint is unreachable, show an honest message — **do not** ship a cached generic matrix as a
+fallback, which would defeat this ADR:
+
+> "HerbIQ Formulator is temporarily unable to generate the technical specification. Your selections
+> have been preserved; please retry shortly or send them to Herbuno for review."
+
+Allow: retry · copy entered selections · open a prefilled enquiry. Never silently degrade to weaker
+reasoning.
+
+## Consequences
+
+- New infrastructure: a Shopify custom app and a Worker + KV. The tool previously had no backend.
+- New failure mode (handled above). Added latency: one round-trip per resolution.
+- Deployment becomes two-part — theme asset and Worker must version together.
+- Pass-3's storefront contract (strip supplier identity, counts, location) is satisfied
+  **structurally**: the browser never receives the graph at all.
+
+## Rejected
+
+- **Bare Worker + CORS** — no request authentication at all; strictly weaker than App Proxy.
+- **Matrix client-side, graph server-side** — violates the owner constraint.
+- **Vercel/other serverless** — no material advantage over Cloudflare's free tier and edge footprint.
+- **Cached client fallback** — would ship the matrix, defeating the purpose.
+
+## Before build
+
+Benchmark dataset size and CPU against the free-tier limits (10 ms, 3 MB) with the real 830-record
+backbone and form graph. If exceeded, the $5/month paid tier is acceptable — but measure first.
+
+## Not in scope
+
+No change to the two-stage architecture (ADR-012), matrix content, the identity pipeline (ADR-013),
+or the UI.
