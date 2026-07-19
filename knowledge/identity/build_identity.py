@@ -34,7 +34,7 @@ READ_CACHES = [os.path.join(K, "pass2", ".cache", "gbif_match.json"),
 QUERY_DATE = "2026-07-18"
 # Immutable freeze stamp. Bump identity_version on any rebuild (Pass 2 correction -> rebuild ->
 # new version). Downstream artifacts (Pass 3+) MUST record which identity_version they built against.
-IDENTITY_VERSION = "2026-07-19.2"  # + owner common-name mapping round (prior versions in git history)
+IDENTITY_VERSION = "2026-07-19.3"  # + trade-usage adjudication (GBIF adoptions, ambiguity/collision) (prior versions in git history)
 IDENTITY_SCHEMA_VERSION = 1
 
 # Confirmed duplicate-record merges (absorb -> keep). Encoded explicitly so a rebuild never
@@ -45,7 +45,68 @@ RECORD_MERGES = [
     ("morus", "morus-alba", "genus-level record -> single species (Morus alba)"),
     ("eclipta-alba", "eclipta-prostrata", "synonym: Eclipta alba = synonym of Eclipta prostrata (owner-stated)"),
     ("nyctanthes-arbor", "nyctanthes-arbor-tristis", "truncated epithet -> full (arbor -> arbor-tristis)"),
+    # ADR-013 trade-usage adjudication:
+    ("butea-frondosa", "butea-monosperma", "Butea frondosa = synonym of Butea monosperma (Palash)"),
+    # nageia-nagi is a GBIF fuzzy-match error: 'Myrica nagi' -> conifer 'Nageia nagi'. Myrica nagi is
+    # a synonym of Morella esculenta (Kaiphal). drop_absorbed_accepted: 'Nageia nagi' is NOT a synonym
+    # of Morella esculenta and must not be carried in; only 'Myrica nagi'/'Kaiphal' are absorbed.
+    ("nageia-nagi", "morella-esculenta",
+     "GBIF fuzzy-match error: Myrica nagi is a synonym of Morella esculenta (Kaiphal), not Nageia nagi",
+     {"drop_absorbed_accepted": True}),
 ]
+# ---- ADR-013 trade-usage adjudication of the common-name-round GBIF disagreements ----
+# A1+A4: ADOPT GBIF's accepted name; owner/trade binomial retained as a scientific_synonym.
+#        (canonical_id stays stable across the rename — downstream joins by parsed name/synonym.)
+GBIF_ADOPT = {
+    "Astragalus membranaceus": "Astragalus mongholicus",
+    "Cymbopogon martinii": "Cymbopogon martini",
+    "Desmodium adscendens": "Grona adscendens",
+    "Drynaria fortunei": "Drynaria roosii",
+    "Guarea rusbyi": "Guarea guidonia",
+    "Maytenus krukovii": "Monteverdia krukovii",
+    "Ocotea quixos": "Mespilodaphne quixos",
+    "Stereospermum suaveolens": "Stereospermum chelonoides",
+    # spelling / gender fixes
+    "Handroanthus impetiginosus": "Handroanthus impetiginosum",
+    "Leonurus cardiacus": "Leonurus cardiaca",
+    "Marsdenia condurango": "Marsdenia cundurango",
+    "Polypodium leucotomos": "Polypodium leucatomos",
+}
+# A2: KEEP trade-primary as accepted; record GBIF's name as an authority scientific_synonym.
+GBIF_KEEP_SYNONYM = {
+    "Coleus forskohlii": "Coleus hadiensis",
+    "Crambe abyssinica": "Crambe hispanica abyssinica",
+    "Grindelia robusta": "Grindelia hirsutula",
+    "Lens culinaris": "Vicia lens",
+    "Meconopsis betonicifolia": "Cathcartia betonicifolia",
+    "Pfaffia paniculata": "Hebanthe erianthos",
+    "Pisum sativum": "Lathyrus oleraceus",
+    "Rhaponticum carthamoides": "Leuzea carthamoides carthamoides",
+    "Sceletium tortuosum": "Mesembryanthemum tortuosum",
+}
+# A3: Solanum indicum -> trade_ambiguous (Brihati = S. violaceum, NOT S. melongena/brinjal).
+SOLANUM_INDICUM_AMBIGUOUS = {
+    "accepted_name": "Solanum indicum", "candidate_accepted_names": ["Solanum violaceum"],
+    "note": "GBIF synonymises S. indicum to S. melongena/violaceum. Brihati (trade) = S. violaceum, "
+            "NOT S. melongena (brinjal). Held trade_ambiguous pending source/provenance."}
+# B1: bare 'Skullcap' -> American skullcap; Chinese skullcap (S. baicalensis) stays distinct.
+ADJUDICATION_COMMON = {
+    "Scutellaria lateriflora": {"common_names": ["Skullcap"],
+        "note": "Bare 'Skullcap' resolved to American skullcap (Western herbalism). Chinese skullcap "
+                "= Scutellaria baicalensis, kept distinct as 'Chinese Skullcap'."}}
+# C: spurious supplier common names to strike from a specific identity (data errors).
+COMMON_NAME_CORRECTIONS = {
+    "curcuma-zedoaria": {"remove": ["Lemongrass"],
+        "reason": "spurious supplier label; Curcuma zedoaria (Kachur/White Turmeric/Zedoary) is not "
+                  "lemongrass. Lemongrass = Cymbopogon citratus."}}
+# Free-text provenance notes stamped onto specific identities.
+IDENTITY_NOTES = {
+    "vanda-tessellata": "Regional 'Rasna' substitute (S. India); primary Rasna = Pluchea lanceolata. "
+                        "Kept distinct — 'Rasna' (bare) resolves to P. lanceolata.",
+    "valeriana-jatamansi": "Indian valerian / Tagar; distinct from Valeriana officinalis. 'Valerian' "
+                           "(bare) resolves to V. officinalis."}
+ADJUDICATION_DATE = "2026-07-19"
+
 AUTHORITY = "GBIF backbone (species/match v1)"
 GBIF_MATCH = "https://api.gbif.org/v1/species/match"
 SPECIESLIKE = ("SPECIES", "SUBSPECIES", "VARIETY", "FORM")
@@ -326,7 +387,9 @@ def main():
     # ---- ADR-013: merge confirmed duplicate records (absorb -> keep) ----
     idx = {r["canonical_id"]: r for r in records}
     merged_report, drop = [], set()
-    for a, k, why in RECORD_MERGES:
+    for entry in RECORD_MERGES:
+        a, k, why = entry[0], entry[1], entry[2]
+        opts = entry[3] if len(entry) > 3 else {}
         ra, rk = idx.get(a), idx.get(k)
         if not ra or not rk:
             merged_report.append({"absorbed_id": a, "kept_id": k, "reason": why, "status": "SKIPPED (record missing)"})
@@ -336,7 +399,9 @@ def main():
         for f in ("original_parsed_names", "trade_synonyms", "common_names"):
             rk[f] = sorted(set(rk.get(f) or []) | set(ra.get(f) or []))
         extra_sci = set(ra.get("scientific_synonyms") or [])
-        if ra.get("accepted_name") and is_scientific(ra["accepted_name"]):
+        # A misresolution merge (drop_absorbed_accepted) discards the absorbed accepted_name — it was
+        # a wrong name, not a synonym of the kept identity — carrying only its parsed/synonym aliases.
+        if ra.get("accepted_name") and is_scientific(ra["accepted_name"]) and not opts.get("drop_absorbed_accepted"):
             extra_sci.add(ra["accepted_name"])                 # absorbed binomial becomes a synonym
         rk["scientific_synonyms"] = sorted((set(rk.get("scientific_synonyms") or []) | extra_sci) - {rk["accepted_name"]})
         rk.setdefault("provenance", {}).setdefault("merged_records", []).append(
@@ -385,6 +450,109 @@ def main():
                 cn_added += 1
         print("  common-name mappings: +%d new identities, %d common-name sets merged" % (cn_added, cn_merged))
 
+    # ---- ADR-013: trade-usage adjudication (GBIF adoptions / kept-synonyms / ambiguity / collisions) ----
+    by_acc = {r["accepted_name"].lower(): r for r in records if r["accepted_name"]}
+    adj = {"gbif_adopted": [], "gbif_kept_synonym": [], "trade_ambiguous": [], "common_added": [],
+           "common_removed": [], "notes": [], "not_found": []}
+
+    def _sci_add(rec, name):
+        if name and name != rec["accepted_name"] and name not in rec["scientific_synonyms"]:
+            rec["scientific_synonyms"] = sorted(rec["scientific_synonyms"] + [name])
+
+    # A1+A4 — adopt GBIF accepted name; keep owner binomial as scientific_synonym; canonical_id stable.
+    for owner, gbif in GBIF_ADOPT.items():
+        rec = by_acc.get(owner.lower())
+        if not rec:
+            adj["not_found"].append(("gbif_adopt", owner)); continue
+        rec["accepted_name"] = gbif
+        _sci_add(rec, owner)
+        g, sp, inf, rank_guess = parse_name(gbif)
+        key, gbif_rank = gbif_info(gbif)
+        rec["genus"], rec["species"], rec["infraspecific_epithet"] = g, sp, inf
+        rec["accepted_rank"] = gbif_rank or rank_guess
+        rec["gbif_usage_key"] = key
+        rec["provenance"]["gbif_adopted_from"] = owner
+        rec["provenance"]["adjudication"] = "adopt_gbif_accepted"
+        rec["provenance"]["review_date"] = ADJUDICATION_DATE
+        by_acc[gbif.lower()] = rec
+        adj["gbif_adopted"].append((owner, gbif))
+
+    # A2 — keep trade-primary accepted; record GBIF name as an authority synonym.
+    for owner, gbif in GBIF_KEEP_SYNONYM.items():
+        rec = by_acc.get(owner.lower())
+        if not rec:
+            adj["not_found"].append(("gbif_keep", owner)); continue
+        _sci_add(rec, gbif)
+        rec["provenance"]["gbif_authority_synonym"] = gbif
+        rec["provenance"]["adjudication"] = "keep_trade_primary"
+        rec["provenance"]["review_date"] = ADJUDICATION_DATE
+        adj["gbif_kept_synonym"].append((owner, gbif))
+
+    # A3 — Solanum indicum -> trade_ambiguous.
+    rec = by_acc.get(SOLANUM_INDICUM_AMBIGUOUS["accepted_name"].lower())
+    if rec:
+        rec["accepted_name"] = None
+        rec["accepted_rank"] = rec["genus"] = rec["species"] = rec["infraspecific_epithet"] = None
+        rec["gbif_usage_key"] = None
+        rec["resolution_status"] = "trade_ambiguous"
+        rec["ambiguity_flag"] = True
+        rec["candidate_accepted_names"] = SOLANUM_INDICUM_AMBIGUOUS["candidate_accepted_names"]
+        rec["provenance"]["adjudication"] = "trade_ambiguous"
+        rec["provenance"]["guidance"] = SOLANUM_INDICUM_AMBIGUOUS["note"]
+        rec["provenance"]["review_date"] = ADJUDICATION_DATE
+        adj["trade_ambiguous"].append("Solanum indicum")
+    else:
+        adj["not_found"].append(("trade_ambiguous", "Solanum indicum"))
+
+    # B1 — owner-adjudicated common-name additions (create identity if absent).
+    by_acc = {r["accepted_name"].lower(): r for r in records if r["accepted_name"]}
+    for binom, spec in ADJUDICATION_COMMON.items():
+        rec = by_acc.get(binom.lower())
+        if rec:
+            rec["common_names"] = sorted(set(rec["common_names"]) | set(spec["common_names"]))
+            rec["provenance"]["note"] = spec["note"]
+            rec["provenance"]["review_date"] = ADJUDICATION_DATE
+        else:
+            g, sp, inf, rank_guess = parse_name(binom)
+            key, gbif_rank = gbif_info(binom)
+            rec = {"canonical_id": slug(binom, used_ids), "accepted_name": binom,
+                   "accepted_rank": gbif_rank or rank_guess, "genus": g, "species": sp,
+                   "infraspecific_epithet": inf, "gbif_usage_key": key,
+                   "original_parsed_names": [binom], "scientific_synonyms": [], "trade_synonyms": [],
+                   "common_names": sorted(spec["common_names"]),
+                   "resolution_status": "owner-common-mapped",
+                   "provenance": {"authority": "owner", "resolved_by": "owner", "query_date": ADJUDICATION_DATE,
+                                  "review_date": ADJUDICATION_DATE, "adjudication": "owner_common_resolution",
+                                  "note": spec["note"], "source": "trade_usage_adjudication"}}
+            by_acc[binom.lower()] = rec
+            records.append(rec)
+        adj["common_added"].append((binom, spec["common_names"]))
+
+    # C — strike spurious supplier common names (data errors); stamp free-text identity notes.
+    idx2 = {r["canonical_id"]: r for r in records}
+    for cid, spec in COMMON_NAME_CORRECTIONS.items():
+        rec = idx2.get(cid)
+        if not rec:
+            adj["not_found"].append(("common_correction", cid)); continue
+        removed = [c for c in rec["common_names"] if c in set(spec["remove"])]
+        rec["common_names"] = [c for c in rec["common_names"] if c not in set(spec["remove"])]
+        rec["provenance"].setdefault("common_name_corrections", []).append(
+            {"removed": removed, "reason": spec["reason"], "date": ADJUDICATION_DATE})
+        adj["common_removed"].append((cid, removed))
+    for cid, note in IDENTITY_NOTES.items():
+        rec = idx2.get(cid)
+        if rec:
+            rec["provenance"]["note"] = note
+            adj["notes"].append(cid)
+        else:
+            adj["not_found"].append(("identity_note", cid))
+
+    print("  adjudication: %d GBIF adopted, %d kept-synonym, %d ->trade_ambiguous, %d common added, "
+          "%d common removed, %d notes" % (len(adj["gbif_adopted"]), len(adj["gbif_kept_synonym"]),
+          len(adj["trade_ambiguous"]), len(adj["common_added"]), len(adj["common_removed"]), len(adj["notes"])))
+    if adj["not_found"]:
+        print("  !! adjudication targets NOT FOUND:", adj["not_found"])
+
     records.sort(key=lambda r: (r["accepted_name"] or "~" + r["canonical_id"]))
     _save(CACHE, _local)
 
@@ -405,6 +573,16 @@ def main():
         "delta_enrichment": {"total_new": delta_added, "total_merged": delta_merged, "by_source": delta_by_source},
         "common_name_mappings": {"new_identities": cn_added, "merged_into_existing": cn_merged,
                                  "source": "knowledge/sources/common_name_resolved_mappings.json (owner)"},
+        "trade_usage_adjudication": {
+            "date": ADJUDICATION_DATE,
+            "gbif_adopted": [{"from": o, "to": g} for o, g in adj["gbif_adopted"]],
+            "gbif_kept_synonym": [{"accepted": o, "authority_synonym": g} for o, g in adj["gbif_kept_synonym"]],
+            "trade_ambiguous": adj["trade_ambiguous"],
+            "common_added": [{"accepted": b, "common_names": c} for b, c in adj["common_added"]],
+            "common_removed": [{"canonical_id": c, "removed": r} for c, r in adj["common_removed"]],
+            "identity_notes": adj["notes"], "targets_not_found": adj["not_found"],
+            "note": "Owner adjudication of the common-name-round GBIF disagreements + collision quarantine. "
+                    "No silent correction; every change is owner-signed."},
         "record_merges": merged_report,
         "resolution_status_counts": dict(status_counts),
         "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. "

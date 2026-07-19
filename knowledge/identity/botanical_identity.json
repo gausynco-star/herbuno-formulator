@@ -1,12 +1,12 @@
 {
   "_meta": {
     "artifact": "ADR-013 frozen identity backbone (Pass-3 join target)",
-    "identity_version": "2026-07-19.2",
+    "identity_version": "2026-07-19.3",
     "identity_schema_version": 1,
     "frozen": true,
     "built": "2026-07-18",
     "authority": "GBIF backbone (species/match v1)",
-    "identity_records": 831,
+    "identity_records": 830,
     "excluded": 28,
     "pass1_keys_accounted": 641,
     "delta_enrichment": {
@@ -27,6 +27,122 @@
       "new_identities": 226,
       "merged_into_existing": 160,
       "source": "knowledge/sources/common_name_resolved_mappings.json (owner)"
+    },
+    "trade_usage_adjudication": {
+      "date": "2026-07-19",
+      "gbif_adopted": [
+        {
+          "from": "Astragalus membranaceus",
+          "to": "Astragalus mongholicus"
+        },
+        {
+          "from": "Cymbopogon martinii",
+          "to": "Cymbopogon martini"
+        },
+        {
+          "from": "Desmodium adscendens",
+          "to": "Grona adscendens"
+        },
+        {
+          "from": "Drynaria fortunei",
+          "to": "Drynaria roosii"
+        },
+        {
+          "from": "Guarea rusbyi",
+          "to": "Guarea guidonia"
+        },
+        {
+          "from": "Maytenus krukovii",
+          "to": "Monteverdia krukovii"
+        },
+        {
+          "from": "Ocotea quixos",
+          "to": "Mespilodaphne quixos"
+        },
+        {
+          "from": "Stereospermum suaveolens",
+          "to": "Stereospermum chelonoides"
+        },
+        {
+          "from": "Handroanthus impetiginosus",
+          "to": "Handroanthus impetiginosum"
+        },
+        {
+          "from": "Leonurus cardiacus",
+          "to": "Leonurus cardiaca"
+        },
+        {
+          "from": "Marsdenia condurango",
+          "to": "Marsdenia cundurango"
+        },
+        {
+          "from": "Polypodium leucotomos",
+          "to": "Polypodium leucatomos"
+        }
+      ],
+      "gbif_kept_synonym": [
+        {
+          "accepted": "Coleus forskohlii",
+          "authority_synonym": "Coleus hadiensis"
+        },
+        {
+          "accepted": "Crambe abyssinica",
+          "authority_synonym": "Crambe hispanica abyssinica"
+        },
+        {
+          "accepted": "Grindelia robusta",
+          "authority_synonym": "Grindelia hirsutula"
+        },
+        {
+          "accepted": "Lens culinaris",
+          "authority_synonym": "Vicia lens"
+        },
+        {
+          "accepted": "Meconopsis betonicifolia",
+          "authority_synonym": "Cathcartia betonicifolia"
+        },
+        {
+          "accepted": "Pfaffia paniculata",
+          "authority_synonym": "Hebanthe erianthos"
+        },
+        {
+          "accepted": "Pisum sativum",
+          "authority_synonym": "Lathyrus oleraceus"
+        },
+        {
+          "accepted": "Rhaponticum carthamoides",
+          "authority_synonym": "Leuzea carthamoides carthamoides"
+        },
+        {
+          "accepted": "Sceletium tortuosum",
+          "authority_synonym": "Mesembryanthemum tortuosum"
+        }
+      ],
+      "trade_ambiguous": [
+        "Solanum indicum"
+      ],
+      "common_added": [
+        {
+          "accepted": "Scutellaria lateriflora",
+          "common_names": [
+            "Skullcap"
+          ]
+        }
+      ],
+      "common_removed": [
+        {
+          "canonical_id": "curcuma-zedoaria",
+          "removed": [
+            "Lemongrass"
+          ]
+        }
+      ],
+      "identity_notes": [
+        "vanda-tessellata",
+        "valeriana-jatamansi"
+      ],
+      "targets_not_found": [],
+      "note": "Owner adjudication of the common-name-round GBIF disagreements + collision quarantine. No silent correction; every change is owner-signed."
     },
     "record_merges": [
       {
@@ -99,18 +215,53 @@
         "common_names_added": [
           "Parijat Flower, Cut"
         ]
+      },
+      {
+        "absorbed_id": "butea-frondosa",
+        "absorbed_name": "Butea frondosa",
+        "kept_id": "butea-monosperma",
+        "kept_name": "Butea monosperma",
+        "reason": "Butea frondosa = synonym of Butea monosperma (Palash)",
+        "status": "merged",
+        "original_parsed_names_added": [
+          "Butea frondosa"
+        ],
+        "scientific_synonyms_added": [
+          "Butea frondosa"
+        ],
+        "common_names_added": [
+          "Palash Seed",
+          "Palash Seed, Cut"
+        ]
+      },
+      {
+        "absorbed_id": "nageia-nagi",
+        "absorbed_name": "Nageia nagi",
+        "kept_id": "morella-esculenta",
+        "kept_name": "Morella esculenta",
+        "reason": "GBIF fuzzy-match error: Myrica nagi is a synonym of Morella esculenta (Kaiphal), not Nageia nagi",
+        "status": "merged",
+        "original_parsed_names_added": [
+          "Myrica nagi"
+        ],
+        "scientific_synonyms_added": [
+          "Myrica nagi"
+        ],
+        "common_names_added": [
+          "Kaiphal"
+        ]
       }
     ],
     "resolution_status_counts": {
-      "accepted": 462,
-      "synonym-resolved": 66,
+      "accepted": 461,
+      "synonym-resolved": 65,
       "delta-accepted": 39,
       "owner-common-mapped": 226,
       "owner-resolved": 11,
       "delta-synonym-resolved": 6,
       "typo-corrected": 13,
       "genus_level": 4,
-      "trade_ambiguous": 3,
+      "trade_ambiguous": 4,
       "species_ambiguous": 1
     },
     "freeze_policy": "FROZEN. Do NOT edit botanical_identity.json in place once Pass 3 has started. Corrections flow: fix in Pass 2 (review queue / sign-off) -> rebuild this backbone -> bump identity_version. Never in-place edits. See README.md.",
@@ -2971,16 +3122,18 @@
     },
     {
       "canonical_id": "astragalus-membranaceus",
-      "accepted_name": "Astragalus membranaceus",
-      "accepted_rank": "GENUS",
+      "accepted_name": "Astragalus mongholicus",
+      "accepted_rank": "SPECIES",
       "genus": "Astragalus",
-      "species": "membranaceus",
+      "species": "mongholicus",
       "infraspecific_epithet": null,
-      "gbif_usage_key": 2933951,
+      "gbif_usage_key": 5345341,
       "original_parsed_names": [
         "Astragalus membranaceus"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Astragalus membranaceus"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Astragalus"
@@ -3007,7 +3160,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Astragalus membranaceus",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -4205,31 +4360,6 @@
       }
     },
     {
-      "canonical_id": "butea-frondosa",
-      "accepted_name": "Butea frondosa",
-      "accepted_rank": "SPECIES",
-      "genus": "Butea",
-      "species": "frondosa",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 7677617,
-      "original_parsed_names": [
-        "Butea frondosa"
-      ],
-      "scientific_synonyms": [],
-      "trade_synonyms": [],
-      "common_names": [
-        "Palash Seed",
-        "Palash Seed, Cut"
-      ],
-      "resolution_status": "accepted",
-      "provenance": {
-        "authority": "GBIF backbone (species/match v1)",
-        "query_date": "2026-07-18",
-        "resolved_by": "GBIF",
-        "review_date": null
-      }
-    },
-    {
       "canonical_id": "butea-monosperma",
       "accepted_name": "Butea monosperma",
       "accepted_rank": "SPECIES",
@@ -4238,13 +4368,18 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 8234570,
       "original_parsed_names": [
+        "Butea frondosa",
         "Butea monosperma"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Butea frondosa"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Palash Flower",
         "Palash Phool, Whole",
+        "Palash Seed",
+        "Palash Seed, Cut",
         "Tesu Flower, Cut"
       ],
       "resolution_status": "accepted",
@@ -4252,7 +4387,14 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "merged_records": [
+          {
+            "absorbed_id": "butea-frondosa",
+            "absorbed_accepted_name": "Butea frondosa",
+            "reason": "Butea frondosa = synonym of Butea monosperma (Palash)"
+          }
+        ]
       }
     },
     {
@@ -6978,7 +7120,9 @@
       "original_parsed_names": [
         "Coleus forskohlii"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Coleus hadiensis"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Coleus"
@@ -7002,7 +7146,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Coleus hadiensis",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -7492,7 +7638,9 @@
       "original_parsed_names": [
         "Crambe abyssinica"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Crambe hispanica abyssinica"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Abyssinian"
@@ -7516,7 +7664,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Crambe hispanica abyssinica",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -8062,7 +8212,6 @@
       "trade_synonyms": [],
       "common_names": [
         "Kachur, Cut",
-        "Lemongrass",
         "White Turmeric",
         "Zedoary"
       ],
@@ -8071,7 +8220,16 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "common_name_corrections": [
+          {
+            "removed": [
+              "Lemongrass"
+            ],
+            "reason": "spurious supplier label; Curcuma zedoaria (Kachur/White Turmeric/Zedoary) is not lemongrass. Lemongrass = Cymbopogon citratus.",
+            "date": "2026-07-19"
+          }
+        ]
       }
     },
     {
@@ -8252,16 +8410,18 @@
     },
     {
       "canonical_id": "cymbopogon-martinii",
-      "accepted_name": "Cymbopogon martinii",
+      "accepted_name": "Cymbopogon martini",
       "accepted_rank": "SPECIES",
       "genus": "Cymbopogon",
-      "species": "martinii",
+      "species": "martini",
       "infraspecific_epithet": null,
-      "gbif_usage_key": 7421320,
+      "gbif_usage_key": 4138713,
       "original_parsed_names": [
         "Cymbopogon martinii"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Cymbopogon martinii"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Palmarosa"
@@ -8285,7 +8445,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Cymbopogon martinii",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -8599,44 +8761,6 @@
       }
     },
     {
-      "canonical_id": "desmodium-adscendens",
-      "accepted_name": "Desmodium adscendens",
-      "accepted_rank": "SPECIES",
-      "genus": "Desmodium",
-      "species": "adscendens",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 2967767,
-      "original_parsed_names": [
-        "Desmodium adscendens"
-      ],
-      "scientific_synonyms": [],
-      "trade_synonyms": [],
-      "common_names": [
-        "Manayupa"
-      ],
-      "resolution_status": "owner-common-mapped",
-      "provenance": {
-        "authority": "owner",
-        "resolved_by": "owner",
-        "query_date": "2026-07-19",
-        "review_date": "2026-07-19",
-        "provenance_note": "owner botanical knowledge + trade review",
-        "accepted_outside_gbif_candidates": true,
-        "gbif_recheck": {
-          "status": "synonym",
-          "gbif_accepted_name": "Grona adscendens",
-          "gbif_status_raw": "synonym",
-          "match_type": "EXACT",
-          "suggested_correction": null,
-          "ambiguous": false,
-          "candidate_accepted_names": [],
-          "authority": "GBIF backbone (species/match v1)",
-          "query_date": "2026-07-19"
-        },
-        "source": "owner_common_mapping"
-      }
-    },
-    {
       "canonical_id": "desmodium-gangeticum",
       "accepted_name": "Desmodium gangeticum",
       "accepted_rank": "SPECIES",
@@ -8892,16 +9016,18 @@
     },
     {
       "canonical_id": "drynaria-fortunei",
-      "accepted_name": "Drynaria fortunei",
+      "accepted_name": "Drynaria roosii",
       "accepted_rank": "SPECIES",
       "genus": "Drynaria",
-      "species": "fortunei",
+      "species": "roosii",
       "infraspecific_epithet": null,
-      "gbif_usage_key": 8434995,
+      "gbif_usage_key": 4024368,
       "original_parsed_names": [
         "Drynaria fortunei"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Drynaria fortunei"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Drynaria"
@@ -8925,7 +9051,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Drynaria fortunei",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -11191,7 +11319,9 @@
       "original_parsed_names": [
         "Grindelia robusta"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Grindelia hirsutula"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Grindelia"
@@ -11215,21 +11345,67 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Grindelia hirsutula",
+        "adjudication": "keep_trade_primary"
+      }
+    },
+    {
+      "canonical_id": "desmodium-adscendens",
+      "accepted_name": "Grona adscendens",
+      "accepted_rank": "SPECIES",
+      "genus": "Grona",
+      "species": "adscendens",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 10846639,
+      "original_parsed_names": [
+        "Desmodium adscendens"
+      ],
+      "scientific_synonyms": [
+        "Desmodium adscendens"
+      ],
+      "trade_synonyms": [],
+      "common_names": [
+        "Manayupa"
+      ],
+      "resolution_status": "owner-common-mapped",
+      "provenance": {
+        "authority": "owner",
+        "resolved_by": "owner",
+        "query_date": "2026-07-19",
+        "review_date": "2026-07-19",
+        "provenance_note": "owner botanical knowledge + trade review",
+        "accepted_outside_gbif_candidates": true,
+        "gbif_recheck": {
+          "status": "synonym",
+          "gbif_accepted_name": "Grona adscendens",
+          "gbif_status_raw": "synonym",
+          "match_type": "EXACT",
+          "suggested_correction": null,
+          "ambiguous": false,
+          "candidate_accepted_names": [],
+          "authority": "GBIF backbone (species/match v1)",
+          "query_date": "2026-07-19"
+        },
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Desmodium adscendens",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
       "canonical_id": "guarea-rusbyi",
-      "accepted_name": "Guarea rusbyi",
+      "accepted_name": "Guarea guidonia",
       "accepted_rank": "SPECIES",
       "genus": "Guarea",
-      "species": "rusbyi",
+      "species": "guidonia",
       "infraspecific_epithet": null,
-      "gbif_usage_key": 3850247,
+      "gbif_usage_key": 3190500,
       "original_parsed_names": [
         "Guarea rusbyi"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Guarea rusbyi"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Cocillana"
@@ -11253,7 +11429,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Guarea rusbyi",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -11472,16 +11650,18 @@
     },
     {
       "canonical_id": "handroanthus-impetiginosus",
-      "accepted_name": "Handroanthus impetiginosus",
+      "accepted_name": "Handroanthus impetiginosum",
       "accepted_rank": "SPECIES",
       "genus": "Handroanthus",
-      "species": "impetiginosus",
+      "species": "impetiginosum",
       "infraspecific_epithet": null,
       "gbif_usage_key": 4092242,
       "original_parsed_names": [
         "Handroanthus impetiginosus"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Handroanthus impetiginosus"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Pau D arco"
@@ -11505,7 +11685,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Handroanthus impetiginosus",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -13480,7 +13662,9 @@
       "original_parsed_names": [
         "Lens culinaris"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Vicia lens"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Lentil"
@@ -13504,7 +13688,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Vicia lens",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -13533,16 +13719,18 @@
     },
     {
       "canonical_id": "leonurus-cardiacus",
-      "accepted_name": "Leonurus cardiacus",
+      "accepted_name": "Leonurus cardiaca",
       "accepted_rank": "SPECIES",
       "genus": "Leonurus",
-      "species": "cardiacus",
+      "species": "cardiaca",
       "infraspecific_epithet": null,
       "gbif_usage_key": 5341389,
       "original_parsed_names": [
         "Leonurus cardiacus"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Leonurus cardiacus"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Motherwort"
@@ -13566,7 +13754,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Leonurus cardiacus",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -14879,16 +15069,18 @@
     },
     {
       "canonical_id": "marsdenia-condurango",
-      "accepted_name": "Marsdenia condurango",
+      "accepted_name": "Marsdenia cundurango",
       "accepted_rank": "SPECIES",
       "genus": "Marsdenia",
-      "species": "condurango",
+      "species": "cundurango",
       "infraspecific_epithet": null,
       "gbif_usage_key": 7151018,
       "original_parsed_names": [
         "Marsdenia condurango"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Marsdenia condurango"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Condurango"
@@ -14912,7 +15104,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Marsdenia condurango",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -15026,44 +15220,6 @@
       }
     },
     {
-      "canonical_id": "maytenus-krukovii",
-      "accepted_name": "Maytenus krukovii",
-      "accepted_rank": "SPECIES",
-      "genus": "Maytenus",
-      "species": "krukovii",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 3792489,
-      "original_parsed_names": [
-        "Maytenus krukovii"
-      ],
-      "scientific_synonyms": [],
-      "trade_synonyms": [],
-      "common_names": [
-        "Chuchuhuasi"
-      ],
-      "resolution_status": "owner-common-mapped",
-      "provenance": {
-        "authority": "owner",
-        "resolved_by": "owner",
-        "query_date": "2026-07-19",
-        "review_date": "2026-07-19",
-        "provenance_note": "owner botanical knowledge + trade review",
-        "accepted_outside_gbif_candidates": true,
-        "gbif_recheck": {
-          "status": "synonym",
-          "gbif_accepted_name": "Monteverdia krukovii",
-          "gbif_status_raw": "synonym",
-          "match_type": "EXACT",
-          "suggested_correction": null,
-          "ambiguous": false,
-          "candidate_accepted_names": [],
-          "authority": "GBIF backbone (species/match v1)",
-          "query_date": "2026-07-19"
-        },
-        "source": "owner_common_mapping"
-      }
-    },
-    {
       "canonical_id": "meconopsis-betonicifolia",
       "accepted_name": "Meconopsis betonicifolia",
       "accepted_rank": "SPECIES",
@@ -15074,7 +15230,9 @@
       "original_parsed_names": [
         "Meconopsis betonicifolia"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Cathcartia betonicifolia"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Blue Poppy"
@@ -15098,7 +15256,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Cathcartia betonicifolia",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -15440,6 +15600,49 @@
       }
     },
     {
+      "canonical_id": "ocotea-quixos",
+      "accepted_name": "Mespilodaphne quixos",
+      "accepted_rank": "SPECIES",
+      "genus": "Mespilodaphne",
+      "species": "quixos",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 11020082,
+      "original_parsed_names": [
+        "Ocotea quixos"
+      ],
+      "scientific_synonyms": [
+        "Ocotea quixos"
+      ],
+      "trade_synonyms": [],
+      "common_names": [
+        "Ishpingo",
+        "Ishpingo Essential"
+      ],
+      "resolution_status": "owner-common-mapped",
+      "provenance": {
+        "authority": "owner",
+        "resolved_by": "owner",
+        "query_date": "2026-07-19",
+        "review_date": "2026-07-19",
+        "provenance_note": "owner botanical knowledge + trade review",
+        "accepted_outside_gbif_candidates": true,
+        "gbif_recheck": {
+          "status": "synonym",
+          "gbif_accepted_name": "Mespilodaphne quixos",
+          "gbif_status_raw": "synonym",
+          "match_type": "EXACT",
+          "suggested_correction": null,
+          "ambiguous": false,
+          "candidate_accepted_names": [],
+          "authority": "GBIF backbone (species/match v1)",
+          "query_date": "2026-07-19"
+        },
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Ocotea quixos",
+        "adjudication": "adopt_gbif_accepted"
+      }
+    },
+    {
       "canonical_id": "mimosa-pudica",
       "accepted_name": "Mimosa pudica",
       "accepted_rank": "SPECIES",
@@ -15642,6 +15845,48 @@
       }
     },
     {
+      "canonical_id": "maytenus-krukovii",
+      "accepted_name": "Monteverdia krukovii",
+      "accepted_rank": "SPECIES",
+      "genus": "Monteverdia",
+      "species": "krukovii",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 9716196,
+      "original_parsed_names": [
+        "Maytenus krukovii"
+      ],
+      "scientific_synonyms": [
+        "Maytenus krukovii"
+      ],
+      "trade_synonyms": [],
+      "common_names": [
+        "Chuchuhuasi"
+      ],
+      "resolution_status": "owner-common-mapped",
+      "provenance": {
+        "authority": "owner",
+        "resolved_by": "owner",
+        "query_date": "2026-07-19",
+        "review_date": "2026-07-19",
+        "provenance_note": "owner botanical knowledge + trade review",
+        "accepted_outside_gbif_candidates": true,
+        "gbif_recheck": {
+          "status": "synonym",
+          "gbif_accepted_name": "Monteverdia krukovii",
+          "gbif_status_raw": "synonym",
+          "match_type": "EXACT",
+          "suggested_correction": null,
+          "ambiguous": false,
+          "candidate_accepted_names": [],
+          "authority": "GBIF backbone (species/match v1)",
+          "query_date": "2026-07-19"
+        },
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Maytenus krukovii",
+        "adjudication": "adopt_gbif_accepted"
+      }
+    },
+    {
       "canonical_id": "morella-esculenta",
       "accepted_name": "Morella esculenta",
       "accepted_rank": "SPECIES",
@@ -15650,13 +15895,16 @@
       "infraspecific_epithet": null,
       "gbif_usage_key": 3745012,
       "original_parsed_names": [
-        "Myrica esculenta"
+        "Myrica esculenta",
+        "Myrica nagi"
       ],
       "scientific_synonyms": [
-        "Myrica esculenta"
+        "Myrica esculenta",
+        "Myrica nagi"
       ],
       "trade_synonyms": [],
       "common_names": [
+        "Kaiphal",
         "Kaiphal Bark",
         "Kaiphal Bark, Cut"
       ],
@@ -15665,7 +15913,14 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "merged_records": [
+          {
+            "absorbed_id": "nageia-nagi",
+            "absorbed_accepted_name": "Nageia nagi",
+            "reason": "GBIF fuzzy-match error: Myrica nagi is a synonym of Morella esculenta (Kaiphal), not Nageia nagi"
+          }
+        ]
       }
     },
     {
@@ -16072,32 +16327,6 @@
         "query_date": "2026-07-18",
         "resolved_by": "owner",
         "review_date": "2026-07-18"
-      }
-    },
-    {
-      "canonical_id": "nageia-nagi",
-      "accepted_name": "Nageia nagi",
-      "accepted_rank": "SPECIES",
-      "genus": "Nageia",
-      "species": "nagi",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 2687779,
-      "original_parsed_names": [
-        "Myrica nagi"
-      ],
-      "scientific_synonyms": [
-        "Myrica nagi"
-      ],
-      "trade_synonyms": [],
-      "common_names": [
-        "Kaiphal"
-      ],
-      "resolution_status": "synonym-resolved",
-      "provenance": {
-        "authority": "GBIF backbone (species/match v1)",
-        "query_date": "2026-07-18",
-        "resolved_by": "GBIF",
-        "review_date": null
       }
     },
     {
@@ -16579,45 +16808,6 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
-      }
-    },
-    {
-      "canonical_id": "ocotea-quixos",
-      "accepted_name": "Ocotea quixos",
-      "accepted_rank": "SPECIES",
-      "genus": "Ocotea",
-      "species": "quixos",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 4175847,
-      "original_parsed_names": [
-        "Ocotea quixos"
-      ],
-      "scientific_synonyms": [],
-      "trade_synonyms": [],
-      "common_names": [
-        "Ishpingo",
-        "Ishpingo Essential"
-      ],
-      "resolution_status": "owner-common-mapped",
-      "provenance": {
-        "authority": "owner",
-        "resolved_by": "owner",
-        "query_date": "2026-07-19",
-        "review_date": "2026-07-19",
-        "provenance_note": "owner botanical knowledge + trade review",
-        "accepted_outside_gbif_candidates": true,
-        "gbif_recheck": {
-          "status": "synonym",
-          "gbif_accepted_name": "Mespilodaphne quixos",
-          "gbif_status_raw": "synonym",
-          "match_type": "EXACT",
-          "suggested_correction": null,
-          "ambiguous": false,
-          "candidate_accepted_names": [],
-          "authority": "GBIF backbone (species/match v1)",
-          "query_date": "2026-07-19"
-        },
-        "source": "owner_common_mapping"
       }
     },
     {
@@ -17885,7 +18075,9 @@
       "original_parsed_names": [
         "Pfaffia paniculata"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Hebanthe erianthos"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Suma"
@@ -17909,7 +18101,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Hebanthe erianthos",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -18793,7 +18987,9 @@
       "original_parsed_names": [
         "Pisum sativum"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Lathyrus oleraceus"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Green Pea"
@@ -18817,7 +19013,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Lathyrus oleraceus",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -19286,16 +19484,18 @@
     },
     {
       "canonical_id": "polypodium-leucotomos",
-      "accepted_name": "Polypodium leucotomos",
+      "accepted_name": "Polypodium leucatomos",
       "accepted_rank": "SPECIES",
       "genus": "Polypodium",
-      "species": "leucotomos",
+      "species": "leucatomos",
       "infraspecific_epithet": null,
       "gbif_usage_key": 5647796,
       "original_parsed_names": [
         "Polypodium leucotomos"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Polypodium leucotomos"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Calaguala",
@@ -19320,7 +19520,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Polypodium leucotomos",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -20630,7 +20832,9 @@
       "original_parsed_names": [
         "Rhaponticum carthamoides"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Leuzea carthamoides carthamoides"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Maral"
@@ -20654,7 +20858,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Leuzea carthamoides carthamoides",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -22089,7 +22295,9 @@
       "original_parsed_names": [
         "Sceletium tortuosum"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Mesembryanthemum tortuosum"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Kanna"
@@ -22113,7 +22321,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_authority_synonym": "Mesembryanthemum tortuosum",
+        "adjudication": "keep_trade_primary"
       }
     },
     {
@@ -22248,6 +22458,33 @@
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
         "review_date": null
+      }
+    },
+    {
+      "canonical_id": "scutellaria-lateriflora",
+      "accepted_name": "Scutellaria lateriflora",
+      "accepted_rank": "SPECIES",
+      "genus": "Scutellaria",
+      "species": "lateriflora",
+      "infraspecific_epithet": null,
+      "gbif_usage_key": 5341325,
+      "original_parsed_names": [
+        "Scutellaria lateriflora"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [
+        "Skullcap"
+      ],
+      "resolution_status": "owner-common-mapped",
+      "provenance": {
+        "authority": "owner",
+        "resolved_by": "owner",
+        "query_date": "2026-07-19",
+        "review_date": "2026-07-19",
+        "adjudication": "owner_common_resolution",
+        "note": "Bare 'Skullcap' resolved to American skullcap (Western herbalism). Chinese skullcap = Scutellaria baicalensis, kept distinct as 'Chinese Skullcap'.",
+        "source": "trade_usage_adjudication"
       }
     },
     {
@@ -23163,47 +23400,6 @@
       }
     },
     {
-      "canonical_id": "solanum-indicum",
-      "accepted_name": "Solanum indicum",
-      "accepted_rank": "GENUS",
-      "genus": "Solanum",
-      "species": "indicum",
-      "infraspecific_epithet": null,
-      "gbif_usage_key": 2928997,
-      "original_parsed_names": [
-        "Solanum indicum"
-      ],
-      "scientific_synonyms": [],
-      "trade_synonyms": [],
-      "common_names": [
-        "Brihati"
-      ],
-      "resolution_status": "owner-common-mapped",
-      "provenance": {
-        "authority": "owner",
-        "resolved_by": "owner",
-        "query_date": "2026-07-19",
-        "review_date": "2026-07-19",
-        "provenance_note": "owner botanical knowledge + trade review",
-        "accepted_outside_gbif_candidates": true,
-        "gbif_recheck": {
-          "status": "synonym",
-          "gbif_accepted_name": null,
-          "gbif_status_raw": "synonym",
-          "match_type": "HIGHERRANK+nameusage",
-          "suggested_correction": null,
-          "ambiguous": true,
-          "candidate_accepted_names": [
-            "Solanum melongena",
-            "Solanum violaceum"
-          ],
-          "authority": "GBIF backbone (species/match v1)",
-          "query_date": "2026-07-19"
-        },
-        "source": "owner_common_mapping"
-      }
-    },
-    {
       "canonical_id": "solanum-lycopersicum",
       "accepted_name": "Solanum lycopersicum",
       "accepted_rank": "SPECIES",
@@ -23615,16 +23811,18 @@
     },
     {
       "canonical_id": "stereospermum-suaveolens",
-      "accepted_name": "Stereospermum suaveolens",
+      "accepted_name": "Stereospermum chelonoides",
       "accepted_rank": "SPECIES",
       "genus": "Stereospermum",
-      "species": "suaveolens",
+      "species": "chelonoides",
       "infraspecific_epithet": null,
-      "gbif_usage_key": 4091947,
+      "gbif_usage_key": 4092354,
       "original_parsed_names": [
         "Stereospermum suaveolens"
       ],
-      "scientific_synonyms": [],
+      "scientific_synonyms": [
+        "Stereospermum suaveolens"
+      ],
       "trade_synonyms": [],
       "common_names": [
         "Patala"
@@ -23648,7 +23846,9 @@
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
         },
-        "source": "owner_common_mapping"
+        "source": "owner_common_mapping",
+        "gbif_adopted_from": "Stereospermum suaveolens",
+        "adjudication": "adopt_gbif_accepted"
       }
     },
     {
@@ -25544,7 +25744,8 @@
           "candidate_accepted_names": [],
           "authority": "GBIF backbone (species/match v1)",
           "query_date": "2026-07-19"
-        }
+        },
+        "note": "Indian valerian / Tagar; distinct from Valeriana officinalis. 'Valerian' (bare) resolves to V. officinalis."
       }
     },
     {
@@ -25608,7 +25809,8 @@
         "authority": "GBIF backbone (species/match v1)",
         "query_date": "2026-07-18",
         "resolved_by": "GBIF",
-        "review_date": null
+        "review_date": null,
+        "note": "Regional 'Rasna' substitute (S. India); primary Rasna = Pluchea lanceolata. Kept distinct — 'Rasna' (bare) resolves to P. lanceolata."
       }
     },
     {
@@ -26798,6 +27000,53 @@
       "candidate_accepted_names": [
         "Salvia pratensis",
         "Salvia sclarea"
+      ]
+    },
+    {
+      "canonical_id": "solanum-indicum",
+      "accepted_name": null,
+      "accepted_rank": null,
+      "genus": null,
+      "species": null,
+      "infraspecific_epithet": null,
+      "gbif_usage_key": null,
+      "original_parsed_names": [
+        "Solanum indicum"
+      ],
+      "scientific_synonyms": [],
+      "trade_synonyms": [],
+      "common_names": [
+        "Brihati"
+      ],
+      "resolution_status": "trade_ambiguous",
+      "provenance": {
+        "authority": "owner",
+        "resolved_by": "owner",
+        "query_date": "2026-07-19",
+        "review_date": "2026-07-19",
+        "provenance_note": "owner botanical knowledge + trade review",
+        "accepted_outside_gbif_candidates": true,
+        "gbif_recheck": {
+          "status": "synonym",
+          "gbif_accepted_name": null,
+          "gbif_status_raw": "synonym",
+          "match_type": "HIGHERRANK+nameusage",
+          "suggested_correction": null,
+          "ambiguous": true,
+          "candidate_accepted_names": [
+            "Solanum melongena",
+            "Solanum violaceum"
+          ],
+          "authority": "GBIF backbone (species/match v1)",
+          "query_date": "2026-07-19"
+        },
+        "source": "owner_common_mapping",
+        "adjudication": "trade_ambiguous",
+        "guidance": "GBIF synonymises S. indicum to S. melongena/violaceum. Brihati (trade) = S. violaceum, NOT S. melongena (brinjal). Held trade_ambiguous pending source/provenance."
+      },
+      "ambiguity_flag": true,
+      "candidate_accepted_names": [
+        "Solanum violaceum"
       ]
     },
     {

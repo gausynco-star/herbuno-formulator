@@ -149,6 +149,18 @@ STRIP_WORDS = set(PART_WORDS) | FORM_WORDS | {
 DERIVED_COMMON_KEYS = set()   # norm keys added by part-stripping (provenance: derived, second-class)
 COMMON_INDEX_QUARANTINE = []  # part-stripped keys that collide across identities (NOT indexed)
 
+# FIX 2b — owner-adjudicated collision resolutions (ADR-013 trade-usage adjudication).
+# When a part-stripped common key collides across >1 identity, the owner may designate the ONE
+# identity the bare vernacular resolves to. Both identities keep their own full common_names; only
+# the ambiguous stripped key is pinned. Anything not listed here stays quarantined (no silent merge).
+COLLISION_RESOLUTIONS = {
+    "apple": "malus-domestica", "atish": "aconitum-heterophyllum", "basil": "ocimum-basilicum",
+    "chitrak": "plumbago-zeylanica", "hibiscus": "hibiscus-sabdariffa",
+    "lavender": "lavandula-angustifolia", "rasna": "pluchea-lanceolata",
+    "tea": "camellia-sinensis", "valerian": "valeriana-officinalis",
+}
+COLLISION_RESOLUTIONS_APPLIED = []  # {stripped_key, resolved_to, over: [all colliding cids]}
+
 
 def _part_strip(name):
     s = re.sub(r"\([^)]*\)", " ", name)                       # drop parenthetical assay/marker
@@ -178,7 +190,7 @@ def build_indices(backbone):
                 common[n].add(cid)
 
     # ---- FIX 2: derived part-stripped common keys (collision-guarded, provenance-tagged) ----
-    DERIVED_COMMON_KEYS.clear(); COMMON_INDEX_QUARANTINE.clear()
+    DERIVED_COMMON_KEYS.clear(); COMMON_INDEX_QUARANTINE.clear(); COLLISION_RESOLUTIONS_APPLIED.clear()
     derived_map = defaultdict(set)
     for r in backbone["identities"]:
         for c in r.get("common_names", []):
@@ -191,9 +203,16 @@ def build_indices(backbone):
             if k not in common:                                # add only if not already a real key
                 common[k].add(next(iter(allc)))
                 DERIVED_COMMON_KEYS.add(k)
-        else:                                                  # collision -> quarantine, never merge
-            COMMON_INDEX_QUARANTINE.append({"stripped_key": k, "canonical_ids": sorted(allc),
-                "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"})
+        else:                                                  # collision
+            res = COLLISION_RESOLUTIONS.get(k)
+            if res and res in allc:                             # owner-adjudicated: pin to one identity
+                common[k] = {res}
+                DERIVED_COMMON_KEYS.add(k)
+                COLLISION_RESOLUTIONS_APPLIED.append({"stripped_key": k, "resolved_to": res,
+                    "over": sorted(allc)})
+            else:                                              # unresolved -> quarantine, never merge
+                COMMON_INDEX_QUARANTINE.append({"stripped_key": k, "canonical_ids": sorted(allc),
+                    "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"})
     return exact, common
 
 
