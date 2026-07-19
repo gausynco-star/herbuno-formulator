@@ -12,8 +12,10 @@ export const SESSION_ID_RE = /^[A-Za-z0-9_-]{1,64}$/; // session_id is UNTRUSTED
 export const ROUTES = { SPEC: '/apps/formulator/specification', PROC: '/apps/formulator/procurement' };
 
 // Starting rate limits (ADR-014 §2 — tune from telemetry later; NOT permanent).
-// distinctProductRolePerHour is the enumeration/traversal ceiling per server-derived key.
-export const RATE = { perMin: 10, perHour: 60, perDay: 150, uniqBotanicalsPerHour: 30, distinctProductRolePerHour: 50 };
+// distinctProductRolePerHour is the enumeration/traversal ceiling per server-derived key. STARTING
+// value 12: with only 238 cells a ceiling of 50 let one IP reconstruct the whole selected-output layer
+// in <5h; 12/hour makes that cost meaningful (Step-2b FIX 3). Tune from telemetry.
+export const RATE = { perMin: 10, perHour: 60, perDay: 150, uniqBotanicalsPerHour: 30, distinctProductRolePerHour: 12 };
 
 // Honest degraded-state message (ADR-014 §"Degraded state"). Never serve a partial/guessed result.
 export const DEGRADED_MESSAGE =

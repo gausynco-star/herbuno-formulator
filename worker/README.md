@@ -21,7 +21,8 @@ worker/
     version.js          version contract, tunables, degraded message
     hmac.js             Web Crypto helpers (constant-time verify; work in Workers and Node)
   tools/generate_payloads.js   runtime-minimal payload generator + mandatory leakage test (committed)
-  test/run_tests.js            local suite (no framework); `node test/run_tests.js` — 41 assertions
+  test/run_tests.js            unit/pipeline suite (no framework) — 41 assertions
+  test/integration_do.mjs      Miniflare (real workerd) DO suite — routing, persistence, concurrency, fail-closed, latency
   data/                        generated bundles (gitignored — reproduce with the generator)
   wrangler.toml.example        deployment config template (no secrets)
 ```
@@ -30,7 +31,9 @@ worker/
 
 ```bash
 node worker/tools/generate_payloads.js   # writes worker/data/*.json, runs the leakage test
-node worker/test/run_tests.js            # 41 assertions, no deployment
+node worker/test/run_tests.js            # 41 unit/pipeline assertions, no deployment
+cd worker && npm install                 # once, for the integration suite (Miniflare devDependency)
+node worker/test/integration_do.mjs      # real workerd via Miniflare: DO routing, persistence, concurrency, fail-closed, latency
 ```
 
 The generator reads the frozen sources and emits the **runtime-minimal, storefront-safe** bundles —
@@ -73,20 +76,50 @@ Response minimisation throughout. **No bulk endpoint exists** (exact route match
    below). Keyed on the Cloudflare **connecting IP** (`x-forwarded-for` is never trusted).
 5. Resolve → select → respond.
 
-## Central rate limiter (Durable Object)
+## Central rate limiter (Durable Object) — persisted
 
 Per-isolate Maps cannot enforce across isolates and a rotated `session_id` bypasses them, so they are
-only a first layer. The **authoritative** limiter is a **Durable Object** (`RateLimiterDurableObject`,
+only a cheap first layer. The **authoritative** limiter is a **Durable Object** (`RateLimiterDurableObject`,
 bound as `RATE_LIMITER`): one globally-consistent instance enforcing per-IP minute/hour/day limits, a
 unique-botanical ceiling, and **product×role traversal (enumeration) detection** with adaptive
-escalation. Limits are keyed on the server-derived IP. If the DO namespace is unbound, the Worker
-**fails closed** (degraded) rather than silently relying on the weak per-isolate layer.
+escalation. Limits are keyed on the server-derived IP.
 
-- Enforcement logic (`LimiterState`) is unit-tested locally; **creating the live DO namespace + binding
-  is a DEPLOY step** (the central limiter being present is a deploy blocker; building it is not blocked
-  by account setup).
+**State is PERSISTED to `state.storage` — it is the source of truth, not the in-memory Maps.** So
+counters and enumeration history survive DO eviction/restart (verified by the Miniflare integration
+suite). Specifically:
+
+- **Persisted:** per-IP minute/hour/day counters, unique-botanical windows, product×role traversal
+  windows (challenge/escalation is derived from the persisted traversal window).
+- **Initialisation guard:** `state.blockConcurrencyWhile(...)` loads persisted state before any request
+  is served, so a restarted DO does not race at startup.
+- **Atomic updates:** all counter mutations go through the DO's single-threaded request path and are
+  written back atomically (`storage.put`/`storage.delete`, batched). No Worker request read-modify-writes
+  counters outside the DO. The in-memory Maps are a read-through cache only.
+- **Traversal ceiling** `distinctProductRolePerHour` is a **starting** value of **12** (238 cells; a
+  higher ceiling let one IP reconstruct the whole selected-output layer cheaply). Tune from telemetry.
+- If the DO namespace is unbound, the Worker **fails closed** (degraded) rather than silently relying on
+  the weak per-isolate layer. Creating the live DO namespace + binding is a **DEPLOY step**.
 - Adaptive Turnstile: the limiter flags `challenge` on enumeration; the Turnstile **widget** is wired
   client-side in Step 3. Until then, flagged traffic is hard-limited (429 with `challenge_required`).
+
+**DO round-trip latency** (Miniflare, 300 local calls): ~median 8 ms, p95 ~10 ms. **Local Miniflare
+latency is not production edge latency — order-of-magnitude only.** Note this DO round trip now dominates
+per-request time (Step-1 resolution was ~0.005 ms); it is I/O wait rather than Worker CPU, but it is the
+real cost of a durable, consistent limiter.
+
+## Honest limit (what ADR-014 does and does not prevent)
+
+Even with the minimal response, querying each Product × Role cell reveals `selected_format`,
+`technical_status`, and the first sentence of the selected cell note — which is matrix-derived IP.
+**ADR-014 raises the cost of harvesting the matrix; it does not make reconstruction impossible.** The
+traversal ceiling and enumeration detection are what make that cost meaningful. This is consistent with
+ADR-014's stated honest limit — we do not claim more.
+
+Non-issues (audit-confirmed, working as designed): resolved requests do more work than
+ambiguous/unrecognised ones so timing can distinguish them — but `identity_status` states that
+explicitly, so timing reveals nothing beyond the documented API; and ambiguous-vs-unrecognised being
+distinguishable is the approved public status vocabulary (the neutral message exposes no candidate
+identities).
 
 ## Version contract & degraded state
 

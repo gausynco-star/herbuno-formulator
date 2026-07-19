@@ -30,6 +30,7 @@ export async function verifyToken(secret, token, nowSec = Math.floor(Date.now() 
   if (!payload || typeof payload !== 'object') return { ok: false, reason: 'malformed' };
   if (payload.v !== TOKEN_VERSION) return { ok: false, reason: 'bad_token_version' };
   if (typeof payload.iat !== 'number' || typeof payload.exp !== 'number') return { ok: false, reason: 'malformed' };
+  if (payload.exp < payload.iat) return { ok: false, reason: 'bad_expiry' };      // exp must be >= iat (FIX 4)
   if (payload.iat > nowSec + IAT_SKEW_SEC) return { ok: false, reason: 'iat_in_future' };
   if (payload.exp < nowSec) return { ok: false, reason: 'expired' };
   if (payload.exp - payload.iat > TOKEN_TTL_SEC + IAT_SKEW_SEC) return { ok: false, reason: 'ttl_too_long' };

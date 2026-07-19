@@ -1,49 +1,67 @@
-// Central rate limiter (ADR-014 Step-2a BLOCKER 2). The per-isolate Map in security.js is only a cheap
-// first layer — it cannot enforce across isolates, and a rotated session_id bypasses it. THIS is the
-// authoritative limiter: a Durable Object gives a single globally-consistent instance, so its in-memory
-// counters are correct across all isolates/requests.
+// Central rate limiter (ADR-014 Step-2a BLOCKER 2, Step-2b BLOCKER 1). The per-isolate Map in
+// security.js is only a cheap first layer. THIS is the authoritative limiter: a Durable Object gives a
+// single globally-consistent instance whose state is PERSISTED to `state.storage` — so counters and
+// enumeration history survive DO eviction/restart. Storage is the source of truth; the in-memory Maps
+// are a read-through cache loaded once (blockConcurrencyWhile) before any request is served.
 //
-// Keys are a SERVER-DERIVED identifier (IP) — never the caller-supplied session_id. session_id may aid
-// UX continuity elsewhere but is untrusted and is never an enforcement key here.
+// Keys are a SERVER-DERIVED identifier (IP) — never the caller-supplied session_id.
 //
-// Enforcement logic (LimiterState) is separated from the DO wrapper so it can be unit-tested locally
-// without a live Cloudflare Durable Object (creating the live binding is a DEPLOY step).
+// LimiterState (pure logic + dirty-tracking) is separated from the DO wrapper (storage) so the logic
+// can be unit-tested in-process and the persistence can be integration-tested under real workerd.
 import { RATE } from './version.js';
 
 const MIN = 60_000, HOUR = 3_600_000, DAY = 86_400_000;
-const MAX_KEYS = 50_000;         // global cap per structure — bound memory, evict oldest on overflow
-const CLEANUP_EVERY = 5_000;     // sweep expired entries every N checks
+const MAX_KEYS = 50_000;
+const CLEANUP_EVERY = 5_000;
+const STORAGE_BATCH = 128;   // Cloudflare storage.put/delete cap per call
 
 export class LimiterState {
   constructor(cfg = RATE) {
     this.cfg = cfg;
     this.counters = new Map();   // key -> { start, n }
-    this.sets = new Map();       // key -> { start, set }  (unique botanicals + product×role traversal)
+    this.sets = new Map();       // key -> { start, set:Set }
+    this.dirty = new Set();      // internal keys mutated since last drain (for persistence)
     this.sinceSweep = 0;
+  }
+
+  // hydrate from persisted storage (counterMap: key->{start,n}; setMap: key->{start,members[]})
+  hydrate(counterMap, setMap) {
+    for (const [k, v] of counterMap) this.counters.set(k, v);
+    for (const [k, v] of setMap) this.sets.set(k, { start: v.start, set: new Set(v.members || []) });
+  }
+  // emit the mutations to persist ('C' counter, 'S' set, 'del' removed), then clear
+  drainDirty() {
+    const ops = [];
+    for (const k of this.dirty) {
+      if (this.counters.has(k)) ops.push({ kind: 'C', key: k, value: this.counters.get(k) });
+      else if (this.sets.has(k)) { const e = this.sets.get(k); ops.push({ kind: 'S', key: k, value: { start: e.start, members: [...e.set] } }); }
+      else ops.push({ kind: 'del', key: k });
+    }
+    this.dirty.clear();
+    return ops;
   }
 
   _evictIfNeeded(map) {
     if (map.size <= MAX_KEYS) return;
-    // Map preserves insertion order: drop the oldest ~1% to make room.
-    const drop = Math.ceil(MAX_KEYS * 0.01);
-    let i = 0;
-    for (const k of map.keys()) { map.delete(k); if (++i >= drop) break; }
+    const drop = Math.ceil(MAX_KEYS * 0.01); let i = 0;
+    for (const k of map.keys()) { map.delete(k); this.dirty.add(k); if (++i >= drop) break; }
   }
   _sweep(now) {
-    for (const [k, e] of this.counters) if (now - e.start >= DAY) this.counters.delete(k);
-    for (const [k, e] of this.sets) if (now - e.start >= HOUR) this.sets.delete(k);
+    for (const [k, e] of this.counters) if (now - e.start >= DAY) { this.counters.delete(k); this.dirty.add(k); }
+    for (const [k, e] of this.sets) if (now - e.start >= HOUR) { this.sets.delete(k); this.dirty.add(k); }
   }
-
   _bump(key, windowMs, limit, now) {
     let e = this.counters.get(key);
     if (!e || now - e.start >= windowMs) { e = { start: now, n: 0 }; this.counters.set(key, e); this._evictIfNeeded(this.counters); }
     e.n++;
+    this.dirty.add(key);
     return e.n <= limit;
   }
   _addToSet(key, member, windowMs, now) {
     let e = this.sets.get(key);
     if (!e || now - e.start >= windowMs) { e = { start: now, set: new Set() }; this.sets.set(key, e); this._evictIfNeeded(this.sets); }
     e.set.add(member);
+    this.dirty.add(key);
     return e.set.size;
   }
 
@@ -60,30 +78,64 @@ export class LimiterState {
     }
     if (productRole != null) {
       const n = this._addToSet('t:' + key, String(productRole), HOUR, now);
-      // enumeration/traversal detection -> adaptive escalation (Turnstile widget wired in Step 3)
       if (n > cfg.distinctProductRolePerHour) return { ok: false, reason: 'enumeration', challenge: true };
     }
     return { ok: true, challenge: false };
   }
 }
 
-// Durable Object wrapper. In production this class is bound as a DO namespace (see wrangler.toml.example)
-// and reached via env.RATE_LIMITER; a single named instance ('global') holds the authoritative state.
+const jr = (status, obj) => new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } });
+async function batchPut(storage, puts) { const ks = Object.keys(puts); for (let i = 0; i < ks.length; i += STORAGE_BATCH) { const c = {}; for (const k of ks.slice(i, i + STORAGE_BATCH)) c[k] = puts[k]; await storage.put(c); } }
+async function batchDelete(storage, dels) { for (let i = 0; i < dels.length; i += STORAGE_BATCH) await storage.delete(dels.slice(i, i + STORAGE_BATCH)); }
+
+// Durable Object. Bound as env.RATE_LIMITER (see wrangler.toml.example); a single named instance
+// ('global') holds the authoritative, PERSISTED state.
 export class RateLimiterDurableObject {
-  constructor(state, env) { this.state = state; this.limiter = new LimiterState(); }
+  constructor(state, env) {
+    this.state = state;
+    this.limiter = new LimiterState();
+    // Load persisted state BEFORE any request is processed — otherwise startup races (Step-2b BLOCKER 1).
+    this.ready = state.blockConcurrencyWhile(async () => {
+      const cMap = new Map(), sMap = new Map();
+      for (const [sk, v] of await state.storage.list({ prefix: 'C:' })) cMap.set(sk.slice(2), v);
+      for (const [sk, v] of await state.storage.list({ prefix: 'S:' })) sMap.set(sk.slice(2), v);
+      this.limiter.hydrate(cMap, sMap);
+    });
+  }
+
   async fetch(request) {
+    await this.ready;   // redundant under real workerd (blockConcurrencyWhile gates), safe for fakes
     let body;
-    try { body = await request.json(); } catch { return jsonResponse(400, { ok: false, reason: 'bad_request' }); }
+    try { body = await request.json(); } catch { return jr(400, { ok: false, reason: 'bad_request' }); }
+
+    // internal introspection for tests — NEVER routed through the public Worker (the Worker only ever
+    // sends {key, botanical, productRole, now}), so it is not reachable by external callers.
+    if (body.action === 'stat') {
+      const c = this.limiter.counters.get(body.key);
+      const s = this.limiter.sets.get(body.key);
+      return jr(200, { count: c ? c.n : 0, setSize: s ? s.set.size : 0 });
+    }
+
     const key = typeof body.key === 'string' ? body.key : null;
-    if (!key) return jsonResponse(400, { ok: false, reason: 'no_key' });
+    if (!key) return jr(400, { ok: false, reason: 'no_key' });
     const result = this.limiter.check(key, { botanical: body.botanical, productRole: body.productRole, now: body.now });
-    return jsonResponse(200, result);
+
+    // Atomic persistence via the DO's single-threaded request path. Storage is the source of truth.
+    const ops = this.limiter.drainDirty();
+    const puts = {}; const dels = [];
+    for (const op of ops) {
+      if (op.kind === 'C') puts['C:' + op.key] = op.value;
+      else if (op.kind === 'S') puts['S:' + op.key] = op.value;
+      else { dels.push('C:' + op.key, 'S:' + op.key); }
+    }
+    if (Object.keys(puts).length) await batchPut(this.state.storage, puts);
+    if (dels.length) await batchDelete(this.state.storage, dels);
+    return jr(200, result);
   }
 }
-function jsonResponse(status, obj) { return new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } }); }
 
-// Called by the Worker. Fails CLOSED if the DO namespace is unbound (misconfiguration must not silently
-// downgrade to the weak per-isolate layer).
+// Called by the Worker. Fails CLOSED if the DO namespace is unbound (must not downgrade to the weak
+// per-isolate layer).
 export async function centralRateLimit(env, args) {
   const ns = env.RATE_LIMITER;
   if (!ns || typeof ns.idFromName !== 'function') return { ok: false, reason: 'limiter_unavailable', challenge: false, unavailable: true };

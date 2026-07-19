@@ -6,6 +6,10 @@
   "description": "ADR-014 server-side knowledge backend (Cloudflare Worker). Not deployed by Claude Code.",
   "scripts": {
     "generate": "node tools/generate_payloads.js",
-    "test": "node test/run_tests.js"
+    "test": "node test/run_tests.js",
+    "test:integration": "node test/integration_do.mjs"
+  },
+  "devDependencies": {
+    "miniflare": "^4.20260714.0"
   }
 }

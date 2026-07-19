@@ -35,8 +35,22 @@ function buildFakeKV(bundles) {
   m.set('matrix:' + bundles.manifest.matrix_version, JSON.stringify(bundles.matrix));
   return { gets: 0, async get(k) { this.gets++; return m.has(k) ? m.get(k) : null; }, _map: m };
 }
-// Fake Durable Object namespace: one in-process instance => globally consistent, like a real DO.
-function fakeDO() { const inst = new RateLimiterDurableObject({}, {}); return { idFromName: () => 'global', get: () => ({ fetch: (u, init) => inst.fetch(new Request(u, init)) }) }; }
+// Fake DO state (storage + blockConcurrencyWhile) so the storage-backed DO runs in-process. Real
+// persistence/restart/concurrency is covered by the Miniflare integration suite (integration_do.mjs).
+function fakeState() {
+  const store = new Map();
+  return {
+    storage: {
+      async get(k) { return store.get(k); },
+      async put(o, v) { if (o && typeof o === 'object' && v === undefined) { for (const [k, val] of Object.entries(o)) store.set(k, val); } else store.set(o, v); },
+      async delete(keys) { if (Array.isArray(keys)) { let n = 0; for (const k of keys) if (store.delete(k)) n++; return n; } return store.delete(keys); },
+      async list({ prefix } = {}) { const m = new Map(); for (const [k, v] of store) if (!prefix || k.startsWith(prefix)) m.set(k, v); return m; },
+    },
+    blockConcurrencyWhile(fn) { return fn(); },
+  };
+}
+// One in-process instance => globally consistent, like a real DO.
+function fakeDO() { const inst = new RateLimiterDurableObject(fakeState(), {}); return { idFromName: () => 'global', get: () => ({ fetch: (u, init) => inst.fetch(new Request(u, init)) }) }; }
 function envWith(kv, opts = {}) {
   return { SHOPIFY_APP_SECRET: SECRET, SPECIFICATION_TOKEN_SECRET: TOKEN_SECRET, HB_KV: kv, RATE_LIMITER: opts.noLimiter ? undefined : fakeDO() };
 }
