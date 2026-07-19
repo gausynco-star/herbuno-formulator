@@ -7,7 +7,6 @@ compatibility_date = "2026-07-19"
 
 # App Proxy forwards https://<shop>/apps/formulator/* to this Worker. Configure the proxy in the
 # Shopify custom app admin (subpath prefix "apps", subpath "formulator", proxy URL = this Worker).
-# Optionally also pin a route here if fronting a custom domain:
 # routes = [{ pattern = "herbuno.com/apps/formulator/*", zone_name = "herbuno.com" }]
 
 # KV namespace holding the versioned bundles (manifest:current, identity:<v>, formgraph:<v>, matrix:<v>).
@@ -16,7 +15,19 @@ compatibility_date = "2026-07-19"
 binding = "HB_KV"
 id = "REPLACE_WITH_KV_NAMESPACE_ID"
 
-# SECRET — do NOT put here. Set out of band:
-#   wrangler secret put SHOPIFY_APP_SECRET
+# Durable Object — central, authoritative rate limiter (ADR-014 Step-2a BLOCKER 2).
+# The Worker FAILS CLOSED (degraded) if this binding is absent.
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiterDurableObject"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["RateLimiterDurableObject"]
+
+# SECRETS — do NOT put here. Set out of band (two separate secrets):
+#   wrangler secret put SHOPIFY_APP_SECRET          # Shopify App Proxy shared secret
+#   wrangler secret put SPECIFICATION_TOKEN_SECRET  # independent random secret for token signing
 # Locally, use .dev.vars (gitignored):
 #   SHOPIFY_APP_SECRET = "shpss_..."
+#   SPECIFICATION_TOKEN_SECRET = "..."

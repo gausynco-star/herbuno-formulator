@@ -1,11 +1,19 @@
 // Version contract + tunables (ADR-014 §3). One place to change limits/TTLs.
 
 export const API_SCHEMA_VERSION = 1;      // bump when the response shape changes; clients reject mismatches
+export const TOKEN_VERSION = 1;           // specification_token schema version (validated on verify)
 export const TOKEN_TTL_SEC = 300;         // specification_token lifetime (short-lived)
+export const IAT_SKEW_SEC = 60;           // allowed clock skew when validating token iat
 export const FRESH_WINDOW_MS = 60_000;    // App Proxy timestamp freshness window (replay resistance)
+export const MAX_BODY_BYTES = 2048;       // request body cap (product/role/botanical/session are tiny)
+export const SESSION_ID_RE = /^[A-Za-z0-9_-]{1,64}$/; // session_id is UNTRUSTED — bounded length/charset
+
+// Exact routes (matched with ===, never endsWith).
+export const ROUTES = { SPEC: '/apps/formulator/specification', PROC: '/apps/formulator/procurement' };
 
 // Starting rate limits (ADR-014 §2 — tune from telemetry later; NOT permanent).
-export const RATE = { perMin: 10, perHour: 60, perDay: 150, uniqBotanicalsPerHour: 30 };
+// distinctProductRolePerHour is the enumeration/traversal ceiling per server-derived key.
+export const RATE = { perMin: 10, perHour: 60, perDay: 150, uniqBotanicalsPerHour: 30, distinctProductRolePerHour: 50 };
 
 // Honest degraded-state message (ADR-014 §"Degraded state"). Never serve a partial/guessed result.
 export const DEGRADED_MESSAGE =

@@ -4,23 +4,24 @@ Implements ADR-014 (see `docs/DECISION_LOG.md`): the Product × Role matrix, ide
 observed-form graph, plus all resolution/intersection logic, run in a **Cloudflare Worker** behind a
 **Shopify App Proxy**. The browser never receives the knowledge graph.
 
-**Status: built + locally tested, NOT deployed.** Client wiring (`javascript/blend-builder.js`) is
-Step 3 and is untouched here.
+**Status: built + locally tested + external-audit fixes applied (Step 2a), NOT deployed.** Client
+wiring (`javascript/blend-builder.js`) is Step 3 and is untouched here.
 
 ## Layout
 
 ```
 worker/
   src/
-    index.js      fetch handler + pipeline (signature → timestamp → allow-list → rate limit → resolve)
-    engine.js     resolution + Product×Role intersection + spec build (indices built once/isolate)
-    security.js   App Proxy signature, timestamp freshness, input allow-list, rate limit
-    token.js      short-lived signed specification_token (Stage 1 → Stage 2 bridge)
-    store.js      load-once KV bundle cache, module-scope retention, fail-closed version check
-    version.js    version contract, tunables, degraded message
-    hmac.js       Web Crypto helpers (work identically in Workers and Node)
+    index.js            fetch handler + pipeline (signature → timestamp → allow-list → rate limit → resolve)
+    engine.js           resolution + Product×Role selection (indices built once/isolate)
+    security.js         App Proxy signature, timestamp, input allow-list, per-isolate rate PRE-check
+    rate_limiter_do.js  central Durable Object limiter (authoritative) + LimiterState logic
+    token.js            short-lived signed specification_token (Stage 1 → Stage 2 bridge)
+    store.js            load-once KV cache, INIT_PROMISE (no cold-start race), fail-closed versions
+    version.js          version contract, tunables, degraded message
+    hmac.js             Web Crypto helpers (constant-time verify; work in Workers and Node)
   tools/generate_payloads.js   runtime-minimal payload generator + mandatory leakage test (committed)
-  test/run_tests.js            local suite (no framework); `node test/run_tests.js`
+  test/run_tests.js            local suite (no framework); `node test/run_tests.js` — 41 assertions
   data/                        generated bundles (gitignored — reproduce with the generator)
   wrangler.toml.example        deployment config template (no secrets)
 ```
@@ -29,40 +30,77 @@ worker/
 
 ```bash
 node worker/tools/generate_payloads.js   # writes worker/data/*.json, runs the leakage test
-node worker/test/run_tests.js            # 19 assertions, no deployment
+node worker/test/run_tests.js            # 41 assertions, no deployment
 ```
 
-The generator reads the frozen sources (`knowledge/identity/botanical_identity.json`,
-`knowledge/pass3/observed_form_graph.json`, `javascript/herbuno-matrix.js`) and emits the
-**runtime-minimal, storefront-safe** bundles — provenance, GBIF metadata, review/merge history,
-supplier identity, supplier counts, observation provenance, and source families are all stripped. The
-leakage test fails the build if any of those appear in a payload.
+The generator reads the frozen sources and emits the **runtime-minimal, storefront-safe** bundles —
+provenance, GBIF metadata, review/merge history, supplier identity, supplier counts, observation
+provenance, and source families are all stripped. The leakage test fails the build if any appear.
 
 ## Endpoints (via App Proxy: `https://<shop>/apps/formulator/*`)
 
 - **`POST /apps/formulator/specification`** — in: `product`, `role`, `botanical` (+ optional
-  `session_id`). Out: `identity_status` (`resolved`/`ambiguous`/`unrecognised`), display identity,
-  specification object, `technical_explanation`, `version` block, and a short-lived signed
-  `specification_token` (only when a single identity resolves).
+  `session_id`). Out (MINIMAL, ADR-014 Step-2a Option A):
+  ```json
+  {
+    "identity_status": "resolved",
+    "identity": { "display_name": "Ashwagandha", "authority_name": "Withania somnifera" },
+    "specification": { "selected_format": "WL", "technical_status": "Best physical fit", "role": "Active" },
+    "explanation": "…one caveat…",
+    "specification_token": "…",
+    "version": { "…": "…" }
+  }
+  ```
+  **Nothing else crosses the wire** — no ladder arrays (`preferred`/`conditional`/`unsuitable`), no
+  `observed_available`, no canonical IDs, no candidate lists, no counts, no supplier evidence.
+  Ambiguous identities return only a neutral message; unrecognised terms return no identity detail.
 - **`POST /apps/formulator/procurement`** — in: `specification_token` only. Any extra field is
-  rejected, so the client cannot fabricate or alter a specification. Out: `match_class`,
-  `product_handles`, `sourcing_route`, `version`.
+  rejected, so the client cannot fabricate or alter a specification. The token's claims (cid, product,
+  role, selected_format, api schema, snapshot versions) are re-validated against live state. Out:
+  `match_class`, `product_handles`, `sourcing_route`, `version`.
 
-Response minimisation: only the selected specification is returned. **No bulk endpoint exists.**
+Response minimisation throughout. **No bulk endpoint exists** (exact route matching, not `endsWith`).
 
-## Version contract
+## Request pipeline (order)
+
+1. **App Proxy signature** (constant-time Web Crypto verify). Proves Shopify forwarded an untampered
+   request — **not** that the caller is the Formulator UI (anonymous proxy calls are possible); the
+   remaining controls exist because of this.
+2. **Timestamp freshness** (replay resistance).
+3. **Strict input allow-list**. `session_id` is UNTRUSTED — bounded length/charset, and **never** a
+   rate-limit key.
+4. **Rate limit** — a cheap per-isolate pre-check, then the **authoritative central limiter** (see
+   below). Keyed on the Cloudflare **connecting IP** (`x-forwarded-for` is never trusted).
+5. Resolve → select → respond.
+
+## Central rate limiter (Durable Object)
+
+Per-isolate Maps cannot enforce across isolates and a rotated `session_id` bypasses them, so they are
+only a first layer. The **authoritative** limiter is a **Durable Object** (`RateLimiterDurableObject`,
+bound as `RATE_LIMITER`): one globally-consistent instance enforcing per-IP minute/hour/day limits, a
+unique-botanical ceiling, and **product×role traversal (enumeration) detection** with adaptive
+escalation. Limits are keyed on the server-derived IP. If the DO namespace is unbound, the Worker
+**fails closed** (degraded) rather than silently relying on the weak per-isolate layer.
+
+- Enforcement logic (`LimiterState`) is unit-tested locally; **creating the live DO namespace + binding
+  is a DEPLOY step** (the central limiter being present is a deploy blocker; building it is not blocked
+  by account setup).
+- Adaptive Turnstile: the limiter flags `challenge` on enumeration; the Turnstile **widget** is wired
+  client-side in Step 3. Until then, flagged traffic is hard-limited (429 with `challenge_required`).
+
+## Version contract & degraded state
 
 Every response carries `api_schema_version`, `matrix_version`, `identity_version`,
-`observed_form_graph_version`, `response_generated_at`. The `specification_token` embeds the snapshot
-versions; procurement rejects a token whose snapshot differs from the currently loaded bundles. On any
-version inconsistency the Worker **fails closed** with the honest degraded message — never a mixed or
-partial result.
+`observed_form_graph_version`, `response_generated_at`. The `specification_token` embeds the api schema
++ snapshot versions; procurement rejects a token whose snapshot differs from the loaded bundles. On any
+version inconsistency or unavailable data the Worker **fails closed** with the honest generic degraded
+message — never a mixed/partial result, and **internal reasons (KV key names, version mismatches) are
+logged server-side only**, never returned to the browser.
 
 ## KV key scheme
 
 A pointer key names the current versions; bundles live under version-stamped keys, so bumping
-`identity_version` is a data change (write new bundles + update the pointer) with **no Worker
-redeploy**.
+`identity_version` is a data change (write new bundles + update the pointer) with **no redeploy**.
 
 | key | value |
 |---|---|
@@ -71,10 +109,18 @@ redeploy**.
 | `formgraph:<observed_form_graph_version>` | storefront-safe form graph bundle |
 | `matrix:<matrix_version>` | matrix data bundle |
 
-The Worker reads the pointer once per isolate, loads the three bundles, verifies cross-consistency,
-builds the indices **once**, and retains everything in module scope for the isolate's lifetime. KV
-caching is not automatic — `store.js` *is* the cache. (See ADR-014 §0/§4 and Step-1 benchmark:
-per-request rebuilds would blow the 10 ms CPU budget.)
+`store.js` loads these **once per isolate** (guarded by a module-scope `INIT_PROMISE` so concurrent
+cold requests initialise exactly once), builds the indices once, and retains everything in module
+scope. KV caching is not automatic — this module *is* the cache.
+
+## Security decisions recorded (deliberate, not oversights)
+
+- **Token replay within the 5-minute TTL is ACCEPTED.** Procurement is read-only, so a `jti`/replay
+  store adds complexity without meaningful benefit at this stage. (Owner decision.)
+- **Two separate secrets:** `SHOPIFY_APP_SECRET` verifies the App Proxy signature; a distinct
+  `SPECIFICATION_TOKEN_SECRET` signs specification tokens. Neither is ever committed.
+- **Minimal Stage-1 response (Option A):** the three-band ladder is intentionally not returned; the
+  Stage-1 UI three-band display is dropped and that UX change lands in Step 3. (Owner decision.)
 
 ---
 
@@ -83,35 +129,35 @@ per-request rebuilds would blow the 10 ms CPU budget.)
 Claude Code does **not** deploy. To go live you will need to:
 
 1. **Cloudflare account** + Workers enabled. Free tier is sufficient per the Step-1 benchmark.
-2. **KV namespace** (e.g. `HB_KV`). Bind it in `wrangler.toml` (copy from `wrangler.toml.example`).
-3. **Shopify custom app** with **App Proxy** configured to forward `/apps/formulator/*` to the Worker
-   URL. Note the app's **shared secret**.
-4. **Worker secret** — store the Shopify shared secret; it is **never committed**:
+2. **KV namespace** (`HB_KV`). Bind it in `wrangler.toml` (copy from `wrangler.toml.example`).
+3. **Durable Object namespace** for the central rate limiter (`RATE_LIMITER` → `RateLimiterDurableObject`),
+   with the migration in `wrangler.toml.example`. **The Worker fails closed without it.**
+4. **Shopify custom app** with **App Proxy** forwarding `/apps/formulator/*` to the Worker. Note the
+   app's **shared secret**.
+5. **Two Worker secrets** (never committed):
    ```bash
-   wrangler secret put SHOPIFY_APP_SECRET
+   wrangler secret put SHOPIFY_APP_SECRET            # Shopify App Proxy shared secret
+   wrangler secret put SPECIFICATION_TOKEN_SECRET    # independent random secret for token signing
    ```
-5. **Upload the bundles to KV** (regenerate whenever the backbone/graph/matrix changes):
+6. **Upload the bundles to KV** (regenerate whenever the backbone/graph/matrix changes):
    ```bash
    node worker/tools/generate_payloads.js
-   wrangler kv key put --binding=HB_KV "manifest:current"                  --path worker/data/manifest.json
-   wrangler kv key put --binding=HB_KV "identity:<identity_version>"        --path worker/data/identity_index.json
-   wrangler kv key put --binding=HB_KV "formgraph:<observed_form_graph_version>" --path worker/data/form_graph.json
-   wrangler kv key put --binding=HB_KV "matrix:<matrix_version>"            --path worker/data/matrix.json
+   wrangler kv key put --binding=HB_KV "manifest:current"                        --path worker/data/manifest.json
+   wrangler kv key put --binding=HB_KV "identity:<identity_version>"              --path worker/data/identity_index.json
+   wrangler kv key put --binding=HB_KV "formgraph:<observed_form_graph_version>"  --path worker/data/form_graph.json
+   wrangler kv key put --binding=HB_KV "matrix:<matrix_version>"                  --path worker/data/matrix.json
    ```
    (The generator prints the exact key names for the current versions.)
-6. `wrangler deploy`.
+7. `wrangler deploy`.
 
-**Secrets rule:** the shared secret lives only as a Worker secret (or local `.dev.vars`, gitignored).
-Never in the repo. `SHOPIFY_APP_SECRET` is read from `env` — the code contains no secret.
+**Secrets rule:** secrets live only as Worker secrets (or local `.dev.vars`, gitignored). Never in the
+repo — the code reads them from `env`.
 
-## Known limitations (Step-3+ hardening, deliberately not done here)
+## Known limitations (Step-3+, deliberately not done here)
 
-- **Rate limiting is per-isolate** (in-memory module scope). Cross-isolate limits need Durable Objects
-  or a KV/counter service — wire that when tuning from live telemetry.
-- **App Proxy signature** proves Shopify forwarded an untampered request; it does **not** prove the
-  caller is the Formulator UI, and anonymous proxy calls are supported (ADR-014). The other controls
-  (timestamp, allow-list, rate limit) exist because of this.
-- **Turnstile** is deliberately deferred until there is live telemetry (ADR-014 §6).
-- **`product_handles` is empty**: real Herbuno catalogue matching needs the off-repo catalogue, wired
-  in Step 3. Stage-2 `match_class` currently uses the observed-form graph as a stock proxy.
+- **Procurement uses the observed-form graph as a STOCK PROXY.** This is functionally incorrect until
+  real Herbuno catalogue stock is wired, and repeated `match_class` responses form a graph-membership
+  oracle. `product_handles` is empty. Resolve when catalogue stock is wired (Step 3).
+- **Turnstile widget** is deferred to Step 3; the limiter already computes the escalation signal.
+- **Central limiter requires the live DO binding** (a deploy prerequisite; logic is built + tested).
 - No client changes; `javascript/blend-builder.js` is untouched (Step 3).

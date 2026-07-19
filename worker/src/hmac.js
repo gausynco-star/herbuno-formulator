@@ -4,26 +4,44 @@
 const enc = new TextEncoder();
 const dec = new TextDecoder();
 
-async function importKey(secret) {
-  return crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+async function importKey(secret, usage) {
+  return crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, usage);
 }
 
 export async function hmacHex(secret, message) {
-  const sig = await crypto.subtle.sign('HMAC', await importKey(secret), enc.encode(message));
+  const sig = await crypto.subtle.sign('HMAC', await importKey(secret, ['sign']), enc.encode(message));
   return [...new Uint8Array(sig)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 export async function hmacB64url(secret, message) {
-  const sig = await crypto.subtle.sign('HMAC', await importKey(secret), enc.encode(message));
+  const sig = await crypto.subtle.sign('HMAC', await importKey(secret, ['sign']), enc.encode(message));
   return bytesToB64url(new Uint8Array(sig));
 }
 
-// constant-time string compare (equal length assumed; length leak is not sensitive here)
-export function timingSafeEqual(a, b) {
-  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
-  let r = 0;
-  for (let i = 0; i < a.length; i++) r |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  return r === 0;
+// Verification via crypto.subtle.verify — the platform primitive is constant-time and not defeated by
+// JIT (unlike a hand-written equal-length loop). Malformed signature encodings verify as false.
+export async function hmacVerifyHex(secret, message, sigHex) {
+  if (typeof sigHex !== 'string' || !/^[0-9a-fA-F]*$/.test(sigHex) || sigHex.length % 2) return false;
+  const bytes = new Uint8Array(sigHex.length / 2);
+  for (let i = 0; i < bytes.length; i++) bytes[i] = parseInt(sigHex.substr(i * 2, 2), 16);
+  try { return await crypto.subtle.verify('HMAC', await importKey(secret, ['verify']), bytes, enc.encode(message)); }
+  catch { return false; }
+}
+export async function hmacVerifyB64url(secret, message, sigB64url) {
+  const bytes = b64urlToBytes(sigB64url);
+  if (!bytes) return false;
+  try { return await crypto.subtle.verify('HMAC', await importKey(secret, ['verify']), bytes, enc.encode(message)); }
+  catch { return false; }
+}
+
+function b64urlToBytes(s) {
+  if (typeof s !== 'string' || !/^[A-Za-z0-9\-_]*$/.test(s)) return null;
+  try {
+    const bin = atob(s.replace(/-/g, '+').replace(/_/g, '/'));
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+  } catch { return null; }
 }
 
 export function bytesToB64url(bytes) {

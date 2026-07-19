@@ -3,20 +3,21 @@
 //   - retain parsed data AND the built indices in module scope for the isolate's lifetime,
 //   - never re-fetch or re-index per request.
 // KV caching is NOT automatic — this module IS the cache. Fails CLOSED on version mismatch.
+//
+// BLOCKER 3 fix: isolates serve concurrent requests during awaits, so assigning CACHE only after four
+// awaited KV reads + index build lets two cold requests both initialise. A module-scope INIT_PROMISE
+// makes initialisation happen exactly once; concurrent callers await the same promise.
 import { makeEngine } from './engine.js';
 import { checkVersions, DegradedError } from './version.js';
 
-// module scope => shared across requests on the same isolate, rebuilt only on a fresh isolate
 let CACHE = null;
-let INIT_COUNT = 0; // test hook: how many times indices were built
+let INIT_PROMISE = null;
+let INIT_COUNT = 0; // test hook: how many times indices were actually built
 let KV_GETS = 0;    // test hook: how many KV reads were issued
 
-export function __resetStore() { CACHE = null; INIT_COUNT = 0; KV_GETS = 0; }
+export function __resetStore() { CACHE = null; INIT_PROMISE = null; INIT_COUNT = 0; KV_GETS = 0; }
 export function __stats() { return { initCount: INIT_COUNT, kvGets: KV_GETS, cached: !!CACHE }; }
 
-// KV key scheme (see README): a pointer key names the current versions; bundles are stored under
-// version-stamped keys, so an identity_version bump = write new bundles + update the pointer, no
-// Worker redeploy.
 const KEY = {
   manifest: 'manifest:current',
   identity: (v) => 'identity:' + v,
@@ -31,9 +32,7 @@ async function kvGetJson(kv, key) {
   try { return JSON.parse(raw); } catch { throw new DegradedError('bad_json:' + key); }
 }
 
-// Returns { engine, versions, manifest }. Throws DegradedError on any load/consistency failure.
-export async function getContext(env) {
-  if (CACHE) return CACHE;
+async function initialise(env) {
   const kv = env.HB_KV;
   if (!kv || typeof kv.get !== 'function') throw new DegradedError('kv_unavailable');
 
@@ -47,7 +46,7 @@ export async function getContext(env) {
 
   const engine = makeEngine(identity, formgraph, matrix); // builds indices ONCE
   INIT_COUNT++;
-  CACHE = {
+  return {
     engine,
     versions: {
       identity_version: manifest.identity_version,
@@ -56,5 +55,18 @@ export async function getContext(env) {
     },
     manifest,
   };
-  return CACHE;
+}
+
+// Returns { engine, versions, manifest }. Throws DegradedError on load/consistency failure.
+// Concurrent cold callers share ONE INIT_PROMISE -> exactly one initialisation per isolate.
+export async function getContext(env) {
+  if (CACHE) return CACHE;
+  if (!INIT_PROMISE) INIT_PROMISE = initialise(env);
+  try {
+    CACHE = await INIT_PROMISE;
+    return CACHE;
+  } catch (e) {
+    INIT_PROMISE = null; // allow a later request to retry after a transient failure
+    throw e;
+  }
 }

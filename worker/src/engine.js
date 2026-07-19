@@ -112,30 +112,32 @@ function buildFormsIndex(formGraph) {
   return forms;
 }
 
-// ---- specification (Stage 1) ----
-export function buildSpec(engine, idn, ladder) {
-  const observed = idn.canonical_id ? (engine.forms.get(idn.canonical_id) || EMPTY) : EMPTY;
-  let bestFit = null;
-  const preferred = ladder ? ladder.preferred : [];
-  for (const code of preferred) { if ((ladder.fmt[code] || {}).tier === 'ok') { bestFit = code; break; } }
-  return {
-    role: ladder ? ladder.label : null,
-    routing: ladder ? ladder.routing : null,
-    format_ladder: { best_fit: bestFit, preferred, conditional: ladder ? ladder.conditional : [], unsuitable: ladder ? ladder.unsuitable : [] },
-    best_fit_note: (bestFit && ladder) ? ((ladder.fmt[bestFit] || {}).note || null) : null,
-    observed_available: preferred.filter(c => observed.has(c)),
-  };
+// ---- specification (Stage 1), MINIMAL (ADR-014 Step-2a BLOCKER 1) ----
+// Internally the engine sees the whole ladder; the RESPONSE must expose only the single selected
+// format + a status + one caveat. selected = best-fit (first preferred with tier 'ok'), else the top
+// conditional where no 'ok' exists. The ladder arrays, observed_available and canonical IDs never leave.
+const AMBIGUOUS_MESSAGE = 'Multiple botanical identities match this name. Please provide the Latin name or source species.';
+
+export function selectSpecification(ladder) {
+  if (!ladder) return { selected_format: null, technical_status: null, best_fit: null, role: null, tier: null };
+  let best = null;
+  for (const c of ladder.preferred) { if ((ladder.fmt[c] || {}).tier === 'ok') { best = c; break; } }
+  let selected = best, tier = 'ok';
+  if (!selected) { selected = (ladder.conditional && ladder.conditional[0]) || null; tier = selected ? ((ladder.fmt[selected] || {}).tier || 'warn') : null; }
+  const technical_status = selected == null ? 'No suitable commercial format'
+    : tier === 'ok' ? 'Best physical fit' : 'Conditional — confirm suitability at SKU level';
+  return { selected_format: selected, technical_status, best_fit: best, role: ladder.label || null, tier };
 }
 
-export function explain(status, rec, spec, ladder) {
-  if (status === 'ambiguous') return 'Common name resolves to more than one botanical identity; a source/species is required before a specification can be issued.';
+// ONE caveat only. For a selected format, the single first sentence of that cell's note (a caveat is
+// explicitly permitted by BLOCKER 1); otherwise a controlled fallback. Never the full note.
+export function oneCaveat(status, sel, ladder) {
+  if (status === 'ambiguous') return AMBIGUOUS_MESSAGE;
   if (status === 'unrecognised') return 'No botanical identity matched this term in the current knowledge snapshot.';
-  const name = rec ? (rec.canonical_display_name || rec.authority_accepted_name) : null;
-  const auth = rec ? rec.authority_accepted_name : null;
-  const bf = spec.format_ladder.best_fit;
-  const role = spec.role || 'this role';
-  if (!bf) return `${name} resolved${auth && auth !== name ? ` (authority: ${auth})` : ''}; no preferred commercial format is rated suitable for ${role} — see the ladder.`;
-  return `${name} resolved${auth && auth !== name ? ` (authority: ${auth})` : ''}. For ${role}, the best-fit commercial format is ${bf}.`;
+  if (!sel.selected_format) return `No commercial format is rated suitable for ${sel.role || 'this role'} — contact Herbuno for review.`;
+  const note = ladder && (ladder.fmt[sel.selected_format] || {}).note;
+  if (note) { const first = String(note).split(/\.\s/)[0].trim(); if (first) return first.endsWith('.') ? first : first + '.'; }
+  return `Confirm SKU-level suitability of the ${sel.selected_format} grade with the supplier.`;
 }
 
 // ---- procurement (Stage 2) ----
