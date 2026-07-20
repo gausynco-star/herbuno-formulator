@@ -160,14 +160,24 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
   // guidance_only / no_code_application_dependent). For guidance roles there is no format to select, so we
   // surface the role's guidance text (rec) instead of a "no suitable format" dead-end, and issue no token.
   const isCatalogue = ladder && ladder.routing === 'catalogue';
-  const sel = isCatalogue
-    ? selectSpecification(ladder)
-    : { selected_format: null, technical_status: routingStatus(ladder && ladder.routing), role: ladder ? ladder.label : null };
+  const catSel = isCatalogue ? selectSpecification(ladder) : null;
+  // UX 2 (owner-approved): a catalogue cell that yields NO selectable format but carries a role `rec` is a
+  // CATEGORY ERROR — the role is normally fulfilled differently (classical in-process route / DC-fibre grade
+  // / aromatic ingredient), NOT a failed catalogue search. Present it as guidance ("This role is normally
+  // fulfilled differently") and surface the rec — never "No suitable commercial format", and issue no token
+  // (nothing to source). This reads ladder.rec for PRESENTATION only; it edits no signed-off cell (HARD RULE 1).
+  const catalogueNoFit = !!(isCatalogue && catSel.selected_format == null && ladder.rec);
+  const asGuidance = !isCatalogue || catalogueNoFit;   // no selectable format -> guidance presentation, no token
+  const sel = !asGuidance
+    ? catSel
+    : { selected_format: null,
+        technical_status: catalogueNoFit ? 'This role is normally fulfilled differently' : routingStatus(ladder && ladder.routing),
+        role: ladder ? ladder.label : null };
   const explanation = !resolved
     ? oneCaveat(status, sel, ladder)                        // ambiguous/unrecognised identity message
-    : isCatalogue
-      ? oneCaveat('resolved', sel, ladder)                 // the selected format's caveat
-      : (ladder.rec || 'The right approach depends on the product and process — contact Herbuno for guidance.');
+    : asGuidance
+      ? ((ladder && ladder.rec) || 'The right approach depends on the product and process — contact Herbuno for guidance.')
+      : oneCaveat('resolved', sel, ladder);                // the selected format's caveat
 
   // ADR-014 minimal-response EXCEPTION — AMBIGUITY ONLY (Live-test R2 UX 1): to let the shopper
   // disambiguate, surface the RESOLVER'S OWN candidate identities as PUBLIC display/authority names.
@@ -187,19 +197,28 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
     identity,
     specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
     explanation,
-    // three physics-only conclusions — only for catalogue roles (guidance roles have no format to reason about)
-    reasoning_checks: isCatalogue ? reasoningChecks(ladder, sel.selected_format) : null,
+    // three physics-only conclusions — only when a real format was selected (guidance / category-error
+    // presentations have no format to reason about)
+    reasoning_checks: asGuidance ? null : reasoningChecks(ladder, sel.selected_format),
     reasoning_basis: resolved ? 'botanical' : 'role',
-    specification_token: null,      // set below ONLY for resolved catalogue roles (server-side enforcement)
+    specification_token: null,      // set below ONLY for a resolved catalogue role WITH a selectable format
     version: versionBlock(versions),
   };
+  // Guidance-row label: "Typical commercial approach" describes how the role is NORMALLY fulfilled — it does
+  // NOT imply Herbuno stocks anything, and no catalogue was checked (real-stock integration is an open
+  // ADR-014 gap). Applied to guidance_only routes + UX2 category errors; absent otherwise (client defaults
+  // to "Guidance" for out_of_scope / ask_us).
+  if (resolved && asGuidance && ((ladder && ladder.routing === 'guidance_only') || catalogueNoFit)) {
+    resp.guidance_label = 'Typical commercial approach';
+  }
   // candidate mismatch check — only when the user actually supplied a format (role physics; runs for every
   // status). SE returns the LOCKED application-review response inside assessCandidate.
   if (candidateFormat !== undefined) resp.candidate_assessment = assessCandidate(ladder, candidateFormat);
 
-  // Token ONLY for a resolved identity on a catalogue role: guidance roles and unresolved identities have
-  // nothing for Stage 2 to match against, so the client disables the Stage-2 action for them.
-  if (resolved && isCatalogue) {
+  // Token ONLY for a resolved identity on a catalogue role that has a real selectable format: guidance
+  // roles, category errors, and unresolved identities have nothing for Stage 2 to match against, so the
+  // client disables the Stage-2 action for them.
+  if (resolved && !asGuidance) {
     resp.specification_token = await signToken(tokenSecret, {
       cid: idn.canonical_id, product: body.product, role: body.role,
       sf: sel.selected_format, api: API_SCHEMA_VERSION,

@@ -49,7 +49,6 @@
   ];
 
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-  function joinOr(parts) { if (!parts.length) return ''; if (parts.length === 1) return parts[0]; if (parts.length === 2) return parts[0] + ' or ' + parts[1]; return parts.slice(0, -1).join(', ') + ' or ' + parts[parts.length - 1]; }
   function productName(id) { for (var i = 0; i < PRODUCTS.length; i++) { var it = PRODUCTS[i].items; for (var j = 0; j < it.length; j++) if (it[j].id === id) return it[j].name; } return id; }
   function roleLabel(id) { for (var i = 0; i < ROLES.length; i++) if (ROLES[i].id === id) return ROLES[i].label; return id; }
   function formLabel(code) { return code ? (FORMAT_LABELS[code] || code) : 'Application review needed'; }
@@ -123,11 +122,13 @@
         specRow('Technical status', esc(sp.technical_status || '—')) +
         specRow('Why', esc(resp.explanation || ''));
     } else {
-      // guidance role (e.g. base = the product matrix itself) or no suitable catalogue format.
-      // Label is "Assessment", NOT "Status": "Technical status" is reserved for a form's physical-fit
-      // verdict, so the same visual slot never carries two meanings (Live-test R2 BUG 3).
+      // guidance role, or a UX2 category error (catalogue role fulfilled differently). Label is
+      // "Assessment", NOT "Status": "Technical status" is reserved for a form's physical-fit verdict, so the
+      // same visual slot never carries two meanings (BUG 3). The rec row is "Typical commercial approach"
+      // when the Worker sends guidance_label — it describes how the role is normally fulfilled, NOT that
+      // Herbuno stocks anything (no catalogue is ever checked). Defaults to "Guidance" otherwise.
       h += specRow('Assessment', '<b>' + esc(sp.technical_status || '—') + '</b>') +
-        specRow('Guidance', esc(resp.explanation || ''));
+        specRow(resp.guidance_label || 'Guidance', esc(resp.explanation || ''));
     }
     h += '</div>';
     h += renderCandidate(resp);
@@ -137,13 +138,13 @@
   }
   // ambiguous / unrecognised: NO identity claim, NO Stage-2. Generic Product×Role guidance may still show,
   // clearly labelled role-based (reasoning_basis === 'role').
-  // ambiguity candidate line — display/authority names the Worker surfaced for THIS query (UX 1). Names only,
-  // never IDs/counts; the client does not look anything up. Renders only when the Worker provided candidates.
+  // ambiguity candidate list — the identity NAMES the Worker surfaced for THIS query (UX 1), as bullets.
+  // Names only, never IDs/counts; the client looks nothing up. Renders only when the Worker sent candidates.
   function candidatesLine(resp) {
     var cands = resp.identity && resp.identity.candidates;
     if (resp.identity_status !== 'ambiguous' || !cands || !cands.length) return '';
-    var names = cands.map(function (c) { return '<i>' + esc(c.authority_name || c.display_name) + '</i>'; });
-    return '<p class="bb-card-cands">This could be ' + joinOr(names) + '. Tell us which — enter the Latin name or source species.</p>';
+    var items = cands.map(function (c) { return '<li>' + esc(c.authority_name || c.display_name) + '</li>'; }).join('');
+    return '<div class="bb-card-cands"><p>This name may refer to:</p><ul>' + items + '</ul></div>';
   }
   function renderNonResolved(resp) {
     var sp = resp.specification || {};
@@ -177,11 +178,13 @@
     return resp.identity_status === 'resolved' ? renderResolved(resp) : renderNonResolved(resp);
   }
   function renderStage2Result(proc) {
-    // Stage 2 (temporary proxy over the observed-form graph): a sourcing route only, NEVER a catalogue match.
+    // Stage 2 is a temporary proxy over the observed-form graph (common commercial formats, trade-convention
+    // derived) — NOT Herbuno inventory. Copy must NEVER imply the catalogue/stock was checked (real-stock
+    // integration is an open ADR-014 gap): frame around what forms this botanical is commonly supplied in.
     var cls = proc.match_class, msg;
-    if (cls === 'exact_match') msg = "Herbuno's sourcing network shows this form is available to source.";
-    else if (cls === 'compatible_alternative') msg = 'A compatible form is available to source; the exact form may need a sourcing request.';
-    else msg = 'Not currently in the observed sourcing network — ask Herbuno to source this.';
+    if (cls === 'exact_match') msg = 'This is a common commercial format for this botanical — send Herbuno an enquiry to source it.';
+    else if (cls === 'compatible_alternative') msg = 'This botanical is commonly supplied in related formats; the exact form may need a sourcing request.';
+    else msg = 'This isn’t among the common commercial formats mapped for this botanical — ask Herbuno to source it.';
     return '<div class="bb-sourcing"><div class="bb-sourcing-h">Sourcing options</div>' +
       '<p class="bb-sourcing-msg">' + esc(msg) + '</p>' +
       '<div class="bb-actions"><button class="bb-btn o" data-enquiry="1">Ask Herbuno to source this →</button>' +
@@ -276,12 +279,30 @@
     W.innerHTML = workHtml();
   }
 
+  function enquiryText() {
+    return 'Product: ' + productName(S.product) + '\nRole: ' + roleLabel(S.role) + '\nBotanical: ' + (S.botanical || '') +
+      (S.candidate && S.candidate !== 'OTHER' ? '\nFormat in mind: ' + candidateLabel(S.candidate) : '');
+  }
   function enquiryMailto() {
     var subj = 'Formulator enquiry: ' + (S.botanical || 'botanical') + ' for ' + productName(S.product);
-    var body = 'Product: ' + productName(S.product) + '\nRole: ' + roleLabel(S.role) + '\nBotanical: ' + (S.botanical || '') +
-      (S.candidate && S.candidate !== 'OTHER' ? '\nFormat in mind: ' + candidateLabel(S.candidate) : '') +
-      '\n\nPlease advise on sourcing.';
-    return 'mailto:hello@herbuno.com?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+    return 'mailto:hello@herbuno.com?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(enquiryText() + '\n\nPlease advise on sourcing.');
+  }
+  // BUG 2: the enquiry route must NEVER be a dead control. A bare `mailto:` silently no-ops when the browser
+  // has no mail handler (exactly the live symptom). Instead open an in-page panel that ALWAYS does something
+  // visible: it shows the prefilled details, offers a native mail link, and a "Copy details" fallback that
+  // works with no mail client at all.
+  function closeEnquiry() { var e = document.getElementById('bb-enq'); if (e) e.remove(); }
+  function openEnquiry() {
+    closeEnquiry();
+    var m = document.createElement('div');
+    m.className = 'bb-modal'; m.id = 'bb-enq'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true');
+    m.innerHTML = '<div class="bb-mb"><div class="bb-mt"><h3>Ask Herbuno to source this</h3>' +
+      '<button class="bb-x" data-enq-close="1" aria-label="Close">×</button></div>' +
+      '<div class="bb-mbd"><div class="bb-ctx">' + esc(enquiryText()).replace(/\n/g, '<br>') + '</div>' +
+      '<p class="bb-priv">Send these details to our sourcing team and we’ll get back to you.</p>' +
+      '<div class="bb-actions"><a class="bb-btn" href="' + esc(enquiryMailto()) + '">Open in email</a>' +
+      '<button class="bb-btn o" data-enq-copy="1">Copy details</button></div></div></div>';
+    root.appendChild(m);
   }
   function postJson(url, body) {
     return fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
@@ -309,15 +330,18 @@
   }
 
   root.addEventListener('click', function (e) {
+    if (e.target.id === 'bb-enq') { closeEnquiry(); return; } // click the modal backdrop to dismiss
     var md = e.target.closest ? e.target.closest('[data-mode]') : null;
     if (md) { S.mode = md.getAttribute('data-mode'); try { sessionStorage.setItem('hb_mode', S.mode); } catch (x) {} draw(); return; }
-    var t = e.target.closest ? e.target.closest('[data-sourcing],[data-backspec],[data-retry],[data-enquiry],[data-copysel],#bb-go') : null;
+    var t = e.target.closest ? e.target.closest('[data-sourcing],[data-backspec],[data-retry],[data-enquiry],[data-enq-close],[data-enq-copy],[data-copysel],#bb-go') : null;
     if (!t) return;
     if (t.id === 'bb-go') submitSpec();
     else if (t.getAttribute('data-sourcing') != null) submitSourcing();
     else if (t.getAttribute('data-backspec') != null) { S.view = 'result'; S.proc = null; draw(); }
     else if (t.getAttribute('data-retry') != null) submitSpec();
-    else if (t.getAttribute('data-enquiry') != null) { window.location.href = enquiryMailto(); }
+    else if (t.getAttribute('data-enquiry') != null) { openEnquiry(); }
+    else if (t.getAttribute('data-enq-close') != null) { closeEnquiry(); }
+    else if (t.getAttribute('data-enq-copy') != null) { try { navigator.clipboard.writeText(enquiryText()); t.textContent = 'Copied'; } catch (x) {} }
     else if (t.getAttribute('data-copysel') != null) {
       var sel = 'Product: ' + productName(S.product) + ' · Role: ' + roleLabel(S.role) + ' · Botanical: ' + (S.botanical || '');
       try { navigator.clipboard.writeText(sel); t.textContent = 'Copied'; } catch (x) {}

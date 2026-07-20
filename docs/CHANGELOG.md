@@ -34,24 +34,35 @@ ADR and a decision record in `/matrix`.
 - **UX 1 (ambiguity candidates):** ambiguous responses now carry `identity.candidates` — public
   display/authority **names** of the identities the resolver produced for that query (never canonical
   IDs, never counts, no backbone search). A narrowly-scoped, flagged exception to the minimal-response
-  rule (ambiguity only). Client renders *"This could be X or Y."*
-- **BUG 2 (sourcing enquiry):** verified the sourcing card's "Ask Herbuno to source this" is a wired
-  `data-enquiry` control (regression-tested); live inertness is a stale dev-theme asset / `mailto:`
-  with no OS handler — resolved by re-uploading `blend-builder.js`.
-- **Wording:** the dry-solid cross-phase reasoning line now reads *"occupies a different physical
-  phase"* rather than *"is a separate phase"* (effervescent/instant-hot clarity). Logic unchanged.
+  rule (ambiguity only). Client renders a bulleted *"This name may refer to: • X • Y"* list.
+- **UX 2 (category errors, owner-approved):** the 3 catalogue cells that yielded *"No suitable
+  commercial format"* — `tablet-dc|functional`, `taila|active`, `aroma-diff|active` — are category
+  errors, not failed searches. They now present as **"This role is normally fulfilled differently"**
+  and surface the role `rec` under **"Typical commercial approach"**, with no token (Stage 2 disabled).
+  Presentation only — no signed-off cell edited (HARD RULE 1).
+- **BUG 2 (sourcing enquiry — real fix):** the "Ask Herbuno to source this" control was a silent
+  `mailto:` that no-ops with no OS mail handler. Replaced with an in-page enquiry panel that always
+  produces visible action: prefilled details + a native mail link + a **"Copy details"** fallback.
+  Applies to every enquiry CTA.
+- **Wording:** guidance rec row renamed to **"Typical commercial approach"** (describes how a role is
+  normally fulfilled — not that Herbuno stocks it); dry-solid cross-phase reasoning line now reads
+  *"occupies a different physical phase"* not *"is a separate phase"* (effervescent/instant-hot
+  clarity); Stage-2 sourcing copy reworded so **no copy implies the catalogue/inventory was checked**
+  (see open item below). All logic unchanged.
+
+### Open — architectural (ADR-014)
+- **Real-stock integration is a confirmed gap, not a bug.** Stage 2 has **never consulted Herbuno
+  inventory** — it is a proxy over the observed-form graph (trade-convention / common commercial
+  formats), and `product_handles` is always `[]`. Until real catalogue integration is wired, **no copy
+  anywhere may imply the catalogue/stock was checked** (audited: BUG 1 label, guidance rec row, and the
+  Stage-2 result copy all reworded this round). Tracked as an open item against ADR-014.
 
 ### Pending sign-off
 - `tablet-dc | functional | MP`: Avoid → Acceptable-with-caveat (validated fibre-rich milled
   botanical) — not yet applied.
-- **UX 2 — "No suitable commercial format" → inapplicable-role guidance (3 cells, awaiting ruling):**
-  `tablet-dc|functional` (directly-compressible fibre grade), `taila|active` (classical sneha-paka —
-  the herb is infused in-process, not purchased as an extract), `aroma-diff|active` (essential/
-  oil-soluble aromatic). All three carry a real `rec`; none is a genuine no-fit. Proposal: surface the
-  `rec` as guidance instead of the dead-end. NOT applied — needs owner decision-logic sign-off.
-- **6C backbone findings (report only, do NOT patch in the Worker):** `jasmine` resolves to a
-  genus-level record + `Jasminum sambac` — should map to the two *species*; plus the earlier
-  `orange`/`bergamot`/`brahmi`/`shankhpushpi` findings.
+- **6C backbone findings (report only, do NOT patch in the Worker):** `orange`, `bergamot`, `brahmi`,
+  `shankhpushpi`, and `jasmine` (genus-level record instead of the two species) — recorded in
+  `knowledge/pass6/pass6c_findings.md` for owner + external-review adjudication.
 - `pet`: precise dry dosage form vs keep routed to application review.
 - Layer-1 (botanical suggestions) curation — Role-level first (ADR-012), not built.
 

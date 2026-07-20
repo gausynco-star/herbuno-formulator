@@ -353,6 +353,14 @@ async function run() {
     const gb = (await call(env, { product: 'gummy', role: 'base', botanical: latinTerm })).body;
     ok('fix#2 guidance: out_of_scope role surfaces rec guidance, not a dead-end', gb.specification.selected_format === null && /gel or compressed-chew matrix/.test(gb.explanation), JSON.stringify(gb.specification) + ' | ' + gb.explanation);
     ok('fix#2 guidance: no specification_token and no reasoning_checks for a guidance role', gb.specification_token === null && gb.reasoning_checks === null);
+    ok('fix#2 guidance: out_of_scope carries NO guidance_label (client shows "Guidance", not "Typical commercial approach")', !('guidance_label' in gb));
+    // UX 2 (Live-test R2): a catalogue cell fulfilled differently — taila|active (classical sneha-paka, the
+    // herb is infused in-process) — is a CATEGORY ERROR, not "No suitable commercial format".
+    const ta = (await call(env, { product: 'taila', role: 'active', botanical: latinTerm })).body;
+    ok('UX2: taila|active is a category error ("This role is normally fulfilled differently"), never "No suitable commercial format"',
+      ta.specification.technical_status === 'This role is normally fulfilled differently' && ta.specification.selected_format === null && !JSON.stringify(ta).includes('No suitable commercial format'), JSON.stringify(ta.specification));
+    ok('UX2: taila|active surfaces the rec under guidance_label "Typical commercial approach", issues no token, no reasoning',
+      ta.guidance_label === 'Typical commercial approach' && typeof ta.explanation === 'string' && ta.explanation.length > 0 && ta.specification_token === null && ta.reasoning_checks === null, JSON.stringify({ gl: ta.guidance_label, tok: ta.specification_token }));
     // #4 phase/solubility: a dry powder (SD) in a dry product is in-phase, not a "separate phase"
     const ih = (await call(env, { product: 'instant-hot', role: 'base', botanical: latinTerm })).body;
     ok('fix#4 phase: dry powder in a dry product reads as compatible, not a separate liquid phase', /compatible with incorporation into the product.s dry-solid matrix/.test(ih.reasoning_checks.phase) && !/separate phase/.test(ih.reasoning_checks.phase), JSON.stringify(ih.reasoning_checks.phase));

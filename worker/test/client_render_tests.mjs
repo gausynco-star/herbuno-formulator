@@ -30,14 +30,21 @@ for (const [k, L] of engine.ladder) { if (L.routing !== 'catalogue') continue;
 const [CPROD, CROLE] = CPR.split('|');
 
 // faithful reproduction of index.js specification() response construction (no HTTP/limiter/token crypto)
+const routingStatus = (r) => r === 'out_of_scope' ? 'Not a separately sourced ingredient here' : r === 'guidance_only' ? 'Technical guidance for this role' : 'Application review needed';
 function buildResp(product, role, botanical, candidate) {
   const productRole = product + '|' + role;
   const idn = resolve(null, botanical, engine.exact, engine.common);
   const status = statusOf(idn);
   const resolved = status === 'resolved';
   const ladder = engine.ladder.get(productRole);
-  const sel = selectSpecification(ladder);
   const rec = resolved && idn.canonical_id ? engine.byId.get(idn.canonical_id) : null;
+  const isCatalogue = ladder && ladder.routing === 'catalogue';
+  const catSel = isCatalogue ? selectSpecification(ladder) : null;
+  const catalogueNoFit = !!(isCatalogue && catSel.selected_format == null && ladder.rec); // UX 2 category error
+  const asGuidance = !isCatalogue || catalogueNoFit;
+  const sel = !asGuidance ? catSel
+    : { selected_format: null, technical_status: catalogueNoFit ? 'This role is normally fulfilled differently' : routingStatus(ladder && ladder.routing), role: ladder ? ladder.label : null };
+  const explanation = !resolved ? oneCaveat(status, sel, ladder) : asGuidance ? ((ladder && ladder.rec) || 'contact Herbuno') : oneCaveat('resolved', sel, ladder);
   const identity = { display_name: rec ? rec.canonical_display_name : null, authority_name: rec ? rec.authority_accepted_name : null };
   if (status === 'ambiguous' && Array.isArray(idn.candidates)) { // faithful UX 1: names the Worker surfaces
     const named = idn.candidates.map((cid) => engine.byId.get(cid)).filter(Boolean)
@@ -48,12 +55,13 @@ function buildResp(product, role, botanical, candidate) {
     identity_status: status,
     identity,
     specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
-    explanation: oneCaveat(status, sel, ladder),
-    reasoning_checks: reasoningChecks(ladder, sel.selected_format),
+    explanation,
+    reasoning_checks: asGuidance ? null : reasoningChecks(ladder, sel.selected_format),
     reasoning_basis: resolved ? 'botanical' : 'role',
-    specification_token: resolved ? 'HEAD.SIG' : null,
+    specification_token: (resolved && !asGuidance) ? 'HEAD.SIG' : null,
     version: { api_schema_version: 2, matrix_version: 'm', identity_version: 'i', observed_form_graph_version: 'g', response_generated_at: 't' },
   };
+  if (resolved && asGuidance && ((ladder && ladder.routing === 'guidance_only') || catalogueNoFit)) resp.guidance_label = 'Typical commercial approach';
   if (candidate !== undefined) resp.candidate_assessment = assessCandidate(ladder, candidate);
   return resp;
 }
@@ -90,11 +98,27 @@ const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|i
   ok('ambiguous: no identity claim (no Latin authority line), neutral message', !/ — <i>/.test(h) && /Multiple botanical identities match this name/.test(h), h.slice(0, 160));
   ok('ambiguous: Stage-2 action is DISABLED', /disabled>Check sourcing options/.test(h) || /disabled(?:="")?>Check sourcing options/.test(h), h);
   ok('ambiguous: candidate check STILL runs and the card is labelled role-based, not botanical-specific', /Your proposed format/.test(h) && /role-based, not botanical-specific/.test(h), h);
-  // UX 1: the resolver's candidate identities are listed by name; no canonical IDs leak
+  // UX 1: the resolver's candidate identities are listed as a bulleted name list; no canonical IDs leak
   const cnames = (buildResp(CPROD, CROLE, AMBIG).identity.candidates || []).map((c) => c.authority_name || c.display_name);
-  ok('ambiguous UX1: lists the candidate identities by name ("This could be X or Y")', /This could be/.test(h) && cnames.length >= 2 && cnames.every((n) => h.includes(n)), h);
+  ok('ambiguous UX1: candidates render as bullets ("This name may refer to:" + one <li> per name)',
+    /This name may refer to:/.test(h) && /<ul>/.test(h) && cnames.length >= 2 && cnames.every((n) => h.includes('<li>' + n + '</li>')), h);
   const acids = resolve(null, AMBIG, engine.exact, engine.common).candidates || [];
   ok('ambiguous UX1: NO canonical_id string appears anywhere in the rendered card', acids.length >= 2 && acids.every((id) => !h.includes(id)), 'cids=' + acids.join(','));
+}
+// ---- UX 2: catalogue cell with no selectable format but a rec -> category-error guidance, not a dead-end ----
+{ // taila|active is one of the 3 approved cells (classical sneha-paka; the herb is infused in-process)
+  const r = buildResp('taila', 'active', resolvableLatin);
+  const h = client.renderResponse(r);
+  ok('UX2: response is a category error, NOT "No suitable commercial format"', r.specification.technical_status === 'This role is normally fulfilled differently' && !/No suitable commercial format/.test(JSON.stringify(r)), JSON.stringify(r.specification));
+  ok('UX2: surfaces the role rec under "Typical commercial approach" and issues NO token (Stage-2 disabled)',
+    r.guidance_label === 'Typical commercial approach' && r.specification_token === null && /Typical commercial approach/.test(h) && /disabled/.test(h) && !/Recommended form/.test(h), h);
+}
+// ---- wording audit: no Stage-2 copy may imply the catalogue/inventory was checked ----
+{ const IMPLIES_STOCK = /sourcing network shows|in our inventory|we stock|in stock|available to source|catalogue match/i;
+  for (const mc of ['exact_match', 'compatible_alternative', 'ask_us_to_source']) {
+    const h = client.renderStage2Result({ match_class: mc, product_handles: [], sourcing_route: 'x' });
+    ok('wording (' + mc + '): sourcing copy does not imply the catalogue/inventory was checked', !IMPLIES_STOCK.test(h), h);
+  }
 }
 // ---- BUG 4: "not evaluated"/"application review" candidate must NOT render as pass (green) ----
 { const se = buildResp(CPROD, CROLE, resolvableLatin, 'SE');

@@ -224,8 +224,11 @@ position:fixed;inset:0;background:rgba(30,90,90,.55);z-index:9999;display:flex;a
 .bb-card-msg{font-size:.92em;line-height:1.55;color:var(--m);padding:0 16px 12px}
 .bb-card-sub{font-size:.86em;line-height:1.5;color:var(--m);padding:0 16px 12px}
 .bb-card-sub b{color:var(--ad)}
-.bb-card-cands{font-size:.92em;line-height:1.6;color:var(--d);padding:0 16px 12px}
-.bb-card-cands i{color:var(--ad);font-weight:600}
+.bb-card-cands{padding:0 16px 12px}
+.bb-card-cands p{font-size:.92em;color:var(--d);line-height:1.5;margin-bottom:5px}
+.bb-card-cands ul{list-style:none;padding:0;margin:0}
+.bb-card-cands li{font-size:.95em;color:var(--ad);font-weight:600;line-height:1.75;padding-left:15px;position:relative}
+.bb-card-cands li:before{content:'•';position:absolute;left:2px;color:var(--ad)}
 .bb-sp-r{display:grid;grid-template-columns:170px 1fr;gap:10px;padding:9px 16px;border-top:1px solid #f2f2f2;font-size:.94em;line-height:1.45}
 .bb-sp-k{font-family:var(--fm);font-size:.82em;letter-spacing:.03em;text-transform:uppercase;color:var(--m)}
 .bb-sp-v{color:var(--d)}.bb-sp-v i{color:var(--m)}

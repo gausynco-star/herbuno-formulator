@@ -552,3 +552,18 @@ backbone and form graph. If exceeded, the $5/month paid tier is acceptable — b
 
 No change to the two-stage architecture (ADR-012), matrix content, the identity pipeline (ADR-013),
 or the UI.
+
+## Open items
+
+- **Real-stock (catalogue) integration — confirmed architectural gap, not a bug.** Stage 2 has never
+  consulted Herbuno inventory. `procurementMatch` runs against the **observed-form graph** (a proxy for
+  common commercial formats, trade-convention derived), and `product_handles` is always `[]`; the real
+  catalogue product handles are off-repo and unwired. Consequence recorded during Live-test round 2
+  (2026-07-20): **until this is wired, no user-facing copy may imply the catalogue or stock was
+  checked.** That constraint was applied by rewording the `guidance_only` label, the guidance rec row
+  ("Typical commercial approach"), and the Stage-2 result copy. Wiring real catalogue lookup (Herbuno
+  product handles → exact/compatible/ask-us classes with honest availability language) is the proper
+  fix and remains open.
+- **X-Forwarded-For deployment gate** (unchanged): production remains blocked until live dev-theme
+  testing confirms the shopper-IP position in the Shopify→Cloudflare proxy chain; `HEADER_CAPTURE` must
+  be removed before production.
