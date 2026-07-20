@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "identity_reference_corpus.schema.json",
+  "title": "ADR-013 Identity Reference Corpus",
+  "description": "The permanent regression corpus for identity resolution. Every 6C decision becomes an entry here so it is never re-litigated. Expected answers are authored by the owner + external review — NOT by tooling.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["_meta", "tier_1_core_regression", "tier_2_commercial_canon", "tier_3_edge_cases"],
+  "properties": {
+    "_meta": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["artifact", "schema_version", "identity_version", "owner", "update_rules"],
+      "properties": {
+        "artifact": { "const": "identity_reference_corpus" },
+        "schema_version": { "const": "1" },
+        "identity_version": { "type": "string" },
+        "owner": { "type": "string" },
+        "update_rules": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tier_1", "tier_2", "tier_3"],
+          "properties": {
+            "tier_1": { "type": "string" },
+            "tier_2": { "type": "string" },
+            "tier_3": { "type": "string" }
+          }
+        }
+      }
+    },
+    "tier_1_core_regression": { "type": "array", "items": { "$ref": "#/$defs/entry" } },
+    "tier_2_commercial_canon": { "type": "array", "items": { "$ref": "#/$defs/entry" } },
+    "tier_3_edge_cases": { "type": "array", "items": { "$ref": "#/$defs/tier3_entry" } }
+  },
+  "$defs": {
+    "identity_status": {
+      "description": "LOCKED enum. Adding a value is a schema_version bump.",
+      "enum": ["resolved", "ambiguous", "unrecognised", "missing_species", "genus_level", "policy_dependent"]
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_status"],
+      "properties": {
+        "identity_status": { "$ref": "#/$defs/identity_status" },
+        "accepted_identity": { "type": ["string", "null"], "description": "canonical_id or authority accepted name of the single correct identity (resolved / genus_level)." },
+        "candidate_authority_names": { "type": "array", "items": { "type": "string" }, "description": "The competing identities for ambiguous / policy_dependent." },
+        "missing_expected_species": { "type": "array", "items": { "type": "string" }, "description": "Species that SHOULD exist for this query to resolve correctly (missing_species)." }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query", "normalised_query", "name_class", "expected", "commercial_policy", "evidence_status", "sources", "owner_signoff", "incident"],
+      "properties": {
+        "query": { "type": "string", "minLength": 1 },
+        "normalised_query": { "type": "string", "description": "engine.norm(query) — the resolver key." },
+        "name_class": { "type": "string", "description": "e.g. accepted_name | scientific_synonym | trade_synonym | common_name | supplier_alias | vernacular | pharmacopoeial." },
+        "expected": { "$ref": "#/$defs/expected" },
+        "commercial_policy": { "type": ["string", "null"], "description": "The owner policy that governs this mapping (e.g. 'unqualified orange = sweet orange')." },
+        "evidence_status": { "type": "string", "description": "e.g. owner_signed | external_review | provisional | disputed." },
+        "sources": { "type": "array", "items": { "type": "string" } },
+        "owner_signoff": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "date"],
+          "properties": { "status": { "type": "string", "enum": ["pending", "signed", "rejected"] }, "date": { "type": ["string", "null"] } }
+        },
+        "incident": { "type": ["string", "null"], "description": "Free-text incident reference for entries born from a bug (Tier 3 expands this into structured fields)." },
+        "resolver_behaviour_on_undecided": { "type": "string", "description": "REQUIRED when identity_status is policy_dependent: what the tool must do until the policy is decided (expected: ambiguous with candidates, never a confident pick)." },
+        "incident_date": { "type": "string" },
+        "incident_summary": { "type": "string" },
+        "introduced_in_identity_version": { "type": "string" },
+        "regression_reason": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "expected": { "properties": { "identity_status": { "const": "policy_dependent" } } } } },
+          "then": { "required": ["resolver_behaviour_on_undecided"] }
+        }
+      ]
+    },
+    "tier3_entry": {
+      "description": "Tier 3 (edge cases / incident regressions) = a base entry PLUS structured incident fields. Append-only.",
+      "allOf": [
+        { "$ref": "#/$defs/entry" },
+        { "type": "object", "required": ["incident_date", "incident_summary", "introduced_in_identity_version", "regression_reason"] }
+      ]
+    }
+  }
+}

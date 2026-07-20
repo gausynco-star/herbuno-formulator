@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "artifact": "identity_reference_corpus",
+    "schema_version": "1",
+    "identity_version": "2026-07-19.4",
+    "owner": "hello@herbuno.com",
+    "update_rules": {
+      "tier_1": "frozen; owner sign-off required for any edit",
+      "tier_2": "may grow with the commercial catalogue",
+      "tier_3": "append-only; entries are never removed"
+    },
+    "note": "Permanent identity-resolution regression corpus. EXPECTED ANSWERS ARE AUTHORED BY OWNER + EXTERNAL REVIEW (6C) — never by tooling. This file ships with EMPTY tiers: structure + validation only. Locked identity_status: resolved | ambiguous | unrecognised | missing_species | genus_level | policy_dependent. Two enforced rules: (1) a policy_dependent entry MUST be a test FAILURE if the resolver returns a confident answer — never skipped; (2) every policy_dependent entry carries resolver_behaviour_on_undecided (expected: ambiguous with candidates, never a pick). Validate with knowledge/identity/validate_reference_corpus.mjs against identity_reference_corpus.schema.json.",
+    "schema": "identity_reference_corpus.schema.json"
+  },
+  "tier_1_core_regression": [],
+  "tier_2_commercial_canon": [],
+  "tier_3_edge_cases": []
+}
