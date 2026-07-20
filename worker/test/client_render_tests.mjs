@@ -189,6 +189,23 @@ const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|i
   ok('fix#1: when display == Latin, it is shown once (no "X — X" duplicate)', (dup.match(/Punica granatum/g) || []).length === 1, dup.slice(0, 160));
 }
 
+// ---- Commit 2: enquiry mailto href generation (Open-in-Email) ----
+{ const st = { product: 'capsule', role: 'active', botanical: 'Ashwagandha (Withania somnifera) & root', candidate: 'WL' };
+  const href = client.buildMailto(st);
+  ok('mailto: starts with recipient + subject param', href.indexOf('mailto:hello@herbuno.com?subject=') === 0, href);
+  ok('mailto: EXACTLY one literal "&" and it is the subject/body separator (botanical "&" is encoded)', (href.match(/&/g) || []).length === 1 && href.includes('&body='), href);
+  ok('mailto: no raw whitespace in the href (spaces/newlines percent-encoded)', !/\s/.test(href), JSON.stringify(href));
+  const params = new URLSearchParams(href.slice('mailto:hello@herbuno.com?'.length));
+  const subject = params.get('subject'), body = params.get('body');
+  ok('mailto: subject decodes to the botanical + product', /Ashwagandha .* & root/.test(subject) && subject.includes('Hard Capsule'), subject);
+  ok('mailto: body decodes to Product/Role/Botanical + candidate + sourcing sentence',
+    /Product: Hard Capsule/.test(body) && /Role: Active/.test(body) && /Botanical: Ashwagandha/.test(body) && /Format in mind: Water-soluble extract/.test(body) && /Please advise on sourcing\./.test(body), body);
+  ok('mailto: the "&" inside the botanical survives as data, not a stray query separator', body.includes('& root') && !href.includes('& root'), href);
+  const noCand = new URLSearchParams(client.buildMailto({ product: 'capsule', role: 'active', botanical: 'Tulsi', candidate: '' }).split('?')[1]).get('body');
+  ok('mailto: omits "Format in mind" when no candidate is chosen', !noCand.includes('Format in mind'), noCand);
+  const otherCand = new URLSearchParams(client.buildMailto({ product: 'capsule', role: 'active', botanical: 'Tulsi', candidate: 'OTHER' }).split('?')[1]).get('body');
+  ok('mailto: the "Other" sentinel is never leaked into the body', !otherCand.includes('Format in mind'));
+}
 // ---- no matrix/identity/graph decision data in the shipped client or shell ----
 { // scan CODE, not the explanatory comments (which legitimately name what was removed)
   const stripJs = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|\n)\s*\/\/[^\n]*/g, '$1');

@@ -54,6 +54,20 @@
   function formLabel(code) { return code ? (FORMAT_LABELS[code] || code) : 'Application review needed'; }
   function candidateLabel(code) { for (var i = 0; i < CANDIDATE_OPTIONS.length; i++) if (CANDIDATE_OPTIONS[i].code === code) return CANDIDATE_OPTIONS[i].label; return FORMAT_LABELS[code] || code; }
 
+  // ---- pure: enquiry (RFQ) body + mailto href ----
+  // Kept pure + exported so the generated href is unit-tested (Commit 2 — Open-in-Email was unreliable).
+  // Every dynamic part is percent-encoded via encodeURIComponent; the ONE literal '&' separates the two
+  // query params. The href is set on the anchor as a DOM PROPERTY (not an innerHTML attribute string), so no
+  // HTML-entity round-trip (&amp;) is ever involved.
+  function enquiryLines(state) {
+    return 'Product: ' + productName(state.product) + '\nRole: ' + roleLabel(state.role) + '\nBotanical: ' + ((state.botanical || '').trim()) +
+      (state.candidate && state.candidate !== 'OTHER' ? '\nFormat in mind: ' + candidateLabel(state.candidate) : '');
+  }
+  function buildMailto(state) {
+    var subject = 'Formulator enquiry: ' + (((state.botanical || '').trim()) || 'botanical') + ' for ' + productName(state.product);
+    var body = enquiryLines(state) + '\n\nPlease advise on sourcing.';
+    return 'mailto:hello@herbuno.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
   // ---- pure: request body (candidate_format sent ONLY when the user actually chose one) ----
   function buildSpecBody(state) {
     var b = { product: state.product, role: state.role, botanical: (state.botanical || '').trim() };
@@ -216,7 +230,7 @@
         renderCandidate: renderCandidate, renderStage2Action: renderStage2Action, renderStage2Result: renderStage2Result,
         renderLoading: renderLoading, renderRateLimited: renderRateLimited, renderDegraded: renderDegraded,
         renderNotAvailable: renderNotAvailable, notAvailableMessage: notAvailableMessage, renderGuidanceCard: renderGuidanceCard,
-        formLabel: formLabel, candidateLabel: candidateLabel, FORMAT_LABELS: FORMAT_LABELS,
+        formLabel: formLabel, candidateLabel: candidateLabel, buildMailto: buildMailto, enquiryLines: enquiryLines, FORMAT_LABELS: FORMAT_LABELS,
         CANDIDATE_OPTIONS: CANDIDATE_OPTIONS, ROLES: ROLES, PRODUCTS: PRODUCTS, API_SCHEMA_VERSION: API_SCHEMA_VERSION,
         BUILD_STUB: BUILD_STUB };
     }
@@ -279,14 +293,7 @@
     W.innerHTML = workHtml();
   }
 
-  function enquiryText() {
-    return 'Product: ' + productName(S.product) + '\nRole: ' + roleLabel(S.role) + '\nBotanical: ' + (S.botanical || '') +
-      (S.candidate && S.candidate !== 'OTHER' ? '\nFormat in mind: ' + candidateLabel(S.candidate) : '');
-  }
-  function enquiryMailto() {
-    var subj = 'Formulator enquiry: ' + (S.botanical || 'botanical') + ' for ' + productName(S.product);
-    return 'mailto:hello@herbuno.com?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(enquiryText() + '\n\nPlease advise on sourcing.');
-  }
+  function enquiryText() { return enquiryLines(S); }
   // BUG 2: the enquiry route must NEVER be a dead control. A bare `mailto:` silently no-ops when the browser
   // has no mail handler (exactly the live symptom). Instead open an in-page panel that ALWAYS does something
   // visible: it shows the prefilled details, offers a native mail link, and a "Copy details" fallback that
@@ -300,9 +307,13 @@
       '<button class="bb-x" data-enq-close="1" aria-label="Close">×</button></div>' +
       '<div class="bb-mbd"><div class="bb-ctx">' + esc(enquiryText()).replace(/\n/g, '<br>') + '</div>' +
       '<p class="bb-priv">Send these details to our sourcing team and we’ll get back to you.</p>' +
-      '<div class="bb-actions"><a class="bb-btn" href="' + esc(enquiryMailto()) + '">Open in email</a>' +
+      '<div class="bb-actions"><a class="bb-btn" id="bb-enq-open">Open in email</a>' +
       '<button class="bb-btn o" data-enq-copy="1">Copy details</button></div></div></div>';
     root.appendChild(m);
+    // Commit 2 fix: set the mailto as a DOM PROPERTY on the anchor — a native mailto link is the most
+    // reliable trigger, and assigning the property avoids ANY innerHTML attribute-encoding round-trip.
+    var openLink = m.querySelector('#bb-enq-open');
+    if (openLink) openLink.href = buildMailto(S);
   }
   function postJson(url, body) {
     return fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
