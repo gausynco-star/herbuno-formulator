@@ -110,10 +110,18 @@ async function run() {
     ok('response: resolved reasoning_basis is botanical', b.reasoning_basis === 'botanical');
     ok('response: no candidate_assessment key unless a candidate_format was sent', !('candidate_assessment' in b));
     const amb = await call(env, specBody({ botanical: AMBIG_TERM }));
-    ok('response: ambiguous returns neutral message, no identity, no candidate IDs, no token',
+    const ambCids = resolve(null, AMBIG_TERM, engineRef.exact, engineRef.common).candidates || [];
+    ok('response: ambiguous returns neutral message, no identity claim, no token, and NO canonical IDs on the wire',
       amb.body.identity_status === 'ambiguous' && amb.body.specification_token === null &&
-      amb.body.identity.display_name === null && amb.body.identity.authority_name === null && !('candidates' in amb.body.identity),
+      amb.body.identity.display_name === null && amb.body.identity.authority_name === null &&
+      ambCids.length >= 2 && !ambCids.some((id) => JSON.stringify(amb.body).includes(id)),
       JSON.stringify(amb.body));
+    // UX 1 — the sanctioned ambiguity-only exception: candidate IDENTITIES surface as PUBLIC names only
+    // ({display_name, authority_name}); never canonical IDs, never a count. Scoped to ambiguous.
+    ok('response UX1: identity.candidates lists names only ({display_name, authority_name}, ambiguity exception)',
+      Array.isArray(amb.body.identity.candidates) && amb.body.identity.candidates.length >= 2 &&
+      amb.body.identity.candidates.every((c) => JSON.stringify(Object.keys(c).sort()) === '["authority_name","display_name"]' && typeof (c.authority_name || c.display_name) === 'string'),
+      JSON.stringify(amb.body.identity.candidates));
     ok('response: ambiguous STILL returns a generic role-based Product×Role spec + reasoning (labelled role)',
       amb.body.specification && typeof amb.body.specification.technical_status === 'string' && amb.body.reasoning_basis === 'role' && !JSON.stringify(amb.body).includes(realCid),
       JSON.stringify(amb.body.specification));

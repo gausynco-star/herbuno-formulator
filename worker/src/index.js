@@ -169,10 +169,22 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
       ? oneCaveat('resolved', sel, ladder)                 // the selected format's caveat
       : (ladder.rec || 'The right approach depends on the product and process — contact Herbuno for guidance.');
 
+  // ADR-014 minimal-response EXCEPTION — AMBIGUITY ONLY (Live-test R2 UX 1): to let the shopper
+  // disambiguate, surface the RESOLVER'S OWN candidate identities as PUBLIC display/authority names.
+  // Never canonical IDs, never a count, never a backbone search — only the ids the resolver already
+  // produced for THIS query. Scoped strictly to `ambiguous`; do NOT generalise this to other states.
+  const identity = { display_name: rec ? displayName(rec) : null, authority_name: rec ? rec.authority_accepted_name : null };
+  if (status === 'ambiguous' && Array.isArray(idn.candidates)) {
+    const named = idn.candidates.map((cid) => engine.byId.get(cid)).filter(Boolean)
+      .map((r) => ({ display_name: displayName(r), authority_name: r.authority_accepted_name || null }));
+    if (named.length) identity.candidates = named; // presence of `candidates` IS the flagged exception
+  }
+
   const resp = {
     identity_status: status,
-    // ambiguous/unrecognised: NEVER an identity claim or candidate IDs. display_name prefers a clean common name.
-    identity: { display_name: rec ? displayName(rec) : null, authority_name: rec ? rec.authority_accepted_name : null },
+    // ambiguous/unrecognised: NEVER an identity claim or canonical IDs. `identity.candidates` (public
+    // display/authority names) is the ONLY relaxation and appears for `ambiguous` only.
+    identity,
     specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
     explanation,
     // three physics-only conclusions — only for catalogue roles (guidance roles have no format to reason about)
@@ -201,7 +213,7 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
 function routingStatus(routing) {
   switch (routing) {
     case 'out_of_scope': return 'Not a separately sourced ingredient here';
-    case 'guidance_only': return 'Technical guidance — no direct catalogue match';
+    case 'guidance_only': return 'Technical guidance for this role';
     case 'ask_us':
     case 'no_code_application_dependent': return 'Application review needed';
     default: return 'Application review needed';

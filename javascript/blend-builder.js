@@ -49,6 +49,7 @@
   ];
 
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function joinOr(parts) { if (!parts.length) return ''; if (parts.length === 1) return parts[0]; if (parts.length === 2) return parts[0] + ' or ' + parts[1]; return parts.slice(0, -1).join(', ') + ' or ' + parts[parts.length - 1]; }
   function productName(id) { for (var i = 0; i < PRODUCTS.length; i++) { var it = PRODUCTS[i].items; for (var j = 0; j < it.length; j++) if (it[j].id === id) return it[j].name; } return id; }
   function roleLabel(id) { for (var i = 0; i < ROLES.length; i++) if (ROLES[i].id === id) return ROLES[i].label; return id; }
   function formLabel(code) { return code ? (FORMAT_LABELS[code] || code) : 'Application review needed'; }
@@ -76,7 +77,15 @@
       reasoningRow('Process constraint', rc.process) +
       '</div></details>';
   }
-  function candidateStatusClass(status) {
+  // Style from the Worker's AUTHORITATIVE `severity` (ok | warn | avoid | neutral). Never re-infer pass/fail
+  // from the status wording — "Not evaluated"/"Application review needed" are neutral and must NOT read as a
+  // pass (Live-test R2 BUG 4). `neutral` -> the 'review' (caution) style. The regex is a fallback only for a
+  // response that predates `severity`; it too defaults to 'review', never 'ok'.
+  function candidateStatusClass(ca) {
+    var sev = ca && ca.severity;
+    if (sev === 'ok' || sev === 'warn' || sev === 'avoid') return sev;
+    if (sev === 'neutral') return 'review';
+    var status = (ca && ca.technical_status) || '';
     if (/^Best/.test(status)) return 'ok';
     if (/^Conditional/.test(status)) return 'warn';
     if (/^Not suitable/.test(status)) return 'avoid';
@@ -84,7 +93,7 @@
   }
   function renderCandidate(resp) {
     var ca = resp.candidate_assessment; if (!ca) return '';
-    return '<div class="bb-cand ' + candidateStatusClass(ca.technical_status) + '">' +
+    return '<div class="bb-cand ' + candidateStatusClass(ca) + '">' +
       '<div class="bb-cand-r"><span class="bb-cand-k">Your proposed format</span><span class="bb-cand-v">' + esc(candidateLabel(ca.format)) + '</span></div>' +
       '<div class="bb-cand-status">' + esc(ca.technical_status) + '</div>' +
       '<div class="bb-cand-exp">' + esc(ca.explanation) + '</div></div>';
@@ -114,8 +123,10 @@
         specRow('Technical status', esc(sp.technical_status || '—')) +
         specRow('Why', esc(resp.explanation || ''));
     } else {
-      // guidance role (e.g. base = the product matrix itself) or no suitable catalogue format
-      h += specRow('Status', '<b>' + esc(sp.technical_status || '—') + '</b>') +
+      // guidance role (e.g. base = the product matrix itself) or no suitable catalogue format.
+      // Label is "Assessment", NOT "Status": "Technical status" is reserved for a form's physical-fit
+      // verdict, so the same visual slot never carries two meanings (Live-test R2 BUG 3).
+      h += specRow('Assessment', '<b>' + esc(sp.technical_status || '—') + '</b>') +
         specRow('Guidance', esc(resp.explanation || ''));
     }
     h += '</div>';
@@ -126,6 +137,14 @@
   }
   // ambiguous / unrecognised: NO identity claim, NO Stage-2. Generic Product×Role guidance may still show,
   // clearly labelled role-based (reasoning_basis === 'role').
+  // ambiguity candidate line — display/authority names the Worker surfaced for THIS query (UX 1). Names only,
+  // never IDs/counts; the client does not look anything up. Renders only when the Worker provided candidates.
+  function candidatesLine(resp) {
+    var cands = resp.identity && resp.identity.candidates;
+    if (resp.identity_status !== 'ambiguous' || !cands || !cands.length) return '';
+    var names = cands.map(function (c) { return '<i>' + esc(c.authority_name || c.display_name) + '</i>'; });
+    return '<p class="bb-card-cands">This could be ' + joinOr(names) + '. Tell us which — enter the Latin name or source species.</p>';
+  }
   function renderNonResolved(resp) {
     var sp = resp.specification || {};
     var headline = resp.identity_status === 'ambiguous'
@@ -134,10 +153,11 @@
     var h = '<div class="bb-card ' + esc(resp.identity_status) + '">' +
       '<div class="bb-card-head">' + esc(headline) + '</div>' +
       '<p class="bb-card-msg">' + esc(resp.explanation || '') + '</p>' +
+      candidatesLine(resp) +
       '<p class="bb-card-sub">Guidance below is <b>role-based, not botanical-specific</b>.</p>' +
       (sp.selected_format
         ? specRow('Form for this role', '<b>' + esc(formLabel(sp.selected_format)) + '</b>') + specRow('Technical status', esc(sp.technical_status || '—'))
-        : specRow('Status', esc(sp.technical_status || '—'))) +
+        : specRow('Assessment', esc(sp.technical_status || '—'))) +
       '</div>';
     h += renderCandidate(resp);
     h += renderReasoning(resp);

@@ -16,9 +16,42 @@ ADR and a decision record in `/matrix`.
   migration — the matrix cannot ship to the client, so build mode is stubbed until it runs server-side).
 - Canonical design: `docs/STAGE1_STAGE2_TARGET_DESIGN.md`.
 
+### Fixed — ADR-014 live-test round 2 (2026-07-20)
+- **BUG 1 (diagnosis + label):** `guidance_only` cells (e.g. `syrup|flavour`, `rtd-clear|flavour`)
+  showed *"Technical guidance — no direct catalogue match"* — a Stage-1 routing label that asserts a
+  catalogue outcome the system never computes. Root cause: the request never reaches Stage 2 (guidance
+  roles issue no token), and Stage 2 itself is a **proxy over the observed-form graph, not real stock**
+  (`product_handles` always `[]`). Per the brief the graph is NOT wired as a stock proxy; the honest
+  change is the label → *"Technical guidance for this role"* (no catalogue claim). Real-stock
+  integration remains an open design limitation.
+- **BUG 3 (status field):** the guidance/no-format slot was labelled *"Status"* while the format slot
+  was *"Technical status"* — one visual slot, two meanings. Guidance/no-format now labels the row
+  **"Assessment"**; *"Technical status"* is reserved for a form's physical-fit verdict.
+- **BUG 4 (candidate styling):** `assessCandidate` now returns an authoritative `severity`
+  (`ok|warn|avoid|neutral`); *"Not evaluated"* / *"Application review needed"* are **neutral** and the
+  client styles from `severity` (never re-inferring pass/fail from wording). The neutral `review` style
+  is now a muted dashed-grey caution, clearly not the green pass.
+- **UX 1 (ambiguity candidates):** ambiguous responses now carry `identity.candidates` — public
+  display/authority **names** of the identities the resolver produced for that query (never canonical
+  IDs, never counts, no backbone search). A narrowly-scoped, flagged exception to the minimal-response
+  rule (ambiguity only). Client renders *"This could be X or Y."*
+- **BUG 2 (sourcing enquiry):** verified the sourcing card's "Ask Herbuno to source this" is a wired
+  `data-enquiry` control (regression-tested); live inertness is a stale dev-theme asset / `mailto:`
+  with no OS handler — resolved by re-uploading `blend-builder.js`.
+- **Wording:** the dry-solid cross-phase reasoning line now reads *"occupies a different physical
+  phase"* rather than *"is a separate phase"* (effervescent/instant-hot clarity). Logic unchanged.
+
 ### Pending sign-off
 - `tablet-dc | functional | MP`: Avoid → Acceptable-with-caveat (validated fibre-rich milled
   botanical) — not yet applied.
+- **UX 2 — "No suitable commercial format" → inapplicable-role guidance (3 cells, awaiting ruling):**
+  `tablet-dc|functional` (directly-compressible fibre grade), `taila|active` (classical sneha-paka —
+  the herb is infused in-process, not purchased as an extract), `aroma-diff|active` (essential/
+  oil-soluble aromatic). All three carry a real `rec`; none is a genuine no-fit. Proposal: surface the
+  `rec` as guidance instead of the dead-end. NOT applied — needs owner decision-logic sign-off.
+- **6C backbone findings (report only, do NOT patch in the Worker):** `jasmine` resolves to a
+  genus-level record + `Jasminum sambac` — should map to the two *species*; plus the earlier
+  `orange`/`bergamot`/`brahmi`/`shankhpushpi` findings.
 - `pet`: precise dry dosage form vs keep routed to application review.
 - Layer-1 (botanical suggestions) curation — Role-level first (ADR-012), not built.
 

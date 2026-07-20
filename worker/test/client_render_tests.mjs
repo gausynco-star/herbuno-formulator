@@ -38,9 +38,15 @@ function buildResp(product, role, botanical, candidate) {
   const ladder = engine.ladder.get(productRole);
   const sel = selectSpecification(ladder);
   const rec = resolved && idn.canonical_id ? engine.byId.get(idn.canonical_id) : null;
+  const identity = { display_name: rec ? rec.canonical_display_name : null, authority_name: rec ? rec.authority_accepted_name : null };
+  if (status === 'ambiguous' && Array.isArray(idn.candidates)) { // faithful UX 1: names the Worker surfaces
+    const named = idn.candidates.map((cid) => engine.byId.get(cid)).filter(Boolean)
+      .map((r) => ({ display_name: r.canonical_display_name, authority_name: r.authority_accepted_name || null }));
+    if (named.length) identity.candidates = named;
+  }
   const resp = {
     identity_status: status,
-    identity: { display_name: rec ? rec.canonical_display_name : null, authority_name: rec ? rec.authority_accepted_name : null },
+    identity,
     specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
     explanation: oneCaveat(status, sel, ladder),
     reasoning_checks: reasoningChecks(ladder, sel.selected_format),
@@ -84,6 +90,32 @@ const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|i
   ok('ambiguous: no identity claim (no Latin authority line), neutral message', !/ — <i>/.test(h) && /Multiple botanical identities match this name/.test(h), h.slice(0, 160));
   ok('ambiguous: Stage-2 action is DISABLED', /disabled>Check sourcing options/.test(h) || /disabled(?:="")?>Check sourcing options/.test(h), h);
   ok('ambiguous: candidate check STILL runs and the card is labelled role-based, not botanical-specific', /Your proposed format/.test(h) && /role-based, not botanical-specific/.test(h), h);
+  // UX 1: the resolver's candidate identities are listed by name; no canonical IDs leak
+  const cnames = (buildResp(CPROD, CROLE, AMBIG).identity.candidates || []).map((c) => c.authority_name || c.display_name);
+  ok('ambiguous UX1: lists the candidate identities by name ("This could be X or Y")', /This could be/.test(h) && cnames.length >= 2 && cnames.every((n) => h.includes(n)), h);
+  const acids = resolve(null, AMBIG, engine.exact, engine.common).candidates || [];
+  ok('ambiguous UX1: NO canonical_id string appears anywhere in the rendered card', acids.length >= 2 && acids.every((id) => !h.includes(id)), 'cids=' + acids.join(','));
+}
+// ---- BUG 4: "not evaluated"/"application review" candidate must NOT render as pass (green) ----
+{ const se = buildResp(CPROD, CROLE, resolvableLatin, 'SE');
+  const hSE = client.renderResponse(se);
+  ok('BUG4: SE (application review) is severity=neutral and renders the caution "review" class, never "ok"', se.candidate_assessment.severity === 'neutral' && /bb-cand review/.test(hSE) && !/bb-cand ok/.test(hSE), hSE);
+  // a code not evaluated for this cell -> neutral, not a pass
+  const unevalCode = ['MP', 'RE', 'OE', 'WL', 'WD', 'SD'].find((c) => !engine.ladder.get(CPR).fmt[c]);
+  if (unevalCode) { const ne = buildResp(CPROD, CROLE, resolvableLatin, unevalCode); const hNE = client.renderResponse(ne);
+    ok('BUG4: an unevaluated format is severity=neutral and never renders the green "ok" style', ne.candidate_assessment.severity === 'neutral' && /bb-cand review/.test(hNE) && !/bb-cand ok/.test(hNE), hNE); }
+  // the "ok" candidate really is green (guard the mapping did not over-correct)
+  const okc = buildResp(CPROD, CROLE, resolvableLatin, C_OK); const hOK = client.renderResponse(okc);
+  ok('BUG4: a genuine best-fit candidate still renders the "ok" (green) style', okc.candidate_assessment.severity === 'ok' && /bb-cand ok/.test(hOK), hOK);
+}
+// ---- BUG 3: one status field, one meaning — guidance uses "Assessment", never a bare "Status" ----
+{ const guidance = { identity_status: 'resolved', identity: { display_name: 'Licorice', authority_name: 'Glycyrrhiza glabra' },
+    specification: { selected_format: null, technical_status: 'Technical guidance for this role', role: 'Flavour / aroma' },
+    explanation: 'Water-soluble liquid flavour', reasoning_checks: null, reasoning_basis: 'botanical', specification_token: null };
+  const gh = client.renderResolved(guidance);
+  ok('BUG3: a guidance (no-format) result labels the row "Assessment", not a bare "Status"', /<span class="bb-sp-k">Assessment<\/span>/.test(gh) && !/<span class="bb-sp-k">Status<\/span>/.test(gh), gh);
+  ok('BUG3: "Technical status" is reserved for a form\'s physical-fit verdict (present on the resolved+format card only)',
+    /<span class="bb-sp-k">Technical status<\/span>/.test(client.renderResponse(buildResp(CPROD, CROLE, resolvableLatin))) && !/Technical status/.test(gh));
 }
 // ---- unrecognised ----
 { const r = buildResp(CPROD, CROLE, 'Xyzzy Blorptonium 42');
@@ -94,7 +126,11 @@ const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|i
 { for (const mc of ['exact_match', 'compatible_alternative', 'ask_us_to_source']) {
     const h = client.renderStage2Result({ match_class: mc, product_handles: [], sourcing_route: 'x' });
     ok('sourcing (' + mc + '): shows sourcing route, NEVER "catalogue match"/"in stock"/"availability"', /Sourcing options/.test(h) && !NO_CATMATCH.test(h) && !NO_AVAIL.test(h), h);
-  } }
+  }
+  // BUG 2: the sourcing card's "Ask Herbuno to source this" is a WIRED control (data-enquiry), not inert
+  const src = client.renderStage2Result({ match_class: 'ask_us_to_source', product_handles: [], sourcing_route: 'request_sourcing' });
+  ok('BUG2: sourcing card exposes a wired enquiry control (data-enquiry on "Ask Herbuno to source this")', /data-enquiry="1"[^>]*>Ask Herbuno to source this/.test(src), src);
+}
 // ---- other states ----
 { ok('loading: renders an honest indicator (no fake staged reasoning)', /Generating specification/.test(client.renderLoading()) && !/step 1|analysing phase/i.test(client.renderLoading()));
   ok('rate-limited: plain message, no internal reason/counters', /try again/i.test(client.renderRateLimited()) && !/per_minute|reason|counter/i.test(client.renderRateLimited()));

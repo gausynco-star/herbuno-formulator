@@ -240,7 +240,10 @@ function phaseCheck(phase, form) {
     ((phase === 'aqueous' || phase === 'suspension-dispersion') && (form === 'water' || (phase === 'suspension-dispersion' && form === 'dry'))) ||
     (phase === 'oil' && form === 'oil');
   if (aligned) return 'This form is compatible with incorporation into the product’s ' + label + '.';
-  return 'This ' + (form === 'oil' ? 'oil-based' : form === 'water' ? 'water-based' : 'dry') + ' form is a separate phase from the product’s ' + label + '.';
+  // Wording (Live-test R2): identify the phase relationship neutrally ("occupies a different physical
+  // phase") rather than "is a separate phase", which read as an incompatibility verdict for products that
+  // are consumed dissolved (effervescent / instant-hot). Logic UNCHANGED — same cross-phase branch.
+  return 'This ' + (form === 'oil' ? 'oil-based' : form === 'water' ? 'water-based' : 'dry') + ' form occupies a different physical phase from the product’s ' + label + '.';
 }
 function dissolutionCheck(tag, phase) {
   if (tag === 'NND') return 'Dissolution is not required for this role.';
@@ -276,20 +279,24 @@ export function reasoningChecks(ladder, selectedFormat) {
 // Answers ONE asked question — "is my proposed format right?" — without exposing the ladder. SE is LOCKED:
 // an assay overlay, never assessed as a base physical format. Independent of identity (role physics), so
 // it runs for ambiguous/unrecognised too (labelled role-based via reasoning_basis).
+// `severity` is the AUTHORITATIVE presentation class (ok | warn | avoid | neutral). The client MUST style
+// from it, never re-infer pass/fail from the status wording — "Not evaluated"/"Application review needed"
+// are `neutral` (NOT a pass) so they can never render in the green/ok style (Live-test R2 BUG 4).
 const SE_LOCKED_ASSESSMENT = {
-  format: 'SE', technical_status: 'Application review needed',
+  format: 'SE', technical_status: 'Application review needed', severity: 'neutral',
   explanation: 'Standardisation describes assay, not physical format. Specify whether the extract is water-soluble, oil-soluble, powdered, liquid, or another base form.',
 };
 export function assessCandidate(ladder, code) {
   if (code === 'SE') return { ...SE_LOCKED_ASSESSMENT };
   const e = ladder && ladder.fmt ? ladder.fmt[code] : null;
-  if (!e) return { format: code, technical_status: 'Not evaluated for this role', explanation: 'This format is not evaluated for this product and role — confirm suitability with Herbuno.' };
-  const status = e.tier === 'ok' ? 'Best physical fit' : e.tier === 'warn' ? 'Conditional fit — confirm at SKU level' : 'Not suitable for this role';
+  if (!e) return { format: code, technical_status: 'Not evaluated for this role', severity: 'neutral', explanation: 'This format is not evaluated for this product and role — confirm suitability with Herbuno.' };
+  const severity = e.tier === 'ok' ? 'ok' : e.tier === 'warn' ? 'warn' : 'avoid';
+  const status = severity === 'ok' ? 'Best physical fit' : severity === 'warn' ? 'Conditional fit — confirm at SKU level' : 'Not suitable for this role';
   const explanation = firstSentence(e.note) ||
-    (e.tier === 'ok' ? 'A physically appropriate form for this role; confirm SKU-level suitability.'
-      : e.tier === 'warn' ? 'Usable with a compromise for this role; confirm suitability at SKU level.'
+    (severity === 'ok' ? 'A physically appropriate form for this role; confirm SKU-level suitability.'
+      : severity === 'warn' ? 'Usable with a compromise for this role; confirm suitability at SKU level.'
       : 'This format is not physically suited to this role.');
-  return { format: code, technical_status: status, explanation };
+  return { format: code, technical_status: status, severity, explanation };
 }
 
 // ---- procurement (Stage 2) ----
