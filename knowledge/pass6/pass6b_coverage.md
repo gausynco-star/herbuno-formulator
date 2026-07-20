@@ -1,0 +1,1463 @@
+# ADR-013 Pass 6B — Backbone Coverage (Gate 2, first half)
+
+**Run against** `identity_version 2026-07-19.4` · 826 records. **Report-only.** Regenerate: `node knowledge/pass6/pass6b_coverage.mjs`.
+
+> **Coverage precedes correctness.** 6B finds what is MISSING; it does NOT decide the correct name→species mapping (that is 6C + owner). Deterministic signals + a curated seed list (presence only — no invented commercial mappings).
+
+> **Provenance is record-level only** (established in 6A): per-name "which supplier contributed this alias" is unrecoverable, so 6C's provenance heuristics will be weaker than planned.
+
+## Headline coverage-gap counts
+
+| Signal | Count |
+|---|---|
+| 1 · multi-species merges (>=2 distinct species absorbed) | 5 |
+| 1 · records absorbing any distinct species (broad worklist) | 90 |
+| 2 · broad bare commons on a single species (siblings exist) | 222 |
+| 3 · supplier common names that never resolve (botanical) | 0 |
+| 4 · present species with ZERO common name | 31 |
+| 5 · seed species ABSORBED into another record | 6 |
+| 5 · seed species ABSENT entirely | 3 |
+
+## Section 1 — Merged distinct species (candidate incorrect synonym merges hiding a commercial species)
+
+> A record whose original_parsed_names/scientific_synonyms include a DISTINCT species binomial beyond its accepted name. MOST are legitimate GBIF synonyms (Eclipta alba = Eclipta prostrata); the concern is commercially-distinct species absorbed into one record (the Citrus aurantium/paradisi/sinensis class). Which are genuine vs incorrect is 6C + owner — NOT decided here. The `multi_species_merges` subset (>=2 absorbed) is the higher-signal worklist.
+
+| Metric | Count |
+|---|---|
+| records_absorbing_a_distinct_species | 90 |
+| multi_species_merges | 5 |
+| total_absorbed_species | 95 |
+
+<details><summary><b>multi_species_merges</b> — 5</summary>
+
+```json
+[
+ {
+  "canonical_id": "aloe-vera",
+  "accepted_name": "Aloe vera",
+  "absorbed_distinct_species": [
+   "Aloe barbadensis",
+   "Aloe indica"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "citrus-aurantium",
+  "accepted_name": "Citrus aurantium",
+  "absorbed_distinct_species": [
+   "Citrus paradisi",
+   "Citrus sinensis"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "citrus-limon",
+  "accepted_name": "Citrus limon",
+  "absorbed_distinct_species": [
+   "Citrus bergamia",
+   "Citrus lemon"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "morella-esculenta",
+  "accepted_name": "Morella esculenta",
+  "absorbed_distinct_species": [
+   "Myrica esculenta",
+   "Myrica nagi"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "solanum-virginianum",
+  "accepted_name": "Solanum virginianum",
+  "absorbed_distinct_species": [
+   "Solanum surattense",
+   "Solanum xanthocarpum"
+  ],
+  "count": 2
+ }
+]
+```
+</details>
+
+<details><summary><b>all_ranked</b> — 90 (first 30)</summary>
+
+```json
+[
+ {
+  "canonical_id": "aloe-vera",
+  "accepted_name": "Aloe vera",
+  "absorbed_distinct_species": [
+   "Aloe barbadensis",
+   "Aloe indica"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "citrus-aurantium",
+  "accepted_name": "Citrus aurantium",
+  "absorbed_distinct_species": [
+   "Citrus paradisi",
+   "Citrus sinensis"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "citrus-limon",
+  "accepted_name": "Citrus limon",
+  "absorbed_distinct_species": [
+   "Citrus bergamia",
+   "Citrus lemon"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "morella-esculenta",
+  "accepted_name": "Morella esculenta",
+  "absorbed_distinct_species": [
+   "Myrica esculenta",
+   "Myrica nagi"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "solanum-virginianum",
+  "accepted_name": "Solanum virginianum",
+  "absorbed_distinct_species": [
+   "Solanum surattense",
+   "Solanum xanthocarpum"
+  ],
+  "count": 2
+ },
+ {
+  "canonical_id": "abies-spectabilis",
+  "accepted_name": "Abies spectabilis",
+  "absorbed_distinct_species": [
+   "Abies webbiana"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "abroma-augustum",
+  "accepted_name": "Abroma augustum",
+  "absorbed_distinct_species": [
+   "Abroma augusta"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "actinidia-chinensis-deliciosa",
+  "accepted_name": "Actinidia chinensis deliciosa",
+  "absorbed_distinct_species": [
+   "Actinidia deliciosa"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "alhagi-maurorum",
+  "accepted_name": "Alhagi maurorum",
+  "absorbed_distinct_species": [
+   "Alhagi camelorum"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "alkekengi-officinarum",
+  "accepted_name": "Alkekengi officinarum",
+  "absorbed_distinct_species": [
+   "Physalis alkekengi"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "astragalus-membranaceus",
+  "accepted_name": "Astragalus mongholicus",
+  "absorbed_distinct_species": [
+   "Astragalus membranaceus"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "baliospermum-solanifolium",
+  "accepted_name": "Baliospermum solanifolium",
+  "absorbed_distinct_species": [
+   "Baliospermum montanum"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "bergenia-pacumbis",
+  "accepted_name": "Bergenia pacumbis",
+  "absorbed_distinct_species": [
+   "Bergenia ligulata"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "betula-pubescens-pubescens",
+  "accepted_name": "Betula pubescens pubescens",
+  "absorbed_distinct_species": [
+   "Betula alba"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "bistorta-vivipara",
+  "accepted_name": "Bistorta vivipara",
+  "absorbed_distinct_species": [
+   "Polygonum viviparum"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "bombax-ceiba",
+  "accepted_name": "Bombax ceiba",
+  "absorbed_distinct_species": [
+   "Bombax malabaricum"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "buchanania-cochinchinensis",
+  "accepted_name": "Buchanania cochinchinensis",
+  "absorbed_distinct_species": [
+   "Buchanania lanzan"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "butea-monosperma",
+  "accepted_name": "Butea monosperma",
+  "absorbed_distinct_species": [
+   "Butea frondosa"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "cedrus-deodara",
+  "accepted_name": "Cedrus deodara",
+  "absorbed_distinct_species": [
+   "Cedrus deodora"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "chamaecrista-absus",
+  "accepted_name": "Chamaecrista absus",
+  "absorbed_distinct_species": [
+   "Cassia absus"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "cinnamomum-burmanni",
+  "accepted_name": "Cinnamomum burmanni",
+  "absorbed_distinct_species": [
+   "Cinnamomum burmannii"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "cinnamomum-glaucescens",
+  "accepted_name": "Cinnamomum glaucescens",
+  "absorbed_distinct_species": [
+   "Cinnamomum cecidodaphne"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "cinnamomum-verum",
+  "accepted_name": "Cinnamomum verum",
+  "absorbed_distinct_species": [
+   "Cinnamomum zeylanicum"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "citrus-aurantiifolia",
+  "accepted_name": "Citrus aurantiifolia",
+  "absorbed_distinct_species": [
+   "Citrus aurantifolia"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "citrus-x-limon",
+  "accepted_name": "Citrus ×limon",
+  "absorbed_distinct_species": [
+   "Citrus limetta"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "coleus-hadiensis",
+  "accepted_name": "Coleus hadiensis",
+  "absorbed_distinct_species": [
+   "Coleus forskohlii"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "commiphora-wightii",
+  "accepted_name": "Commiphora wightii",
+  "absorbed_distinct_species": [
+   "Commiphora mukul"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "convolvulus-prostratus",
+  "accepted_name": "Convolvulus prostratus",
+  "absorbed_distinct_species": [
+   "Convolvulus pluricaulis"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "crambe-abyssinica",
+  "accepted_name": "Crambe hispanica abyssinica",
+  "absorbed_distinct_species": [
+   "Crambe abyssinica"
+  ],
+  "count": 1
+ },
+ {
+  "canonical_id": "cydonia-oblonga",
+  "accepted_name": "Cydonia oblonga",
+  "absorbed_distinct_species": [
+   "Pyrus cydonia"
+  ],
+  "count": 1
+ }
+]
+```
+</details>
+
+
+## Section 2 — Broad bare common name on a single species where the genus has siblings (ambiguity coverage gap)
+
+> A single-word common name unique to ONE species while its genus holds other species. If the name is colloquially broad (e.g. "orange"), the dominant sibling may be missing/merged, making the name resolve confidently to the wrong species instead of ambiguous. Commercial judgement (which are genuinely broad) is 6C.
+
+| Metric | Count |
+|---|---|
+| bare_commons_on_single_species_with_siblings | 222 |
+
+<details><summary><b>ranked</b> — 222 (first 40)</summary>
+
+```json
+[
+ {
+  "bare_common": "apricot",
+  "on_species": "prunus-armeniaca",
+  "latin": "Prunus armeniaca",
+  "sibling_species_in_genus": 10
+ },
+ {
+  "bare_common": "cherry",
+  "on_species": "prunus-avium",
+  "latin": "Prunus avium",
+  "sibling_species_in_genus": 10
+ },
+ {
+  "bare_common": "padmaka",
+  "on_species": "prunus-cerasoides",
+  "latin": "Prunus cerasoides",
+  "sibling_species_in_genus": 10
+ },
+ {
+  "bare_common": "peach",
+  "on_species": "prunus-persica",
+  "latin": "Prunus persica",
+  "sibling_species_in_genus": 10
+ },
+ {
+  "bare_common": "plum",
+  "on_species": "prunus-domestica",
+  "latin": "Prunus domestica",
+  "sibling_species_in_genus": 10
+ },
+ {
+  "bare_common": "prune",
+  "on_species": "prunus-domestica",
+  "latin": "Prunus domestica",
+  "sibling_species_in_genus": 10
+ },
+ {
+  "bare_common": "pygeum",
+  "on_species": "prunus-africana",
+  "latin": "Prunus africana",
+  "sibling_species_in_genus": 10
+ },
+ {
+  "bare_common": "bergamot",
+  "on_species": "citrus-limon",
+  "latin": "Citrus limon",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "grapefruit",
+  "on_species": "citrus-aurantium",
+  "latin": "Citrus aurantium",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "lemon",
+  "on_species": "citrus-limon",
+  "latin": "Citrus limon",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "lime",
+  "on_species": "citrus-aurantiifolia",
+  "latin": "Citrus aurantiifolia",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "mandarin",
+  "on_species": "citrus-reticulata",
+  "latin": "Citrus reticulata",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "neroli",
+  "on_species": "citrus-aurantium",
+  "latin": "Citrus aurantium",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "orange",
+  "on_species": "citrus-aurantium",
+  "latin": "Citrus aurantium",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "pomelo",
+  "on_species": "citrus-maxima",
+  "latin": "Citrus maxima",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "tangerine",
+  "on_species": "citrus-reticulata",
+  "latin": "Citrus reticulata",
+  "sibling_species_in_genus": 7
+ },
+ {
+  "bare_common": "ambehalad",
+  "on_species": "curcuma-amada",
+  "latin": "Curcuma amada",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "bettle",
+  "on_species": "piper-betle",
+  "latin": "Piper betle",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "camphor",
+  "on_species": "cinnamomum-camphora",
+  "latin": "Cinnamomum camphora",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "chabya",
+  "on_species": "piper-retrofractum",
+  "latin": "Piper retrofractum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "clarysage",
+  "on_species": "salvia-sclarea",
+  "latin": "Salvia sclarea",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "cubeb",
+  "on_species": "piper-cubeba",
+  "latin": "Piper cubeba",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "eggplant",
+  "on_species": "solanum-melongena",
+  "latin": "Solanum melongena",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "jurubeba",
+  "on_species": "solanum-paniculatum",
+  "latin": "Solanum paniculatum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "kankol",
+  "on_species": "piper-cubeba",
+  "latin": "Piper cubeba",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "kateli",
+  "on_species": "solanum-virginianum",
+  "latin": "Solanum virginianum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "kateri",
+  "on_species": "solanum-virginianum",
+  "latin": "Solanum virginianum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "makoy",
+  "on_species": "solanum-nigrum",
+  "latin": "Solanum nigrum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "matico",
+  "on_species": "piper-aduncum",
+  "latin": "Piper aduncum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "pepper",
+  "on_species": "piper-nigrum",
+  "latin": "Piper nigrum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "pipali",
+  "on_species": "piper-longum",
+  "latin": "Piper longum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "potato",
+  "on_species": "solanum-tuberosum",
+  "latin": "Solanum tuberosum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "rosemary",
+  "on_species": "salvia-rosmarinus",
+  "latin": "Salvia rosmarinus",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "sage",
+  "on_species": "salvia-officinalis",
+  "latin": "Salvia officinalis",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "tomato",
+  "on_species": "solanum-lycopersicum",
+  "latin": "Solanum lycopersicum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "trikatu",
+  "on_species": "piper-nigrum",
+  "latin": "Piper nigrum",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "turmeric",
+  "on_species": "curcuma-longa",
+  "latin": "Curcuma longa",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "zedoary",
+  "on_species": "curcuma-zedoaria",
+  "latin": "Curcuma zedoaria",
+  "sibling_species_in_genus": 6
+ },
+ {
+  "bare_common": "afsanteen",
+  "on_species": "artemisia-absinthium",
+  "latin": "Artemisia absinthium",
+  "sibling_species_in_genus": 5
+ },
+ {
+  "bare_common": "broccoli",
+  "on_species": "brassica-oleracea",
+  "latin": "Brassica oleracea",
+  "sibling_species_in_genus": 5
+ }
+]
+```
+</details>
+
+
+## Section 3 — Supplier common names that never resolve to any backbone record (uncovered botanical aliases)
+
+> Distinct Pass-1 supplier common-name strings the resolver returns unrecognised for, AFTER removing those whose Pass-1 key was excluded as non-botanical (minerals/salts/bhasmas). What remains is a botanical alias with no home — a missing name on a present species, or a missing species.
+
+| Metric | Count |
+|---|---|
+| distinct_supplier_commons | 1402 |
+| never_resolve_botanical | 0 |
+| never_resolve_non_botanical_excluded | 16 |
+
+<details><summary><b>non_botanical_excluded</b> — 16</summary>
+
+```json
+[
+ {
+  "supplier_common": "Black Mica, Granules",
+  "from_pass1_keys": [
+   "Abhrak bhasm"
+  ]
+ },
+ {
+  "supplier_common": "Shilajit",
+  "from_pass1_keys": [
+   "Asphaltum punjabianum"
+  ]
+ },
+ {
+  "supplier_common": "Multani Mitti",
+  "from_pass1_keys": [
+   "Bentonite clay"
+  ]
+ },
+ {
+  "supplier_common": "Namak Papdi, Granules",
+  "from_pass1_keys": [
+   "Bura armani"
+  ]
+ },
+ {
+  "supplier_common": "Samandar Jhag, Cut",
+  "from_pass1_keys": [
+   "Cuttle fish"
+  ]
+ },
+ {
+  "supplier_common": "Kasheesh Hara, Granules",
+  "from_pass1_keys": [
+   "Ferrous sulphate"
+  ]
+ },
+ {
+  "supplier_common": "Red Ochre",
+  "from_pass1_keys": [
+   "Geru mitti"
+  ]
+ },
+ {
+  "supplier_common": "Ferrous Sulphate",
+  "from_pass1_keys": [
+   "Kasheesh hara"
+  ]
+ },
+ {
+  "supplier_common": "Keherva Dana",
+  "from_pass1_keys": [
+   "Keherwa dana"
+  ]
+ },
+ {
+  "supplier_common": "Jawakhar, Granules",
+  "from_pass1_keys": [
+   "Potassium carbonate"
+  ]
+ },
+ {
+  "supplier_common": "Kalmi Shora, Granules",
+  "from_pass1_keys": [
+   "Potassium nitrate"
+  ]
+ },
+ {
+  "supplier_common": "Rupa Makkhi, Cut",
+  "from_pass1_keys": [
+   "Rajat makshik"
+  ]
+ },
+ {
+  "supplier_common": "Mishri",
+  "from_pass1_keys": [
+   "Rock sugar"
+  ]
+ },
+ {
+  "supplier_common": "Fish Stone",
+  "from_pass1_keys": [
+   "Sangesar mahi"
+  ]
+ },
+ {
+  "supplier_common": "Pink Himalayan Salt",
+  "from_pass1_keys": [
+   "Sendha namak"
+  ]
+ },
+ {
+  "supplier_common": "Priyangu Seeds",
+  "from_pass1_keys": [
+   "Velvety beauty"
+  ]
+ }
+]
+```
+</details>
+
+
+## Section 4 — Thin name coverage (present species with few/no vernacular names)
+
+> Accepted species records carrying 0 or 1 common name. A commercially-present species with no vernacular/trade name is likely under-covered (missing common/trade/pharmacopoeial aliases). Some genuinely have few names; commercial judgement is 6C.
+
+| Metric | Count |
+|---|---|
+| accepted_species_records | 817 |
+| zero_common_names | 31 |
+| one_common_name | 377 |
+
+<details><summary><b>zero_common_names</b> — 31</summary>
+
+```json
+[
+ {
+  "canonical_id": "abuta-grandifolia",
+  "accepted_name": "Abuta grandifolia",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "acer-saccharum",
+  "accepted_name": "Acer saccharum",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "agaricus-bisporus",
+  "accepted_name": "Agaricus bisporus",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "ajuga-turkestanica",
+  "accepted_name": "Ajuga turkestanica",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "asparagus-adscendens",
+  "accepted_name": "Asparagus adscendens",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "berberis-asiatica",
+  "accepted_name": "Berberis asiatica",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "cassia-nodosa",
+  "accepted_name": "Cassia nodosa",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "caulerpa-lentillifera",
+  "accepted_name": "Caulerpa lentillifera",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "chrysopogon-zizanioides",
+  "accepted_name": "Chrysopogon zizanioides",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "codonopsis-pilosula",
+  "accepted_name": "Codonopsis pilosula",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "costus-igneus",
+  "accepted_name": "Costus igneus",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "cynara-cardunculus",
+  "accepted_name": "Cynara cardunculus",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "datura-stramonium",
+  "accepted_name": "Datura stramonium",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "dunaliella-salina",
+  "accepted_name": "Dunaliella salina",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "echinacea-angustifolia",
+  "accepted_name": "Echinacea angustifolia",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "epimedium-grandiflorum",
+  "accepted_name": "Epimedium grandiflorum",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "gynura-procumbens",
+  "accepted_name": "Gynura procumbens",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "hovenia-dulcis",
+  "accepted_name": "Hovenia dulcis",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "huperzia-serrata",
+  "accepted_name": "Huperzia serrata",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "phaleria-macrocarpa",
+  "accepted_name": "Phaleria macrocarpa",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "pholiota-nameko",
+  "accepted_name": "Pholiota nameko",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "plantago-lanceolata",
+  "accepted_name": "Plantago lanceolata",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "pongamia-glabra",
+  "accepted_name": "Pongamia glabra",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "porphyra-yezoensis",
+  "accepted_name": "Porphyra yezoensis",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "primula-veris",
+  "accepted_name": "Primula veris",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "pueraria-mirifica",
+  "accepted_name": "Pueraria mirifica",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "salvia-divinorum",
+  "accepted_name": "Salvia divinorum",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "saraca-indica",
+  "accepted_name": "Saraca indica",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "spergularia-rubra",
+  "accepted_name": "Spergularia rubra",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "stephania-delavayi",
+  "accepted_name": "Stephania delavayi",
+  "scientific_synonyms": 0
+ },
+ {
+  "canonical_id": "vigna-mungo",
+  "accepted_name": "Vigna mungo",
+  "scientific_synonyms": 0
+ }
+]
+```
+</details>
+
+<details><summary><b>one_common_name</b> — 377 (first 40)</summary>
+
+```json
+[
+ {
+  "canonical_id": "abies-alba",
+  "accepted_name": "Abies alba",
+  "common_name": "Fir Needle"
+ },
+ {
+  "canonical_id": "abies-spectabilis",
+  "accepted_name": "Abies spectabilis",
+  "common_name": "Tallis Patra, Cut"
+ },
+ {
+  "canonical_id": "acmella-oleracea",
+  "accepted_name": "Acmella oleracea",
+  "common_name": "Spilanthes"
+ },
+ {
+  "canonical_id": "actaea-racemosa",
+  "accepted_name": "Actaea racemosa",
+  "common_name": "Black Cohosh"
+ },
+ {
+  "canonical_id": "adansonia-digitata",
+  "accepted_name": "Adansonia digitata",
+  "common_name": "Baobab Oil"
+ },
+ {
+  "canonical_id": "adiantum-caudatum",
+  "accepted_name": "Adiantum caudatum",
+  "common_name": "Mayur Shikha, Cut"
+ },
+ {
+  "canonical_id": "aesculus-hippocastanum",
+  "accepted_name": "Aesculus hippocastanum",
+  "common_name": "Horse chestnut"
+ },
+ {
+  "canonical_id": "agathosma-betulina",
+  "accepted_name": "Agathosma betulina",
+  "common_name": "Buchu"
+ },
+ {
+  "canonical_id": "agave-americana",
+  "accepted_name": "Agave americana",
+  "common_name": "Agave"
+ },
+ {
+  "canonical_id": "agave-amica",
+  "accepted_name": "Agave amica",
+  "common_name": "Tuberose Flower"
+ },
+ {
+  "canonical_id": "agrimonia-eupatoria",
+  "accepted_name": "Agrimonia eupatoria",
+  "common_name": "Agrimony"
+ },
+ {
+  "canonical_id": "alchemilla-vulgaris",
+  "accepted_name": "Alchemilla vulgaris",
+  "common_name": "Lady s Mantle"
+ },
+ {
+  "canonical_id": "alchornea-castaneifolia",
+  "accepted_name": "Alchornea castaneifolia",
+  "common_name": "Iporuro"
+ },
+ {
+  "canonical_id": "aleurites-moluccanus",
+  "accepted_name": "Aleurites moluccanus",
+  "common_name": "Kukui Nut Oil"
+ },
+ {
+  "canonical_id": "alibertia-patinoi",
+  "accepted_name": "Alibertia patinoi",
+  "common_name": "Borojo"
+ },
+ {
+  "canonical_id": "alkekengi-officinarum",
+  "accepted_name": "Alkekengi officinarum",
+  "common_name": "Kaknaj, Cut"
+ },
+ {
+  "canonical_id": "allium-fistulosum",
+  "accepted_name": "Allium fistulosum",
+  "common_name": "Freeze Dried Spring Onion"
+ },
+ {
+  "canonical_id": "allium-porrum",
+  "accepted_name": "Allium porrum",
+  "common_name": "Freeze Dried Leek"
+ },
+ {
+  "canonical_id": "alpinia-katsumadai",
+  "accepted_name": "Alpinia katsumadai",
+  "common_name": "Cao Dou Kou Seed"
+ },
+ {
+  "canonical_id": "alpinia-officinarum",
+  "accepted_name": "Alpinia officinarum",
+  "common_name": "Lesser galangal"
+ },
+ {
+  "canonical_id": "amaranthus-caudatus",
+  "accepted_name": "Amaranthus caudatus",
+  "common_name": "Rajgira (Amaranthus)"
+ },
+ {
+  "canonical_id": "amaranthus-cruentus",
+  "accepted_name": "Amaranthus cruentus",
+  "common_name": "Amaranth"
+ },
+ {
+  "canonical_id": "amaranthus-dubius",
+  "accepted_name": "Amaranthus dubius",
+  "common_name": "Red spinach"
+ },
+ {
+  "canonical_id": "ambrosia-artemisiifolia",
+  "accepted_name": "Ambrosia artemisiifolia",
+  "common_name": "Ragweed"
+ },
+ {
+  "canonical_id": "amomum-subulatum",
+  "accepted_name": "Amomum subulatum",
+  "common_name": "Black Cardamom"
+ },
+ {
+  "canonical_id": "amyris-balsamifera",
+  "accepted_name": "Amyris balsamifera",
+  "common_name": "Amyris"
+ },
+ {
+  "canonical_id": "anacamptis-laxiflora",
+  "accepted_name": "Anacamptis laxiflora",
+  "common_name": "Salab Gatta, Cut"
+ },
+ {
+  "canonical_id": "anacardium-occidentale",
+  "accepted_name": "Anacardium occidentale",
+  "common_name": "Cashew Oil"
+ },
+ {
+  "canonical_id": "angelica-archangelica",
+  "accepted_name": "Angelica archangelica",
+  "common_name": "Angelica"
+ },
+ {
+  "canonical_id": "angelica-dahurica",
+  "accepted_name": "Angelica dahurica",
+  "common_name": "Chinese angelica"
+ },
+ {
+  "canonical_id": "angelica-keiskei",
+  "accepted_name": "Angelica keiskei",
+  "common_name": "Ashitaba"
+ },
+ {
+  "canonical_id": "annona-cherimola",
+  "accepted_name": "Annona cherimola",
+  "common_name": "Cherimoya"
+ },
+ {
+  "canonical_id": "anthriscus-cerefolium",
+  "accepted_name": "Anthriscus cerefolium",
+  "common_name": "Chervil"
+ },
+ {
+  "canonical_id": "arachis-hypogaea",
+  "accepted_name": "Arachis hypogaea",
+  "common_name": "Groundnut Oil"
+ },
+ {
+  "canonical_id": "arctostaphylos-pungens",
+  "accepted_name": "Arctostaphylos pungens",
+  "common_name": "Pinguica"
+ },
+ {
+  "canonical_id": "arctostaphylos-uva-ursi",
+  "accepted_name": "Arctostaphylos uva-ursi",
+  "common_name": "Bearberry"
+ },
+ {
+  "canonical_id": "areca-catechu",
+  "accepted_name": "Areca catechu",
+  "common_name": "Sua Supari, Cut"
+ },
+ {
+  "canonical_id": "argemone-mexicana",
+  "accepted_name": "Argemone mexicana",
+  "common_name": "Argemone"
+ },
+ {
+  "canonical_id": "aristotelia-chilensis",
+  "accepted_name": "Aristotelia chilensis",
+  "common_name": "Maqui Berry"
+ },
+ {
+  "canonical_id": "armoracia-rusticana",
+  "accepted_name": "Armoracia rusticana",
+  "common_name": "Horseradish"
+ }
+]
+```
+</details>
+
+
+## Section 5 — Curated seed-list presence check (well-known commercial species)
+
+> A SAMPLE of well-known commercial botanicals — presence only, no mappings invented. "absorbed" = the name exists only as a synonym/parsed-name of a DIFFERENT accepted record (merged, like Citrus sinensis→citrus-aurantium); "absent" = not found at all. Both are coverage gaps to review in 6C.
+
+| Metric | Count |
+|---|---|
+| seed_size | 64 |
+| present_own_record | 55 |
+| absorbed_into_other_species | 6 |
+| absent_entirely | 3 |
+
+<details><summary><b>absorbed_into_other_species</b> — 6</summary>
+
+```json
+[
+ {
+  "species": "Citrus sinensis",
+  "gloss": "sweet orange",
+  "absorbed_into": [
+   "citrus-aurantium"
+  ]
+ },
+ {
+  "species": "Citrus paradisi",
+  "gloss": "grapefruit",
+  "absorbed_into": [
+   "citrus-aurantium"
+  ]
+ },
+ {
+  "species": "Citrus bergamia",
+  "gloss": "bergamot",
+  "absorbed_into": [
+   "citrus-limon"
+  ]
+ },
+ {
+  "species": "Cinnamomum cassia",
+  "gloss": "cassia",
+  "absorbed_into": [
+   "cinnamomum-cassia"
+  ]
+ },
+ {
+  "species": "Argania spinosa",
+  "gloss": "argan",
+  "absorbed_into": [
+   "sideroxylon-spinosum"
+  ]
+ },
+ {
+  "species": "Emblica officinalis",
+  "gloss": "amla",
+  "absorbed_into": [
+   "phyllanthus-emblica"
+  ]
+ }
+]
+```
+</details>
+
+<details><summary><b>absent_entirely</b> — 3</summary>
+
+```json
+[
+ {
+  "species": "Citrus latifolia",
+  "gloss": "persian lime"
+ },
+ {
+  "species": "Ilex paraguariensis",
+  "gloss": "yerba mate"
+ },
+ {
+  "species": "Vitellaria paradoxa",
+  "gloss": "shea"
+ }
+]
+```
+</details>
+
+<details><summary><b>present_own_record</b> — 55</summary>
+
+```json
+[
+ {
+  "species": "Citrus reticulata",
+  "gloss": "mandarin",
+  "canonical_id": "citrus-reticulata"
+ },
+ {
+  "species": "Vaccinium macrocarpon",
+  "gloss": "cranberry",
+  "canonical_id": "vaccinium-macrocarpon"
+ },
+ {
+  "species": "Vaccinium myrtillus",
+  "gloss": "bilberry",
+  "canonical_id": "vaccinium-myrtillus"
+ },
+ {
+  "species": "Vaccinium corymbosum",
+  "gloss": "blueberry",
+  "canonical_id": "vaccinium-corymbosum"
+ },
+ {
+  "species": "Sambucus nigra",
+  "gloss": "elderberry",
+  "canonical_id": "sambucus-nigra"
+ },
+ {
+  "species": "Ribes nigrum",
+  "gloss": "blackcurrant",
+  "canonical_id": "ribes-nigrum"
+ },
+ {
+  "species": "Aronia melanocarpa",
+  "gloss": "chokeberry",
+  "canonical_id": "aronia-melanocarpa"
+ },
+ {
+  "species": "Panax ginseng",
+  "gloss": "asian ginseng",
+  "canonical_id": "panax-ginseng"
+ },
+ {
+  "species": "Panax quinquefolius",
+  "gloss": "american ginseng",
+  "canonical_id": "panax-quinquefolius"
+ },
+ {
+  "species": "Eleutherococcus senticosus",
+  "gloss": "siberian ginseng",
+  "canonical_id": "eleutherococcus-senticosus"
+ },
+ {
+  "species": "Ginkgo biloba",
+  "gloss": "ginkgo",
+  "canonical_id": "ginkgo-biloba"
+ },
+ {
+  "species": "Serenoa repens",
+  "gloss": "saw palmetto",
+  "canonical_id": "serenoa-repens"
+ },
+ {
+  "species": "Actaea racemosa",
+  "gloss": "black cohosh",
+  "canonical_id": "actaea-racemosa"
+ },
+ {
+  "species": "Hypericum perforatum",
+  "gloss": "st johns wort",
+  "canonical_id": "hypericum-perforatum"
+ },
+ {
+  "species": "Silybum marianum",
+  "gloss": "milk thistle",
+  "canonical_id": "silybum-marianum"
+ },
+ {
+  "species": "Echinacea purpurea",
+  "gloss": "echinacea",
+  "canonical_id": "echinacea-purpurea"
+ },
+ {
+  "species": "Rhodiola rosea",
+  "gloss": "rhodiola",
+  "canonical_id": "rhodiola-rosea"
+ },
+ {
+  "species": "Valeriana officinalis",
+  "gloss": "valerian",
+  "canonical_id": "valeriana-officinalis"
+ },
+ {
+  "species": "Cinnamomum verum",
+  "gloss": "ceylon cinnamon",
+  "canonical_id": "cinnamomum-verum"
+ },
+ {
+  "species": "Zingiber officinale",
+  "gloss": "ginger",
+  "canonical_id": "zingiber-officinale"
+ },
+ {
+  "species": "Curcuma longa",
+  "gloss": "turmeric",
+  "canonical_id": "curcuma-longa"
+ },
+ {
+  "species": "Piper nigrum",
+  "gloss": "black pepper",
+  "canonical_id": "piper-nigrum"
+ },
+ {
+  "species": "Syzygium aromaticum",
+  "gloss": "clove",
+  "canonical_id": "syzygium-aromaticum"
+ },
+ {
+  "species": "Myristica fragrans",
+  "gloss": "nutmeg",
+  "canonical_id": "myristica-fragrans"
+ },
+ {
+  "species": "Crocus sativus",
+  "gloss": "saffron",
+  "canonical_id": "crocus-sativus"
+ },
+ {
+  "species": "Vanilla planifolia",
+  "gloss": "vanilla",
+  "canonical_id": "vanilla-planifolia"
+ },
+ {
+  "species": "Illicium verum",
+  "gloss": "star anise",
+  "canonical_id": "illicium-verum"
+ },
+ {
+  "species": "Capsicum annuum",
+  "gloss": "chilli",
+  "canonical_id": "capsicum-annuum"
+ },
+ {
+  "species": "Elettaria cardamomum",
+  "gloss": "cardamom",
+  "canonical_id": "elettaria-cardamomum"
+ },
+ {
+  "species": "Camellia sinensis",
+  "gloss": "tea",
+  "canonical_id": "camellia-sinensis"
+ },
+ {
+  "species": "Coffea arabica",
+  "gloss": "coffee",
+  "canonical_id": "coffea-arabica"
+ },
+ {
+  "species": "Theobroma cacao",
+  "gloss": "cacao",
+  "canonical_id": "theobroma-cacao"
+ },
+ {
+  "species": "Aspalathus linearis",
+  "gloss": "rooibos",
+  "canonical_id": "aspalathus-linearis"
+ },
+ {
+  "species": "Punica granatum",
+  "gloss": "pomegranate",
+  "canonical_id": "punica-granatum"
+ },
+ {
+  "species": "Vitis vinifera",
+  "gloss": "grape",
+  "canonical_id": "vitis-vinifera"
+ },
+ {
+  "species": "Olea europaea",
+  "gloss": "olive",
+  "canonical_id": "olea-europaea"
+ },
+ {
+  "species": "Malus domestica",
+  "gloss": "apple",
+  "canonical_id": "malus-domestica"
+ },
+ {
+  "species": "Persea americana",
+  "gloss": "avocado",
+  "canonical_id": "persea-americana"
+ },
+ {
+  "species": "Cocos nucifera",
+  "gloss": "coconut",
+  "canonical_id": "cocos-nucifera"
+ },
+ {
+  "species": "Aloe vera",
+  "gloss": "aloe",
+  "canonical_id": "aloe-vera"
+ },
+ {
+  "species": "Simmondsia chinensis",
+  "gloss": "jojoba",
+  "canonical_id": "simmondsia-chinensis"
+ },
+ {
+  "species": "Rosa damascena",
+  "gloss": "damask rose",
+  "canonical_id": "rosa-damascena"
+ },
+ {
+  "species": "Rosa canina",
+  "gloss": "rosehip",
+  "canonical_id": "rosa-canina"
+ },
+ {
+  "species": "Calendula officinalis",
+  "gloss": "calendula",
+  "canonical_id": "calendula-officinalis"
+ },
+ {
+  "species": "Lavandula angustifolia",
+  "gloss": "english lavender",
+  "canonical_id": "lavandula-angustifolia"
+ },
+ {
+  "species": "Melaleuca alternifolia",
+  "gloss": "tea tree",
+  "canonical_id": "melaleuca-alternifolia"
+ },
+ {
+  "species": "Centella asiatica",
+  "gloss": "gotu kola",
+  "canonical_id": "centella-asiatica"
+ },
+ {
+  "species": "Withania somnifera",
+  "gloss": "ashwagandha",
+  "canonical_id": "withania-somnifera"
+ },
+ {
+  "species": "Bacopa monnieri",
+  "gloss": "bacopa",
+  "canonical_id": "bacopa-monnieri"
+ },
+ {
+  "species": "Tinospora cordifolia",
+  "gloss": "guduchi",
+  "canonical_id": "tinospora-cordifolia"
+ },
+ {
+  "species": "Phyllanthus emblica",
+  "gloss": "amla",
+  "canonical_id": "phyllanthus-emblica"
+ },
+ {
+  "species": "Terminalia chebula",
+  "gloss": "haritaki",
+  "canonical_id": "terminalia-chebula"
+ },
+ {
+  "species": "Trigonella foenum-graecum",
+  "gloss": "fenugreek",
+  "canonical_id": "trigonella-foenum-graecum"
+ },
+ {
+  "species": "Moringa oleifera",
+  "gloss": "moringa",
+  "canonical_id": "moringa-oleifera"
+ },
+ {
+  "species": "Boswellia serrata",
+  "gloss": "boswellia",
+  "canonical_id": "boswellia-serrata"
+ }
+]
+```
+</details>
+
+
+## What 6B CANNOT detect (honest limits)
+
+- **Correctness of any mapping** — 6B says a species is missing/absorbed, not what "orange" *should* mean. That is 6C + owner.
+- **Completeness of the seed list** — the seed list is a curated SAMPLE of well-known species; absence from it is not evidence of coverage. A species not flagged may still be missing.
+- **Per-name provenance / supplier attribution** — record-level provenance only (6A), so "which supplier uses this alias" and single-supplier-only names cannot be isolated here.
+- **Pharmacopoeial / regulatory name gaps** — require an external pharmacopoeia reference not present in the data; only raw absence of *any* vernacular is detectable (Section 4).
+- **Whether a merge is legitimate** — Section 1 lists all multi-species merges; GBIF-true synonyms and incorrect commercial merges look identical here.
