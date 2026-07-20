@@ -174,11 +174,20 @@ const S = {};
   // 4c common exact-unique — the resolver must never pick a DIFFERENT single record for a unique common
   const commonToIds = new Map();
   for (const r of RECS) for (const c of (r.common_names || [])) { const n = norm(c); if (!n) continue; if (!commonToIds.has(n)) commonToIds.set(n, new Set()); commonToIds.get(n).add(r.canonical_id); }
-  let uniqueTotal = 0, uniqueRoundTrip = 0; const uniqueWrongPick = [];
+  // Rule 2 (owner): part/form stripping must never override a name — never strip PAST a token that changes
+  // the species. A violation = a unique common that resolves to a DIFFERENT record BY STRIPPING (the matched
+  // candidate is a shortened form of the input). A DIFFERENT record reached on the FULL input directly
+  // (matched === input) is an owner collision-pin or exact-name precedence on a bare token — NOT a strip
+  // violation; those are surfaced below for Gate-2 (6B) naming review, not counted as a Gate-1 anomaly.
+  let uniqueTotal = 0, uniqueRoundTrip = 0; const uniqueWrongPick = []; const direct_owner_pin_or_exact_elsewhere = [];
   for (const [n, ids] of commonToIds) { if (ids.size !== 1) continue; uniqueTotal++; const only = [...ids][0]; const res = resolve(null, n, exact, common);
-    if (res.canonical_id === only) uniqueRoundTrip++;
-    else if (statusOf(res) === 'resolved' && res.canonical_id !== only) uniqueWrongPick.push({ common: n, expected: only, got: res.canonical_id }); } // ambiguous/unrecognised = part-strip/quarantine (expected), NOT a wrong pick
-  rec('common_name_exact_unique', 'a unique common never resolves to a DIFFERENT record', uniqueWrongPick.length === 0, `${uniqueWrongPick.length} wrong picks (${uniqueRoundTrip}/${uniqueTotal} round-trip; rest → ambiguous/unrecognised by part-strip/quarantine design)`);
+    if (res.canonical_id === only) { uniqueRoundTrip++; continue; }
+    if (statusOf(res) !== 'resolved') continue; // ambiguous/unrecognised = part-strip/quarantine design, not a wrong pick
+    if (norm(res.matched || '') !== n) uniqueWrongPick.push({ common: n, expected: only, got: res.canonical_id, stripped_to: res.matched }); // stripped past a token -> Rule 2 violation
+    else direct_owner_pin_or_exact_elsewhere.push({ common: n, raw_common_of: only, resolves_to: res.canonical_id, via: res.match_method }); // full-token owner-pin / exact precedence (6B item)
+  }
+  S.s4_common_direct_elsewhere = direct_owner_pin_or_exact_elsewhere; // stash for reporting
+  rec('common_name_exact_unique_no_strip_override', 'a unique common never STRIPS to a different species (Rule 2)', uniqueWrongPick.length === 0, `${uniqueWrongPick.length} strip-overrides (${uniqueRoundTrip}/${uniqueTotal} round-trip; ${direct_owner_pin_or_exact_elsewhere.length} full-token owner-pin/exact resolutions → 6B naming review)`);
 
   // 4d ambiguous → never silently picks a species OUTSIDE the candidate set
   const ambViolations = []; let ambTotal = 0, ambReturnedAmbiguous = 0;
@@ -224,7 +233,8 @@ const S = {};
     counts: { paths_checked: probes.length, paths_behaving_as_specified: probes.length - deviations.length, paths_deviating: deviations.length },
     probes,
     key_finding: aBad.length ? `Resolver gap: ${aBad.length} accepted names (${aBadHyphen} with hyphenated epithets, e.g. "Arctostaphylos uva-ursi") do NOT resolve to themselves — resolve()'s cleanLabel splits hyphens the exact index retains. The index KEY exists; resolve() cannot reach it.` : null,
-    detail: { accepted_name_not_resolving_to_self: trArr(aBad), synonym_not_resolving_to_own_record: trArr(sBad), common_unique_wrong_pick: trArr(uniqueWrongPick), ambiguous_picked_outside_candidates: trArr(ambViolations), part_format_lost: trArr(stripLost) },
+    gate2_6B_observations: { note: 'NOT Gate-1 anomalies — surfaced for 6B naming review. A bare common name that a NON-dominant species carries as a raw common, but which resolves (correctly, on the full token) to the owner-pinned dominant species or a genus record. Same family as the orange/grapefruit/bergamot naming issue.', full_token_owner_pin_or_exact_elsewhere: trArr(S.s4_common_direct_elsewhere || []) },
+    detail: { accepted_name_not_resolving_to_self: trArr(aBad), synonym_not_resolving_to_own_record: trArr(sBad), common_unique_strip_override: trArr(uniqueWrongPick), ambiguous_picked_outside_candidates: trArr(ambViolations), part_format_lost: trArr(stripLost) },
   };
 })();
 

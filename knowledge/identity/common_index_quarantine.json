@@ -1,177 +1,178 @@
 {
-  "_meta": {
-    "artifact": "Common-index part-stripping collision quarantine + owner resolutions (Fix 2b)",
-    "identity_version": "2026-07-19.3",
-    "derived_keys_indexed": 352,
-    "collisions_quarantined": 10,
-    "collisions_resolved": 9,
-    "note": "Part-stripped common-name keys mapping to >1 identity. Owner-adjudicated keys are pinned to one identity (resolutions); the rest stay unindexed (no silent merge)."
+ "_meta": {
+  "artifact": "Common-index part-stripping collision quarantine + owner resolutions (Fix 2b)",
+  "identity_version": "2026-07-19.4",
+  "derived_keys_indexed": 352,
+  "collisions_quarantined": 10,
+  "collisions_resolved": 9,
+  "generated_by": "knowledge/identity/build_common_index_quarantine.mjs (recomputed from the current backbone + resolver COLLISION_RESOLUTIONS)",
+  "note": "Part-stripped common-name keys mapping to >1 identity. Owner-adjudicated keys are pinned to one identity (resolutions); the rest stay unindexed (no silent merge)."
+ },
+ "resolutions": [
+  {
+   "stripped_key": "apple",
+   "resolved_to": "malus-domestica",
+   "over": [
+    "aegle-marmelos",
+    "malus-domestica"
+   ],
+   "resolved_to_name": "Malus domestica"
   },
-  "resolutions": [
-    {
-      "stripped_key": "apple",
-      "resolved_to": "malus-domestica",
-      "over": [
-        "aegle-marmelos",
-        "malus-domestica"
-      ],
-      "resolved_to_name": "Malus domestica"
-    },
-    {
-      "stripped_key": "atish",
-      "resolved_to": "aconitum-heterophyllum",
-      "over": [
-        "aconitum-heterophyllum",
-        "aconitum-palmatum"
-      ],
-      "resolved_to_name": "Aconitum heterophyllum"
-    },
-    {
-      "stripped_key": "basil",
-      "resolved_to": "ocimum-basilicum",
-      "over": [
-        "ocimum-basilicum",
-        "ocimum-tenuiflorum"
-      ],
-      "resolved_to_name": "Ocimum basilicum"
-    },
-    {
-      "stripped_key": "chitrak",
-      "resolved_to": "plumbago-zeylanica",
-      "over": [
-        "plumbago-indica",
-        "plumbago-zeylanica"
-      ],
-      "resolved_to_name": "Plumbago zeylanica"
-    },
-    {
-      "stripped_key": "hibiscus",
-      "resolved_to": "hibiscus-sabdariffa",
-      "over": [
-        "hibiscus-mutabilis",
-        "hibiscus-sabdariffa"
-      ],
-      "resolved_to_name": "Hibiscus sabdariffa"
-    },
-    {
-      "stripped_key": "lavender",
-      "resolved_to": "lavandula-angustifolia",
-      "over": [
-        "lavandula-angustifolia",
-        "lavandula-stoechas"
-      ],
-      "resolved_to_name": "Lavandula angustifolia"
-    },
-    {
-      "stripped_key": "rasna",
-      "resolved_to": "pluchea-lanceolata",
-      "over": [
-        "pluchea-lanceolata",
-        "vanda-tessellata"
-      ],
-      "resolved_to_name": "Pluchea lanceolata"
-    },
-    {
-      "stripped_key": "tea",
-      "resolved_to": "camellia-sinensis",
-      "over": [
-        "camellia-oleifera",
-        "camellia-sinensis"
-      ],
-      "resolved_to_name": "Camellia sinensis"
-    },
-    {
-      "stripped_key": "valerian",
-      "resolved_to": "valeriana-officinalis",
-      "over": [
-        "valeriana-jatamansi",
-        "valeriana-officinalis"
-      ],
-      "resolved_to_name": "Valeriana officinalis"
-    }
-  ],
-  "quarantine": [
-    {
-      "stripped_key": "bay",
-      "canonical_ids": [
-        "cinnamomum-tamala",
-        "laurus-nobilis"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "cinnamon",
-      "canonical_ids": [
-        "cinnamomum-burmanni",
-        "cinnamomum-verum"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "gaozaban",
-      "canonical_ids": [
-        "borago-officinalis",
-        "maharanga-bracteata"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "gokhru",
-      "canonical_ids": [
-        "pedalium-murex",
-        "tribulus-terrestris"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "jasmine",
-      "canonical_ids": [
-        "jasminum",
-        "jasminum-grandiflorum",
-        "jasminum-sambac"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "nagarmotha",
-      "canonical_ids": [
-        "cyperus-rotundus",
-        "cyperus-scariosus"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "passion",
-      "canonical_ids": [
-        "passiflora-edulis",
-        "passiflora-incarnata"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "rose petal",
-      "canonical_ids": [
-        "rosa-damascena",
-        "rosa-indica"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "sarsaparilla",
-      "canonical_ids": [
-        "decalepis-hamiltonii",
-        "hemidesmus-indicus",
-        "smilax-medica"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    },
-    {
-      "stripped_key": "soap",
-      "canonical_ids": [
-        "sapindus-mukorossi",
-        "senegalia-rugata"
-      ],
-      "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
-    }
-  ]
+  {
+   "stripped_key": "atish",
+   "resolved_to": "aconitum-heterophyllum",
+   "over": [
+    "aconitum-heterophyllum",
+    "aconitum-palmatum"
+   ],
+   "resolved_to_name": "Aconitum heterophyllum"
+  },
+  {
+   "stripped_key": "basil",
+   "resolved_to": "ocimum-basilicum",
+   "over": [
+    "ocimum-basilicum",
+    "ocimum-tenuiflorum"
+   ],
+   "resolved_to_name": "Ocimum basilicum"
+  },
+  {
+   "stripped_key": "chitrak",
+   "resolved_to": "plumbago-zeylanica",
+   "over": [
+    "plumbago-indica",
+    "plumbago-zeylanica"
+   ],
+   "resolved_to_name": "Plumbago zeylanica"
+  },
+  {
+   "stripped_key": "hibiscus",
+   "resolved_to": "hibiscus-sabdariffa",
+   "over": [
+    "hibiscus-mutabilis",
+    "hibiscus-sabdariffa"
+   ],
+   "resolved_to_name": "Hibiscus sabdariffa"
+  },
+  {
+   "stripped_key": "lavender",
+   "resolved_to": "lavandula-angustifolia",
+   "over": [
+    "lavandula-angustifolia",
+    "lavandula-stoechas"
+   ],
+   "resolved_to_name": "Lavandula angustifolia"
+  },
+  {
+   "stripped_key": "rasna",
+   "resolved_to": "pluchea-lanceolata",
+   "over": [
+    "pluchea-lanceolata",
+    "vanda-tessellata"
+   ],
+   "resolved_to_name": "Pluchea lanceolata"
+  },
+  {
+   "stripped_key": "tea",
+   "resolved_to": "camellia-sinensis",
+   "over": [
+    "camellia-oleifera",
+    "camellia-sinensis"
+   ],
+   "resolved_to_name": "Camellia sinensis"
+  },
+  {
+   "stripped_key": "valerian",
+   "resolved_to": "valeriana-officinalis",
+   "over": [
+    "valeriana-jatamansi",
+    "valeriana-officinalis"
+   ],
+   "resolved_to_name": "Valeriana officinalis"
+  }
+ ],
+ "quarantine": [
+  {
+   "stripped_key": "bay",
+   "canonical_ids": [
+    "cinnamomum-tamala",
+    "laurus-nobilis"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "cinnamon",
+   "canonical_ids": [
+    "cinnamomum-burmanni",
+    "cinnamomum-verum"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "gaozaban",
+   "canonical_ids": [
+    "borago-officinalis",
+    "maharanga-bracteata"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "gokhru",
+   "canonical_ids": [
+    "pedalium-murex",
+    "tribulus-terrestris"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "jasmine",
+   "canonical_ids": [
+    "jasminum",
+    "jasminum-grandiflorum",
+    "jasminum-sambac"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "nagarmotha",
+   "canonical_ids": [
+    "cyperus-rotundus",
+    "cyperus-scariosus"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "passion",
+   "canonical_ids": [
+    "passiflora-edulis",
+    "passiflora-incarnata"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "rose petal",
+   "canonical_ids": [
+    "rosa-damascena",
+    "rosa-indica"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "sarsaparilla",
+   "canonical_ids": [
+    "decalepis-hamiltonii",
+    "hemidesmus-indicus",
+    "smilax-medica"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  },
+  {
+   "stripped_key": "soap",
+   "canonical_ids": [
+    "sapindus-mukorossi",
+    "senegalia-rugata"
+   ],
+   "reason": "part-stripped common name maps to >1 identity; not indexed (no silent merge)"
+  }
+ ]
 }

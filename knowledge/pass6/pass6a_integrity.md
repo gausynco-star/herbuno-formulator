@@ -11,9 +11,9 @@
 | 1 · Taxonomy mechanics | 0 |
 | 2 · Provenance integrity | 0 |
 | 3 · Normalisation (mechanical) | 0 |
-| 4 · Resolver mechanics (deviations) | 2 |
-| 5 · Schema consistency | 1 |
-| **TOTAL mechanical anomalies** | **3** |
+| 4 · Resolver mechanics (deviations) | 0 |
+| 5 · Schema consistency | 0 |
+| **TOTAL mechanical anomalies** | **0** |
 
 _Expected-by-design (not anomalies):_ Section 3 reports 12 common-name normalised collisions (resolver returns `ambiguous`), 55 non-ASCII names (accents / ≥ assay markers, consistently kept), and 1 hybrid `×` names.
 
@@ -309,230 +309,26 @@ _No detail entries in this section._
 
 ## Section 4 — Resolver mechanics (behaviour of the code, not commercial correctness)
 
-**Key finding:** Resolver gap: 13 accepted names (12 with hyphenated epithets, e.g. "Arctostaphylos uva-ursi") do NOT resolve to themselves — resolve()'s cleanLabel splits hyphens the exact index retains. The index KEY exists; resolve() cannot reach it.
-
 | Check | Count |
 |---|---|
 | paths_checked | 8 |
-| paths_behaving_as_specified | 6 |
-| paths_deviating | 2 |
+| paths_behaving_as_specified | 8 |
+| paths_deviating | 0 |
 
 **Probes:**
 
 | Path | Expectation | Result | OK |
 |---|---|---|---|
-| accepted_name_exact | each accepted name resolves to its own record | 813 ok / 13 fail (12 of them hyphenated-epithet) | ❌ |
+| accepted_name_exact | each accepted name resolves to its own record | 826 ok / 0 fail (0 of them hyphenated-epithet) | ✅ |
 | scientific_synonym_exact | each synonym resolves to its record (or ambiguous) | 0 not resolving to own record (0 hyphenated) | ✅ |
-| common_name_exact_unique | a unique common never resolves to a DIFFERENT record | 22 wrong picks (1826/1886 round-trip; rest → ambiguous/unrecognised by part-strip/quarantine design) | ❌ |
-| ambiguous_never_picks_outside_candidates | ambiguous input never resolves to a non-candidate species | 0 violations (6/12 return ambiguous; rest owner-pinned to a candidate or part-stripped) | ✅ |
+| common_name_exact_unique_no_strip_override | a unique common never STRIPS to a different species (Rule 2) | 0 strip-overrides (1883/1886 round-trip; 3 full-token owner-pin/exact resolutions → 6B naming review) | ✅ |
+| ambiguous_never_picks_outside_candidates | ambiguous input never resolves to a non-candidate species | 0 violations (11/12 return ambiguous; rest owner-pinned to a candidate or part-stripped) | ✅ |
 | unrecognised | gibberish → unrecognised | 4/4 unrecognised | ✅ |
 | part_and_format_stripped | part/format-suffixed input still resolves | 240 resolve / 0 lost | ✅ |
 | case_whitespace_normalisation | case/whitespace variants → same record | 4/4 normalised | ✅ |
 | no_substring_or_fuzzy_false_match | genus-only / substring / typo never fuzzy-match | none (resolver is exact-only, no fuzzy) | ✅ |
 
-<details><summary><b>accepted_name_not_resolving_to_self</b> — 13</summary>
-
-```json
-[
- {
-  "id": "arctostaphylos-uva-ursi",
-  "name": "Arctostaphylos uva-ursi",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "aspidosperma-quebracho-blanco",
-  "name": "Aspidosperma quebracho-blanco",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "auricularia-auricula-judae",
-  "name": "Auricularia auricula-judae",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "capsella-bursa-pastoris",
-  "name": "Capsella bursa-pastoris",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "citrus-x-limon",
-  "name": "Citrus ×limon",
-  "got": "resolved:citrus-limon",
-  "hyphen_epithet": false
- },
- {
-  "id": "echinochloa-crus-galli-utilis",
-  "name": "Echinochloa crus-galli utilis",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "ferula-assa-foetida",
-  "name": "Ferula assa-foetida",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "opuntia-ficus-indica",
-  "name": "Opuntia ficus-indica",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "pleurotus-tuber-regium",
-  "name": "Pleurotus tuber-regium",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "strychnos-nux-vomica",
-  "name": "Strychnos nux-vomica",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "trigonella-foenum-graecum",
-  "name": "Trigonella foenum-graecum",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "vaccinium-vitis-idaea",
-  "name": "Vaccinium vitis-idaea",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- },
- {
-  "id": "ziziphus-spina-christi",
-  "name": "Ziziphus spina-christi",
-  "got": "unrecognised",
-  "hyphen_epithet": true
- }
-]
-```
-</details>
-
-<details><summary><b>common_unique_wrong_pick</b> — 22</summary>
-
-```json
-[
- {
-  "common": "wood apple oil",
-  "expected": "aegle-marmelos",
-  "got": "malus-domestica"
- },
- {
-  "common": "tea seed oil",
-  "expected": "camellia-oleifera",
-  "got": "camellia-sinensis"
- },
- {
-  "common": "sarsaparilla root",
-  "expected": "hemidesmus-indicus",
-  "got": "decalepis-hamiltonii"
- },
- {
-  "common": "sarsaparilla root cut",
-  "expected": "hemidesmus-indicus",
-  "got": "decalepis-hamiltonii"
- },
- {
-  "common": "lavender",
-  "expected": "lavandula-stoechas",
-  "got": "lavandula-angustifolia"
- },
- {
-  "common": "lavender flower bud whole",
-  "expected": "lavandula-stoechas",
-  "got": "lavandula-angustifolia"
- },
- {
-  "common": "freeze dried basil",
-  "expected": "ocimum-tenuiflorum",
-  "got": "ocimum-basilicum"
- },
- {
-  "common": "gokhru big cut",
-  "expected": "pedalium-murex",
-  "got": "tribulus-terrestris"
- },
- {
-  "common": "chitrak bark cut",
-  "expected": "plumbago-indica",
-  "got": "plumbago-zeylanica"
- },
- {
-  "common": "chitrak roots cut",
-  "expected": "plumbago-indica",
-  "got": "plumbago-zeylanica"
- },
- {
-  "common": "freeze dried rose petal",
-  "expected": "rosa-indica",
-  "got": "rosa-damascena"
- },
- {
-  "common": "rose petal tea",
-  "expected": "rosa-indica",
-  "got": "rosa-damascena"
- },
- {
-  "common": "rose petal cut",
-  "expected": "rosa-indica",
-  "got": "rosa-damascena"
- },
- {
-  "common": "rose petal whole",
-  "expected": "rosa-indica",
-  "got": "rosa-damascena"
- },
- {
-  "common": "sarsaparilla cut",
-  "expected": "smilax-medica",
-  "got": "decalepis-hamiltonii"
- },
- {
-  "common": "sarsaparilla whole",
-  "expected": "smilax-medica",
-  "got": "decalepis-hamiltonii"
- },
- {
-  "common": "tagetes",
-  "expected": "tagetes-minuta",
-  "got": "tagetes"
- },
- {
-  "common": "valerian",
-  "expected": "valeriana-jatamansi",
-  "got": "valeriana-officinalis"
- },
- {
-  "common": "valerian root",
-  "expected": "valeriana-jatamansi",
-  "got": "valeriana-officinalis"
- },
- {
-  "common": "valerian root cut",
-  "expected": "valeriana-jatamansi",
-  "got": "valeriana-officinalis"
- },
- {
-  "common": "valerian root whole",
-  "expected": "valeriana-jatamansi",
-  "got": "valeriana-officinalis"
- },
- {
-  "common": "rasna leaf",
-  "expected": "vanda-tessellata",
-  "got": "pluchea-lanceolata"
- }
-]
-```
-</details>
+_No detail entries in this section._
 
 
 ## Section 5 — Schema consistency
@@ -547,21 +343,10 @@ _No detail entries in this section._
 | excluded_name_also_resolved | 0 |
 | pass1_keys_unaccounted | 0 |
 | version_field_issues | 0 |
-| quarantine_version_mismatch | 1 |
+| quarantine_version_mismatch | 0 |
 | excluded_count_mismatch | 0 |
 
-<details><summary><b>quarantine_version_mismatch</b> — 1</summary>
-
-```json
-[
- {
-  "artifact": "knowledge/identity/common_index_quarantine.json",
-  "its_identity_version": "2026-07-19.3",
-  "backbone_identity_version": "2026-07-19.4"
- }
-]
-```
-</details>
+_No detail entries in this section._
 
 
 ## Where the anomalies live

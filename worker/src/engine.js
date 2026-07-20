@@ -5,7 +5,7 @@
 
 // PRESENTATION-ONLY display-name overrides (ADR-014 Step 3), bundled at build time (not KV). Keyed by
 // canonical_id; overrides ONLY the label shown on the card — never resolution/matching/identity truth.
-import DISPLAY_OVERRIDES_FILE from '../../matrix/display_name_overrides.json' with { type: 'json' };
+import DISPLAY_OVERRIDES_FILE from './display_overrides.js';
 const DISPLAY_OVERRIDES = (DISPLAY_OVERRIDES_FILE && DISPLAY_OVERRIDES_FILE.overrides) || {};
 
 const enc = new Set(); // placeholder to keep shape parity; unused
@@ -30,12 +30,12 @@ const PART_WORDS = new Set(['root', 'roots', 'leaf', 'leaves', 'seed', 'seeds', 
 const STRIP_WORDS = new Set([...PART_WORDS, ...FORM_WORDS, 'chaal', 'chhal', 'patta', 'patti',
   'phool', 'phul', 'beej', 'mool', 'chilka', 'dana', 'sabut', 'gutli', 'booti', 'buti', 'whole',
   'cut', 'big', 'small', 'kg', 'gm']);
-const COLLISION_RESOLUTIONS = { apple: 'malus-domestica', atish: 'aconitum-heterophyllum',
+export const COLLISION_RESOLUTIONS = { apple: 'malus-domestica', atish: 'aconitum-heterophyllum',
   basil: 'ocimum-basilicum', chitrak: 'plumbago-zeylanica', hibiscus: 'hibiscus-sabdariffa',
   lavender: 'lavandula-angustifolia', rasna: 'pluchea-lanceolata', tea: 'camellia-sinensis',
   valerian: 'valeriana-officinalis' };
 
-function partStrip(name) {
+export function partStrip(name) {
   const s = name.replace(/\([^)]*\)/g, ' ');
   return s.split(/[^A-Za-z]+/).filter(t => t && !STRIP_WORDS.has(t.toLowerCase())).join(' ');
 }
@@ -78,15 +78,26 @@ export function buildIndices(identities) {
 }
 
 // strictest-first exact, then UNIQUE common only (multiple candidates => ambiguous, never pick one)
+// Candidates in DESCENDING specificity: the FULL name first (norm preserves hyphens, so hyphenated
+// epithets like "Arctostaphylos uva-ursi" resolve to themselves — Pass 6A #1), then progressively
+// part/format-stripped forms. Each candidate is checked exact-then-common and the FIRST hit wins, so a
+// specific multi-word name never strips past a token that changes the species — e.g. "Tea Seed Oil"
+// resolves to its own record before it could reduce to the owner-pinned bare "tea" (Pass 6A #2).
 export function resolve(latin, label, exact, common) {
-  const cands = []; if (latin) cands.push(latin);
+  const cands = [];
+  if (latin) cands.push(latin);
+  if (label != null && String(label).trim()) cands.push(String(label)); // full, unstripped name first
   const core = cleanLabel(label);
   if (core) { const p = core.split(' '); if (p.length > 1) cands.push(core, p.slice(0, 2).join(' '), p[0]); else cands.push(core); }
-  for (const c of cands) { const n = norm(c); if (exact.has(n)) { const [, method, cid] = exact.get(n); return { canonical_id: cid, match_method: method, matched: c }; } }
-  const uids = new Set(); let amb = null;
-  for (const c of cands) { const n = norm(c); if (common.has(n)) { const ids = common.get(n); if (ids.size === 1) uids.add([...ids][0]); else amb = { candidates: [...ids].sort() }; } }
-  if (uids.size === 1) return { canonical_id: [...uids][0], match_method: 'common_name_exact_unique', matched: core };
-  if (uids.size > 1 || amb) return { canonical_id: null, match_method: 'ambiguous', candidates: uids.size > 1 ? [...uids].sort() : amb.candidates };
+  for (const c of cands) {
+    const n = norm(c); if (!n) continue;
+    if (exact.has(n)) { const [, method, cid] = exact.get(n); return { canonical_id: cid, match_method: method, matched: c }; }
+    if (common.has(n)) {
+      const ids = common.get(n);
+      if (ids.size === 1) return { canonical_id: [...ids][0], match_method: 'common_name_exact_unique', matched: c };
+      return { canonical_id: null, match_method: 'ambiguous', candidates: [...ids].sort() }; // a genuinely ambiguous specific name
+    }
+  }
   return { canonical_id: null, match_method: 'unresolved' };
 }
 

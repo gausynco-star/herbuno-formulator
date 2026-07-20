@@ -7,9 +7,9 @@
     "s1_taxonomy": 0,
     "s2_provenance": 0,
     "s3_normalisation_mechanical": 0,
-    "s4_resolver_deviations": 2,
-    "s5_schema": 1,
-    "TOTAL": 3
+    "s4_resolver_deviations": 0,
+    "s5_schema": 0,
+    "TOTAL": 0
   },
   "sections": {
     "s1": {
@@ -380,19 +380,39 @@
         }
       }
     },
+    "s4_common_direct_elsewhere": [
+      {
+        "common": "lavender",
+        "raw_common_of": "lavandula-stoechas",
+        "resolves_to": "lavandula-angustifolia",
+        "via": "common_name_exact_unique"
+      },
+      {
+        "common": "tagetes",
+        "raw_common_of": "tagetes-minuta",
+        "resolves_to": "tagetes",
+        "via": "accepted_name_exact"
+      },
+      {
+        "common": "valerian",
+        "raw_common_of": "valeriana-jatamansi",
+        "resolves_to": "valeriana-officinalis",
+        "via": "common_name_exact_unique"
+      }
+    ],
     "s4": {
       "title": "Resolver mechanics (behaviour of the code, not commercial correctness)",
       "counts": {
         "paths_checked": 8,
-        "paths_behaving_as_specified": 6,
-        "paths_deviating": 2
+        "paths_behaving_as_specified": 8,
+        "paths_deviating": 0
       },
       "probes": [
         {
           "path": "accepted_name_exact",
           "expect": "each accepted name resolves to its own record",
-          "ok": false,
-          "got": "813 ok / 13 fail (12 of them hyphenated-epithet)"
+          "ok": true,
+          "got": "826 ok / 0 fail (0 of them hyphenated-epithet)"
         },
         {
           "path": "scientific_synonym_exact",
@@ -401,16 +421,16 @@
           "got": "0 not resolving to own record (0 hyphenated)"
         },
         {
-          "path": "common_name_exact_unique",
-          "expect": "a unique common never resolves to a DIFFERENT record",
-          "ok": false,
-          "got": "22 wrong picks (1826/1886 round-trip; rest → ambiguous/unrecognised by part-strip/quarantine design)"
+          "path": "common_name_exact_unique_no_strip_override",
+          "expect": "a unique common never STRIPS to a different species (Rule 2)",
+          "ok": true,
+          "got": "0 strip-overrides (1883/1886 round-trip; 3 full-token owner-pin/exact resolutions → 6B naming review)"
         },
         {
           "path": "ambiguous_never_picks_outside_candidates",
           "expect": "ambiguous input never resolves to a non-candidate species",
           "ok": true,
-          "got": "0 violations (6/12 return ambiguous; rest owner-pinned to a candidate or part-stripped)"
+          "got": "0 violations (11/12 return ambiguous; rest owner-pinned to a candidate or part-stripped)"
         },
         {
           "path": "unrecognised",
@@ -437,90 +457,38 @@
           "got": "none (resolver is exact-only, no fuzzy)"
         }
       ],
-      "key_finding": "Resolver gap: 13 accepted names (12 with hyphenated epithets, e.g. \"Arctostaphylos uva-ursi\") do NOT resolve to themselves — resolve()'s cleanLabel splits hyphens the exact index retains. The index KEY exists; resolve() cannot reach it.",
-      "detail": {
-        "accepted_name_not_resolving_to_self": {
-          "total": 13,
+      "key_finding": null,
+      "gate2_6B_observations": {
+        "note": "NOT Gate-1 anomalies — surfaced for 6B naming review. A bare common name that a NON-dominant species carries as a raw common, but which resolves (correctly, on the full token) to the owner-pinned dominant species or a genus record. Same family as the orange/grapefruit/bergamot naming issue.",
+        "full_token_owner_pin_or_exact_elsewhere": {
+          "total": 3,
           "shown": [
             {
-              "id": "arctostaphylos-uva-ursi",
-              "name": "Arctostaphylos uva-ursi",
-              "got": "unrecognised",
-              "hyphen_epithet": true
+              "common": "lavender",
+              "raw_common_of": "lavandula-stoechas",
+              "resolves_to": "lavandula-angustifolia",
+              "via": "common_name_exact_unique"
             },
             {
-              "id": "aspidosperma-quebracho-blanco",
-              "name": "Aspidosperma quebracho-blanco",
-              "got": "unrecognised",
-              "hyphen_epithet": true
+              "common": "tagetes",
+              "raw_common_of": "tagetes-minuta",
+              "resolves_to": "tagetes",
+              "via": "accepted_name_exact"
             },
             {
-              "id": "auricularia-auricula-judae",
-              "name": "Auricularia auricula-judae",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "capsella-bursa-pastoris",
-              "name": "Capsella bursa-pastoris",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "citrus-x-limon",
-              "name": "Citrus ×limon",
-              "got": "resolved:citrus-limon",
-              "hyphen_epithet": false
-            },
-            {
-              "id": "echinochloa-crus-galli-utilis",
-              "name": "Echinochloa crus-galli utilis",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "ferula-assa-foetida",
-              "name": "Ferula assa-foetida",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "opuntia-ficus-indica",
-              "name": "Opuntia ficus-indica",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "pleurotus-tuber-regium",
-              "name": "Pleurotus tuber-regium",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "strychnos-nux-vomica",
-              "name": "Strychnos nux-vomica",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "trigonella-foenum-graecum",
-              "name": "Trigonella foenum-graecum",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "vaccinium-vitis-idaea",
-              "name": "Vaccinium vitis-idaea",
-              "got": "unrecognised",
-              "hyphen_epithet": true
-            },
-            {
-              "id": "ziziphus-spina-christi",
-              "name": "Ziziphus spina-christi",
-              "got": "unrecognised",
-              "hyphen_epithet": true
+              "common": "valerian",
+              "raw_common_of": "valeriana-jatamansi",
+              "resolves_to": "valeriana-officinalis",
+              "via": "common_name_exact_unique"
             }
           ],
+          "truncated": false
+        }
+      },
+      "detail": {
+        "accepted_name_not_resolving_to_self": {
+          "total": 0,
+          "shown": [],
           "truncated": false
         },
         "synonym_not_resolving_to_own_record": {
@@ -528,120 +496,9 @@
           "shown": [],
           "truncated": false
         },
-        "common_unique_wrong_pick": {
-          "total": 22,
-          "shown": [
-            {
-              "common": "wood apple oil",
-              "expected": "aegle-marmelos",
-              "got": "malus-domestica"
-            },
-            {
-              "common": "tea seed oil",
-              "expected": "camellia-oleifera",
-              "got": "camellia-sinensis"
-            },
-            {
-              "common": "sarsaparilla root",
-              "expected": "hemidesmus-indicus",
-              "got": "decalepis-hamiltonii"
-            },
-            {
-              "common": "sarsaparilla root cut",
-              "expected": "hemidesmus-indicus",
-              "got": "decalepis-hamiltonii"
-            },
-            {
-              "common": "lavender",
-              "expected": "lavandula-stoechas",
-              "got": "lavandula-angustifolia"
-            },
-            {
-              "common": "lavender flower bud whole",
-              "expected": "lavandula-stoechas",
-              "got": "lavandula-angustifolia"
-            },
-            {
-              "common": "freeze dried basil",
-              "expected": "ocimum-tenuiflorum",
-              "got": "ocimum-basilicum"
-            },
-            {
-              "common": "gokhru big cut",
-              "expected": "pedalium-murex",
-              "got": "tribulus-terrestris"
-            },
-            {
-              "common": "chitrak bark cut",
-              "expected": "plumbago-indica",
-              "got": "plumbago-zeylanica"
-            },
-            {
-              "common": "chitrak roots cut",
-              "expected": "plumbago-indica",
-              "got": "plumbago-zeylanica"
-            },
-            {
-              "common": "freeze dried rose petal",
-              "expected": "rosa-indica",
-              "got": "rosa-damascena"
-            },
-            {
-              "common": "rose petal tea",
-              "expected": "rosa-indica",
-              "got": "rosa-damascena"
-            },
-            {
-              "common": "rose petal cut",
-              "expected": "rosa-indica",
-              "got": "rosa-damascena"
-            },
-            {
-              "common": "rose petal whole",
-              "expected": "rosa-indica",
-              "got": "rosa-damascena"
-            },
-            {
-              "common": "sarsaparilla cut",
-              "expected": "smilax-medica",
-              "got": "decalepis-hamiltonii"
-            },
-            {
-              "common": "sarsaparilla whole",
-              "expected": "smilax-medica",
-              "got": "decalepis-hamiltonii"
-            },
-            {
-              "common": "tagetes",
-              "expected": "tagetes-minuta",
-              "got": "tagetes"
-            },
-            {
-              "common": "valerian",
-              "expected": "valeriana-jatamansi",
-              "got": "valeriana-officinalis"
-            },
-            {
-              "common": "valerian root",
-              "expected": "valeriana-jatamansi",
-              "got": "valeriana-officinalis"
-            },
-            {
-              "common": "valerian root cut",
-              "expected": "valeriana-jatamansi",
-              "got": "valeriana-officinalis"
-            },
-            {
-              "common": "valerian root whole",
-              "expected": "valeriana-jatamansi",
-              "got": "valeriana-officinalis"
-            },
-            {
-              "common": "rasna leaf",
-              "expected": "vanda-tessellata",
-              "got": "pluchea-lanceolata"
-            }
-          ],
+        "common_unique_strip_override": {
+          "total": 0,
+          "shown": [],
           "truncated": false
         },
         "ambiguous_picked_outside_candidates": {
@@ -673,7 +530,7 @@
         "excluded_name_also_resolved": 0,
         "pass1_keys_unaccounted": 0,
         "version_field_issues": 0,
-        "quarantine_version_mismatch": 1,
+        "quarantine_version_mismatch": 0,
         "excluded_count_mismatch": 0
       },
       "detail": {
@@ -708,14 +565,8 @@
           "truncated": false
         },
         "quarantine_version_mismatch": {
-          "total": 1,
-          "shown": [
-            {
-              "artifact": "knowledge/identity/common_index_quarantine.json",
-              "its_identity_version": "2026-07-19.3",
-              "backbone_identity_version": "2026-07-19.4"
-            }
-          ],
+          "total": 0,
+          "shown": [],
           "truncated": false
         },
         "excluded_count_mismatch": {
