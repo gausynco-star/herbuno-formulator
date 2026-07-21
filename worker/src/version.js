@@ -21,7 +21,7 @@ export const FORMAT_CODES = new Set(['MP', 'RE', 'SE', 'WL', 'OE', 'WD']);
 
 // Starting rate limits (ADR-014 §2 — tune from telemetry later; NOT permanent).
 // distinctProductRolePerHour is the enumeration/traversal ceiling per server-derived key. STARTING
-// value 12: with only 238 cells a ceiling of 50 let one IP reconstruct the whole selected-output layer
+// value 12: with only 129 cells a ceiling of 50 let one IP reconstruct the whole selected-output layer
 // in <5h; 12/hour makes that cost meaningful (Step-2b FIX 3). Tune from telemetry.
 // The fine-grained limits below are keyed on the SHOPPER IP (X-Forwarded-For). `transport` is a SECOND,
 // coarser backstop keyed on the NON-SPOOFABLE transport IP (CF-Connecting-IP = Shopify's shared egress),

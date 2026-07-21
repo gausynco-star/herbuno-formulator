@@ -422,7 +422,7 @@ intelligence). Changes *where the knowledge executes*, not what the tool does.
 ## Context
 
 The Formulator currently ships its knowledge layer to the browser: `herbuno-matrix.js` (~138 KB) is
-the complete Product × Role matrix — 238 cells, format rules, disqualification reasoning. Shopify
+the complete Product × Role matrix — 129 cells, format rules, disqualification reasoning. Shopify
 theme assets are plaintext to every visitor; view-source is sufficient to take the engine. Any
 identity or observed-form asset would, under the current design, be shipped the same way.
 

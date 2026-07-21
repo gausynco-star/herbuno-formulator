@@ -143,7 +143,7 @@ suite). Specifically:
 - **Atomic updates:** all counter mutations go through the DO's single-threaded request path and are
   written back atomically (`storage.put`/`storage.delete`, batched). No Worker request read-modify-writes
   counters outside the DO. The in-memory Maps are a read-through cache only.
-- **Traversal ceiling** `distinctProductRolePerHour` is a **starting** value of **12** (238 cells; a
+- **Traversal ceiling** `distinctProductRolePerHour` is a **starting** value of **12** (129 cells; a
   higher ceiling let one IP reconstruct the whole selected-output layer cheaply). Tune from telemetry.
 - If the DO namespace is unbound, the Worker **fails closed** (degraded) rather than silently relying on
   the weak per-isolate layer. Creating the live DO namespace + binding is a **DEPLOY step**.
