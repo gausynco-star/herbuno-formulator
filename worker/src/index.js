@@ -2,7 +2,7 @@
 // Pipeline order (ADR-014 §2): signature -> timestamp -> allow-list -> rate limit -> resolve.
 // Step-2a security hardening folded in. No framework. Nothing here is deployed by CC.
 import { getContext } from './store.js';
-import { resolve, statusOf, selectSpecification, oneCaveat, procurementMatch, reasoningChecks, assessCandidate, displayName } from './engine.js';
+import { resolve, statusOf, selectSpecification, buildMessage, procurementMatch, reasoningChecks, assessCandidate, displayName } from './engine.js';
 import { verifyProxyQuery, checkTimestamp, validateSpecInput, validateProcurementInput, localRatePreCheck, deriveClientIp } from './security.js';
 import { centralRateLimit } from './rate_limiter_do.js';
 import { signToken, verifyToken } from './token.js';
@@ -128,7 +128,7 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
       identity: { display_name: null, authority_name: null },
       guidance_status: 'not_available_for_product',
       guidance: 'This role is not set up for the selected finished product.',
-      specification: null,
+      message: null,
       reasoning_checks: null,
       reasoning_basis: 'role',
       specification_token: null,
@@ -147,42 +147,28 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
   if (central.unavailable) return degraded('limiter_unavailable'); // fail closed if DO unbound
   if (!central.ok) return central.challenge ? challenge429() : rateLimited();
 
-  // 5. resolve -> select single spec (the ladder itself never leaves the Worker). The Product×Role
-  // specification + reasoning + candidate assessment are identity-INDEPENDENT (role physics), so they are
-  // returned for every status; identity detail and the specification_token are gated on `resolved`.
+  // 5. resolve -> build the identity-INDEPENDENT `message` block (v3 messaging taxonomy). The public
+  // category, header and body come from the owner-authored message map injected into the matrix bundle; the
+  // ladder itself never leaves the Worker. Category / header / body / why are the SAME regardless of identity
+  // (role physics); identity detail and the specification_token are gated on `resolved`.
   const idn = resolve(null, body.botanical, engine.exact, engine.common);
   const status = statusOf(idn);
   const resolved = status === 'resolved';
   const ladder = engine.ladder.get(productRole);
   const rec = resolved && idn.canonical_id ? engine.byId.get(idn.canonical_id) : null;
 
-  // A role can route to the format ladder ('catalogue') OR to guidance (out_of_scope / ask_us /
-  // guidance_only / no_code_application_dependent). For guidance roles there is no format to select, so we
-  // surface the role's guidance text (rec) instead of a "no suitable format" dead-end, and issue no token.
+  const message = buildMessage(ladder);          // { category, header, body, why, technical_status }
+  if (!message) return degraded('missing_message_category'); // every mapped cell carries one (build fails closed)
+  // Reasoning checks + the Stage-2 token exist ONLY for a Category-1 recommendation backed by a real
+  // selectable catalogue format (68 cells). The 13 Category-1 cells with no format (application-review /
+  // process-specific), and every Cat 2/4B/5/6 cell, have no format to reason about or source.
   const isCatalogue = ladder && ladder.routing === 'catalogue';
   const catSel = isCatalogue ? selectSpecification(ladder) : null;
-  // UX 2 (owner-approved): a catalogue cell that yields NO selectable format but carries a role `rec` is a
-  // CATEGORY ERROR — the role is normally fulfilled differently (classical in-process route / DC-fibre grade
-  // / aromatic ingredient), NOT a failed catalogue search. Present it as guidance ("This role is normally
-  // fulfilled differently") and surface the rec — never "No suitable commercial format", and issue no token
-  // (nothing to source). This reads ladder.rec for PRESENTATION only; it edits no signed-off cell (HARD RULE 1).
-  const catalogueNoFit = !!(isCatalogue && catSel.selected_format == null && ladder.rec);
-  const asGuidance = !isCatalogue || catalogueNoFit;   // no selectable format -> guidance presentation, no token
-  const sel = !asGuidance
-    ? catSel
-    : { selected_format: null,
-        technical_status: catalogueNoFit ? 'This role is normally fulfilled differently' : routingStatus(ladder && ladder.routing),
-        role: ladder ? ladder.label : null };
-  const explanation = !resolved
-    ? oneCaveat(status, sel, ladder)                        // ambiguous/unrecognised identity message
-    : asGuidance
-      ? ((ladder && ladder.rec) || 'The right approach depends on the product and process — contact Herbuno for guidance.')
-      : oneCaveat('resolved', sel, ladder);                // the selected format's caveat
+  const cat1WithFormat = message.category === '1' && !!(catSel && catSel.selected_format);
 
-  // ADR-014 minimal-response EXCEPTION — AMBIGUITY ONLY (Live-test R2 UX 1): to let the shopper
-  // disambiguate, surface the RESOLVER'S OWN candidate identities as PUBLIC display/authority names.
-  // Never canonical IDs, never a count, never a backbone search — only the ids the resolver already
-  // produced for THIS query. Scoped strictly to `ambiguous`; do NOT generalise this to other states.
+  // ADR-014 minimal-response EXCEPTION — AMBIGUITY ONLY (UX 1): surface the RESOLVER'S OWN candidate
+  // identities as PUBLIC display/authority names. Never canonical IDs, never a count, never a backbone
+  // search — only the ids the resolver produced for THIS query. Scoped strictly to `ambiguous`.
   const identity = { display_name: rec ? displayName(rec) : null, authority_name: rec ? rec.authority_accepted_name : null };
   if (status === 'ambiguous' && Array.isArray(idn.candidates)) {
     const named = idn.candidates.map((cid) => engine.byId.get(cid)).filter(Boolean)
@@ -192,51 +178,25 @@ async function specification(env, context, body, ip, transportIp, tokenSecret) {
 
   const resp = {
     identity_status: status,
-    // ambiguous/unrecognised: NEVER an identity claim or canonical IDs. `identity.candidates` (public
-    // display/authority names) is the ONLY relaxation and appears for `ambiguous` only.
     identity,
-    specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
-    explanation,
-    // three physics-only conclusions — only when a real format was selected (guidance / category-error
-    // presentations have no format to reason about)
-    reasoning_checks: asGuidance ? null : reasoningChecks(ladder, sel.selected_format),
+    message,   // header from category; body = stored prose VERBATIM (Cat 5 authored); why = reason (conditional)
+    reasoning_checks: cat1WithFormat ? reasoningChecks(ladder, catSel.selected_format) : null,
     reasoning_basis: resolved ? 'botanical' : 'role',
-    specification_token: null,      // set below ONLY for a resolved catalogue role WITH a selectable format
+    specification_token: null,      // set below ONLY for a resolved Cat-1 recommendation with a selectable format
     version: versionBlock(versions),
   };
-  // Guidance-row label: "Typical commercial approach" describes how the role is NORMALLY fulfilled — it does
-  // NOT imply Herbuno stocks anything, and no catalogue was checked (real-stock integration is an open
-  // ADR-014 gap). Applied to guidance_only routes + UX2 category errors; absent otherwise (client defaults
-  // to "Guidance" for out_of_scope / ask_us).
-  if (resolved && asGuidance && ((ladder && ladder.routing === 'guidance_only') || catalogueNoFit)) {
-    resp.guidance_label = 'Typical commercial approach';
-  }
   // candidate mismatch check — only when the user actually supplied a format (role physics; runs for every
   // status). SE returns the LOCKED application-review response inside assessCandidate.
   if (candidateFormat !== undefined) resp.candidate_assessment = assessCandidate(ladder, candidateFormat);
 
-  // Token ONLY for a resolved identity on a catalogue role that has a real selectable format: guidance
-  // roles, category errors, and unresolved identities have nothing for Stage 2 to match against, so the
-  // client disables the Stage-2 action for them.
-  if (resolved && !asGuidance) {
+  if (resolved && cat1WithFormat) {
     resp.specification_token = await signToken(tokenSecret, {
       cid: idn.canonical_id, product: body.product, role: body.role,
-      sf: sel.selected_format, api: API_SCHEMA_VERSION,
+      sf: catSel.selected_format, api: API_SCHEMA_VERSION,
       iv: versions.identity_version, gv: versions.observed_form_graph_version, mv: versions.matrix_version,
     });
   }
   return json(200, resp);
-}
-
-// Guidance-role status label (non-catalogue routings). rec carries the actual guidance in `explanation`.
-function routingStatus(routing) {
-  switch (routing) {
-    case 'out_of_scope': return 'Not a separately sourced ingredient here';
-    case 'guidance_only': return 'Technical guidance for this role';
-    case 'ask_us':
-    case 'no_code_application_dependent': return 'Application review needed';
-    default: return 'Application review needed';
-  }
 }
 
 async function procurement(env, context, body, ip, transportIp, tokenSecret) {

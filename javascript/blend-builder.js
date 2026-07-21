@@ -13,7 +13,9 @@
   var IS_BROWSER = typeof document !== 'undefined' && typeof window !== 'undefined';
 
   // The client rejects any response whose schema is not exactly this — never renders a partial/guessed result.
-  var API_SCHEMA_VERSION = 2;
+  // v3: the response carries a `message` block { category, header, body, why, technical_status } (messaging
+  // taxonomy) in place of the old specification/explanation fields.
+  var API_SCHEMA_VERSION = 3;
   var SPEC_ENDPOINT = '/apps/formulator/specification';
   var PROC_ENDPOINT = '/apps/formulator/procurement';
 
@@ -112,15 +114,18 @@
       '<div class="bb-cand-exp">' + esc(ca.explanation) + '</div></div>';
   }
   function specRow(k, v) { return '<div class="bb-sp-r"><span class="bb-sp-k">' + esc(k) + '</span><span class="bb-sp-v">' + v + '</span></div>'; }
-  // Stage-2 action. Enabled ONLY for a resolved identity (a valid token exists). Wording is
-  // "Check sourcing options" — NEVER "Check Herbuno availability" and never a "catalogue match": real
-  // stock/product handles are not wired yet (Stage 2 is a temporary proxy over the observed-form graph).
+  // Stage-2 action, shown ONLY for a Category-1 recommendation. Enabled when a token exists (resolved + a real
+  // catalogue format). For an unresolved identity it is disabled with a prompt; for a resolved recommendation
+  // that has no catalogue format to source (application-review / process-specific) it is omitted entirely.
   function renderStage2Action(resp) {
-    if (resp.identity_status === 'resolved' && resp.specification_token) {
+    if (resp.specification_token) {
       return '<div class="bb-actions"><button class="bb-btn" data-sourcing="1">Check sourcing options →</button></div>';
     }
-    return '<div class="bb-actions"><button class="bb-btn" disabled>Check sourcing options →</button>' +
-      '<span class="bb-actions-note">Confirm the botanical identity to check sourcing.</span></div>';
+    if (resp.identity_status !== 'resolved') {
+      return '<div class="bb-actions"><button class="bb-btn" disabled>Check sourcing options →</button>' +
+        '<span class="bb-actions-note">Confirm the botanical identity to check sourcing.</span></div>';
+    }
+    return '';
   }
   // "Pomegranate — Punica granatum"; if the display name is just the Latin (no common name), show it once.
   function whoLine(id) {
@@ -128,58 +133,60 @@
     var latin = id.authority_name && id.authority_name !== id.display_name ? ' — <i>' + esc(id.authority_name) + '</i>' : '';
     return esc(id.display_name) + latin;
   }
-  function renderResolved(resp) {
-    var sp = resp.specification || {}, id = resp.identity || {};
-    var h = '<div class="bb-card resolved">' + specRow('Resolved botanical', whoLine(id));
-    if (sp.selected_format) {
-      h += specRow('Recommended form', '<b>' + esc(formLabel(sp.selected_format)) + '</b>') +
-        specRow('Technical status', esc(sp.technical_status || '—')) +
-        specRow('Why', esc(resp.explanation || ''));
-    } else {
-      // guidance role, or a UX2 category error (catalogue role fulfilled differently). Label is
-      // "Assessment", NOT "Status": "Technical status" is reserved for a form's physical-fit verdict, so the
-      // same visual slot never carries two meanings (BUG 3). The rec row is "Typical commercial approach"
-      // when the Worker sends guidance_label — it describes how the role is normally fulfilled, NOT that
-      // Herbuno stocks anything (no catalogue is ever checked). Defaults to "Guidance" otherwise.
-      h += specRow('Assessment', '<b>' + esc(sp.technical_status || '—') + '</b>') +
-        specRow(resp.guidance_label || 'Guidance', esc(resp.explanation || ''));
-    }
-    h += '</div>';
-    h += renderCandidate(resp);
-    h += renderReasoning(resp);
-    h += renderStage2Action(resp);
-    return h;
+  // Cat-1 status subtype -> distinct visual class, so "Application review needed" / "Process-specific
+  // recommendation" never read as certain as "Best physical fit".
+  function statusSlug(s) {
+    if (/^Best/.test(s)) return 'best';
+    if (/^Conditional/.test(s)) return 'cond';
+    if (/^Process/.test(s)) return 'process';
+    return 'review';
   }
-  // ambiguous / unrecognised: NO identity claim, NO Stage-2. Generic Product×Role guidance may still show,
-  // clearly labelled role-based (reasoning_basis === 'role').
-  // ambiguity candidate list — the identity NAMES the Worker surfaced for THIS query (UX 1), as bullets.
-  // Names only, never IDs/counts; the client looks nothing up. Renders only when the Worker sent candidates.
+  // ambiguity candidates — "Common name — Latin name" (Latin-only when no distinct common name). Names only,
+  // never IDs/counts; the client looks nothing up. Renders only when the Worker sent candidates.
   function candidatesLine(resp) {
     var cands = resp.identity && resp.identity.candidates;
     if (resp.identity_status !== 'ambiguous' || !cands || !cands.length) return '';
-    var items = cands.map(function (c) { return '<li>' + esc(c.authority_name || c.display_name) + '</li>'; }).join('');
+    var items = cands.map(function (c) {
+      var latin = c.authority_name ? '<i>' + esc(c.authority_name) + '</i>' : '';
+      var common = c.display_name && c.display_name !== c.authority_name ? esc(c.display_name) : '';
+      return '<li>' + (common && latin ? common + ' — ' + latin : (latin || common || esc(c.display_name || 'unnamed'))) + '</li>';
+    }).join('');
     return '<div class="bb-card-cands"><p>This name may refer to:</p><ul>' + items + '</ul></div>';
   }
-  function renderNonResolved(resp) {
-    var sp = resp.specification || {};
+  // Identity block: resolved shows the botanical; ambiguous/unrecognised show the state + a role-based note.
+  function renderIdentityBlock(resp) {
+    if (resp.identity_status === 'resolved') return specRow('Resolved botanical', whoLine(resp.identity || {}));
     var headline = resp.identity_status === 'ambiguous'
-      ? 'Multiple botanical identities match this name'
+      ? 'This name can refer to more than one botanical'
       : 'No botanical identity matched this name';
-    var h = '<div class="bb-card ' + esc(resp.identity_status) + '">' +
-      '<div class="bb-card-head">' + esc(headline) + '</div>' +
-      '<p class="bb-card-msg">' + esc(resp.explanation || '') + '</p>' +
-      candidatesLine(resp) +
-      '<p class="bb-card-sub">Guidance below is <b>role-based, not botanical-specific</b>.</p>' +
-      (sp.selected_format
-        ? specRow('Form for this role', '<b>' + esc(formLabel(sp.selected_format)) + '</b>') + specRow('Technical status', esc(sp.technical_status || '—'))
-        : specRow('Assessment', esc(sp.technical_status || '—'))) +
-      '</div>';
-    h += renderCandidate(resp);
-    h += renderReasoning(resp);
-    h += renderStage2Action(resp);
+    return '<div class="bb-card-head">' + esc(headline) + '</div>' + candidatesLine(resp) +
+      '<p class="bb-card-sub">The guidance below is <b>role-based, not botanical-specific</b>.</p>';
+  }
+  // Message block (v3 taxonomy). HEADER tells the user what KIND of answer this is (from the category); the
+  // BODY is the actual answer (stored prose VERBATIM; Cat 5 authored). "Why" (stored reason) is supporting
+  // only, shown ONLY when the Worker sent it — NEVER a replacement for the body, and fields are NEVER merged.
+  function renderMessageBlock(resp) {
+    var m = resp.message; if (!m) return '';
+    var h = '<div class="bb-msg-head">' + esc(m.header) + '</div>';
+    if (m.category === '1') {
+      if (m.technical_status) h += '<div class="bb-status bb-status-' + statusSlug(m.technical_status) + '">' + esc(m.technical_status) + '</div>';
+      h += specRow('Recommendation', esc(m.body));
+      if (m.why) h += specRow('Why this form fits', esc(m.why));
+      return h;
+    }
+    h += '<p class="bb-msg-body">' + esc(m.body) + '</p>';
+    if (m.why) h += specRow('Why', esc(m.why));
     return h;
   }
-  // A 200 with guidance_status is a domain outcome (e.g. product×role isn't a supported cell) — render the
+  function renderResult(resp) {
+    var cat = resp.message ? resp.message.category : null;
+    var cls = resp.identity_status === 'resolved' ? 'resolved' : esc(resp.identity_status);
+    var h = '<div class="bb-card ' + cls + '">' + renderIdentityBlock(resp) + renderMessageBlock(resp) + '</div>';
+    h += renderCandidate(resp);
+    if (cat === '1') { h += renderReasoning(resp) + renderStage2Action(resp); } // reasoning + Stage 2 only for a recommendation
+    return h;
+  }
+  // A 200 with guidance_status is a domain outcome (product×role isn't a supported cell) — render the
   // guidance card, whatever identity_status says.
   function renderGuidanceCard(resp) {
     return '<div class="bb-card notavailable"><div class="bb-card-head">Not available for this product</div>' +
@@ -189,7 +196,7 @@
   // Valid 200 responses (the caller must have already confirmed apiCompatible).
   function renderResponse(resp) {
     if (resp.guidance_status) return renderGuidanceCard(resp);
-    return resp.identity_status === 'resolved' ? renderResolved(resp) : renderNonResolved(resp);
+    return renderResult(resp);
   }
   function renderStage2Result(proc) {
     // Stage 2 is a temporary proxy over the observed-form graph (common commercial formats, trade-convention
@@ -226,7 +233,8 @@
   if (!IS_BROWSER) {
     if (typeof module !== 'undefined' && module.exports) {
       module.exports = { buildSpecBody: buildSpecBody, apiCompatible: apiCompatible, renderResponse: renderResponse,
-        renderResolved: renderResolved, renderNonResolved: renderNonResolved, renderReasoning: renderReasoning,
+        renderResult: renderResult, renderMessageBlock: renderMessageBlock, renderIdentityBlock: renderIdentityBlock,
+        candidatesLine: candidatesLine, statusSlug: statusSlug, renderReasoning: renderReasoning,
         renderCandidate: renderCandidate, renderStage2Action: renderStage2Action, renderStage2Result: renderStage2Result,
         renderLoading: renderLoading, renderRateLimited: renderRateLimited, renderDegraded: renderDegraded,
         renderNotAvailable: renderNotAvailable, notAvailableMessage: notAvailableMessage, renderGuidanceCard: renderGuidanceCard,

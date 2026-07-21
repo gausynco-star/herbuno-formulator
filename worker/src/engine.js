@@ -101,6 +101,29 @@ export function resolve(latin, label, exact, common) {
   return { canonical_id: null, match_method: 'unresolved' };
 }
 
+// ---- public message taxonomy (owner-authored map, injected into the matrix bundle) ----
+// Presentation-only cleanup: collapse runs of whitespace and trim. NO semantic edit (HARD RULE: body is
+// the stored prose VERBATIM apart from whitespace/punctuation cleanup).
+export function cleanProse(s) { return String(s == null ? '' : s).replace(/\s+/g, ' ').trim(); }
+function normKey(s) { return cleanProse(s).toLowerCase().replace(/[^a-z0-9 ]+/g, '').replace(/\s+/g, ' ').trim(); }
+// `reason` "adds information" iff it is present and is not just a restatement of the body (equal to, or a
+// substring of, the body after normalisation). Used for Cat 2/4B/6 (Cat 1 always shows the reason).
+function reasonAddsInfo(reason, body) { const r = normKey(reason), b = normKey(body); return !!r && r !== b && !b.includes(r); }
+// Build the identity-INDEPENDENT message block for a cell from the injected category map + stored prose.
+// Header comes from the category; body is the stored `rec` VERBATIM except Category 5 (authored in the map).
+// `why` is the stored `reason`: always for Cat 1 ("Why this form fits"); for Cat 2/4B/6 only when it adds
+// information; never for Cat 5 (its authored second sentence already carries the why). Returns null if the
+// cell carries no map entry (mapped cells always do — the build fails closed otherwise).
+export function buildMessage(ladder) {
+  const m = ladder && ladder.msg; if (!m) return null;
+  const cat = m.category;
+  const body = cat === '5' ? cleanProse(m.body) : cleanProse(ladder.rec);
+  let why = null;
+  if (cat === '1') why = cleanProse(ladder.reason) || null;
+  else if (cat === '2' || cat === '4B' || cat === '6') { const r = cleanProse(ladder.reason); if (reasonAddsInfo(r, body)) why = r; }
+  return { category: cat, header: m.header, body, why, technical_status: m.technical_status || null };
+}
+
 // public status vocabulary (ADR-014): resolved / ambiguous / unrecognised
 export function statusOf(idn) {
   if (idn.canonical_id) return 'resolved';
@@ -145,6 +168,7 @@ function buildLadderIndex(matrixData) {
     // (ADR-014 Step 3). Decision content (tiers/notes) is unchanged and never leaves the Worker.
     idx.set(p.id + '|' + rid, { preferred: r.preferred_formats || [], conditional: r.conditional_formats || [],
       unsuitable: r.unsuitable_formats || [], fmt: r.fmt || {}, routing: r.routing, label: r.label, rec: r.rec || null,
+      reason: r.reason || null, msg: r.msg || null, // reason = "Why" prose; msg = injected public-message-category entry
       tag: p.tag, tag_label: p.tag_label, phase: p.phase || 'application-dependent' });
   }
   return idx;

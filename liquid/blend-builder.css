@@ -229,6 +229,15 @@ position:fixed;inset:0;background:rgba(30,90,90,.55);z-index:9999;display:flex;a
 .bb-card-cands ul{list-style:none;padding:0;margin:0}
 .bb-card-cands li{font-size:.95em;color:var(--ad);font-weight:600;line-height:1.75;padding-left:15px;position:relative}
 .bb-card-cands li:before{content:'•';position:absolute;left:2px;color:var(--ad)}
+/* v3 messaging taxonomy — message block: header = KIND of answer, body = the answer */
+.bb-msg-head{font-family:var(--fm);font-size:.7em;letter-spacing:.09em;text-transform:uppercase;color:var(--tk);font-weight:600;padding:13px 16px 7px;line-height:1.45;border-top:1px solid #f2f2f2}
+.bb-card.resolved .bb-msg-head:first-child,.bb-msg-head:first-child{border-top:0}
+.bb-msg-body{font-size:.96em;line-height:1.6;color:var(--d);padding:2px 16px 13px}
+.bb-status{display:inline-block;font-family:var(--fm);font-size:.64em;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:4px;margin:0 16px 7px}
+.bb-status-best{background:#e6f5ec;color:#1e7a4a;border:1px solid #b9e0c8}
+.bb-status-cond{background:var(--ap);color:var(--ad);border:1px solid var(--a)}
+.bb-status-review{background:var(--ow);color:var(--m);border:1px dashed var(--l)}
+.bb-status-process{background:var(--tp);color:var(--tk);border:1px solid var(--bdm)}
 .bb-sp-r{display:grid;grid-template-columns:170px 1fr;gap:10px;padding:9px 16px;border-top:1px solid #f2f2f2;font-size:.94em;line-height:1.45}
 .bb-sp-k{font-family:var(--fm);font-size:.82em;letter-spacing:.03em;text-transform:uppercase;color:var(--m)}
 .bb-sp-v{color:var(--d)}.bb-sp-v i{color:var(--m)}

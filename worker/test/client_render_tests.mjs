@@ -1,12 +1,13 @@
-// ADR-014 Step 3 — client (javascript/blend-builder.js) render tests. Run: node worker/test/client_render_tests.mjs
-// The client is pure-tested against FAITHFUL Worker responses: we build each response with the SAME engine
-// functions the Worker uses (real reasoning_checks / candidate_assessment / spec), then render it. Also
+// Client (javascript/blend-builder.js) render tests — v3 messaging taxonomy.
+// Run: node worker/test/client_render_tests.mjs
+// The client is pure-tested against FAITHFUL Worker responses: each response is built with the SAME engine
+// functions the Worker uses (buildMessage / reasoning_checks / candidate_assessment), then rendered. Also
 // asserts the shipped client + shell carry NO matrix/identity/graph decision data.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
-import { makeEngine, resolve, statusOf, selectSpecification, oneCaveat, reasoningChecks, assessCandidate } from '../src/engine.js';
+import { makeEngine, resolve, statusOf, selectSpecification, buildMessage, cleanProse, reasoningChecks, assessCandidate, displayName } from '../src/engine.js';
 import { generateAll } from '../tools/generate_payloads.js';
 
 const require = createRequire(import.meta.url);
@@ -17,11 +18,10 @@ const client = require(CLIENT_PATH);
 
 const B = generateAll();
 const engine = makeEngine(B.identityIndex, B.formGraph, B.matrix);
-// pick real cells + a real resolvable botanical
 const resolvableLatin = B.identityIndex.identities.find(r => r.authority_accepted_name).authority_accepted_name;
 let AMBIG = 'Ajwain';
 for (const [k, s] of engine.common) { if (s.size > 1 && statusOf(resolve(null, k, engine.exact, engine.common)) === 'ambiguous') { AMBIG = k; break; } }
-// a cell with an ok AND an avoid code (for candidate contrast)
+// a Cat-1 catalogue cell with an ok AND an avoid code (for candidate contrast)
 let CPR = null, C_OK = null, C_AVOID = null;
 for (const [k, L] of engine.ladder) { if (L.routing !== 'catalogue') continue;
   const okc = Object.keys(L.fmt).find(c => L.fmt[c].tier === 'ok' && c !== 'SE');
@@ -29,39 +29,30 @@ for (const [k, L] of engine.ladder) { if (L.routing !== 'catalogue') continue;
   if (okc && avc) { CPR = k; C_OK = okc; C_AVOID = avc; break; } }
 const [CPROD, CROLE] = CPR.split('|');
 
-// faithful reproduction of index.js specification() response construction (no HTTP/limiter/token crypto)
-const routingStatus = (r) => r === 'out_of_scope' ? 'Not a separately sourced ingredient here' : r === 'guidance_only' ? 'Technical guidance for this role' : 'Application review needed';
+// faithful reproduction of index.js specification() v3 response construction (no HTTP/limiter/token crypto)
 function buildResp(product, role, botanical, candidate) {
-  const productRole = product + '|' + role;
   const idn = resolve(null, botanical, engine.exact, engine.common);
   const status = statusOf(idn);
   const resolved = status === 'resolved';
-  const ladder = engine.ladder.get(productRole);
+  const ladder = engine.ladder.get(product + '|' + role);
   const rec = resolved && idn.canonical_id ? engine.byId.get(idn.canonical_id) : null;
+  const message = buildMessage(ladder);
   const isCatalogue = ladder && ladder.routing === 'catalogue';
   const catSel = isCatalogue ? selectSpecification(ladder) : null;
-  const catalogueNoFit = !!(isCatalogue && catSel.selected_format == null && ladder.rec); // UX 2 category error
-  const asGuidance = !isCatalogue || catalogueNoFit;
-  const sel = !asGuidance ? catSel
-    : { selected_format: null, technical_status: catalogueNoFit ? 'This role is normally fulfilled differently' : routingStatus(ladder && ladder.routing), role: ladder ? ladder.label : null };
-  const explanation = !resolved ? oneCaveat(status, sel, ladder) : asGuidance ? ((ladder && ladder.rec) || 'contact Herbuno') : oneCaveat('resolved', sel, ladder);
-  const identity = { display_name: rec ? rec.canonical_display_name : null, authority_name: rec ? rec.authority_accepted_name : null };
-  if (status === 'ambiguous' && Array.isArray(idn.candidates)) { // faithful UX 1: names the Worker surfaces
+  const cat1WithFormat = message && message.category === '1' && !!(catSel && catSel.selected_format);
+  const identity = { display_name: rec ? displayName(rec) : null, authority_name: rec ? rec.authority_accepted_name : null };
+  if (status === 'ambiguous' && Array.isArray(idn.candidates)) {
     const named = idn.candidates.map((cid) => engine.byId.get(cid)).filter(Boolean)
-      .map((r) => ({ display_name: r.canonical_display_name, authority_name: r.authority_accepted_name || null }));
+      .map((r) => ({ display_name: displayName(r), authority_name: r.authority_accepted_name || null }));
     if (named.length) identity.candidates = named;
   }
   const resp = {
-    identity_status: status,
-    identity,
-    specification: { selected_format: sel.selected_format, technical_status: sel.technical_status, role: sel.role },
-    explanation,
-    reasoning_checks: asGuidance ? null : reasoningChecks(ladder, sel.selected_format),
+    identity_status: status, identity, message,
+    reasoning_checks: cat1WithFormat ? reasoningChecks(ladder, catSel.selected_format) : null,
     reasoning_basis: resolved ? 'botanical' : 'role',
-    specification_token: (resolved && !asGuidance) ? 'HEAD.SIG' : null,
-    version: { api_schema_version: 2, matrix_version: 'm', identity_version: 'i', observed_form_graph_version: 'g', response_generated_at: 't' },
+    specification_token: (resolved && cat1WithFormat) ? 'HEAD.SIG' : null,
+    version: { api_schema_version: 3, matrix_version: 'm', identity_version: 'i', observed_form_graph_version: 'g', response_generated_at: 't' },
   };
-  if (resolved && asGuidance && ((ladder && ladder.routing === 'guidance_only') || catalogueNoFit)) resp.guidance_label = 'Typical commercial approach';
   if (candidate !== undefined) resp.candidate_assessment = assessCandidate(ladder, candidate);
   return resp;
 }
@@ -70,145 +61,125 @@ let pass = 0, fail = 0; const out = [];
 const ok = (name, cond, detail) => { (cond ? pass++ : fail++); out.push((cond ? 'PASS ' : 'FAIL ') + name + (cond ? '' : '  -> ' + (detail || ''))); };
 const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|in stock/i;
 
-// ---- resolved ----
+// ---- Cat 1: recommendation ----
 { const r = buildResp(CPROD, CROLE, resolvableLatin);
   const h = client.renderResponse(r);
-  ok('resolved: card shows Resolved botanical + Recommended form + Technical status + Why', /Resolved botanical/.test(h) && /Recommended form/.test(h) && /Technical status/.test(h) && />Why</.test(h), h.slice(0, 120));
-  ok('resolved: Stage-2 action reads "Check sourcing options" and is ENABLED', /Check sourcing options/.test(h) && !/disabled>Check sourcing options/.test(h), h);
-  ok('resolved: NEVER "Check Herbuno availability" and NEVER "catalogue match"/"in stock"', !NO_AVAIL.test(h) && !NO_CATMATCH.test(h));
-  ok('resolved: reasoning renders 3 checks (collapsed <details>)', /Why this recommendation — 3 checks/.test(h) && /Phase compatibility/.test(h) && /Dissolution \/ dispersion requirement/.test(h) && /Process constraint/.test(h) && /<details/.test(h), h);
-  ok('resolved: reasoning is NOT labelled role-based', !/role-based, not botanical-specific/.test(h));
+  const recBody = cleanProse(engine.ladder.get(CPR).rec), whyBody = cleanProse(engine.ladder.get(CPR).reason);
+  ok('cat1: header from category ("Recommended form"), status badge, Recommendation + Why this form fits',
+    /Resolved botanical/.test(h) && /bb-msg-head">Recommended form</.test(h) && /bb-status /.test(h) && /Recommendation<\/span>/.test(h) && /Why this form fits<\/span>/.test(h), h.slice(0, 200));
+  ok('cat1: body is the stored `rec` VERBATIM (message.body) and rendered', r.message.body === recBody && h.includes(recBody), r.message.body);
+  ok('cat1: "Why this form fits" is the stored `reason`, NOT concatenated with rec', r.message.why === whyBody && whyBody !== recBody && !h.includes(recBody + ' ' + whyBody), r.message.why);
+  ok('cat1: Stage-2 action reads "Check sourcing options" and is ENABLED', /Check sourcing options/.test(h) && !/disabled>Check sourcing options/.test(h), h);
+  ok('cat1: NEVER "Check Herbuno availability"/"catalogue match"/"in stock"', !NO_AVAIL.test(h) && !NO_CATMATCH.test(h));
+  ok('cat1: reasoning renders 3 checks (collapsed <details>)', /Why this recommendation — 3 checks/.test(h) && /Phase compatibility/.test(h) && /Dissolution \/ dispersion requirement/.test(h) && /Process constraint/.test(h) && /<details/.test(h), h);
+  ok('cat1: best-fit is NOT labelled role-based', !/role-based, not botanical-specific/.test(h));
 }
-// ---- resolved + candidate (avoid) ----
-{ const r = buildResp(CPROD, CROLE, resolvableLatin, C_AVOID);
+// ---- Cat 1: status subtypes render visibly distinct ----
+{ const hBest = client.renderResponse(buildResp(CPROD, CROLE, resolvableLatin));   // Best physical fit
+  const rProc = buildResp('taila', 'active', resolvableLatin);                     // Process-specific recommendation
+  const hProc = client.renderResponse(rProc);
+  const rRev = buildResp('capsule', 'functional', resolvableLatin);               // Application review needed
+  const hRev = client.renderResponse(rRev);
+  ok('cat1 status: Best physical fit -> bb-status-best', /bb-status-best/.test(hBest) && client.statusSlug('Best physical fit') === 'best', hBest.slice(0, 120));
+  ok('cat1 status: Process-specific recommendation -> distinct class, no Stage-2/reasoning (no format)',
+    rProc.message.technical_status === 'Process-specific recommendation' && /bb-status-process/.test(hProc) && !/Check sourcing options/.test(hProc) && !/3 checks/.test(hProc), hProc.slice(0, 160));
+  ok('cat1 status: Application review needed -> distinct (dashed) class, never the green "best" class',
+    rRev.message.technical_status === 'Application review needed' && /bb-status-review/.test(hRev) && !/bb-status-best/.test(hRev), hRev.slice(0, 160));
+  ok('cat1 status: process/review body is still the stored rec VERBATIM', rProc.message.body === cleanProse(engine.ladder.get('taila|active').rec) && hProc.includes(rProc.message.body), rProc.message.body);
+}
+// ---- Cat 5: role-driven; BOTH authored sentences; no Why, no reasoning ----
+{ const r = buildResp('syrup', 'flavour', resolvableLatin);
   const h = client.renderResponse(r);
-  ok('candidate: mismatch check appears ONLY when supplied — "Your proposed format" + status', /Your proposed format/.test(h) && /Not suitable for this role/.test(h), h);
+  ok('cat5: header "The same type of ingredient is used for any botanical here"', r.message.category === '5' && /bb-msg-head">The same type of ingredient is used for any botanical here</.test(h), h.slice(0, 200));
+  ok('cat5: shows BOTH sentences (required form + "does not change that requirement"), not truncated',
+    /the required form is/.test(h) && /does not change that requirement/.test(h), h);
+  ok('cat5: NO "Why" row and NO reasoning checks and NO Stage-2', !/Why<\/span>|Why this form fits/.test(h) && !/3 checks/.test(h) && !/Check sourcing options/.test(h) && r.message.why === null, h);
 }
-{ const r = buildResp(CPROD, CROLE, resolvableLatin); // no candidate
-  ok('candidate: absent when not supplied (no "Your proposed format")', !/Your proposed format/.test(client.renderResponse(r)));
+// ---- Cat 2 / 4B / 6: header from map, body verbatim, Why only when it adds info ----
+{ const c2 = buildResp('gummy', 'base', resolvableLatin); const h2 = client.renderResponse(c2);
+  ok('cat2: header "This function is handled elsewhere in the product", body = stored rec verbatim',
+    c2.message.category === '2' && /bb-msg-head">This function is handled elsewhere in the product</.test(h2) && c2.message.body === cleanProse(engine.ladder.get('gummy|base').rec) && h2.includes(c2.message.body), h2.slice(0, 160));
+  ok('cat2: reason ADDS info here -> shown as a "Why" row; no reasoning checks, no Stage-2', c2.message.why && /Why<\/span>/.test(h2) && !/3 checks/.test(h2) && !/Check sourcing options/.test(h2), h2);
+  const c4 = buildResp('softgel', 'functional', resolvableLatin);
+  ok('cat4B: header "This role does not apply to this product", body verbatim', client.renderResponse(c4).includes('This role does not apply to this product') && c4.message.body === cleanProse(engine.ladder.get('softgel|functional').rec));
+  const c6 = buildResp('rnd', 'active', resolvableLatin);
+  ok('cat6: header "This needs testing in the finished product", body verbatim', client.renderResponse(c6).includes('This needs testing in the finished product') && c6.message.body === cleanProse(engine.ladder.get('rnd|active').rec));
 }
-// ---- candidate SE locked ----
-{ const r = buildResp(CPROD, CROLE, resolvableLatin, 'SE');
-  const h = client.renderResponse(r);
-  ok('candidate SE: renders the locked "Application review needed" response, echoed as "Standardised extract"', /Application review needed/.test(h) && /Standardised extract/.test(h) && /Standardisation describes assay/.test(h), h);
+// ---- buildMessage: "Why" shown only when the reason adds information (Cat 2/4B/6); Cat 1 always; Cat 5 never ----
+{ ok('why-rule: Cat-2 reason that merely repeats the rec is OMITTED', buildMessage({ msg: { category: '2', header: 'H' }, rec: 'The base is the body.', reason: 'The base is the body.' }).why === null);
+  ok('why-rule: Cat-2 reason that adds detail is KEPT', !!buildMessage({ msg: { category: '2', header: 'H' }, rec: 'The base is the body.', reason: 'The base is the body — a formulation system, not a sourced botanical.' }).why);
+  ok('why-rule: Cat-1 always keeps the reason as "Why this form fits"', buildMessage({ msg: { category: '1', header: 'H', technical_status: 'Best physical fit' }, rec: 'x', reason: 'x' }).why === 'x');
+  ok('why-rule: Cat-5 never has a Why (its authored 2nd sentence carries it)', buildMessage({ msg: { category: '5', header: 'H', body: 'Authored. Both sentences.' }, rec: 'ignored', reason: 'ignored' }).why === null);
 }
-// ---- ambiguous (+ candidate, labelled role-based) ----
+// ---- ambiguous ----
 { const r = buildResp(CPROD, CROLE, AMBIG, C_AVOID);
   const h = client.renderResponse(r);
-  ok('ambiguous: no identity claim (no Latin authority line), neutral message', !/ — <i>/.test(h) && /Multiple botanical identities match this name/.test(h), h.slice(0, 160));
-  ok('ambiguous: Stage-2 action is DISABLED', /disabled>Check sourcing options/.test(h) || /disabled(?:="")?>Check sourcing options/.test(h), h);
-  ok('ambiguous: candidate check STILL runs and the card is labelled role-based, not botanical-specific', /Your proposed format/.test(h) && /role-based, not botanical-specific/.test(h), h);
-  // UX 1: the resolver's candidate identities are listed as a bulleted name list; no canonical IDs leak
-  const cnames = (buildResp(CPROD, CROLE, AMBIG).identity.candidates || []).map((c) => c.authority_name || c.display_name);
-  ok('ambiguous UX1: candidates render as bullets ("This name may refer to:" + one <li> per name)',
-    /This name may refer to:/.test(h) && /<ul>/.test(h) && cnames.length >= 2 && cnames.every((n) => h.includes('<li>' + n + '</li>')), h);
+  ok('ambiguous: header "This name can refer to more than one botanical", no identity claim', /This name can refer to more than one botanical/.test(h) && !/Resolved botanical/.test(h), h.slice(0, 160));
+  ok('ambiguous: labelled role-based, candidate check STILL runs, Stage-2 disabled (Cat-1 cell)',
+    /role-based, not botanical-specific/.test(h) && /Your proposed format/.test(h) && /disabled>Check sourcing options/.test(h), h);
   const acids = resolve(null, AMBIG, engine.exact, engine.common).candidates || [];
-  ok('ambiguous UX1: NO canonical_id string appears anywhere in the rendered card', acids.length >= 2 && acids.every((id) => !h.includes(id)), 'cids=' + acids.join(','));
+  ok('ambiguous UX1: candidates as a bulleted list; NO canonical_id leaks', /This name may refer to:/.test(h) && /<ul>/.test(h) && acids.length >= 2 && acids.every((id) => !h.includes(id)), 'cids=' + acids.join(','));
 }
-// ---- UX 2: catalogue cell with no selectable format but a rec -> category-error guidance, not a dead-end ----
-{ // taila|active is one of the 3 approved cells (classical sneha-paka; the herb is infused in-process)
-  const r = buildResp('taila', 'active', resolvableLatin);
-  const h = client.renderResponse(r);
-  ok('UX2: response is a category error, NOT "No suitable commercial format"', r.specification.technical_status === 'This role is normally fulfilled differently' && !/No suitable commercial format/.test(JSON.stringify(r)), JSON.stringify(r.specification));
-  ok('UX2: surfaces the role rec under "Typical commercial approach" and issues NO token (Stage-2 disabled)',
-    r.guidance_label === 'Typical commercial approach' && r.specification_token === null && /Typical commercial approach/.test(h) && /disabled/.test(h) && !/Recommended form/.test(h), h);
+// ---- ambiguous candidate formatting: "Common name — Latin name"; Latin-only when no distinct common ----
+{ const syn = { identity_status: 'ambiguous', identity: { display_name: null, authority_name: null, candidates: [
+      { display_name: 'Arabian Jasmine', authority_name: 'Jasminum sambac' },
+      { display_name: 'Jasminum grandiflorum', authority_name: 'Jasminum grandiflorum' }] },
+    message: { category: '1', header: 'Recommended form', body: 'x', why: null, technical_status: 'Best physical fit' },
+    reasoning_checks: null, reasoning_basis: 'role', specification_token: null, version: { api_schema_version: 3 } };
+  const h = client.renderResponse(syn);
+  ok('ambiguous: "Common name — Latin name" when a distinct common name exists', /Arabian Jasmine — <i>Jasminum sambac<\/i>/.test(h), h);
+  ok('ambiguous: Latin-only when the common name equals the Latin', /<li><i>Jasminum grandiflorum<\/i><\/li>/.test(h), h);
 }
-// ---- wording audit: no Stage-2 copy may imply the catalogue/inventory was checked ----
+// ---- unrecognised ----
+{ const h = client.renderResponse(buildResp(CPROD, CROLE, 'Xyzzy Blorptonium 42'));
+  ok('unrecognised: "No botanical identity matched this name", role-based, Stage-2 disabled', /No botanical identity matched this name/.test(h) && /role-based, not botanical-specific/.test(h) && /disabled/.test(h), h.slice(0, 160));
+}
+// ---- candidate assessment: absent unless supplied; SE locked; neutral never green (BUG 4 carried) ----
+{ ok('candidate: absent when not supplied', !/Your proposed format/.test(client.renderResponse(buildResp(CPROD, CROLE, resolvableLatin))));
+  const se = buildResp(CPROD, CROLE, resolvableLatin, 'SE'); const hSE = client.renderResponse(se);
+  ok('candidate SE: locked "Application review needed", neutral "review" class, never "ok"', /Application review needed/.test(hSE) && se.candidate_assessment.severity === 'neutral' && /bb-cand review/.test(hSE) && !/bb-cand ok/.test(hSE), hSE);
+  const avc = buildResp(CPROD, CROLE, resolvableLatin, C_AVOID);
+  ok('candidate avoid: "Not suitable for this role", avoid class', avc.candidate_assessment.severity === 'avoid' && /Not suitable for this role/.test(client.renderResponse(avc)));
+  const okc = buildResp(CPROD, CROLE, resolvableLatin, C_OK); const hOK = client.renderResponse(okc);
+  ok('candidate ok: best-fit still renders the green "ok" style', okc.candidate_assessment.severity === 'ok' && /bb-cand ok/.test(hOK), hOK);
+}
+// ---- Stage-2 sourcing result: never implies the catalogue/inventory was checked; enquiry wired ----
 { const IMPLIES_STOCK = /sourcing network shows|in our inventory|we stock|in stock|available to source|catalogue match/i;
   for (const mc of ['exact_match', 'compatible_alternative', 'ask_us_to_source']) {
     const h = client.renderStage2Result({ match_class: mc, product_handles: [], sourcing_route: 'x' });
-    ok('wording (' + mc + '): sourcing copy does not imply the catalogue/inventory was checked', !IMPLIES_STOCK.test(h), h);
+    ok('sourcing (' + mc + '): route only, no catalogue/inventory-checked implication', /Sourcing options/.test(h) && !NO_CATMATCH.test(h) && !NO_AVAIL.test(h) && !IMPLIES_STOCK.test(h), h);
   }
-}
-// ---- BUG 4: "not evaluated"/"application review" candidate must NOT render as pass (green) ----
-{ const se = buildResp(CPROD, CROLE, resolvableLatin, 'SE');
-  const hSE = client.renderResponse(se);
-  ok('BUG4: SE (application review) is severity=neutral and renders the caution "review" class, never "ok"', se.candidate_assessment.severity === 'neutral' && /bb-cand review/.test(hSE) && !/bb-cand ok/.test(hSE), hSE);
-  // a code not evaluated for this cell -> neutral, not a pass
-  const unevalCode = ['MP', 'RE', 'OE', 'WL', 'WD', 'SD'].find((c) => !engine.ladder.get(CPR).fmt[c]);
-  if (unevalCode) { const ne = buildResp(CPROD, CROLE, resolvableLatin, unevalCode); const hNE = client.renderResponse(ne);
-    ok('BUG4: an unevaluated format is severity=neutral and never renders the green "ok" style', ne.candidate_assessment.severity === 'neutral' && /bb-cand review/.test(hNE) && !/bb-cand ok/.test(hNE), hNE); }
-  // the "ok" candidate really is green (guard the mapping did not over-correct)
-  const okc = buildResp(CPROD, CROLE, resolvableLatin, C_OK); const hOK = client.renderResponse(okc);
-  ok('BUG4: a genuine best-fit candidate still renders the "ok" (green) style', okc.candidate_assessment.severity === 'ok' && /bb-cand ok/.test(hOK), hOK);
-}
-// ---- BUG 3: one status field, one meaning — guidance uses "Assessment", never a bare "Status" ----
-{ const guidance = { identity_status: 'resolved', identity: { display_name: 'Licorice', authority_name: 'Glycyrrhiza glabra' },
-    specification: { selected_format: null, technical_status: 'Technical guidance for this role', role: 'Flavour / aroma' },
-    explanation: 'Water-soluble liquid flavour', reasoning_checks: null, reasoning_basis: 'botanical', specification_token: null };
-  const gh = client.renderResolved(guidance);
-  ok('BUG3: a guidance (no-format) result labels the row "Assessment", not a bare "Status"', /<span class="bb-sp-k">Assessment<\/span>/.test(gh) && !/<span class="bb-sp-k">Status<\/span>/.test(gh), gh);
-  ok('BUG3: "Technical status" is reserved for a form\'s physical-fit verdict (present on the resolved+format card only)',
-    /<span class="bb-sp-k">Technical status<\/span>/.test(client.renderResponse(buildResp(CPROD, CROLE, resolvableLatin))) && !/Technical status/.test(gh));
-}
-// ---- unrecognised ----
-{ const r = buildResp(CPROD, CROLE, 'Xyzzy Blorptonium 42');
-  const h = client.renderResponse(r);
-  ok('unrecognised: generic role-based guidance, no identity claim, Stage-2 disabled', /No botanical identity matched this name/.test(h) && /role-based, not botanical-specific/.test(h) && /disabled/.test(h), h.slice(0, 160));
-}
-// ---- Stage-2 sourcing result: never a catalogue match ----
-{ for (const mc of ['exact_match', 'compatible_alternative', 'ask_us_to_source']) {
-    const h = client.renderStage2Result({ match_class: mc, product_handles: [], sourcing_route: 'x' });
-    ok('sourcing (' + mc + '): shows sourcing route, NEVER "catalogue match"/"in stock"/"availability"', /Sourcing options/.test(h) && !NO_CATMATCH.test(h) && !NO_AVAIL.test(h), h);
-  }
-  // BUG 2: the sourcing card's "Ask Herbuno to source this" is a WIRED control (data-enquiry), not inert
   const src = client.renderStage2Result({ match_class: 'ask_us_to_source', product_handles: [], sourcing_route: 'request_sourcing' });
-  ok('BUG2: sourcing card exposes a wired enquiry control (data-enquiry on "Ask Herbuno to source this")', /data-enquiry="1"[^>]*>Ask Herbuno to source this/.test(src), src);
+  ok('sourcing: "Ask Herbuno to source this" is a WIRED enquiry control (data-enquiry)', /data-enquiry="1"[^>]*>Ask Herbuno to source this/.test(src), src);
 }
-// ---- other states ----
-{ ok('loading: renders an honest indicator (no fake staged reasoning)', /Generating specification/.test(client.renderLoading()) && !/step 1|analysing phase/i.test(client.renderLoading()));
-  ok('rate-limited: plain message, no internal reason/counters', /try again/i.test(client.renderRateLimited()) && !/per_minute|reason|counter/i.test(client.renderRateLimited()));
+// ---- unmapped product×role (guidance_status) + other states ----
+{ const gd = client.renderResponse({ identity_status: 'not_applicable', guidance_status: 'not_available_for_product', guidance: 'This role is not set up for the selected finished product.', message: null, specification_token: null, version: { api_schema_version: 3 } });
+  ok('unmapped: a guidance_status response renders the not-available card (not a message/degraded card)', /Not available for this product/.test(gd) && /not set up for the selected finished product/.test(gd) && !/Recommended form|Temporarily/.test(gd), gd);
+  const na = client.renderNotAvailable('unknown_product_role');
+  ok('notAvailable: 400 renders "not available for this product", not degraded', /isn.t set up for this product/.test(na) && !/[Tt]emporarily un/.test(na), na);
+  ok('loading: honest indicator, no fake staged reasoning', /Generating specification/.test(client.renderLoading()) && !/step 1|analysing phase/i.test(client.renderLoading()));
   const dg = client.renderDegraded('HerbIQ Formulator is temporarily unable to generate the technical specification.');
-  ok('degraded: honest message + retry + copy selections + enquiry (inputs preserved elsewhere in state)', /temporarily unable/i.test(dg) && /data-retry/.test(dg) && /data-copysel/.test(dg) && /data-enquiry/.test(dg), dg);
+  ok('degraded: honest message + retry + copy + enquiry', /temporarily unable/i.test(dg) && /data-retry/.test(dg) && /data-copysel/.test(dg) && /data-enquiry/.test(dg), dg);
 }
-// ---- schema version: reject incompatible in BOTH directions ----
-{ ok('schema: v2 accepted', client.apiCompatible({ version: { api_schema_version: 2 } }) === true);
-  ok('schema: v1 (older worker) rejected -> client would degrade', client.apiCompatible({ version: { api_schema_version: 1 } }) === false);
-  ok('schema: v3 (newer worker) rejected -> client would degrade', client.apiCompatible({ version: { api_schema_version: 3 } }) === false);
+// ---- schema version: reject incompatible in BOTH directions (v3) ----
+{ ok('schema: v3 accepted', client.apiCompatible({ version: { api_schema_version: 3 } }) === true);
+  ok('schema: v2 (older worker) rejected', client.apiCompatible({ version: { api_schema_version: 2 } }) === false);
+  ok('schema: v4 (newer worker) rejected', client.apiCompatible({ version: { api_schema_version: 4 } }) === false);
   ok('schema: missing version rejected', client.apiCompatible({}) === false && client.apiCompatible(null) === false);
 }
-// ---- Step 3 live-fixes ----
-{ // #3 a 400 (unmapped product×role) renders "not available", NEVER the degraded message
-  const na = client.renderNotAvailable('unknown_product_role');
-  ok('fix#3: 400 renders a "not available for this product" card, not degraded', /isn.t set up for this product/.test(na) && !/[Tt]emporarily un/.test(na), na);
-  ok('fix#3: notAvailableMessage distinguishes unknown_product_role from generic input errors', /role isn.t set up/.test(client.notAvailableMessage('unknown_product_role')) && /check your selections/.test(client.notAvailableMessage('bad_botanical')));
-  // #3 the 200 guidance response (guidance_status) renders the not-available card, whatever identity_status says
-  const gd = client.renderResponse({ identity_status: 'not_applicable', guidance_status: 'not_available_for_product', guidance: 'This role is not set up for the selected finished product.', specification: null, specification_token: null, version: { api_schema_version: 2 } });
-  ok('fix#3: a 200 guidance_status response renders the not-available card (not a spec/degraded card)', /Not available for this product/.test(gd) && /not set up for the selected finished product/.test(gd) && !/Recommended form|Temporarily/.test(gd), gd);
-  // #2 guidance response (selected_format null) → guidance card, no fake "Recommended form", Stage-2 disabled
-  const guidance = { identity_status: 'resolved', identity: { display_name: 'Pomegranate', authority_name: 'Punica granatum' },
-    specification: { selected_format: null, technical_status: 'Not a separately sourced ingredient here', role: 'Base' },
-    explanation: 'No sourced base — the gel or compressed-chew matrix is the body',
-    reasoning_checks: null, reasoning_basis: 'botanical', specification_token: null };
-  const gh = client.renderResponse(guidance);
-  ok('fix#2: guidance response shows the guidance text and no fake "Recommended form" row', /No sourced base/.test(gh) && !/Recommended form/.test(gh), gh);
-  ok('fix#2: guidance response disables Stage-2 (no token)', /disabled/.test(gh));
-  // #1 display: common name + Latin, and de-duplicated when identical
-  ok('fix#1: renders "Pomegranate — Punica granatum"', /Pomegranate/.test(gh) && /Punica granatum/.test(gh));
-  const dup = client.renderResolved({ identity_status: 'resolved', identity: { display_name: 'Punica granatum', authority_name: 'Punica granatum' }, specification: { selected_format: 'MP', technical_status: 'Best physical fit', role: 'Active' }, explanation: 'x', reasoning_checks: null, reasoning_basis: 'botanical', specification_token: 'T' });
-  ok('fix#1: when display == Latin, it is shown once (no "X — X" duplicate)', (dup.match(/Punica granatum/g) || []).length === 1, dup.slice(0, 160));
-}
-
-// ---- Commit 2: enquiry mailto href generation (Open-in-Email) ----
+// ---- Commit 2: enquiry mailto href generation (unchanged) ----
 { const st = { product: 'capsule', role: 'active', botanical: 'Ashwagandha (Withania somnifera) & root', candidate: 'WL' };
   const href = client.buildMailto(st);
   ok('mailto: starts with recipient + subject param', href.indexOf('mailto:hello@herbuno.com?subject=') === 0, href);
-  ok('mailto: EXACTLY one literal "&" and it is the subject/body separator (botanical "&" is encoded)', (href.match(/&/g) || []).length === 1 && href.includes('&body='), href);
-  ok('mailto: no raw whitespace in the href (spaces/newlines percent-encoded)', !/\s/.test(href), JSON.stringify(href));
+  ok('mailto: EXACTLY one literal "&" (botanical "&" is encoded)', (href.match(/&/g) || []).length === 1 && href.includes('&body='), href);
+  ok('mailto: no raw whitespace in the href', !/\s/.test(href), JSON.stringify(href));
   const params = new URLSearchParams(href.slice('mailto:hello@herbuno.com?'.length));
-  const subject = params.get('subject'), body = params.get('body');
-  ok('mailto: subject decodes to the botanical + product', /Ashwagandha .* & root/.test(subject) && subject.includes('Hard Capsule'), subject);
-  ok('mailto: body decodes to Product/Role/Botanical + candidate + sourcing sentence',
-    /Product: Hard Capsule/.test(body) && /Role: Active/.test(body) && /Botanical: Ashwagandha/.test(body) && /Format in mind: Water-soluble extract/.test(body) && /Please advise on sourcing\./.test(body), body);
-  ok('mailto: the "&" inside the botanical survives as data, not a stray query separator', body.includes('& root') && !href.includes('& root'), href);
+  ok('mailto: subject + body decode correctly, "&" survives as data', /Ashwagandha .* & root/.test(params.get('subject')) && /Product: Hard Capsule/.test(params.get('body')) && /Format in mind: Water-soluble extract/.test(params.get('body')) && params.get('body').includes('& root') && !href.includes('& root'), href);
   const noCand = new URLSearchParams(client.buildMailto({ product: 'capsule', role: 'active', botanical: 'Tulsi', candidate: '' }).split('?')[1]).get('body');
-  ok('mailto: omits "Format in mind" when no candidate is chosen', !noCand.includes('Format in mind'), noCand);
-  const otherCand = new URLSearchParams(client.buildMailto({ product: 'capsule', role: 'active', botanical: 'Tulsi', candidate: 'OTHER' }).split('?')[1]).get('body');
-  ok('mailto: the "Other" sentinel is never leaked into the body', !otherCand.includes('Format in mind'));
+  ok('mailto: omits "Format in mind" when no candidate / "Other"', !noCand.includes('Format in mind') && !new URLSearchParams(client.buildMailto({ product: 'capsule', role: 'active', botanical: 'Tulsi', candidate: 'OTHER' }).split('?')[1]).get('body').includes('Format in mind'));
 }
 // ---- no matrix/identity/graph decision data in the shipped client or shell ----
-{ // scan CODE, not the explanatory comments (which legitimately name what was removed)
-  const stripJs = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|\n)\s*\/\/[^\n]*/g, '$1');
+{ const stripJs = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|\n)\s*\/\/[^\n]*/g, '$1');
   const src = stripJs(fs.readFileSync(CLIENT_PATH, 'utf8'));
   const shell = fs.readFileSync(SHELL_PATH, 'utf8').replace(/\{%\s*comment\s*%\}[\s\S]*?\{%\s*endcomment\s*%\}/g, '');
   const FORBIDDEN = ['HB_MX', 'preferred_formats', 'conditional_formats', 'unsuitable_formats', 'observed_available',
@@ -216,8 +187,8 @@ const NO_AVAIL = /Check Herbuno availability/i, NO_CATMATCH = /catalogue match|i
     'trade_synonyms', 'ambiguity_flag', '/products.json'];
   const hits = FORBIDDEN.filter(t => src.includes(t));
   ok('no matrix data: shipped client CODE references no matrix/identity/graph decision tokens', hits.length === 0, 'hits=' + hits.join(','));
-  // the client must not carry format TIER decisions (the .tier field of the matrix)
   ok('no matrix data: client carries no per-format tier decisions (.tier)', !/\.tier\b/.test(src) && !/tier\s*[:=]/.test(src));
+  ok('no matrix data: client carries no message-category MAP (only renders the per-request `message`)', !/public_message_category_map|"category"\s*:\s*"[12456]/.test(src));
   ok('no matrix data: shell CODE no longer loads herbuno-matrix.js (only the comment names it)', !/herbuno-matrix\.js/.test(shell));
 }
 

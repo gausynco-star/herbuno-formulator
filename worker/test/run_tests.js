@@ -100,12 +100,13 @@ async function run() {
     const r = await call(env, specBody());
     const b = r.body;
     ok('response: identity has only display_name + authority_name', JSON.stringify(Object.keys(b.identity).sort()) === '["authority_name","display_name"]', JSON.stringify(b.identity));
-    ok('response: specification has only selected_format + technical_status + role', JSON.stringify(Object.keys(b.specification).sort()) === '["role","selected_format","technical_status"]', JSON.stringify(b.specification));
+    ok('response: message has only category + header + body + why + technical_status', JSON.stringify(Object.keys(b.message).sort()) === '["body","category","header","technical_status","why"]', JSON.stringify(Object.keys(b.message)));
     const wire = JSON.stringify({ ...b, specification_token: null });
     ok('response: no ladder arrays / observed_available on the wire', !/preferred|conditional|unsuitable|observed_available|format_ladder/.test(wire), wire.slice(0, 120));
     ok('response: no canonical_id on the wire', !wire.includes(realCid) && !('canonical_id' in b.identity) && !('candidates' in b.identity), realCid);
-    // v2 (Step 3): reasoning_checks + reasoning_basis added; candidate_assessment only when supplied
-    ok('response: top-level keys are exactly the v2 permitted set (no candidate supplied)', JSON.stringify(Object.keys(b).sort()) === '["explanation","identity","identity_status","reasoning_basis","reasoning_checks","specification","specification_token","version"]', JSON.stringify(Object.keys(b)));
+    // v3 (messaging taxonomy): `message` block replaces specification/explanation; reasoning_checks kept
+    ok('response: top-level keys are exactly the v3 permitted set (no candidate supplied)', JSON.stringify(Object.keys(b).sort()) === '["identity","identity_status","message","reasoning_basis","reasoning_checks","specification_token","version"]', JSON.stringify(Object.keys(b)));
+    ok('response: a Cat-1 recommendation carries header "Recommended form" + a technical_status subtype', b.message.category === '1' && b.message.header === 'Recommended form' && typeof b.message.technical_status === 'string', JSON.stringify(b.message));
     ok('response: reasoning_checks is exactly {phase,dissolution,process} of conclusions', JSON.stringify(Object.keys(b.reasoning_checks).sort()) === '["dissolution","phase","process"]' && typeof b.reasoning_checks.phase === 'string', JSON.stringify(b.reasoning_checks));
     ok('response: resolved reasoning_basis is botanical', b.reasoning_basis === 'botanical');
     ok('response: no candidate_assessment key unless a candidate_format was sent', !('candidate_assessment' in b));
@@ -122,9 +123,9 @@ async function run() {
       Array.isArray(amb.body.identity.candidates) && amb.body.identity.candidates.length >= 2 &&
       amb.body.identity.candidates.every((c) => JSON.stringify(Object.keys(c).sort()) === '["authority_name","display_name"]' && typeof (c.authority_name || c.display_name) === 'string'),
       JSON.stringify(amb.body.identity.candidates));
-    ok('response: ambiguous STILL returns a generic role-based Product×Role spec + reasoning (labelled role)',
-      amb.body.specification && typeof amb.body.specification.technical_status === 'string' && amb.body.reasoning_basis === 'role' && !JSON.stringify(amb.body).includes(realCid),
-      JSON.stringify(amb.body.specification));
+    ok('response: ambiguous STILL returns the role-based Product×Role message + reasoning (labelled role)',
+      amb.body.message && typeof amb.body.message.header === 'string' && typeof amb.body.message.body === 'string' && amb.body.reasoning_basis === 'role' && !JSON.stringify(amb.body).includes(realCid),
+      JSON.stringify(amb.body.message));
   }
 
   // ===== resolution parity vs local resolver (status + authority) =====
@@ -322,9 +323,9 @@ async function run() {
     const unrec = (await call(env, specBody({ botanical: 'Xyzzy Blorptonium 42' }))).body;
     ok('token suppression: NO specification_token for unrecognised (server-side)', unrec.identity_status === 'unrecognised' && unrec.specification_token === null);
     const oldTok = await signToken(TOKEN_SECRET, { cid: realCid, product: PRODUCT, role: ROLE, sf: 'RE', api: 1, ...snap });
-    ok('schema: a v1 (old) token is rejected at v2 procurement — fails closed', (await call(env, { specification_token: oldTok }, { endpoint: 'procurement' })).body.detail === 'api_schema');
+    ok('schema: an old-api token is rejected at v3 procurement — fails closed', (await call(env, { specification_token: oldTok }, { endpoint: 'procurement' })).body.detail === 'api_schema');
     const vb = (await call(env, specBody())).body.version;
-    ok('schema: response carries api_schema_version 2', vb.api_schema_version === 2);
+    ok('schema: response carries api_schema_version 3', vb.api_schema_version === 3);
     ok('schema: version block records phase_map_version (third authored layer, ADR-013 contract)', vb.phase_map_version === B.manifest.phase_map_version && typeof vb.phase_map_version === 'string', JSON.stringify(vb));
   }
   // phase_map_version mismatch between the matrix bundle and the manifest => fail closed (degraded)
@@ -349,18 +350,16 @@ async function run() {
     if (cs) ok('fix#1 override: override WINS over the heuristic (camellia-sinensis -> "Tea", not "Green Tea")', displayName(cs) === 'Tea', displayName(cs));
     ok('fix#1 order: heuristic applies when there is no override (Punica -> "Pomegranate")', pg ? displayName(pg) === 'Pomegranate' : true);
     ok('fix#1 fallback: no override + no usable common_names -> canonical_display_name', displayName({ canonical_id: 'zzz-none', canonical_display_name: 'Zzz example', authority_accepted_name: 'Zzz example', common_names: [] }) === 'Zzz example');
-    // #2 guidance routing (gummy|base is out_of_scope): surface rec, null format, no token, no reasoning
+    // Cat 2 (gummy|base): header "handled elsewhere", body = the stored rec, "Why" = reason (adds info), no token/reasoning
     const gb = (await call(env, { product: 'gummy', role: 'base', botanical: latinTerm })).body;
-    ok('fix#2 guidance: out_of_scope role surfaces rec guidance, not a dead-end', gb.specification.selected_format === null && /gel or compressed-chew matrix/.test(gb.explanation), JSON.stringify(gb.specification) + ' | ' + gb.explanation);
-    ok('fix#2 guidance: no specification_token and no reasoning_checks for a guidance role', gb.specification_token === null && gb.reasoning_checks === null);
-    ok('fix#2 guidance: out_of_scope carries NO guidance_label (client shows "Guidance", not "Typical commercial approach")', !('guidance_label' in gb));
-    // UX 2 (Live-test R2): a catalogue cell fulfilled differently — taila|active (classical sneha-paka, the
-    // herb is infused in-process) — is a CATEGORY ERROR, not "No suitable commercial format".
+    ok('cat2 (gummy|base): category 2, header + body = the rec, no token, no reasoning',
+      gb.message.category === '2' && gb.message.header === 'This function is handled elsewhere in the product' && /gel or compressed-chew matrix/.test(gb.message.body) && gb.specification_token === null && gb.reasoning_checks === null, JSON.stringify(gb.message));
+    ok('cat2 (gummy|base): "why" is the stored reason (adds info here)', typeof gb.message.why === 'string' && gb.message.why.length > 0);
+    // Cat 1 process-specific (taila|active, classical sneha-paka): category 1, distinct status, body = the rec,
+    // no token/reasoning (no catalogue format), and NEVER "No suitable commercial format".
     const ta = (await call(env, { product: 'taila', role: 'active', botanical: latinTerm })).body;
-    ok('UX2: taila|active is a category error ("This role is normally fulfilled differently"), never "No suitable commercial format"',
-      ta.specification.technical_status === 'This role is normally fulfilled differently' && ta.specification.selected_format === null && !JSON.stringify(ta).includes('No suitable commercial format'), JSON.stringify(ta.specification));
-    ok('UX2: taila|active surfaces the rec under guidance_label "Typical commercial approach", issues no token, no reasoning',
-      ta.guidance_label === 'Typical commercial approach' && typeof ta.explanation === 'string' && ta.explanation.length > 0 && ta.specification_token === null && ta.reasoning_checks === null, JSON.stringify({ gl: ta.guidance_label, tok: ta.specification_token }));
+    ok('cat1 process-specific (taila|active): status "Process-specific recommendation", body = the rec, no token, no reasoning',
+      ta.message.category === '1' && ta.message.technical_status === 'Process-specific recommendation' && /cut or milled form/.test(ta.message.body) && ta.specification_token === null && ta.reasoning_checks === null && !JSON.stringify(ta).includes('No suitable commercial format'), JSON.stringify(ta.message));
     // #4 phase/solubility: a dry powder (SD) in a dry product is in-phase, not a "separate phase"
     const ih = (await call(env, { product: 'instant-hot', role: 'base', botanical: latinTerm })).body;
     ok('fix#4 phase: dry powder in a dry product reads as compatible, not a separate liquid phase', /compatible with incorporation into the product.s dry-solid matrix/.test(ih.reasoning_checks.phase) && !/separate phase/.test(ih.reasoning_checks.phase), JSON.stringify(ih.reasoning_checks.phase));
@@ -370,7 +369,7 @@ async function run() {
   { __resetStore(); __resetRate(); const env = envWith(buildFakeKV(B));
     const r = await call(env, { product: 'rtd-cloudy', role: 'carrier', botanical: 'orange' });
     ok('fix#3 unmapped cell: rtd-cloudy|carrier returns 200 guidance (not 400/5xx)',
-      r.status === 200 && r.body.guidance_status === 'not_available_for_product' && r.body.specification === null && r.body.specification_token === null, 'status=' + r.status + ' body=' + JSON.stringify(r.body).slice(0, 160));
+      r.status === 200 && r.body.guidance_status === 'not_available_for_product' && r.body.message === null && r.body.specification_token === null, 'status=' + r.status + ' body=' + JSON.stringify(r.body).slice(0, 160));
     ok('fix#3 guidance carries the version block (client apiCompatible passes)', r.body.version && r.body.version.api_schema_version === API_SCHEMA_VERSION);
     // genuinely malformed input still 400s
     ok('fix#3 malformed input still 400s (unexpected field)', (await call(env, { product: PRODUCT, role: ROLE, botanical: latinTerm, bogus: 1 })).status === 400);
@@ -380,7 +379,7 @@ async function run() {
   { __resetStore(); __resetRate(); const kv = buildFakeKV(B); kv._map.delete('matrix:' + B.manifest.matrix_version);
     const r = await call(envWith(kv), specBody());
     const wire = JSON.stringify(r.body);
-    ok('degraded: missing bundle => 503 generic message, no partial result', r.status === 503 && r.body.message === DEGRADED_MESSAGE && !r.body.specification);
+    ok('degraded: missing bundle => 503 generic message, no partial result', r.status === 503 && r.body.error === 'degraded' && r.body.message === DEGRADED_MESSAGE);
     ok('degraded: reveals no internal detail (no KV keys / version reasons)', !/matrix:|missing_key|version_mismatch|identity:|formgraph:/i.test(wire) && !('reason' in r.body), wire.slice(0, 100));
   }
   { __resetStore(); __resetRate();

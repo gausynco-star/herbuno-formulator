@@ -2,7 +2,10 @@
 
 // v2 (ADR-014 Step 3): request adds optional `candidate_format`; response adds `candidate_assessment`,
 // `reasoning_checks`, `reasoning_basis`, and issues NO specification_token for ambiguous/unrecognised.
-export const API_SCHEMA_VERSION = 2;      // bump when the request/response shape changes; clients reject mismatches
+// v3 (messaging taxonomy): response replaces `specification`/`explanation`/`guidance_label` with a single
+// `message` block { category, header, body, why, technical_status } driven by the public message-category
+// map. Shape change => bump so an un-upgraded client fails closed instead of mis-rendering.
+export const API_SCHEMA_VERSION = 3;      // bump when the request/response shape changes; clients reject mismatches
 export const TOKEN_VERSION = 1;           // specification_token schema version (validated on verify)
 export const TOKEN_TTL_SEC = 300;         // specification_token lifetime (short-lived)
 export const IAT_SKEW_SEC = 60;           // allowed clock skew when validating token iat

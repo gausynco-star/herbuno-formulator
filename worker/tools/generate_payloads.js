@@ -55,7 +55,7 @@ export function buildFormGraph(graph) {
 // the runtime matrix bundle is self-contained. FAILS THE BUILD (fail closed) if any matrix product is
 // unmapped or carries an unknown class — so a newly-added product must be classified in the map, no code
 // change. `phase` is orthogonal to `tag` (dissolution requirement) and drives reasoning_checks only.
-export function buildMatrix(matrixSrc, phaseMap) {
+export function buildMatrix(matrixSrc, phaseMap, messageMap) {
   const data = JSON.parse(matrixSrc.slice(matrixSrc.indexOf('=') + 1).replace(/;\s*$/, '').trim());
   const classes = new Set(phaseMap.phase_classes);
   const bad = [];
@@ -66,6 +66,20 @@ export function buildMatrix(matrixSrc, phaseMap) {
   }
   if (bad.length) throw new Error('product_phase_map incomplete/invalid for: ' + bad.join(', '));
   data.phase_map_version = phaseMap._meta.phase_map_version;
+  // Public message-category map (owner-authored presentation layer). Inject each cell's entry so the runtime
+  // bundle is self-contained. FAIL CLOSED: every matrix cell must have exactly one map entry and vice versa
+  // — a newly-added or removed cell forces the map to be updated, no code change.
+  const mm = (messageMap && messageMap.cells) || {};
+  const missing = [], seen = new Set();
+  for (const fam of data.fam) for (const p of fam.products) for (const rid of Object.keys(p.roles)) {
+    const key = p.id + '|' + rid; const entry = mm[key];
+    if (!entry) { missing.push(key); continue; }
+    p.roles[rid].msg = entry; seen.add(key);
+  }
+  const orphan = Object.keys(mm).filter((k) => !seen.has(k));
+  if (missing.length) throw new Error('public_message_category_map missing cells: ' + missing.join(', '));
+  if (orphan.length) throw new Error('public_message_category_map has cells absent from the matrix: ' + orphan.join(', '));
+  data.public_message_map_version = messageMap._meta.map_version;
   return { matrix_version: data.schema_version, data };
 }
 
@@ -112,10 +126,11 @@ export function generateAll() {
   const graph = JSON.parse(fs.readFileSync(P('knowledge/pass3/observed_form_graph.json'), 'utf8'));
   const matrixSrc = fs.readFileSync(P('javascript/herbuno-matrix.js'), 'utf8');
   const phaseMap = JSON.parse(fs.readFileSync(P('matrix/product_phase_map.json'), 'utf8'));
+  const messageMap = JSON.parse(fs.readFileSync(P('matrix/public_message_category_map.json'), 'utf8'));
 
   const identityIndex = buildIdentityIndex(backbone);
   const formGraph = buildFormGraph(graph);
-  const matrix = buildMatrix(matrixSrc, phaseMap);
+  const matrix = buildMatrix(matrixSrc, phaseMap, messageMap);
   const manifest = buildManifest(identityIndex, formGraph, matrix);
   return { identityIndex, formGraph, matrix, manifest };
 }
