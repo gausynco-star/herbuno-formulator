@@ -1,0 +1,675 @@
+{
+  "_meta": {
+    "artifact": "public_message_category_map",
+    "schema_version": "1",
+    "map_version": "2026-07-21.1",
+    "keyed_to": "herbuno-matrix.js v8-ladder-ordered (129 canonical Product×Role cells)",
+    "source": "Owner-approved messaging taxonomy rulings, 2026-07-21 (Step 2 pattern worksheet).",
+    "note": "Presentation overlay for Stage-1 results. Header is set by category. Body = the cell’s stored `rec` prose VERBATIM (whitespace/punctuation cleanup only) EXCEPT Category 5, whose body is AUTHORED here. The rec-vs-(rec+reason) body-field choice is deferred to UI wiring. NOT wired to the UI yet. Keyed \"product|role\" to the 129 cells. See docs/DATA_LINEAGE.md and docs/PUBLIC_MESSAGE_TAXONOMY_REVIEW.md.",
+    "owner": "hello@herbuno.com",
+    "cell_count": 129,
+    "counts": {
+      "1": 81,
+      "2": 27,
+      "3": 0,
+      "5": 9,
+      "6": 6,
+      "4A": 0,
+      "4B": 6
+    }
+  },
+  "categories": {
+    "1": {
+      "header": "Recommended form",
+      "body_source": "stored",
+      "technical_status_values": [
+        "Best physical fit",
+        "Conditional fit",
+        "Application review needed",
+        "Process-specific recommendation"
+      ]
+    },
+    "2": {
+      "header": "This function is handled elsewhere in the product",
+      "body_source": "stored"
+    },
+    "3": {
+      "header": "This does not work in this product",
+      "body_source": "stored",
+      "cells": 0,
+      "note": "Defined in the taxonomy; NO cells in the canonical matrix. Do not populate by reclassifying (that edits decision content)."
+    },
+    "5": {
+      "header": "The same type of ingredient is used for any botanical here",
+      "body_source": "authored",
+      "template": "For [role] in [product], the required form is [X]. The botanical you choose does not change that requirement."
+    },
+    "6": {
+      "header": "This needs testing in the finished product",
+      "body_source": "stored"
+    },
+    "4A": {
+      "header": "This is not added separately",
+      "body_source": "stored",
+      "cells": 0,
+      "note": "Defined in the taxonomy; NO cells in the canonical matrix. Do not populate by reclassifying."
+    },
+    "4B": {
+      "header": "This role does not apply to this product",
+      "body_source": "stored"
+    },
+    "ambiguous": {
+      "header": "This name can refer to more than one botanical",
+      "body_source": "resolver",
+      "note": "Identity-unresolved. Candidates shown \"Common name — Latin name\" via the resolver display-name logic; Latin-only if no safe common name; never guess; never show canonical IDs/counts."
+    }
+  },
+  "cells": {
+    "capsule|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "capsule|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "capsule|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "softgel|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "softgel|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "softgel|functional": {
+      "category": "4B",
+      "header": "This role does not apply to this product"
+    },
+    "tablet-dc|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "tablet-dc|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "tablet-dc|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "tablet-wg|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "tablet-wg|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "tablet-wg|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "effervescent|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "effervescent|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "effervescent|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "effervescent|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "gummy|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "gummy|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "gummy|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "gummy|colour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "lozenge-c|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "lozenge-c|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "lozenge-c|functional": {
+      "category": "4B",
+      "header": "This role does not apply to this product"
+    },
+    "lozenge-c|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "pastille|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "pastille|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "pastille|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "instant-hot|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "instant-hot|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "instant-hot|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "instant-hot|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "instant-hot|colour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "instant-cold|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "instant-cold|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "instant-cold|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "instant-cold|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "instant-cold|colour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "sachet|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "sachet|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "sachet|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "sachet|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "scoop|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "scoop|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "scoop|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "scoop|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "rtd-clear|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "rtd-clear|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "rtd-clear|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "rtd-clear|flavour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For flavour in a clear RTD, the required form is a water-soluble liquid flavour. The botanical you choose does not change that requirement."
+    },
+    "rtd-clear|colour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For colour in a clear RTD, the required form is a water-soluble permitted colour. The botanical you choose does not change that requirement."
+    },
+    "rtd-cloudy|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "rtd-cloudy|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "rtd-cloudy|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "rtd-cloudy|flavour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For flavour in a cloudy / suspension RTD, the required form is a water-soluble or emulsified liquid flavour. The botanical you choose does not change that requirement."
+    },
+    "rtd-cloudy|colour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Conditional fit"
+    },
+    "drops-aq|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "drops-aq|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "drops-aq|flavour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For flavour in aqueous / hydroalcoholic drops, the required form is a water-soluble liquid flavour. The botanical you choose does not change that requirement."
+    },
+    "drops-oil|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "drops-oil|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "syrup|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "syrup|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "syrup|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "syrup|flavour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For flavour in a uniform-solution syrup, the required form is a water-soluble liquid flavour. The botanical you choose does not change that requirement."
+    },
+    "spray|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "spray|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "spray|flavour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For flavour in an oral spray, the required form is a water-soluble liquid flavour. The botanical you choose does not change that requirement."
+    },
+    "shot|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "shot|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "shot|flavour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For flavour in a shot / concentrate, the required form is a water-soluble or emulsified liquid flavour. The botanical you choose does not change that requirement."
+    },
+    "bakery|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "bakery|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "bakery|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "bakery|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "bakery|colour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "confectionery|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "confectionery|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "confectionery|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "confectionery|colour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For colour in a fat-based confectionery coating, the required form is an oil-dispersible permitted colour. The botanical you choose does not change that requirement."
+    },
+    "dairy|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "dairy|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "dairy|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "dairy|flavour": {
+      "category": "5",
+      "header": "The same type of ingredient is used for any botanical here",
+      "body": "For flavour in a dairy or plant-milk product, the required form is a water-soluble or emulsified liquid flavour. The botanical you choose does not change that requirement."
+    },
+    "tea|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "tea|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "tea|functional": {
+      "category": "4B",
+      "header": "This role does not apply to this product"
+    },
+    "tea|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "savoury|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "savoury|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "savoury|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "savoury|colour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "serum|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "serum|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "serum|functional": {
+      "category": "4B",
+      "header": "This role does not apply to this product"
+    },
+    "cream|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "cream|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "cream|texture": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "face-oil|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "face-oil|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "balm|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "balm|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "balm|texture": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "cleanser|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "cleanser|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "mask-dry|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "mask-dry|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "mask-wet|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "mask-wet|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "taila|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "taila|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Process-specific recommendation"
+    },
+    "taila|functional": {
+      "category": "4B",
+      "header": "This role does not apply to this product"
+    },
+    "churna|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "churna|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "churna|functional": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "kashaya|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "kashaya|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "kashaya|functional": {
+      "category": "4B",
+      "header": "This role does not apply to this product"
+    },
+    "aroma-diff|base": {
+      "category": "6",
+      "header": "This needs testing in the finished product"
+    },
+    "aroma-diff|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Application review needed"
+    },
+    "aroma-roll|base": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "aroma-roll|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "ff|base": {
+      "category": "6",
+      "header": "This needs testing in the finished product"
+    },
+    "ff|active": {
+      "category": "6",
+      "header": "This needs testing in the finished product"
+    },
+    "ff|flavour": {
+      "category": "6",
+      "header": "This needs testing in the finished product"
+    },
+    "pet|base": {
+      "category": "2",
+      "header": "This function is handled elsewhere in the product"
+    },
+    "pet|active": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "pet|flavour": {
+      "category": "1",
+      "header": "Recommended form",
+      "technical_status": "Best physical fit"
+    },
+    "rnd|base": {
+      "category": "6",
+      "header": "This needs testing in the finished product"
+    },
+    "rnd|active": {
+      "category": "6",
+      "header": "This needs testing in the finished product"
+    }
+  }
+}
